@@ -8926,6 +8926,24 @@
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/9AF3CBF5-9D16-4F45-942C-69AD8EE25D88/200301-ZZ-v2-2-18-19.html"
             }
         ],
+        "answerChoices":  [
+                              {
+                                  "Text":  "YAML",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "JSON",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "XML",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "JavaScript",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "PHLY"
     },
     {
