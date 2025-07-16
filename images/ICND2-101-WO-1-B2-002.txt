@@ -1,0 +1,30 @@
+Central
+
+interface FastEthernet0/0
+ ip address 192.168.1.2 255.255.255.0
+ shutdown
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ ip address 50.50.50.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+!
+router eigrp 10
+ network 50.0.0.0
+ eigrp router-id 1.1.1.1
+ 
+Branch
+
+interface FastEthernet0/1
+ ip address 50.50.50.2 255.255.255.0
+ duplex auto
+ speed auto
+!
+!
+router eigrp 10
+ network 50.0.0.0
+ network 150.150.0.0
+ eigrp router-id 2.2.2.2

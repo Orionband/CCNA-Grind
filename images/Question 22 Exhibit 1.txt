@@ -1,0 +1,13 @@
+R3#show protocols
+ 
+Global values:
+  Internet Protocol routing is enabled
+GigabitEthernet0/0 is up, line protocol is up
+  Internet address is 10.1.23.3/24
+GigabitEthernet0/1 is up, line protocol is up
+  Internet address is 10.1.34.3/24
+GigabitEthernet0/2 is administratively down, line protocol is down
+GigabitEthernet0/3 is administratively down, line protocol is down
+Loopback0 is up, line protocol is up
+  Internet address is 3.3.3.3/32
+Tunnel0 is up, line protocol is up
