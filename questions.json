@@ -16236,13 +16236,35 @@
         "explanation": "OSPF considers the outgoing interface costs in the path to a given router. From R1, it is R1 G2/0 (4) plus R3 S3/0 (15) plus R4 G2/0 (4), for a total OSPF cost of 23 to reach the 10.45.0.0/24 network.\n\n\tBecause the cost of 23 is correct, the other choices provided are incorrect.",
         "difficulty": "1",
         "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "37109D16-33F9-4104-BEF0-C1F0FD9B0D7B",
-                "ExhibitTitle": "1",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/37109D16-33F9-4104-BEF0-C1F0FD9B0D7B/SE2-I2-101-K-08-026.png"
-            }
-        ],
+       "exhibits":  [
+                         {
+                             "ExhibitId":  "37109D16-33F9-4104-BEF0-C1F0FD9B0D7B",
+                             "ExhibitTitle":  "1",
+                             "ExhibitFileName":  "https://builder.pearsonitcertification.com/Content/Exhibits/37109D16-33F9-4104-BEF0-C1F0FD9B0D7B/SE2-I2-101-K-08-026.png"
+                         }
+                     ],
+        "answerChoices":  [
+                              {
+                                  "Text":  "42",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "19",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "34",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "23",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "None of these are correct",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "NELA"
     },
     {
@@ -16251,13 +16273,31 @@
         "explanation": "R5 calculates the OSPF cost - the metric - for all three paths from itself to subnet 10.1.0.0/24, as follows:\n\n\n\tThe route\u0026nbsp;from\u0026nbsp;R5 to R4 to R3 to R2 to R1, and out the interface connected to subnet 10.1.0.0/24, uses interfaces with costs of 1, 1, 1, 1, and 10, for a total of 14.\n\tThe route\u0026nbsp;from\u0026nbsp;R5 to R4 to R2 to R1, and out the interface connected to subnet 10.1.0.0/24, uses interfaces with costs of 1, 64, 1, and 10, for a total of 76.\n\tThe route\u0026nbsp;from\u0026nbsp;R5 to R1, and out the interface connected to subnet 10.1.0.0/24, uses interfaces with costs of 10 and 10, for a total of 20.\n\n\nTherefore, R5 uses the lowest-cost route with a cost of 14, with R5\u0026#39;s outgoing interface of G1/0 and\u0026nbsp; R4 as the next-hop router. The facts in the previous sentence either rule in or out each answer.",
         "difficulty": "1",
         "comments": "\u003cp\u003eICND2-11-03\u003c/p\u003e",
-        "exhibits": [
-            {
-                "ExhibitId": "8584A849-2B55-402A-AB8A-8A09C1D95EC1",
-                "ExhibitTitle": "1",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/8584A849-2B55-402A-AB8A-8A09C1D95EC1/ICND2-11-03.jpg"
-            }
-        ],
+        "exhibits":  [
+                         {
+                             "ExhibitId":  "8584A849-2B55-402A-AB8A-8A09C1D95EC1",
+                             "ExhibitTitle":  "1",
+                             "ExhibitFileName":  "https://builder.pearsonitcertification.com/Content/Exhibits/8584A849-2B55-402A-AB8A-8A09C1D95EC1/ICND2-11-03.jpg"
+                         }
+                     ],
+        "answerChoices":  [
+                              {
+                                  "Text":  "R5\u0026rsquo;s cost to reach 10.1.0.0/24 is 14.",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "R5 uses the exit interface of Fa2/0 to reach the subnet 10.1.0.0/24.",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "R5\u0026rsquo;s cost to reach subnet 10.1.0.0/24 is 4.",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Metrics are not used in link-state routing protocols.",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "NELA"
     },
     {
