@@ -30543,39 +30543,6 @@
         "cat": "ROSW"
     },
     {
-        "questionId": "958E3571-732C-4257-8667-FE4CAA48B464",
-        "questionText": "Based on the exhibit provided, which command is used to enable BPDU Filter?",
-        "explanation": "BPDU Filter is used at the access layer to prevent rogue switches from being installed and causing STP convergence issues and loops. The words &ldquo;Bpdu filter is enabled by default&rdquo; indicates that the global configuration command spanning-tree portfast bpdufilter default was used to enable BPDU Filter on all PortFast-enabled access ports. GigbitEthernet0/3 is a static access port. The words &ldquo;The port is in the portfast mode&rdquo; indicates this. The spanning-tree bpdufilter enable command is an interface configuration command. BPDU Guard is a different feature and unrelated to this task. BPDU Guard is a different feature and unrelated to this task.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "AE4259F8-7AB3-41AA-8608-2D7AE339CE91",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/AE4259F8-7AB3-41AA-8608-2D7AE339CE91/Question 17 Exhibit 1.html"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "spanning-tree bpduguard enable",
-                "IsCorrect": false
-            },
-            {
-                "Text": "spanning-tree portfast bpdufilter default",
-                "IsCorrect": true
-            },
-            {
-                "Text": "spanning-tree portfast bpduguard default",
-                "IsCorrect": false
-            },
-            {
-                "Text": "spanning-tree bpdufilter enable",
-                "IsCorrect": false
-            }
-        ]
-    },
-    {
         "questionId": "9AA1D172-FD8F-4B74-8D03-ED271DB4BA5B",
         "questionText": "The figure shows addressing for all the devices in a small lab network. PC1 can ping PC3. Which of the following statements accurately describes the allowed space for IP address growth in this design?",
         "explanation": "The serial link uses a subnet mask of 255.255.255.252, which defines 2 host bits. Therefore, the number of hosts in the subnet is 2^2 minus 2, or a total of two IP addresses. Because only the two IP addresses shown are needed, no waste occurs, but there are no additional IP addresses in the subnet. These facts rule out as incorrect the one answer that mentions the subnet for the serial link.\n\n\tOn the R3 LAN, the prefix of /28 implies a mask of 255.255.255.240 and 4 host bits. The formula for the number of hosts in a subnet is 2^4 minus 2, or a total of 14 hosts. With two host IP addresses already assigned 12 remain available for assignment. These facts rule out as incorrect the answer that references the R3 LAN subnet as having 28 available IP addresses but confirms as correct the answer that mentions that same LAN subnet has 12 available addresses.\n\n\tThe R1 LAN subnet uses a prefix of /23, which implies a mask of 255.255.254.0, and 9 host bits. The formula for the number of hosts in a subnet is 2^9 minus 2, or a total of 510 hosts, with two already used, leaving 508 more addresses in the subnet. These facts rule out as incorrect the answer that references the R1 LAN subnet as having more than 600 available IP addresses but confirms as correct the answer that mentions that same LAN subnet has more than 300 available addresses.",
