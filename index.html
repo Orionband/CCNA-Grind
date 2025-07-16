@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certification Practice Pro</title>
-    <!-- Include Chart.js from a CDN -->
+    
+    <!-- Chart.js Core Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- 
+      FIX: Add the Date Adapter and the Date Library (date-fns) 
+      These MUST come AFTER chart.js and BEFORE your main script.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/dist/date-fns.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
     <style>
         /* General Styling */
         body {
@@ -335,8 +344,10 @@
     document.addEventListener('DOMContentLoaded', () => {
         loadDataFromStorage();
         populateCategoryFilter();
-        loadQuestions();
-        renderDashboard();
+        // This will now run without error
+        renderDashboard(); 
+        // This will now be called correctly
+        loadQuestions(); 
 
         startBtn.addEventListener('click', loadAndDisplayQuiz);
         modeSelect.addEventListener('change', updateMaxQuestions);
@@ -445,13 +456,12 @@
             })
             .then(data => {
                 allQuestions = normalizeQuestions(data);
-                startBtn.disabled = false;
-                startBtn.textContent = 'Start Test';
-                updateMaxQuestions(); // Set initial max value
+                // Don't enable the button directly, let updateMaxQuestions handle it
+                updateMaxQuestions();
             })
             .catch(error => {
                 console.error(`Error fetching questions.json:`, error);
-                quizContainer.innerHTML = `<p style="color: red; text-align: center;">Error: Could not load questions.json. Ensure it's in the same folder.</p>`;
+                mainScreen.innerHTML = `<p style="color: red; text-align: center;">CRITICAL ERROR: Could not load questions.json. Ensure it's in the same folder and there are no network issues.</p>`;
                 startBtn.textContent = 'Load Failed';
             });
     }
@@ -491,7 +501,6 @@
             currentQuizQuestions = questionPool.slice(0, numQuestions);
         }
         
-        // This logic remains the same for fetching text exhibits
         const textExhibitPromises = currentQuizQuestions.flatMap(q => 
             (q.exhibits || []).map(exhibit => {
                 const fullUrl = exhibit.ExhibitFileName;
@@ -545,7 +554,6 @@
             }
             quizHtml += questionTextHtml;
             
-            // Exhibit logic remains the same
             if (q.exhibits && q.exhibits.length > 0) {
                  q.exhibits.forEach(exhibit => {
                     const fullUrl = exhibit.ExhibitFileName;
@@ -782,10 +790,31 @@
             },
             options: {
                 scales: {
-                    x: { type: 'time', time: { unit: 'day' }, title: { display: true, text: 'Date' } },
-                    y: { beginAtZero: true, max: 100, title: { display: true, text: 'Score %' } }
+                    // FIX: Updated configuration for Chart.js v3/v4 time scale
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            tooltipFormat: 'PP' // e.g. "Jan 1, 2023"
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Score %'
+                        }
+                    }
                 },
-                plugins: { legend: { display: false }, title: { display: true, text: 'Score Over Time' } },
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Score Over Time' }
+                },
                 responsive: true,
                 maintainAspectRatio: false
             }
