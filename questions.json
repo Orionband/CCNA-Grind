@@ -17266,39 +17266,6 @@
         "cat": "BRCO"
     },
     {
-        "questionId": "DEF02BE5-75AF-4BDC-A78A-AC19DC0E9905",
-        "questionText": "Refer to the diagram. PC1 sent out a DHCP discover message looking to find a DHCP server to obtain an address. What source IP address would R1 use for this message to R2?",
-        "explanation": "When sending out a relayed DHCP discover message, R1 will use a source address from the interface that faces the DHCP client&mdash;in this case 192.168.1.1. The destination IP would come from the configured IP helper address.",
-        "difficulty": "1",
-        "comments": "<p>\n\t7/29 - ok as-is, 7/10 - query to Au</p>\n",
-        "exhibits": [
-            {
-                "ExhibitId": "301B44BD-F0E4-42D1-9941-DCD71B12E8D1",
-                "ExhibitTitle": "1",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/301B44BD-F0E4-42D1-9941-DCD71B12E8D1/I1-100105-SW-3-20-015.jpg"
-            }
-        ],
-        "cat": "BRCO",
-        "answerChoices": [
-            {
-                "Text": "192.168.2.1",
-                "IsCorrect": false
-            },
-            {
-                "Text": "255.255.255.255",
-                "IsCorrect": false
-            },
-            {
-                "Text": "192.168.1.1",
-                "IsCorrect": true
-            },
-            {
-                "Text": "0.0.0.0",
-                "IsCorrect": false
-            }
-        ]
-    },
-    {
         "questionId": "20E22D59-21C6-4C6F-8EF7-BF0A60688FA0",
         "questionText": "Which of the four messages used by DHCP is sent by the client to ask for the server to lease the IPv4 address listed from the server?",
         "explanation": "Four different messages are used to communicate between a DHCP server and client: Discover, Offer, Request and Acknowledgment (DORA). The Discover message is sent by the DHCP client to find a DHCP server. An Offer message is sent by the server to offer a lease to the requesting client (in the Discover). The Request message is a message sent by the client to ask the server to assign the offered address. The Acknowledgment message is sent by the server acknowledging the client&rsquo;s request and providing the mask, default router, and DHCP server settings, among other DHCP information.\n\nBased on these facts, the Request message&#39;s purpose matches the statement in the question. Of the incorrect answers, the Acknowledgement and Offer messages serve other purposes, and the Respond message isn&#39;t a DHCP message at all.",
@@ -17324,39 +17291,6 @@
             }
         ],
         "cat": "BRCO"
-    },
-    {
-        "questionId": "130647FC-322C-4655-AB0E-FC4AB804BC25",
-        "questionText": "Which command would need to be configured on R1 so that PC3 and PC4 can properly receive a DHCP address from SRV1?",
-        "explanation": "The ip helper-address command is used to enable DHCP relay messages to be sent outside the current subnet to another &ldquo;remote&rdquo; location that does not have its own DHCP server. The branch office in this question is a perfect example of when to leverage this feature.\n\n\tThe ip address dhcp command would be utilized to enable a device&rsquo;s interface to act as a DHCP client.\n\n\tThe options ip dhcp client and dhcp enable are not actual commands on a router.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "13257BF7-0FAA-4840-B56E-DC1243DA246E",
-                "ExhibitTitle": "1",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/13257BF7-0FAA-4840-B56E-DC1243DA246E/I1-100105-SW-3-20-015.jpg"
-            }
-        ],
-        "cat": "BRCO",
-        "answerChoices": [
-            {
-                "Text": "<strong>ip dhcp client</strong>",
-                "IsCorrect": false
-            },
-            {
-                "Text": "<strong>dhcp enable</strong>",
-                "IsCorrect": false
-            },
-            {
-                "Text": "<strong>ip helper-address</strong>",
-                "IsCorrect": true
-            },
-            {
-                "Text": "<strong>ip address dhcp</strong>",
-                "IsCorrect": false
-            }
-        ]
     },
     {
         "questionId": "E6EA506E-301E-4FF7-9599-109E0940AFF0",
