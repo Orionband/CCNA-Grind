@@ -117,7 +117,7 @@
         }
         #categoryList li strong {
             display: inline-block;
-            width: 60px;
+            width: 65px;
             font-family: "Courier New", Courier, monospace;
             color: #495057;
         }
@@ -360,30 +360,15 @@
     const categorySelect = document.getElementById('categorySelect');
     const modeSelect = document.getElementById('modeSelect');
 
-    // Updated Category Map - ICTR and VLIR removed
+    // Updated Category Map
     const CATEGORY_MAP = {
-        "NETT": "NETWORKING TODAY",
-        "BSEC": "BASIC SWITCH AND END DEVICE CONFIGURATION",
-        "PRMO": "PROTOCOLS AND MODELS",
-        "PHLY": "PHYSICAL LAYER",
-        "DALA": "DATA LINK LAYER",
-        "ETSW": "ETHERNET SWITCHING",
-        "NELA": "NETWORK LAYER",
-        "ADRE": "ADDRESS RESOLUTION",
-        "BRCO": "BASIC ROUTER CONFIGURATION",
-        "IPV4": "IPV4 ADDRESSING",
-        "IPV6": "IPV6 ADDRESSING",
-        "TRLA": "Transport Layer",
-        "NWSE": "Network Services (DHCP, DNS, NAT)",
-        "NSFU": "Network Security Fundamentals",
-        "WINW": "Wireless Networking",
-        "BASEC": "Basic Network Security (Firewalls, ACLs)",
-        "STDR": "Static and Dynamic Routing",
-        "ACLS": "Access Control Lists",
-        "NAPR": "Network Automation and Programmability",
-        "WACO": "WAN Concepts",
-        "NETR": "Network Troubleshooting",
-        "DDMN": "Device Discovery, Management, and Maintenance"
+        "NETFD": "Network Fundamentals",
+        "NETSEC": "Network Security & Access Control",
+        "IPNS": "IP Networking & Services",
+        "ROSW": "Routing & Switching",
+        "OPTR": "Operations & Troubleshooting",
+        "WWCN": "Wireless & WAN Connectivity",
+        "NAPR": "Network Automation and Programmability"
     };
 
     let allQuestions = [];
@@ -569,18 +554,20 @@
             currentQuizQuestions = questionPool.slice(0, numQuestions);
         }
         
+        // Fetch text exhibits using the new /images/ path
         const textExhibitPromises = currentQuizQuestions.flatMap(q => 
             (q.exhibits || []).map(exhibit => {
                 const fullUrl = exhibit.ExhibitFileName;
                 if (fullUrl && fullUrl.toLowerCase().endsWith('.txt')) {
                     const localFileName = fullUrl.split('/').pop();
+                    const localPath = `/images/${localFileName}`; // New path
                     exhibit.localFileName = localFileName;
-                    return fetch(localFileName)
-                        .then(response => response.ok ? response.text() : Promise.reject(`Failed to fetch ${localFileName}`))
+                    return fetch(localPath) // Use new path
+                        .then(response => response.ok ? response.text() : Promise.reject(`Failed to fetch ${localPath}`))
                         .then(text => { exhibit.textContent = text; })
                         .catch(error => {
                             console.error('Error fetching exhibit:', error);
-                            exhibit.textContent = `Error: Could not load ${localFileName}`;
+                            exhibit.textContent = `Error: Could not load ${localPath}`;
                         });
                 }
                 return null;
@@ -622,17 +609,22 @@
             }
             quizHtml += questionTextHtml;
             
+            // Display exhibits using the new /images/ path
             if (q.exhibits && q.exhibits.length > 0) {
                  q.exhibits.forEach(exhibit => {
                     const fullUrl = exhibit.ExhibitFileName;
                     if (!fullUrl) return;
-                    const filenameLower = fullUrl.toLowerCase();
+
+                    const filename = fullUrl.split('/').pop();
+                    const localPath = `/images/${filename}`; // Construct local path
+
+                    const filenameLower = filename.toLowerCase();
                     if (filenameLower.endsWith('.txt')) {
                         quizHtml += `<div class="exhibit-container"><strong>Exhibit: ${exhibit.localFileName}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`;
                     } else if (filenameLower.endsWith('.html')) {
-                        quizHtml += `<iframe src="${fullUrl}" class="question-exhibit-frame" title="Exhibit from ${fullUrl}"></iframe>`;
+                        quizHtml += `<iframe src="${localPath}" class="question-exhibit-frame" title="Exhibit: ${filename}"></iframe>`;
                     } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) {
-                        quizHtml += `<img src="${fullUrl}" alt="Exhibit from ${fullUrl}" class="question-exhibit">`;
+                        quizHtml += `<img src="${localPath}" alt="Exhibit: ${filename}" class="question-exhibit">`;
                     }
                 });
             }
@@ -796,7 +788,6 @@
         quizHistory.forEach(quiz => {
             quiz.questions.forEach(qResult => {
                 const questionData = allQuestions.find(q => q.questionId === qResult.questionId);
-                // Only track stats for categories that still exist in the map
                 if (questionData && questionData.cat && categoryStats[questionData.cat]) {
                     categoryStats[questionData.cat].total++;
                     if(qResult.isCorrect) {
