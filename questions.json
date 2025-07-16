@@ -351,33 +351,6 @@
         "cat": "WWCN"
     },
     {
-        "questionId": "DAD78617-786C-43A3-B159-87281896744F",
-        "questionText": "Which one of the following channel lists contains valid, nonoverlapping channels?",
-        "explanation": "In the 2.4 GHz band, channels 1, 2, and 3 all overlap each other due to the wide channel bandwidth used by each. The same is true for channels 1, 3, and 6. Only channels 1, 6, and 11 are considered to be nonoverlapping. In the 5 GHz band, valid channel numbers increment by four, so channels 36, 37, and 38 are not all valid - only channel 36 is. Channels 100, 104, and 108 are all valid and separated by an increment of four.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [],
-        "answerChoices": [
-            {
-                "Text": "1, 2, 3",
-                "IsCorrect": false
-            },
-            {
-                "Text": "1, 3, 6",
-                "IsCorrect": false
-            },
-            {
-                "Text": "36, 37, 38",
-                "IsCorrect": false
-            },
-            {
-                "Text": "100, 104, 108",
-                "IsCorrect": true
-            }
-        ],
-        "cat": "WWCN"
-    },
-    {
         "questionId": "F8E18427-3DCF-474F-BA7A-883024C4D629",
         "questionText": "Which one of the following channel lists contains valid, nonoverlapping channels?",
         "explanation": "In the 2.4 GHz band, channels 1, 2, and 3 all overlap each other due to the wide channel bandwidth used by each. The same is true for channels 1, 3, and 6. Only channels 1, 6, and 11 are considered to be nonoverlapping. In the 5 GHz band, valid channel numbers increment by four, so channels 36, 37, and 38 are not all valid - only channel 36 is. Channels 100, 104, and 108 are all valid and separated by an increment of four.",
@@ -808,33 +781,6 @@
             },
             {
                 "Text": "Centralized",
-                "IsCorrect": false
-            }
-        ],
-        "cat": "WWCN"
-    },
-    {
-        "questionId": "61F67B5C-552B-471F-9DD6-31FABA5E59B0",
-        "questionText": "Which of the following statements is correct concerning a unified WLC deployment model?",
-        "explanation": "A unified or centralized deployment model places a WLC in a central location. That enables the WLC to control and manage all APs, as well as handle CAPWAP tunnels from all APs. CAPWAP tunnels do not extend from access layer switches. WLCs are not positioned at access layer switches in a unified or centralized deployment. Centralized WLCs are designed to handle large numbers of APs, not small subsets.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [],
-        "answerChoices": [
-            {
-                "Text": "CAPWAP tunnels extend from access layer switches to all APs.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "CAPWAP tunnels extend from all APs to a centrally located WLC.",
-                "IsCorrect": true
-            },
-            {
-                "Text": "WLCs are positioned at each access layer switch.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "A small portion of the total number of APs is managed by a centrally located WLC.",
                 "IsCorrect": false
             }
         ],
@@ -11694,37 +11640,6 @@
         ]
     },
     {
-        "questionId": "6637DEC2-51FE-4DF8-B705-401F8E0C350C",
-        "questionText": "What are common LAN Layer 1 problem indicators?",
-        "explanation": "Collisions and late collisions can be due to mismatched settings such as duplex on either side of the connection. A late collision in a half-duplex environment could be due to physical cable lengths being longer than the standard permits.\n\n\tHigh-bandwidth utilization could be normal, based on the amount of traffic flowing through the network. Incorrect IP addressing would be a symptom of poor Layer 3 planning and implementation, and incorrect VLAN assignments would be poor Layer 2 implementation and/or planning.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [],
-        "answerChoices": [
-            {
-                "Text": "Collisions",
-                "IsCorrect": true
-            },
-            {
-                "Text": "High-bandwidth utilization",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Late collisions",
-                "IsCorrect": true
-            },
-            {
-                "Text": "Incorrect IP addressing",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Incorrect VLAN assignments",
-                "IsCorrect": false
-            }
-        ],
-        "cat": "ROSW"
-    },
-    {
         "questionId": "860DA293-D040-47F7-94E5-643A7F364633",
         "questionText": "Refer to the exhibit. Which of the following commands has been configured on the displayed switchport?",
         "explanation": "Two switch interface subcommands,&nbsp;shutdown and no shutdown, administratively enable or disables an interface (switchport). Cisco switches default to no shutdown, meaning all ports begin in an enabled state. The output lists the interface in an administratively down state, meaning someone configured the shutdown subcommand on the interface.",
@@ -11763,47 +11678,7 @@
             }
         ]
     },
-    {
-        "questionId": "591CE1B8-7426-44D2-8F76-A2364FC0F395",
-        "questionText": "The figure displays three PCs connected to a switch. All PC NICs support the highest speeds. Some PCs have power, and some have cables connecting them to the switch, but some have no power or no cable. The show interfaces status command lists both a speed and duplex column. Which answers accurately describe the output in those columns for the combined three interfaces? (Choose two answers.)",
-        "explanation": "First, consider the three cases. On port G1/0/1, the PC has power, and a cable exists. As a result, the link works, and then autonegotiation works. However, on the other two links, a problem exists, so the link does not work. On G1/0/2, no cable exists, and on G1/0/3, the PC has no power. So, those links do not work, so no autonegotiation occurs.\n\nSecond, you must recall that the default settings for speed and duplex on switch interfaces cause them to use autonegotiation. As a result, the show interfaces status command, for interfaces in a down/down (notconnect) state, lists a status as if autonegotiation is yet to be done, using the word &quot;auto&quot; in each case. So, the output for G1/0/2 and G1/0/3 lists the speed and duplex as &quot;auto.&quot;\n\nFor the working interface, G1/0/1, the output lists &quot;a-1000&quot; for the speed, meaning it autonegotiated to use 1000 Mbps. Similarly, the output shows &quot;a-full&quot; in the duplex heading, meaning it autonegotiated to use full duplex.\n\nThree answers suggest values under the speed column for one interface only. The answer that includes &quot;a-1000&quot; is correct, as only interface G1/0/1 has that speed status value. Three answers suggest values under the duplex column for two interfaces. The answer listing &quot;auto&quot; is correct, as interfaces G1/0/2 and G1/0/3 would both list that value.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "AB81E728-85AE-4F62-ADA1-1DF5FA6ADEE2",
-                "ExhibitTitle": "1",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/AB81E728-85AE-4F62-ADA1-1DF5FA6ADEE2/200301-11-WO-v1-2-07-01.png"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "Exactly one interface lists the speed as 1000",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Exactly one interface lists the speed as auto",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Exactly one interface lists the speed as a-1000",
-                "IsCorrect": true
-            },
-            {
-                "Text": "Exactly two interfaces list the duplex as auto",
-                "IsCorrect": true
-            },
-            {
-                "Text": "Exactly two interfaces list the duplex as a-full",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Exactly two interfaces list the duplex as half",
-                "IsCorrect": false
-            }
-        ]
-    },
+    
     {
         "questionId": "C81C757E-40A9-48F8-BE85-A43A0DF6236B",
         "questionText": "The text below reveals the first lines of an ACL enabled for outbound packets on router R1&#39;s G0/0/1 interface. Clients on the right side of the figure connect to the web servers on the left. All web servers use default well-known ports. When a client connects using HTTP/3, which ACE matches the packets?\n\n\nR1# show access-list Hannah\n\n  10 permit udp 172.16.10.0 0.0.0.255 eq 443 any\n  12 permit tcp 172.16.10.0 0.0.0.255 eq 443 any\n  20 permit tcp 172.16.10.0 0.0.0.255 eq 80 any\n  22 permit udp 172.16.10.0 0.0.0.255 eq 80 any\n&hellip;",
@@ -11901,45 +11776,6 @@
             }
         ],
         "cat": "ROSW"
-    },
-    {
-        "questionId": "860DA293-D040-47F7-94E5-643A7F364633",
-        "questionText": "Refer to the exhibit. Which of the following commands has been configured on the displayed switchport?",
-        "explanation": "Two switch interface subcommands,&nbsp;shutdown and no shutdown, administratively enable or disables an interface (switchport). Cisco switches default to no shutdown, meaning all ports begin in an enabled state. The output lists the interface in an administratively down state, meaning someone configured the shutdown subcommand on the interface.",
-        "difficulty": "1",
-        "comments": "<p>\n\t7/8 - disregard as per reader, 7/6 - query to Au</p>\n",
-        "exhibits": [
-            {
-                "ExhibitId": "3806F5C5-70C4-4430-B04A-3AEB32390F3A",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/3806F5C5-70C4-4430-B04A-3AEB32390F3A/I1-100105-SW-2-09-006.txt"
-            },
-            {
-                "ExhibitDescription": "",
-                "ExhibitId": "8EB6BC09-4C0E-40A6-8B34-F1E0B75169FA",
-                "ExhibitTitle": "1",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/8EB6BC09-4C0E-40A6-8B34-F1E0B75169FA/200301-GB-v1-1-07-03.png"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "<strong>disable</strong>",
-                "IsCorrect": false
-            },
-            {
-                "Text": "<strong>switchport shutdown</strong>",
-                "IsCorrect": false
-            },
-            {
-                "Text": "<strong>shutdown</strong>",
-                "IsCorrect": true
-            },
-            {
-                "Text": "<strong>port disable</strong>",
-                "IsCorrect": false
-            }
-        ]
     },
     {
         "questionId": "591CE1B8-7426-44D2-8F76-A2364FC0F395",
@@ -14377,33 +14213,6 @@
             },
             {
                 "Text": "If a Class B network had this mask, up to 254 possible subnets could be created.",
-                "IsCorrect": false
-            }
-        ],
-        "cat": "IPNS"
-    },
-    {
-        "questionId": "AD9EC4E2-6BDB-4F35-9B8C-5432B7B541B8",
-        "questionText": "Which options correctly list the addresses covered by the indicated address class?",
-        "explanation": "Three different address classes are used for normal IP addressing: Class A, Class B, and Class C. Class A addresses begin with 1&ndash;126, inclusively in their first octet; Class B addresses begin with 128&ndash;191, inclusively in their first octet; and Class C addresses begin with 192&ndash;223, inclusively in their first octet.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [],
-        "answerChoices": [
-            {
-                "Text": "Class B&mdash;addresses beginning with 128-191, inclusive",
-                "IsCorrect": true
-            },
-            {
-                "Text": "Class C&mdash;addresses beginning with 192&ndash;223, inclusive",
-                "IsCorrect": true
-            },
-            {
-                "Text": "Class B&mdash;addresses beginning with 128-192, inclusive",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Class C&mdash;addresses beginning with 172&ndash;212, inclusive",
                 "IsCorrect": false
             }
         ],
@@ -27758,33 +27567,6 @@
         "cat": "ROSW"
     },
     {
-        "questionId": "F83E6EA7-C3E5-4608-829B-9272AE4DE23C",
-        "questionText": "Considering the differences between NAT and PAT, which is the most accurate description?",
-        "explanation": "Both NAT and PAT can support multiple protocols for each of their translations. PAT translates multiple inside local addresses into a single global address. PAT is also used with pools when there are more inside devices than addresses in the pool and the keyword overload has been used in the configuration.NAT is a one-to-one translation of IP to IP.",
-        "difficulty": "1",
-        "comments": "<p>ICND2-18-04</p>",
-        "exhibits": [],
-        "answerChoices": [
-            {
-                "Text": "NAT allows for multiple protocols across a single IP address.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "NAT translates many IP addresses into a few or even one IP address.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "PAT allows for multiple protocols across multiple IP addresses.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "PAT translates many IP addresses into a few or even one IP address.",
-                "IsCorrect": true
-            }
-        ],
-        "cat": "IPNS"
-    },
-    {
         "questionId": "08AC1CC0-D5FA-4CC0-A3B7-9A31E991DB8B",
         "questionText": "NAT translates a private address 192.168.1.1 to a public IP address 12.150.146.100. How would 192.168.1.1 be described?",
         "explanation": "The term inside refers to a host inside the Enterprise network, which often uses a private (RFC 1918) address inside the Enterprise. The term local refers to an address used for that host in the local, or Enterprise, network.",
@@ -28257,33 +28039,6 @@
             },
             {
                 "Text": "Priority Specialized Queuing",
-                "IsCorrect": false
-            }
-        ],
-        "cat": "ROSW"
-    },
-    {
-        "questionId": "0D3FC017-B5AD-44FB-AFD5-A55FD36D3726",
-        "questionText": "The term _________ refers to the process of matching the fields in a message to make a choice to take some QoS action.",
-        "explanation": "The term classification refers to the process of matching the fields in a message to make a choice to take some QoS action.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [],
-        "answerChoices": [
-            {
-                "Text": "classification",
-                "IsCorrect": true
-            },
-            {
-                "Text": "marking",
-                "IsCorrect": false
-            },
-            {
-                "Text": "inspection",
-                "IsCorrect": false
-            },
-            {
-                "Text": "analysis",
                 "IsCorrect": false
             }
         ],
