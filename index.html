@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certification Practice Pro</title>
+    <title>CCNA Practice</title>
     
-    <!-- Chart.js Core Library -->
+    <!-- Chart.js Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- 
-      FIX: Add the Date Adapter and the Date Library (date-fns) 
-      These MUST come AFTER chart.js and BEFORE your main script.
-    -->
     <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/dist/date-fns.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 
@@ -77,7 +72,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding-top: 20px; /* Align with inputs */
+            padding-top: 20px;
         }
         .option-group-checkbox label {
              margin-bottom: 0;
@@ -85,7 +80,7 @@
 
         /* Dashboard */
         #dashboardContainer {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             padding: 20px;
             border: 1px solid #e0e7ff;
             border-radius: 8px;
@@ -95,6 +90,43 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
+        
+        /* Category Descriptions Styling */
+        #categoryDescriptions {
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+        }
+        #categoryDescriptions summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #0d6efd;
+        }
+        #categoryList {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+            column-count: 2;
+            column-gap: 20px;
+        }
+        #categoryList li {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+        #categoryList li strong {
+            display: inline-block;
+            width: 60px;
+            font-family: "Courier New", Courier, monospace;
+            color: #495057;
+        }
+        @media (max-width: 600px) {
+            #categoryList {
+                column-count: 1;
+            }
+        }
+
 
         /* Buttons */
         button {
@@ -170,6 +202,10 @@
         .bookmark-btn.bookmarked {
             opacity: 1;
             transform: scale(1.2);
+        }
+        .bookmark-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.2;
         }
         .question-exhibit, .question-exhibit-frame {
             max-width: 100%;
@@ -258,7 +294,7 @@
 <body>
 
     <div class="container">
-        <h1>Certification Practice Pro</h1>
+        <h1>CCNA Practice</h1>
         
         <div id="mainScreen">
             <div id="dashboardContainer">
@@ -272,6 +308,13 @@
                     </div>
                 </div>
                 <button id="clearDataBtn" class="clear-data-btn">Clear All Study Data</button>
+            </div>
+            
+            <div id="categoryDescriptions">
+                <details>
+                    <summary>View CCNA Topic Domains</summary>
+                    <ul id="categoryList"></ul>
+                </details>
             </div>
 
             <div id="optionsPanel" class="options-panel">
@@ -317,24 +360,35 @@
     const categorySelect = document.getElementById('categorySelect');
     const modeSelect = document.getElementById('modeSelect');
 
+    // Updated Category Map - ICTR and VLIR removed
     const CATEGORY_MAP = {
         "NETT": "NETWORKING TODAY",
         "BSEC": "BASIC SWITCH AND END DEVICE CONFIGURATION",
         "PRMO": "PROTOCOLS AND MODELS",
         "PHLY": "PHYSICAL LAYER",
-        "NUSY": "NUMBER SYSTEMS",
         "DALA": "DATA LINK LAYER",
         "ETSW": "ETHERNET SWITCHING",
         "NELA": "NETWORK LAYER",
         "ADRE": "ADDRESS RESOLUTION",
         "BRCO": "BASIC ROUTER CONFIGURATION",
         "IPV4": "IPV4 ADDRESSING",
-        "IPV6": "IPV6 ADDRESSING"
+        "IPV6": "IPV6 ADDRESSING",
+        "TRLA": "Transport Layer",
+        "NWSE": "Network Services (DHCP, DNS, NAT)",
+        "NSFU": "Network Security Fundamentals",
+        "WINW": "Wireless Networking",
+        "BASEC": "Basic Network Security (Firewalls, ACLs)",
+        "STDR": "Static and Dynamic Routing",
+        "ACLS": "Access Control Lists",
+        "NAPR": "Network Automation and Programmability",
+        "WACO": "WAN Concepts",
+        "NETR": "Network Troubleshooting",
+        "DDMN": "Device Discovery, Management, and Maintenance"
     };
 
     let allQuestions = [];
     let currentQuizQuestions = [];
-    let userAnswers = {}; // For exam mode
+    let userAnswers = {};
     let quizHistory = [];
     let bookmarkedQuestions = [];
     let isExamMode = false;
@@ -344,9 +398,8 @@
     document.addEventListener('DOMContentLoaded', () => {
         loadDataFromStorage();
         populateCategoryFilter();
-        // This will now run without error
+        populateCategoryDescriptions();
         renderDashboard(); 
-        // This will now be called correctly
         loadQuestions(); 
 
         startBtn.addEventListener('click', loadAndDisplayQuiz);
@@ -375,11 +428,27 @@
         }
     }
 
+    function populateCategoryDescriptions() {
+        const listElement = document.getElementById('categoryList');
+        if (!listElement) return;
+        listElement.innerHTML = '';
+
+        const sortedCategories = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1]));
+
+        for (const [code, description] of sortedCategories) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<strong>${code}</strong> - ${description}`;
+            listElement.appendChild(listItem);
+        }
+    }
+
     function populateCategoryFilter() {
-        for (const code in CATEGORY_MAP) {
+        const sortedCategories = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1]));
+
+        for (const [code, description] of sortedCategories) {
             const option = document.createElement('option');
             option.value = code;
-            option.textContent = CATEGORY_MAP[code];
+            option.textContent = description;
             categorySelect.appendChild(option);
         }
     }
@@ -456,7 +525,6 @@
             })
             .then(data => {
                 allQuestions = normalizeQuestions(data);
-                // Don't enable the button directly, let updateMaxQuestions handle it
                 updateMaxQuestions();
             })
             .catch(error => {
@@ -533,7 +601,7 @@
         let quizHtml = '<h2>Quiz</h2>';
         if (isExamMode) {
             quizHtml += `<div id="timerDisplay"></div>`;
-            startTimer(currentQuizQuestions.length * 90); // 90 seconds per question
+            startTimer(currentQuizQuestions.length * 90);
         }
 
         currentQuizQuestions.forEach((q, index) => {
@@ -622,12 +690,7 @@
         if (timerInterval) clearInterval(timerInterval);
         
         let score = 0;
-        const quizAttempt = {
-            timestamp: Date.now(),
-            score: 0,
-            total: currentQuizQuestions.length,
-            questions: []
-        };
+        const quizAttempt = { timestamp: Date.now(), score: 0, total: currentQuizQuestions.length, questions: [] };
         
         currentQuizQuestions.forEach((q, index) => {
             let isQuestionCorrect = false;
@@ -636,9 +699,7 @@
                 if (userInput) {
                     const userValue = userInput.value.trim().toLowerCase();
                     const correctAnswers = (q.blanks && q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase());
-                    if (userValue && correctAnswers.includes(userValue)) {
-                        isQuestionCorrect = true;
-                    }
+                    if (userValue && correctAnswers.includes(userValue)) isQuestionCorrect = true;
                 }
             } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
                 const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`));
@@ -648,11 +709,7 @@
             }
 
             if (isQuestionCorrect) score++;
-            
-            quizAttempt.questions.push({
-                questionId: q.questionId,
-                isCorrect: isQuestionCorrect
-            });
+            quizAttempt.questions.push({ questionId: q.questionId, isCorrect: isQuestionCorrect });
         });
         
         quizAttempt.score = score;
@@ -660,8 +717,15 @@
         saveDataToStorage();
         renderDashboard();
         
-        const allInputs = quizContainer.querySelectorAll('input, button');
-        allInputs.forEach(input => input.disabled = true);
+        const answerInputs = quizContainer.querySelectorAll('.answer-choice input, .fb-input');
+        answerInputs.forEach(input => {
+            input.disabled = true;
+            const label = input.closest('label.answer-choice');
+            if (label) {
+                label.style.cursor = 'default';
+            }
+        });
+
         document.getElementById('submitBtn').remove();
         
         const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
@@ -732,6 +796,7 @@
         quizHistory.forEach(quiz => {
             quiz.questions.forEach(qResult => {
                 const questionData = allQuestions.find(q => q.questionId === qResult.questionId);
+                // Only track stats for categories that still exist in the map
                 if (questionData && questionData.cat && categoryStats[questionData.cat]) {
                     categoryStats[questionData.cat].total++;
                     if(qResult.isCorrect) {
@@ -741,7 +806,7 @@
             });
         });
         
-        const labels = Object.keys(CATEGORY_MAP);
+        const labels = Object.keys(categoryStats);
         const data = labels.map(code => {
             const stats = categoryStats[code];
             return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
@@ -790,25 +855,14 @@
             },
             options: {
                 scales: {
-                    // FIX: Updated configuration for Chart.js v3/v4 time scale
                     x: {
                         type: 'time',
-                        time: {
-                            unit: 'day',
-                            tooltipFormat: 'PP' // e.g. "Jan 1, 2023"
-                        },
-                        title: {
-                            display: true,
-                            text: 'Date'
-                        }
+                        time: { unit: 'day', tooltipFormat: 'PP' },
+                        title: { display: true, text: 'Date' }
                     },
                     y: {
-                        beginAtZero: true,
-                        max: 100,
-                        title: {
-                            display: true,
-                            text: 'Score %'
-                        }
+                        beginAtZero: true, max: 100,
+                        title: { display: true, text: 'Score %' }
                     }
                 },
                 plugins: {
