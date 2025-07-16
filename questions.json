@@ -4525,7 +4525,24 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/D7861902-7902-46B0-85F3-47D4880B7EC7/200301-ZZ-v2-3-05-04.jpg"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "DMZ",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "Inside",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Outside",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Campus",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "NELA"
     },
     {
@@ -4648,7 +4665,24 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/08A2EFCF-8FC1-4A67-B21A-64258699FF03/200301-ZZ-v2-1-05-02.jpg"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "MD5",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Clear text",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Scrypt",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "SHA-256",
+                                  "IsCorrect":  true
+                              }
+                          ],
         "cat": "NELA"
     },
     {
@@ -4663,7 +4697,24 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/BAD63C09-852E-4E24-A438-02F01D296BAA/I1-100105-SW-1-34-033.jpg"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "Inside -\u0026gt; Outside",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Outside -\u0026gt; Inside",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "Outside -\u0026gt; DMZ",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Inside -\u0026gt; DMZ",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "NELA"
     },
     {
@@ -5211,7 +5262,24 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/722283B3-83B9-4426-B5C6-6F1396691955/200301-ZZ-v2-2-08-12.jpg"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "DHCP Snooping",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "ARP",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "DAI",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "Gratuitous ARP",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "BSEC"
     },
     {
@@ -5259,7 +5327,24 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/9CEAE8CF-042F-4D75-8267-A30294B4683F/200301-ZZ-v2-1-08-01.jpg"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "DAI",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "DHCP Snooping",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "ARP Spoofing",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "VLAN Snooping",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "BSEC"
     },
     {
@@ -5398,7 +5483,24 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/0939145D-1A56-452E-B653-DAE630C0ADB7/200301-ZZ-v2-3-08-13.jpg"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "DAI",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "ARP",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "DHCP Snooping",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Gratuitous ARP",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "BSEC"
     },
     {
@@ -7117,7 +7219,24 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/9709E6EE-B331-4FFF-8B18-4E555C7D8998/I2-200105-SW-2-14-018.jpg"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "CE",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "PE",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "PR",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "CR",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "PHLY"
     },
     {
@@ -7194,7 +7313,24 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/A8C9987E-1CCD-43EC-BB1A-79D17093ACEE/I2-200105-SW-3-14-022.jpg"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "Trunk link",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "NNI",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "UNI",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "MEF",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "PHLY"
     },
     {
@@ -9809,7 +9945,24 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/949A8482-1E2B-4295-B3C9-6D9F355FF548/200301-LS-v1-1-02-01.jpg"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "Multimode",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "SFP",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Single mode",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "GBIC",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "PHLY"
     },
     {
@@ -14978,7 +15131,7 @@
                                   "Text":  "\u003cstrong\u003eip route 200.200.200.0 255.255.255.0 150.150.150.1 105\u003c/strong\u003e",
                                   "IsCorrect":  false
                               }
-                          ]
+                          ],
         "cat": "BRCO"
     },
     {
@@ -16538,7 +16691,24 @@
                 "ExhibitTitle": "4",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/BF0AEB81-0A66-443E-9419-9860AD8E6F91/200301-11-WO-v1-2-22-04.html"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "3",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "2",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "1",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "0",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "NELA"
     },
     {
@@ -16990,6 +17160,24 @@
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/4E62EB9C-04EC-4FB1-8C10-1A3ACC05976D/200301-LS-v1-3-21-02.html"
             }
         ],
+        "answerChoices":  [
+                              {
+                                  "Text":  "A DR is already elected.",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "It does not use DR/BR.",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "An election is occurring.",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "A BDR is already elected.",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "NELA"
     },
     {
@@ -17265,7 +17453,28 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/A7080309-4ECD-4646-9856-08AED49A4CE7/200301-11-WO-v1-4-24-12.png"
             }
-        ],
+        ],"answerChoices":  [
+                              {
+                                  "Text":  "Adding \u003cb\u003eip ospf hello-interval 11\u003c/b\u003e\u0026nbsp;subcommand to R1\u0026#39;s G0/0/1 interface.",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "Adding the \u003cb\u003eip ospf network broadcast\u003c/b\u003e subcommand to R1\u0026#39;s G0/0/2 interface.",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Adding \u003cb\u003eip ospf shutdown \u003c/b\u003esubcommand to R1\u0026#39;s G0/0/2 interface.",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "Adding the \u003cb\u003eip ospf shutdown\u003c/b\u003e subcommand on R1\u0026#39;s G0/0/0 interface.",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Adding an ACL to R1 that discards\u0026nbsp;all incoming OSPF Hello messages on its G0/0/2 interface.",
+                                  "IsCorrect":  true
+                              }
+                          ],
         "cat": "NELA"
     },
     {
@@ -19002,6 +19211,24 @@
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/13257BF7-0FAA-4840-B56E-DC1243DA246E/I1-100105-SW-4-32-034.jpg"
             }
         ],
+         "answerChoices":  [
+                              {
+                                  "Text":  "Neighbor Discovery Protocol",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "Router Discovery Protocol",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Address Resolution Protocol",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "Dynamic Host Configuration Protocol",
+                                  "IsCorrect":  false
+                              }
+                          ],
         "cat": "IPV6"
     },
     {
@@ -19665,6 +19892,23 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781394206575/files/images/c07uf003.png"
             }
+        ],"answerChoices": [
+            {
+                "Text": "The default native VLAN has been changed.",
+                "IsCorrect": false
+            },
+            {
+                "Text": "The encapsulation has been negotiated.",
+                "IsCorrect": true
+            },
+            {
+                "Text": "The switch is sending DTP frames.",
+                "IsCorrect": false
+            },
+            {
+                "Text": "The adjacent switch is also set to auto for DTP.",
+                "IsCorrect": false
+            }
         ],
         "cat": "ETSW"
     },
@@ -19788,6 +20032,23 @@
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781394206575/files/images/c07uf004.png"
             }
+        ],"answerChoices": [
+            {
+                "Text": "The Gig 0/1 interface on es-switch2",
+                "IsCorrect": true
+            },
+            {
+                "Text": "The Gig 0/1 interface on cs-main.ntw",
+                "IsCorrect": false
+            },
+            {
+                "Text": "The Gig 0/1 interface on es-layer2.ntw",
+                "IsCorrect": false
+            },
+            {
+                "Text": "The Gig 0/1 interface on es-switch3.ntw",
+                "IsCorrect": false
+            }
         ],
         "cat": "BSEC"
     },
@@ -19802,6 +20063,23 @@
                 "ExhibitId": "c07uf005",
                 "ExhibitTitle": "1",
                 "ExhibitFileName": "https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781394206575/files/images/c07uf005.png"
+            }
+        ],"answerChoices": [
+            {
+                "Text": "The EtherChannel is configured with PAgP.",
+                "IsCorrect": false
+            },
+            {
+                "Text": "The EtherChannel is configured with LACP.",
+                "IsCorrect": false
+            },
+            {
+                "Text": "The EtherChannel is configured with no control protocol.",
+                "IsCorrect": true
+            },
+            {
+                "Text": "The EtherChannel is configured as an access port.",
+                "IsCorrect": false
             }
         ],
         "cat": "ETSW"
@@ -23034,7 +23312,24 @@
 "ExhibitTitle": "1",
 "ExhibitFileName": "https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781394206575/files/images/c08uf009.png"
 }
-],
+],"answerChoices": [
+                    {
+                        "Text": "Switch A",
+                        "IsCorrect": false
+                    },
+                    {
+                        "Text": "Router A",
+                        "IsCorrect": true
+                    },
+                    {
+                        "Text": "Router B",
+                        "IsCorrect": false
+                    },
+                    {
+                        "Text": "Switch B",
+                        "IsCorrect": false
+                    }
+                ],
 "cat": "NELA"
 },
 {
