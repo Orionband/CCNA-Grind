@@ -1,0 +1,13 @@
+R1
+...
+interface GigabitEthernet0/0
+ ip address 10.10.10.1 255.255.255.0
+!   
+router ospf 10
+ network 10.0.0.0 0.0.0.255 area 2
+ network 20.0.0.0 0.255.255.255 area 0
+ network 10.10.10.0 0.0.0.255 area 5
+ network 10.10.0.0 0.0.255.255 area 6
+ network 0.0.0.0 0.0.0.0 area 10
+!
+...

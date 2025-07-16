@@ -1,0 +1,12 @@
+SW4#sh spanning-tree interface gigabitEthernet 0/1 detail
+
+ Port 2 (GigabitEthernet0/1) of VLAN0001 is designated forwarding 
+   Port path cost 4, Port priority 128, Port Identifier 128.2.
+   Designated root has priority 4097, address 5254.000d.9610
+   Designated bridge has priority 32769, address 5254.001e.254e
+   Designated port id is 128.2, designated path cost 8
+   Timers: message age 0, forward delay 0, hold 0
+   Number of transitions to forwarding state: 1
+   Link type is point-to-point by default
+   Loop guard is enabled by default on the port
+   BPDU: sent 3111, received 0

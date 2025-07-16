@@ -1,0 +1,17 @@
+FastEthernet0/0 is up, line protocol is up 
+  Internet Address 10.1.2.2/24, Area 0 
+  Process ID 2, Router ID 10.1.5.2, Network Type BROADCAST, Cost: 1
+  Transmit Delay is 1 sec, State DROTHER, Priority 255 
+  Designated Router (ID) 172.31.12.201, Interface address 10.1.2.11
+  Backup Designated router (ID) 172.31.230.3, Interface address 10.1.2.13
+  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5
+    oob-resync timeout 40
+    Hello due in 00:00:00
+  Index 1/1, flood queue length 0
+  Next 0x0(0)/0x0(0)
+  Last flood scan length is 1, maximum is 1
+  Last flood scan time is 0 msec, maximum is 4 msec
+  Neighbor Count is 3, Adjacent neighbor count is 2 
+    Adjacent with neighbor 172.31.12.201  (Designated Router)
+    Adjacent with neighbor 172.31.230.3  (Backup Designated Router)
+  Suppress hello for 0 neighbor(s)

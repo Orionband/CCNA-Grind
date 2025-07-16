@@ -1,0 +1,4 @@
+R2#show protocols gigabitEthernet 0/0
+
+GigabitEthernet0/0 is up, line protocol is up
+  Internet address is 10.1.23.2/24

@@ -1,0 +1,7 @@
+R1
+
+interface FastEthernet0/0
+ ip access-group 1 in
+ 
+access-list 1 permit 192.168.56.192 0.0.0.127
+access-list 1 permit 192.168.105.128 0.0.0.7

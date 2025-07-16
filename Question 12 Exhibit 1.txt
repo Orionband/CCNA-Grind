@@ -1,0 +1,22 @@
+SW2#sh spanning tree vlan 1
+
+
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    4097
+             Address     5254.000d.9610
+             Cost        4
+             Port        3 (GigabitEthernet0/2)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    8193   (priority 8192 sys-id-ext 1)
+             Address     5254.0002.e7f3
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0               Desg FWD 4         128.1    P2p 
+Gi0/1               Desg FWD 4         128.2    P2p 
+Gi0/2               Root FWD 4         128.3    P2p 
+Gi0/3               Desg FWD 4         128.4    P2p 

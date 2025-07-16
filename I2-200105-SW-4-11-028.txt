@@ -1,0 +1,13 @@
+R1
+...
+interface GigabitEthernet0/0
+ ip address 172.16.1.1 255.255.255.0
+  ip ospf 20 area 22
+!   
+router ospf 20
+ network 172.16.0.0 0.0.0.255 area 10
+ network 172.0.0.0 0.0.255.255 area 20
+ network 172.16.1.0 0.0.0.255 area 30
+ network 0.0.0.0 0.0.0.0 area 100
+!
+...
