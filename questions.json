@@ -16953,22 +16953,6 @@
         "cat": "NELA"
     },
     {
-        "questionId": "6BBC9A16-F49F-4BCD-8C2A-D585A2FC47DF",
-        "questionText": "In the figure, all four routers connect to the same 10.1.1.0/24 subnet. All four routers happen to boot and initialize at the same time, so they all participate in the designated router election. R3\u0026nbsp;and R4\u0026nbsp;use default priority settings, while R1 uses 11 and R2 uses 22. Which answers best describe the routers\u0026#39; roles as DR, BDR, and DROther?",
-        "explanation": "Because all four routers participate in the DR election, the process does not need to consider prior elections or roles. The routers collectively choose based on these criteria:\n\n\n\tRouter with the highest OSPF priority\n\tRouter with the highest OSPF Router ID (RID)\n\n\nNote that the interface IP addresses do not affect the election.\n\nIn this case, R3 and R4 default to use priority 1. R2 has the best (highest) priority of 22, with R1 having the second best (11). As a result, R2 wins the DR election, R1 the BDR election, while R3 and R4 fall to a Backup DR (BDR) role.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "E3699FDE-9C81-4C7D-903C-B85AB9A477B7",
-                "ExhibitTitle": "1",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/E3699FDE-9C81-4C7D-903C-B85AB9A477B7/200301-11-WO-v1-4-23-03.png"
-            }
-        ],
-        "answerChoices": [],
-        "cat": "NELA"
-    },
-    {
         "questionId": "6AE8642C-E47A-4A08-8BF1-E138BBA2D2C4",
         "questionText": "In the absence of a direct cost being configured for an OSPF interface, and using the default reference OSPF bandwidth, what is the OSPF cost for a Fast Ethernet interface operating at 100 Mbps?",
         "explanation": "OSPF cost is calculated by dividing a reference bandwidth by the actual bandwidth of the interface: 100,000 / 100,000 = 1.\n\n\tIf the reference bandwidth were increased from the default (doubled, for example), the calculated cost of that same interface would be higher.",
