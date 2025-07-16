@@ -5007,43 +5007,6 @@
         "cat": "BSEC"
     },
     {
-        "questionId": "1EA075A4-8B60-497F-B9F0-7D16DFFA3B7D",
-        "questionText": "What is the proper configuration sequence to enable port security on the EtherChannel trunk between SW1 and SW2 for a maximum of 8 MAC addresses?",
-        "explanation": "This question is testing your understanding of where to configure port security on an EtherChannel link. For an EtherChannel link, you must leverage the bonded virtual interface that is created, in this case Interface Port-Channel 10. All port security configurations would need to be configured on this interface and not on the EtherChannel member interfaces. In addition, the question is inferring that the EtherChannel should be configured as a trunk and not as an access link; a simple switchport mode trunk solves this.",
-        "difficulty": "1",
-        "comments": "<p>\n\t2/1 - Query to Au</p>\n",
-        "exhibits": [
-            {
-                "ExhibitId": "E8B233FB-5A09-49FC-BF55-E84BACA82531",
-                "ExhibitTitle": "1",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/E8B233FB-5A09-49FC-BF55-E84BACA82531/200301-ZZ-v2-3-06-02.jpg"
-            }
-        ],
-        "answerChoices": [
-            {
-                "Text": "<pre>\n<span style=\"font-size:12px;\">int Gi0/2\nswitchport mode trunk\nswitchport port-security\nswitchport port-security maximum 8\n\nint Gi0/3\nswitchport mode trunk\nswitchport port-security\nswitchport port-security maximum 8\n</span></pre>",
-                "IsCorrect": false
-            },
-            {
-                "Text": "<pre>\n<span style=\"font-size:12px;\">int Gi0/2\nswitchport mode access\nswitchport port-security\nswitchport port-security maximum 8\n\nint Gi0/3\nswitchport mode access\nswitchport port-security\nswitchport port-security maximum 8\n</span></pre>",
-                "IsCorrect": false
-            },
-            {
-                "Text": "<pre>\nint Gi0/2\nswitchport mode trunk\nswitchport port-security maximum 8\nswitchport port-security violation protect\n\nint Gi0/3\nswitchport mode trunk\nswitchport port-security maximum 8\nswitchport port-security violation protect\n</pre>",
-                "IsCorrect": false
-            },
-            {
-                "Text": "<pre>\n<span style=\"font-size:12px;\">int Port-Channel10\nswitchport mode trunk\nswitchport port-security\nswitchport port-security maximum 8</span></pre>",
-                "IsCorrect": true
-            },
-            {
-                "Text": "<pre>\n<span style=\"font-size:12px;\">int Port-Channel10\nswitchport mode access\nswitchport port-security\nswitchport port-security maximum 8</span></pre>",
-                "IsCorrect": false
-            }
-        ],
-        "cat": "BSEC"
-    },
-    {
         "questionId": "BD6769E8-830E-45D5-93A5-7EF4EA950CAE",
         "questionText": "The exhibit shows the configuration on switch SW2. The switch has just been reloaded, and no end-user traffic has flowed into the switch yet.&nbsp;Assuming that the details in the figure are correct, which of the following statements&nbsp;are true&nbsp;about port security on SW2? Note that all ports are in default VLAN 1.",
         "explanation": "SW2&#39;s Fa0/3 uses the protect violation mode, with a default to allow a single MAC address in this case, 0200.1111.1111. So, SW2&nbsp;discards frames with source MAC address 0200.3333.3333 that enter Fa0/3, but&nbsp;it doesn&#39;t&nbsp;send SNMP traps, and&nbsp;it doesn&#39;t&nbsp;error-disable the interface. As a result, frames can be sent out Fa0/3, including the broadcast sent by PC2. When PC4 sends a frame to PC3, the first frame since reload that enters Fa0/4, SW2 adds PC4&#39;s MAC address to the port security configuration, as a result of the sticky keyword in the original configuration. SW2&nbsp;forwards the frame out Fa0/3,&nbsp;because it&nbsp;is not&nbsp;error-disabled at all in this&nbsp;example, allowing PC3 to send a frame to PC4 in reply.&nbsp;But SW2&nbsp;silently discards the frame from PC3 (0200.3333.3333)&nbsp;because of&nbsp;the port security protect option.",
@@ -19618,47 +19581,6 @@
             }
         ],
         "cat": "NELA"
-    },
-    {
-        "questionId": "63BDDB94-6610-4F9A-990A-E08C77D49462",
-        "questionText": "The&nbsp;show ip route command output below comes from&nbsp;router R1. R1 receives a packet in its G0/0/0 interface with destination IP address 10.10.206.200. Choose the answers that provide a correct analysis of the router&#39;s logic to match the packet to different routes and regarding which route the router uses to forward the packet. (Choose two answers.)\n\n\nO*E2  0.0.0.0/0 [110/1] via 10.10.12.2, 00:00:09, GigabitEthernet0/0/1\n     10.0.0.0/8 is variably subnetted, 8 subnets, 5 masks\nO       10.10.200.210/32 [110/50] via 10.10.12.2, 00:00:04, GigabitEthernet0/0/1\nO       10.10.192.0/20 [110/100] via 10.10.13.3, 00:00:09, GigabitEthernet0/0/2\nO       10.10.200.0/22 [110/65] via 10.10.14.4, 00:00:04, GigabitEthernet0/0/3\nO       10.10.208.0/27 [110/65] via 10.10.13.3, 00:00:09, GigabitEthernet0/0/2",
-        "explanation": "All the OSPF routes in the IP routing table represent different subnets. In some cases, the address ranges represented by each route overlap. As a result, some destination addresses might match multiple routes. The router then uses a longest-match or most-specific match choice. In other words, it uses the route with the largest prefix mask among the matched routes. \n\nIn this case, the address ranges of the routes are:\n\n\n\t0.0.0.0/0 &ndash; All addresses\n\t10.10.200.210 &ndash; That address only\n\t10.10.192.0 &ndash; 10.10.207.255 \n\t10.10.200.0 &ndash; 10.10.203.255\n\t10.10.208.0 &ndash; 10.10/208.31\n\n\nAmong the five routes, 10.10.206.200 matches the first and third routes in the list. That analysis reveals why, among the three answers that list subnets, the one that the packet matches and the two it does not.\n\nOnly one can be correct for the three answers that list the interface the router forwards the packet out. Comparing the two routes that the packet matches, the third route has the longer mask (/20 version /0). So, the router uses the route to 10.10.192.0/20, which lists G0/0/2 as the outgoing interface. That fact confirms the other correct answer and rules out two other answers as incorrect.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "63BDDB94-6610-4F9A-990A-E08C77D49462",
-                "ExhibitTitle": "1",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/63BDDB94-6610-4F9A-990A-E08C77D49462/200301-11-WO-v1-3-24-03.png"
-            }
-        ],
-        "cat": "NELA",
-        "answerChoices": [
-            {
-                "Text": "The packet&#39;s destination matches the address range of the router for subnet 10.10.192.0/20.",
-                "IsCorrect": true
-            },
-            {
-                "Text": "The packet&#39;s destination matches the address range of the router for subnet 10.10.200.0/22.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "The packet&#39;s destination matches the address range of the router for subnet 10.10.208.0/27.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "R1 forwards the packet out interface G0/0/1",
-                "IsCorrect": false
-            },
-            {
-                "Text": "R1 forwards the packet out interface G0/0/2",
-                "IsCorrect": true
-            },
-            {
-                "Text": "R1 forwards the packet out interface G0/0/3",
-                "IsCorrect": false
-            }
-        ]
     },
     {
         "questionId": "068D49ED-6F88-4283-9676-E08F989769A3",
