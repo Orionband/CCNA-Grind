@@ -12149,6 +12149,28 @@
                 "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/D54302C5-D6C2-44BF-9305-775A1312B517/200301-GB-v1-2-09-15.png"
             }
         ],
+        "answerChoices":  [
+                              {
+                                  "Text":  "SW4 will forward a Hello out its fa0/1 with cost 19.",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "SW1 will create Hello messages regularly based on its Hello timer.",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "SW2 will create Hello messages regularly based on its Hello timer.",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "SW4\u0026rsquo;s fa0/1 will become a designated port.",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "SW3\u0026#39;s fa0/1 interface will be in a forwarding state.",
+                                  "IsCorrect":  true
+                              }
+                          ],
         "cat": "ETSW"
     },
     {
@@ -14927,18 +14949,36 @@
         "explanation": "A floating static route is a method that is used to add a static route to the routing table should an existing better route disappear. This usually happens when the main routing protocol that is used is cut off from a spoke/branch. When the device sees that the routing protocol route has been removed from the routing table, it inserts the static route (thus the floating). In this case, the 200.200.200.0/24 network exists off of the central router. To back it up, a route must be added that points the routing for this prefix through the central backup router. (A similar action is done at the central location, as well, to ensure that a return route exists).\n\n\tNote that the administrative distance of the floating static route in this case needed to be a higher number than 110, the default administrative distance used by OSPF. Of the three incorrect answers, Two give an administrative distance less than 110, so that the static route would be in the routing table even when OSPF was learning a route for the same subnet. Also, two of the incorrect answers point to the wrong next-hop router (50.50.50.1 and 100.100.100.2), so they would not be used.",
         "difficulty": "1",
         "comments": "\u003cp\u003e8/4 - query to Au\u003c/p\u003e\n\n\u003cp\u003e2/4 - \u0026quot;the next-hop addresses are not in the figure. They are found in the exhibit, which lists relevant router configuration for this question.\u0026quot;\u0026nbsp;\u0026nbsp;2/2 - query to Au, 12/17 - ok as-is, \u0026quot; think about the perspective from the branch router. The IP routes on a router list the neighboring router\u0026rsquo;s IP address, specifically the IP address on the link that connects the two routers. In this case:\u003c/p\u003e\n\n\u003cp\u003eA route w/ \u0026ldquo;Central Site\u0026rdquo; as the next hop will list Central Site\u0026rsquo;s Fa0/1 IP address of 50.50.50.1.\u003cbr /\u003e\nA route w/ \u0026ldquo;Central Site Backup\u0026rdquo; as the next hop will list Central Site Backup\u0026rsquo;s S1/0 IP address of 150.150.150.1.\u003c/p\u003e\n\n\u003cp\u003eSo, to answer your specific question, 100.100.100.2 is incorrect as it is the Central Site Backup\u0026nbsp;\u0026nbsp;router\u0026rsquo;s IP address on its F0/0 interface, an interface that is not connected a link w/ the Branch router.\u003cbr /\u003e\nAs for why 150.150.150.1 is correct, that\u0026rsquo;s an address on a neighboring router on a link connected to the Branch router.\u0026quot;\u0026nbsp;\u0026nbsp;, 12/14 - query to Au\u003c/p\u003e\n",
-        "exhibits": [
-            {
-                "ExhibitId": "464BA1EB-CA9F-4278-AE30-39724881A8C5",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/464BA1EB-CA9F-4278-AE30-39724881A8C5/ICND2-101-WO-1-B2-001.html"
-            },
-            {
-                "ExhibitId": "643776AA-590E-4791-BBB5-770C9213FA3C",
-                "ExhibitTitle": "1",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/643776AA-590E-4791-BBB5-770C9213FA3C/ICND2-101-WO-1-B2-001-2016.jpg"
-            }
-        ],
+"exhibits":  [
+                         {
+                             "ExhibitId":  "464BA1EB-CA9F-4278-AE30-39724881A8C5",
+                             "ExhibitTitle":  "4",
+                             "ExhibitFileName":  "https://builder.pearsonitcertification.com/Content/Exhibits/464BA1EB-CA9F-4278-AE30-39724881A8C5/ICND2-101-WO-1-B2-001.html"
+                         },
+                         {
+                             "ExhibitId":  "643776AA-590E-4791-BBB5-770C9213FA3C",
+                             "ExhibitTitle":  "1",
+                             "ExhibitFileName":  "https://builder.pearsonitcertification.com/Content/Exhibits/643776AA-590E-4791-BBB5-770C9213FA3C/ICND2-101-WO-1-B2-001-2016.jpg"
+                         }
+                     ],
+        "answerChoices":  [
+                              {
+                                  "Text":  "\u003cstrong\u003eip route 200.200.200.0 255.255.255.0 150.150.150.1 130\u003c/strong\u003e",
+                                  "IsCorrect":  true
+                              },
+                              {
+                                  "Text":  "\u003cstrong\u003eip route 200.200.200.0 255.255.255.0 50.50.50.1 80\u003c/strong\u003e",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "\u003cstrong\u003eip route 200.200.200.0 255.255.255.0 100.100.100.2 130\u003c/strong\u003e",
+                                  "IsCorrect":  false
+                              },
+                              {
+                                  "Text":  "\u003cstrong\u003eip route 200.200.200.0 255.255.255.0 150.150.150.1 105\u003c/strong\u003e",
+                                  "IsCorrect":  false
+                              }
+                          ]
         "cat": "BRCO"
     },
     {
