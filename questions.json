@@ -30752,5 +30752,3001 @@
             }
         ],
         "cat": "IPNS"
+    },{
+        "questionId": "jit-b-1",
+        "questionText": "Which device enables hosts to communicate with hosts in other LANs?",
+        "explanation": "A router is a networking device that forwards data packets between computer networks, enabling communication between hosts in different local area networks (LANs).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Switch", "IsCorrect": false },
+            { "Text": "Firewall", "IsCorrect": false },
+            { "Text": "Router", "IsCorrect": true },
+            { "Text": "Server", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-2",
+        "questionText": "Which of the following device types typically has many physical ports for end hosts to connect to?",
+        "explanation": "A switch is a device in a computer network that connects other devices together. It has multiple ports to which computers, printers, and other networking devices can be connected. A switch is used within a LAN to connect multiple devices and manage their network traffic.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Router", "IsCorrect": false },
+            { "Text": "Switch", "IsCorrect": true },
+            { "Text": "Server", "IsCorrect": false },
+            { "Text": "Client", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-3",
+        "questionText": "What type of software runs on an end host and filters traffic entering the host?",
+        "explanation": "A host-based firewall is a software application installed on a single computer (the host) in a network. It monitors and filters incoming and outgoing network traffic based on a set of rules.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Host-based firewall", "IsCorrect": true },
+            { "Text": "Network firewall", "IsCorrect": false },
+            { "Text": "Client", "IsCorrect": false },
+            { "Text": "Server", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-4",
+        "questionText": "What kind of network is used to connect remote locations?",
+        "explanation": "A wide area network (WAN) is a network that extends over a large geographical area, often connecting multiple smaller networks like LANs. WANs are used to connect remote or geographically dispersed locations.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "LAN", "IsCorrect": false },
+            { "Text": "WAN", "IsCorrect": true }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-5",
+        "questionText": "Which role describes a device that accesses services provided by another host?",
+        "explanation": "A client is a computer or a program that accesses services provided by another computer (the server). The client uses the network to send requests to the server and to receive data and services in return. This client-server model is a fundamental concept in networking.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Router", "IsCorrect": false },
+            { "Text": "Server", "IsCorrect": false },
+            { "Text": "User", "IsCorrect": false },
+            { "Text": "Client", "IsCorrect": true }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-6",
+        "questionText": "What is the standard maximum cable length of a copper UTP cable?",
+        "explanation": "The standard maximum length for copper unshielded twisted pair (UTP) cables in an Ethernet network is 100 meters (328 feet). Attempts to use UTP cables longer than 100 meters can result in signal attenuation and decreased performance.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1 kilometer", "IsCorrect": false },
+            { "Text": "100 meters", "IsCorrect": true },
+            { "Text": "100 feet", "IsCorrect": false },
+            { "Text": "1000 feet", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-7",
+        "questionText": "Which technology allows a device to automatically adjust which pin pairs it uses to transmit and receive data in a copper UTP cable?",
+        "explanation": "Automatic Medium-Dependent Interface Crossover (Auto MDI-X) is a technology that allows devices to automatically adjust their pin configurations without needing specific crossover or straight-through cables.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Crossover", "IsCorrect": false },
+            { "Text": "Straight-through", "IsCorrect": false },
+            { "Text": "Auto MDI-X", "IsCorrect": true },
+            { "Text": "Tx/Rx", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-8",
+        "questionText": "Which of the following cable types supports connections over the greatest distances?",
+        "explanation": "Single-mode fiber optic cables are designed for long-distance communication, often over many kilometers. They have a smaller core diameter than multimode fiber, allowing only one mode of light to travel along the cable. This reduces signal attenuation and allows data to travel longer distances.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Copper UTP", "IsCorrect": false },
+            { "Text": "Multimode fiber", "IsCorrect": false },
+            { "Text": "Single-mode fiber", "IsCorrect": true }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-9",
+        "questionText": "How many bits can a 1 Gbps interface transmit per second?",
+        "explanation": "The prefix “giga” means “billion”, so a 1 Gbps (gigabit per second) interface can transmit 1,000,000,000 (one billion) bits per second.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1000 bps", "IsCorrect": false },
+            { "Text": "1,000,000 bps", "IsCorrect": false },
+            { "Text": "1,000,000,000 bps", "IsCorrect": true },
+            { "Text": "1,000,000,000,000 bps", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-10",
+        "questionText": "Which of the following is equivalent to 1 Mbps?",
+        "explanation": "The term Mbps stands for megabits per second, and kbps stands for kilobits per second. The prefix “mega” means “million” and the prefix “kilo” means “thousand”, so 1 Mbps is equivalent to 1000 kbps.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1000 kbps", "IsCorrect": true },
+            { "Text": "1024 kbps", "IsCorrect": false },
+            { "Text": "1000 bps", "IsCorrect": false },
+            { "Text": "1024 bps", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-11",
+        "questionText": "Which of the following is NOT an advantage of fiber-optic cables over copper UTP cables?",
+        "explanation": "The main advantages of fiber-optic cables over copper UTP cables include being less vulnerable to electromagnetic interference (EMI), supporting greater maximum transmission distances, and posing less security risk due to leaked signals. However, fiber-optic connections are generally more expensive due to both the cables and the small form-factor pluggable (SFP) transceivers.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Less vulnerable to EMI", "IsCorrect": false },
+            { "Text": "Lower cost", "IsCorrect": true },
+            { "Text": "Greater maximum distances", "IsCorrect": false },
+            { "Text": "Less security risk", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-12",
+        "questionText": "What is the minimum copper UTP cable standard that supports 1 Gbps Ethernet?",
+        "explanation": "While the original Cat5 standard could theoretically support gigabit speeds, Cat5e is specifically designed to support 1 Gbps and is generally considered the minimum requirement for Gigabit Ethernet.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Cat 6a", "IsCorrect": false },
+            { "Text": "Cat 5e", "IsCorrect": true },
+            { "Text": "Cat 5", "IsCorrect": false },
+            { "Text": "Cat 3", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-13",
+        "questionText": "Which of the following define standards at Layers 1 and 2 of the TCP/IP Model? (select two)",
+        "explanation": "Ethernet and 802.11 (Wi-Fi) are standards that operate at Layers 1 (Physical) and 2 (Data Link) of the TCP/IP model. They both define standards relating to a physical medium (cables or electromagnetic radio waves) and sending messages over that medium.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "IPv4", "IsCorrect": false },
+            { "Text": "HTTP", "IsCorrect": false },
+            { "Text": "Ethernet", "IsCorrect": true },
+            { "Text": "802.11 (Wi-Fi)", "IsCorrect": true }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-14",
+        "questionText": "Which layer of the TCP/IP Model defines standards related to the physical medium and how data should be encoded into signals sent over the medium?",
+        "explanation": "Layer 1, the Physical Layer, is responsible for the physical connections between devices and how to encode messages into signals (such as electrical or light signals) that are sent over those connections.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Layer 1", "IsCorrect": true },
+            { "Text": "Layer 2", "IsCorrect": false },
+            { "Text": "Layer 3", "IsCorrect": false },
+            { "Text": "Layer 7", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-15",
+        "questionText": "Which layer of the TCP/IP Model is responsible for end-to-end delivery of a message from the source host to the destination host?",
+        "explanation": "Layer 3, the Network Layer, is responsible for the end-to-end delivery of messages across a network. It uses IP addressing to determine routes for data, ensuring that packets are delivered from the source host to the destination host.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Layer 1", "IsCorrect": false },
+            { "Text": "Layer 2", "IsCorrect": false },
+            { "Text": "Layer 3", "IsCorrect": true },
+            { "Text": "Layer 4", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-16",
+        "questionText": "Which layer of the TCP/IP Model is responsible for delivering a message to the next node in the path to the final destination?",
+        "explanation": "Layer 2, the Data Link Layer, is responsible for delivering a message to the next node in the network path. It handles communication between adjacent network nodes and can include protocols like Ethernet or Wi-Fi, dealing with the MAC addresses of the devices.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Layer 1", "IsCorrect": false },
+            { "Text": "Layer 2", "IsCorrect": true },
+            { "Text": "Layer 3", "IsCorrect": false },
+            { "Text": "Layer 4", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-17",
+        "questionText": "Which word describes a frame’s payload?",
+        "explanation": "A frame is a Layer 2 Protocol Data Unit (L2PDU), and its payload (the message it encapsulates) is typically a packet. A packet is an L3PDU and contains the Layer 3 header (like an IP header) and its payload.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Packet", "IsCorrect": true },
+            { "Text": "Segment", "IsCorrect": false },
+            { "Text": "L2PDU", "IsCorrect": false },
+            { "Text": "L4PDU", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-18",
+        "questionText": "Which layer provides a service to the Application Layer by delivering data to the appropriate application process on the destination host?",
+        "explanation": "Layer 4, the Transport Layer, provides services to the Application Layer by delivering data to the appropriate application process on the destination host. This is an example of adjacent-layer interaction—a layer servicing the layer above it.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Layer 2", "IsCorrect": false },
+            { "Text": "Layer 3", "IsCorrect": false },
+            { "Text": "Layer 4", "IsCorrect": true },
+            { "Text": "Layer 7", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-19",
+        "questionText": "Signals sent out of a physical port of one device are received by a physical port of another device. Which term describes this interaction?",
+        "explanation": "“Same-layer interaction” refers to the process where a layer in one device communicates with the same layer in another device. For example, when signals are sent from a physical port of one device and are received by a physical port of another device, it’s an instance of same-layer interaction, as each device’s Physical Layer is involved in the communication.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Same-layer interaction", "IsCorrect": true },
+            { "Text": "Adjacent-layer interaction", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-20",
+        "questionText": "Which layer of the TCP/IP Model provides an interface between a web browser like Google Chrome and the network?",
+        "explanation": "The Application Layer provides an interface between application software, like a web browser, and the underlying network.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Application Layer", "IsCorrect": true },
+            { "Text": "Transport Layer", "IsCorrect": false },
+            { "Text": "Network Layer", "IsCorrect": false },
+            { "Text": "Data Link Layer", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-21",
+        "questionText": "What kind of cable is typically used to connect to the console port of a Cisco router or switch?",
+        "explanation": "A rollover cable is typically used to connect a computer to the console port of a Cisco router or switch. This cable has a unique pinout where the wire connected to pin 1 on one end is connected to pin 8 on the other end, pin 2 to pin 7, pin 3 to pin 6, etc.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Fiber-optic", "IsCorrect": false },
+            { "Text": "Crossover", "IsCorrect": false },
+            { "Text": "Straight-through", "IsCorrect": false },
+            { "Text": "Rollover", "IsCorrect": true }
+        ],
+        "cat": "OPTR"
+    },
+    {
+        "questionId": "jit-b-22",
+        "questionText": "What mode in the IOS hierarchy is indicated by the prompt hostname>?",
+        "explanation": "The prompt hostname> indicates that the device is in User EXEC mode. This mode provides limited access to the device and doesn’t support any configurations or disruptive commands.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Privileged EXEC mode", "IsCorrect": false },
+            { "Text": "Global configuration mode", "IsCorrect": false },
+            { "Text": "User EXEC mode", "IsCorrect": true },
+            { "Text": "Enable mode", "IsCorrect": false }
+        ],
+        "cat": "OPTR"
+    },
+    {
+        "questionId": "jit-b-23",
+        "questionText": "Which of the following commands can be used to return to privileged EXEC mode from global configuration mode? (select two)",
+        "explanation": "The exit command returns you to the previous level in the IOS hierarchy, which, from global configuration mode, would be privileged EXEC mode. The end command also takes you directly back to privileged EXEC mode from any point in the configuration hierarchy.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "disable", "IsCorrect": false },
+            { "Text": "exit", "IsCorrect": true },
+            { "Text": "escape", "IsCorrect": false },
+            { "Text": "end", "IsCorrect": true }
+        ],
+        "cat": "OPTR"
+    },
+    {
+        "questionId": "jit-b-24",
+        "questionText": "Which command can be used to view the device’s active configuration from global configuration mode?",
+        "explanation": "The running-config is the device’s active configuration—the configuration that determines the device’s current operation—and it can be viewed with show running-config. To use show commands from global config mode, you must add do in front of the command.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "do show running-config", "IsCorrect": true },
+            { "Text": "show running-config", "IsCorrect": false },
+            { "Text": "do show startup-config", "IsCorrect": false },
+            { "Text": "show startup-config", "IsCorrect": false }
+        ],
+        "cat": "OPTR"
+    },
+    {
+        "questionId": "jit-b-25",
+        "questionText": "Where is a device’s startup-config file stored?",
+        "explanation": "The startup configuration file of a Cisco device is stored in Non-Volatile Random-Access Memory (NVRAM). Unlike standard RAM, NVRAM retains its contents even when the device is powered off.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Flash", "IsCorrect": false },
+            { "Text": "RAM", "IsCorrect": false },
+            { "Text": "NVRAM", "IsCorrect": true }
+        ],
+        "cat": "OPTR"
+    },
+    {
+        "questionId": "jit-b-26",
+        "questionText": "Which of the following commands cannot be used to save a device’s configuration?",
+        "explanation": "To save a device’s configuration, you must copy the contents of the running-config in RAM to the startup-config in NVRAM, but this command does the opposite. It copies the contents of the startup-config to the running-config.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "write", "IsCorrect": false },
+            { "Text": "write memory", "IsCorrect": false },
+            { "Text": "copy running-config startup-config", "IsCorrect": false },
+            { "Text": "copy startup-config running-config", "IsCorrect": true }
+        ],
+        "cat": "OPTR"
+    },
+    {
+        "questionId": "jit-b-27",
+        "questionText": "Which of the following commands configures a password to limit access to privileged EXEC mode and stores the password as a secure hash?",
+        "explanation": "The “enable secret” is a password for accessing privileged EXEC mode. The device stores the enable secret as a secure hash, providing better security than the “enable password”.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "enable password password", "IsCorrect": false },
+            { "Text": "enable secret password", "IsCorrect": true },
+            { "Text": "service password-encryption", "IsCorrect": false },
+            { "Text": "exec password password", "IsCorrect": false }
+        ],
+        "cat": "OPTR"
+    },
+    {
+        "questionId": "jit-b-28",
+        "questionText": "What is the effect of the service password-encryption command?",
+        "explanation": "The service password-encryption command has two effects: it encrypts currently configured cleartext passwords and ensures that any passwords configured in the future are automatically encrypted. Note that this encryption is not secure, but it does provide basic protection against someone looking at the configuration over your shoulder.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Currently configured passwords are encrypted.", "IsCorrect": false },
+            { "Text": "Passwords configured in the future will be encrypted.", "IsCorrect": false },
+            { "Text": "A and B", "IsCorrect": true },
+            { "Text": "None of the above", "IsCorrect": false }
+        ],
+        "cat": "OPTR"
+    },
+    {
+        "questionId": "jit-b-29",
+        "questionText": "What is the OUI of the BIA “0cf5.a452.b103”?",
+        "explanation": "The Organizationally Unique Identifier (OUI) is the part of the burned-in address (BUA—another name for a MAC address) that uniquely identifies the manufacturer. It consists of the first 24 bits (the first half) of the MAC address.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "b103", "IsCorrect": false },
+            { "Text": "52.b103", "IsCorrect": false },
+            { "Text": "0cf5", "IsCorrect": false },
+            { "Text": "0cf5.a4", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-30",
+        "questionText": "What is the only field of the Ethernet trailer?",
+        "explanation": "The only field in the Ethernet trailer is the Frame Check Sequence (FCS). The frame’s receiver uses the FCS to detect errors in the frame.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "EtherType", "IsCorrect": false },
+            { "Text": "Destination", "IsCorrect": false },
+            { "Text": "FCS", "IsCorrect": true },
+            { "Text": "SFD", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-31",
+        "questionText": "Which field of an Ethernet frame does a switch use to dynamically learn MAC addresses?",
+        "explanation": "A switch dynamically learns MAC addresses by examining the source MAC address field of each frame it receives. It then adds the MAC address to its MAC address table, associating it with the switch port on which it received the frame.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "FCS", "IsCorrect": false },
+            { "Text": "Type/Length", "IsCorrect": false },
+            { "Text": "Destination", "IsCorrect": false },
+            { "Text": "Source", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-32",
+        "questionText": "Which of the following frames are flooded by a switch? (select two)",
+        "explanation": "Broadcast frames are addressed to the broadcast MAC address (ffff.ffff.ffff) and are flooded out of all ports except the one the frame was received on. Unknown unicast frames are addressed to a single host, but the switch doesn’t have a matching entry in its MAC address table, so the switch floods the frame like a broadcast frame.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Broadcast", "IsCorrect": true },
+            { "Text": "Unknown unicast", "IsCorrect": true },
+            { "Text": "Known unicast", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-33",
+        "questionText": "Which of the following statements accurately describes ARP?",
+        "explanation": "Address Resolution Protocol (ARP) is used to learn the unknown MAC address of another host by sending an ARP request to the host’s known IP address.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ARP maps a known Layer 3 address to an unknown Layer 2 address.", "IsCorrect": true },
+            { "Text": "ARP maps a known Layer 3 address to a known Layer 2 address.", "IsCorrect": false },
+            { "Text": "ARP maps an unknown Layer 3 address to an unknown Layer 2 address.", "IsCorrect": false },
+            { "Text": "ARP maps an unknown Layer 3 address to a known Layer 2 address.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-34",
+        "questionText": "What is the destination MAC address of an unknown unicast frame?",
+        "explanation": "An unknown unicast frame is addressed to a single intended recipient (not to the broadcast MAC address “ffff.ffff.ffff”). However, because the switch does not have the intended recipient’s MAC address in its table, the switch’s only option is to flood the frame.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ffff.ffff.ffff", "IsCorrect": false },
+            { "Text": "The MAC address of the frame’s destination host", "IsCorrect": true },
+            { "Text": "The MAC address of the frame’s sender", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-35",
+        "questionText": "Which utility involves ICMP echo requests and responses?",
+        "explanation": "The ping utility involves sending Internet Control Message Protocol (ICMP) echo requests and waiting for echo responses. It is used to test the reachability of hosts on an IP network.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ARP", "IsCorrect": false },
+            { "Text": "ping", "IsCorrect": true },
+            { "Text": "broadcasting", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-36",
+        "questionText": "In an ARP exchange, which of the following messages is unicast?",
+        "explanation": "In an ARP exchange, the ARP request is broadcast to all devices on the local network, but the ARP reply is a unicast message sent back to the requester with the needed MAC address information.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ARP request", "IsCorrect": false },
+            { "Text": "ARP reply", "IsCorrect": true },
+            { "Text": "A and B", "IsCorrect": false },
+            { "Text": "None of the above", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-37",
+        "questionText": "What bit pattern is found at the beginning of an IPv4 packet?",
+        "explanation": "The first field of the IPv4 header is the four-bit Version field, which indicates the IP version of the packet. IP version 4 is indicated with 0b0100 (which is equal to 0d4).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "0110", "IsCorrect": false },
+            { "Text": "0100", "IsCorrect": true },
+            { "Text": "1000", "IsCorrect": false },
+            { "Text": "0001", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-38",
+        "questionText": "What is indicated by the Total Length field of the IPv4 header?",
+        "explanation": "The Total Length field in the IPv4 header specifies the entire packet’s length, including both the header and the encapsulated payload, in bytes.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The length of the Frame", "IsCorrect": false },
+            { "Text": "The length of the Packet", "IsCorrect": true },
+            { "Text": "The length of the IPv4 header", "IsCorrect": false },
+            { "Text": "The length of the Ethernet header and trailer", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-39",
+        "questionText": "Which field of the IPv4 header is used to prevent packets infinitely looping around the network?",
+        "explanation": "The Time To Live (TTL) field in the IPv4 header is used to prevent packets from looping infinitely around the network. The TTL value is decremented by one by each router that forwards the packet. If the TTL reaches zero, the packet is discarded.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "DSCP", "IsCorrect": false },
+            { "Text": "ECN", "IsCorrect": false },
+            { "Text": "IHL", "IsCorrect": false },
+            { "Text": "TTL", "IsCorrect": true }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-40",
+        "questionText": "Which netmask is equivalent to a /16 prefix length?",
+        "explanation": "A /16 prefix length is indicated with a netmask consisting of 16 1s followed by 16 0s: 11111111.11111111.00000000.00000000, which is 255.255.0.0 in dotted decimal.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "255.0.0.0", "IsCorrect": false },
+            { "Text": "255.255.0.0", "IsCorrect": true },
+            { "Text": "255.255.255.0", "IsCorrect": false },
+            { "Text": "255.255.255.255", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-41",
+        "questionText": "In the output of show ip interface brief, what are the default Status and Protocol of a Cisco router interface?",
+        "explanation": "Cisco router interfaces have the shutdown command applied by default, which means they will be in the “administratively down/down” state. To enable a router interface, use no shutdown on the interface.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "administratively down/down", "IsCorrect": true },
+            { "Text": "down/down", "IsCorrect": false },
+            { "Text": "up/down", "IsCorrect": false },
+            { "Text": "up/up", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-42",
+        "questionText": "A PC’s IP address is 172.16.12.27/24. What is the first usable address of its network?",
+        "explanation": "With a /24 prefix length, the network address of the network is 172.16.12.0—a reserved address. The first usable address is the next address, 172.16.12.1.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "172.16.12.0", "IsCorrect": false },
+            { "Text": "172.16.12.1", "IsCorrect": true },
+            { "Text": "172.16.12.254", "IsCorrect": false },
+            { "Text": "172.16.12.255", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-43",
+        "questionText": "Which of the following is a loopback address?",
+        "explanation": "In IPv4, the address range 127.0.0.0/8 (127.0.0.0–127.255.255.255) is reserved for loopback addresses, used to test network functionality on the local host.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "203.0.113.107", "IsCorrect": false },
+            { "Text": "192.0.5.50", "IsCorrect": false },
+            { "Text": "127.20.67.1", "IsCorrect": true },
+            { "Text": "10.11.11.10", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-44",
+        "questionText": "Which of the following commands configures an IPv4 address on a router’s interface?",
+        "explanation": "The command to configure an IPv4 address on a router’s interface is ip address ip-address netmask in interface config mode.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "R1(config)# ipv4 address 10.0.0.1 255.255.255.0", "IsCorrect": false },
+            { "Text": "R1(config)# ip address 10.0.0.1 255.255.255.0", "IsCorrect": false },
+            { "Text": "R1(config-if)# ipv4 address 10.0.0.1 255.255.255.0", "IsCorrect": false },
+            { "Text": "R1(config-if)# ip address 10.0.0.1 255.255.255.0", "IsCorrect": true }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-45",
+        "questionText": "Which of the following statements are true? (select two)",
+        "explanation": "By default, Cisco router interfaces are disabled with the shutdown command. Cisco switch interfaces, on the other hand, are enabled; they have no shutdown applied by default.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Cisco router interfaces have no shutdown applied by default.", "IsCorrect": false },
+            { "Text": "Cisco switch interfaces have shutdown applied by default.", "IsCorrect": false },
+            { "Text": "Cisco router interfaces have shutdown applied by default.", "IsCorrect": true },
+            { "Text": "Cisco switch interfaces have no shutdown applied by default.", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-46",
+        "questionText": "Which of the following is the default setting on a Gigabit Ethernet interface?",
+        "explanation": "The default setting on interfaces of all speeds is typically speed auto, using autonegotiation to determine the speed at which the interface will operate.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "speed 1000", "IsCorrect": false },
+            { "Text": "speed 1g", "IsCorrect": false },
+            { "Text": "speed auto", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-47",
+        "questionText": "Which term describes two-way communication in which devices take turns transmitting and receiving?",
+        "explanation": "Half duplex refers to two-way communication where devices take turns transmitting and receiving. In half-duplex mode, a device must wait for the other to finish transmitting before it can start.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Half duplex", "IsCorrect": true },
+            { "Text": "Full duplex", "IsCorrect": false },
+            { "Text": "Simplex", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-48",
+        "questionText": "Two PCs and two servers are connected to a hub. How many collision domains are there in the LAN?",
+        "explanation": "When devices are connected to a hub, there is only one collision domain. This means that only one of the devices can transmit at once; the others must wait their turn.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "One", "IsCorrect": true },
+            { "Text": "Two", "IsCorrect": false },
+            { "Text": "Three", "IsCorrect": false },
+            { "Text": "Four", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-49",
+        "questionText": "Two PCs and two servers are connected to a switch. How many collision domains are there in the LAN?",
+        "explanation": "When devices are connected to a switch, each port on the switch is a separate collision domain. Therefore, with four devices connected to a switch, there are four collision domains.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "One", "IsCorrect": false },
+            { "Text": "Two", "IsCorrect": false },
+            { "Text": "Three", "IsCorrect": false },
+            { "Text": "Four", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-50",
+        "questionText": "Which technology is used by Ethernet hosts operating in half-duplex to detect and recover from collisions?",
+        "explanation": "Carrier Sense Multiple Access with Collision Detection (CSMA/CD) is used by Ethernet hosts operating in half-duplex mode to detect and recover from collisions. The device senses whether other devices are transmitting or not and detects when collisions have occurred.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Auto MDI-X", "IsCorrect": false },
+            { "Text": "CSMA/CD", "IsCorrect": true },
+            { "Text": "CSMA/CA", "IsCorrect": false },
+            { "Text": "Autonegotiation", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-51",
+        "questionText": "SW1 F0/1 and SW2 F0/1 are connected and have the default settings. What speed and duplex settings will appear in the output of show interfaces status?",
+        "explanation": "With default settings of speed auto and duplex auto, both switches will use autonegotiation to determine their speed and duplex settings. The interfaces will show a-100 for speed and a-full for duplex, with the a- prefix meaning “auto”.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "100, full", "IsCorrect": false },
+            { "Text": "100, half", "IsCorrect": false },
+            { "Text": "a-100, half", "IsCorrect": false },
+            { "Text": "a-100, a-full", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-52",
+        "questionText": "Which error counter in the output of show interfaces counts frames that failed the FCS check?",
+        "explanation": "Cyclic Redundancy Check (CRC) errors are recorded with the CRC error counter in the output of show interfaces. These errors occur when the frame fails the Frame Check Sequence (FCS) check in the Ethernet trailer.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Collisions", "IsCorrect": false },
+            { "Text": "Input errors", "IsCorrect": false },
+            { "Text": "CRC", "IsCorrect": true },
+            { "Text": "Runts", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-53",
+        "questionText": "What is the result of a speed mismatch on two connected interfaces?",
+        "explanation": "If there is a speed mismatch, the connection will not be operational; the devices will be unable to communicate. You can expect the connected interfaces to be in a down/down state.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The interfaces will operate at the slower of the two speeds.", "IsCorrect": false },
+            { "Text": "The interfaces will be in a down/down state.", "IsCorrect": true },
+            { "Text": "Collisions and late collisions will occur.", "IsCorrect": false },
+            { "Text": "Communications will be unaffected.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-54",
+        "questionText": "When there is a duplex mismatch between two connected devices, which error counters will likely increment on the half-duplex device? (select two)",
+        "explanation": "If there is a duplex mismatch and the connected devices transmit at the same time, the half-duplex device will interpret it as a collision, which can lead to incrementing collision and late collision counters.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Collisions", "IsCorrect": true },
+            { "Text": "Runts", "IsCorrect": false },
+            { "Text": "CRC", "IsCorrect": false },
+            { "Text": "Late collisions", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-55",
+        "questionText": "After configuring an IP address on and enabling a router interface, which route(s) will be automatically added to the router’s routing table?",
+        "explanation": "When an IP address is configured on an active router interface, two types of routes are automatically added to the router’s routing table: a connected route (C) and a local route (L). The connected route indicates the network directly connected to the router, and the local route indicates the exact IP address of the router’s interface with a /32 prefix length.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "C and L", "IsCorrect": true },
+            { "Text": "L", "IsCorrect": false },
+            { "Text": "S and C", "IsCorrect": false },
+            { "Text": "C", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-56",
+        "questionText": "Which type of route represents the exact IP address of a router’s interface with a /32 prefix length?",
+        "explanation": "A local (L) route in the routing table represents the exact IP address of a router’s interface with a /32 prefix length. A local route is automatically created by the router for each of its active interfaces.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "S", "IsCorrect": false },
+            { "Text": "L", "IsCorrect": true },
+            { "Text": "C", "IsCorrect": false },
+            { "Text": "O", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-57",
+        "questionText": "If a packet’s destination IP address doesn’t match any routes in the routing table, what action will the router take on the packet?",
+        "explanation": "If a packet’s destination IP address does not match any entries in the router’s routing table, the router doesn’t know how to forward the packet. As a result, the router will drop the packet. Routers don’t flood messages like switches.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "It will drop the packet.", "IsCorrect": true },
+            { "Text": "It will broadcast the packet out of all interfaces.", "IsCorrect": false },
+            { "Text": "It will use ARP to identify the next hop.", "IsCorrect": false },
+            { "Text": "It will receive the packet for itself.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-58",
+        "questionText": "Which of the following is a host route?",
+        "explanation": "A host route is a route to a single IP address, represented by a /32 prefix length. The route to 8.8.8.8/32 is a host route as it specifies a single IP address: 8.8.8.8.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "A route to 10.0.0.0/8", "IsCorrect": false },
+            { "Text": "A route to 203.0.113.0/24", "IsCorrect": false },
+            { "Text": "A route to 8.8.8.8/32", "IsCorrect": true },
+            { "Text": "A route to 172.25.0.0/16", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-59",
+        "questionText": "Which of the following commands configures a recursive static route?",
+        "explanation": "A recursive static route specifies the next-hop IP address, not the exit interface. It is “recursive” because it requires an additional routing table lookup: after the router has determined the next-hop IP address, it must perform an additional lookup to determine which interface the next hop is connected to.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ip route 10.0.0.0 255.0.0.0 gigabitethernet0/0", "IsCorrect": false },
+            { "Text": "ip route 10.0.0.0 255.0.0.0 192.168.1.1", "IsCorrect": true },
+            { "Text": "ip route 10.0.0.0 255.0.0.0 gigabitethernet0/0 192.168.1.1", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-60",
+        "questionText": "Which route in its routing table will a router select to forward a packet?",
+        "explanation": "When forwarding a packet, a router will choose the most specific matching route in its routing table; this is the matching route with the longest prefix length.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The most specific matching route", "IsCorrect": true },
+            { "Text": "The route with the longest prefix length", "IsCorrect": false },
+            { "Text": "The route with the shortest prefix length", "IsCorrect": false },
+            { "Text": "The route that matches the most IP addresses", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-61",
+        "questionText": "Which of the following commands configures a default route?",
+        "explanation": "A default route is a route to 0.0.0.0/0—a route that matches all possible IP addresses. When the router has a default route in its routing table, it will use the route to forward packets that don’t match any more specific routes.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ip route 0.0.0.0 0.0.0.0 203.0.113.1", "IsCorrect": true },
+            { "Text": "ip route 8.0.0.0 255.255.255.0 default", "IsCorrect": false },
+            { "Text": "ip route default 203.0.113.1", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-62",
+        "questionText": "Which of the following static routes relies on proxy ARP?",
+        "explanation": "This route relies on proxy ARP because it specifies only the exit interface; it’s a directly connected static route. This makes the router behave as if it were directly connected to the destination, and it will therefore send an ARP request directly to the destination IP address (instead of to the next-hop router’s IP address). This will only work if the next-hop router has proxy ARP enabled and can reply to the ARP request.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ip route 5.0.0.0 255.0.0.0 192.0.2.2", "IsCorrect": false },
+            { "Text": "ip route 5.0.0.0 255.0.0.0 gigabitethernet0/1", "IsCorrect": true },
+            { "Text": "ip route 5.0.0.0 255.0.0.0 gigabitethernet0/2 203.0.113.2", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-63",
+        "questionText": "Which of the following statements is true about a message traversing multiple network hops to reach its final destination?",
+        "explanation": "As a message travels across multiple network hops to reach its final destination, the destination IP address remains constant throughout its journey. However, the destination MAC address changes at each hop. Each router changes the destination MAC address to that of the next hop on its path to the final destination.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The message’s destination IP address remains the same at each hop, but its destination MAC address changes.", "IsCorrect": true },
+            { "Text": "The message’s destination IP address and MAC address remain the same at each hop.", "IsCorrect": false },
+            { "Text": "The message’s destination IP address changes at each hop, but its destination MAC address remains the same.", "IsCorrect": false },
+            { "Text": "The message’s destination IP address and MAC address change at each hop.", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-64",
+        "questionText": "Which of the following tables maps MAC addresses to physical ports?",
+        "explanation": "A switch’s MAC address table maps MAC addresses to physical ports. When a frame arrives at a switch, the switch uses this table to determine the port that the frame should be forwarded out of.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ARP table", "IsCorrect": false },
+            { "Text": "MAC address table", "IsCorrect": true },
+            { "Text": "Routing table", "IsCorrect": false }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-65",
+        "questionText": "A router receives a packet destined for 10.0.0.1. The most specific matching route’s next-hop IP address is 172.16.12.2. Which IP address will the router send an ARP request to?",
+        "explanation": "When a router forwards a packet, it needs to encapsulate the packet in a frame addressed to the next hop. To do so, it needs to send an ARP request for the next-hop IP address to determine the next hop’s MAC address (unless the router already has a corresponding entry in its ARP table).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "10.0.0.1", "IsCorrect": false },
+            { "Text": "172.16.12.2", "IsCorrect": true }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-66",
+        "questionText": "A PC sends a packet destined for a host in a remote network. What is the destination MAC address of the frame the PC sends out of its network port?",
+        "explanation": "When a PC sends a packet to a host in a remote network, the PC encapsulates the packet in a frame destined for the default gateway. The default gateway is responsible for routing the packet beyond the local network to reach the remote network.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The PC’s own MAC address", "IsCorrect": false },
+            { "Text": "The destination host’s MAC address", "IsCorrect": false },
+            { "Text": "The default gateway’s MAC address", "IsCorrect": true }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-67",
+        "questionText": "Which of the following tables maps destination networks to next hops?",
+        "explanation": "A router’s routing table maps destination networks to their corresponding next hops. This is how the router determines how to forward packets toward their destination.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ARP table", "IsCorrect": false },
+            { "Text": "MAC address table", "IsCorrect": false },
+            { "Text": "Routing table", "IsCorrect": true }
+        ],
+        "cat": "NETFD"
+    },
+    {
+        "questionId": "jit-b-68",
+        "questionText": "Given a /25 address block, what prefix length is appropriate to create 16 subnets of equal size?",
+        "explanation": "To create 16 subnets, you need to borrow 4 bits from the host portion (since 2^4 = 16). This results in a /29 prefix length, adding 4 to the original /25 prefix length.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "/27", "IsCorrect": false },
+            { "Text": "/28", "IsCorrect": false },
+            { "Text": "/29", "IsCorrect": true },
+            { "Text": "/30", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-69",
+        "questionText": "Given a /23 address block, how many subnets can you create that support at least 16 usable host addresses in each subnet?",
+        "explanation": "A /23 address block has 9 host bits (32 − 23 = 9). To support at least 16 usable host addresses, 5 host bits are needed, which supports 2^5 − 2 = 30 host addresses. 9 host bits minus the 5 needed for host addresses leaves 4 bits that you can borrow to make subnets, allowing for 2^4 = 16 subnets.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "8 subnets", "IsCorrect": false },
+            { "Text": "16 subnets", "IsCorrect": true },
+            { "Text": "32 subnets", "IsCorrect": false },
+            { "Text": "64 subnets", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-70",
+        "questionText": "A server’s IP address is 172.19.209.178/29. What is the network address of its subnet?",
+        "explanation": "To calculate this, write the final octet in binary: 0d178 = 0b10110010. Then, change the bits of the host portion (the last 3 bits) all to 0: 10110000. Then convert back to decimal: 0b10110000 = 0d176. Therefore, the network address is 172.19.209.176.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "172.19.209.168", "IsCorrect": false },
+            { "Text": "172.19.209.176", "IsCorrect": true },
+            { "Text": "172.19.209.180", "IsCorrect": false },
+            { "Text": "172.19.209.192", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-71",
+        "questionText": "PC1’s IP address is 192.168.222.101/26. What is the broadcast address of its subnet?",
+        "explanation": "To calculate this, write the final octet in binary: 0d101 = 0b01100101. Then, change the bits of the host portion (the last 6 bits) all to 1: 01111111. Then convert back to decimal: 0b01111111 = 0d127. Therefore, the broadcast address is 192.168.222.127.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "192.168.222.127", "IsCorrect": true },
+            { "Text": "192.168.222.128", "IsCorrect": false },
+            { "Text": "192.168.222.255", "IsCorrect": false },
+            { "Text": "192.168.222.254", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-72",
+        "questionText": "Given a /12 address block, how many subnets can you create that support at least 200 usable host addresses in each subnet?",
+        "explanation": "A /12 address block has 20 host bits (32 − 12 = 20). To create subnets that support at least 200 usable host addresses, 8 host bits are needed (2^8 − 2 = 254). That leaves 12 bits that you can borrow to make subnets (20 − 8 = 12), allowing for 2^12 = 4096 subnets.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "512 subnets", "IsCorrect": false },
+            { "Text": "1024 subnets", "IsCorrect": false },
+            { "Text": "2048 subnets", "IsCorrect": false },
+            { "Text": "4096 subnets", "IsCorrect": true }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-73",
+        "questionText": "Given a /15 address block, what prefix length is appropriate to create 1024 subnets of equal size?",
+        "explanation": "Making 1024 subnets requires 10 borrowed bits (since 2^10 = 1024). Therefore, the answer is /25, adding 10 to the original /15 prefix length.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "/25", "IsCorrect": true },
+            { "Text": "/24", "IsCorrect": false },
+            { "Text": "/23", "IsCorrect": false },
+            { "Text": "/22", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-74",
+        "questionText": "A printer’s IP address is 10.109.211.107/28. What is the network address of its subnet?",
+        "explanation": "To calculate the network address, write the final octet in binary: 0d107 = 0b01101011. Then, change the hosts bits (the final 4 bits) to 0: 01100000. Finally, convert back to decimal: 0b01100000 = 0d96. Therefore, the network address is 10.109.211.96.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "10.109.211.106", "IsCorrect": false },
+            { "Text": "10.109.211.96", "IsCorrect": true },
+            { "Text": "10.109.211.112", "IsCorrect": false },
+            { "Text": "10.109.211.104", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-75",
+        "questionText": "R1’s IP address is 203.0.113.237/27. What is the broadcast address of its subnet?",
+        "explanation": "To determine the broadcast address, write the final octet in binary: 0d237 = 0b11101101. Then, change the host bits (the last 5 bits) to 1: 11111111. Then, convert back to decimal: 0b11111111 = 0d255. Therefore, the broadcast address is 203.0.113.255.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "203.0.113.238", "IsCorrect": false },
+            { "Text": "203.0.113.239", "IsCorrect": false },
+            { "Text": "203.0.113.247", "IsCorrect": false },
+            { "Text": "203.0.113.255", "IsCorrect": true }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-76",
+        "questionText": "You have been given the 192.168.27.0/24 address block to create subnets of appropriate sizes for your organization. You have already assigned the first subnet to support 109 hosts. The second subnet must support 60 hosts. What is the usable host address range of the second subnet?",
+        "explanation": "The first subnet, which must support 109 hosts, is 192.168.27.0/25 (a /25 prefix length leaves 7 host bits and supports 2^7 − 2 = 126 hosts). The second subnet, which must support 60 hosts, should use a /26 prefix length (leaving 6 hosts bits and supporting 2^6 − 2 = 62 hosts). Therefore, the second subnet is 192.168.27.128/26, with a usable address range of 192.168.27.129–192.168.27.190.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "192.168.27.129 to 192.168.27.190", "IsCorrect": true },
+            { "Text": "192.168.27.65 to 192.168.27.126", "IsCorrect": false },
+            { "Text": "192.168.27.128 to 192.168.27.191", "IsCorrect": false },
+            { "Text": "192.168.27.129 to 192.168.27.254", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-77",
+        "questionText": "You have been given the 10.0.2.0/23 address block to create subnets of appropriate sizes for your organization. You have already assigned the first subnet to support 40 hosts. The second subnet must support 29 hosts. What is the broadcast address of the second subnet?",
+        "explanation": "The first subnet must use a /26 prefix length, which leaves 6 host bits, to support 40 hosts (2^6 − 2 = 62); it is 10.0.2.0/26. The second subnet should use a /27 prefix length, leaving 5 hosts bits and supporting 2^5 − 2 = 30 hosts. Therefore, the second subnet is 10.0.2.64/27, and its broadcast address is 10.0.2.95 (host bits all set to 1).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "10.0.2.111", "IsCorrect": false },
+            { "Text": "10.0.2.79", "IsCorrect": false },
+            { "Text": "10.0.2.95", "IsCorrect": true },
+            { "Text": "10.0.2.127", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-78",
+        "questionText": "Which of the following statements about VLANs is true?",
+        "explanation": "Virtual Local Area Networks (VLANs) divide a single broadcast domain into multiple smaller broadcast domains. This improves network performance and security by reducing the size of the broadcast domains and isolating network traffic.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "VLANs divide a collision domain into multiple collision domains.", "IsCorrect": false },
+            { "Text": "VLANs divide a broadcast domain into multiple broadcast domains.", "IsCorrect": true },
+            { "Text": "VLANs segment a LAN at Layer 3 of the TCP/IP Model.", "IsCorrect": false },
+            { "Text": "Switches can flood frames to hosts in different VLANs, but cannot forward frames to hosts in different VLANs.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-79",
+        "questionText": "You issue switchport access vlan 10 on a switch port, but VLAN 10 doesn’t exist yet on the switch. What is the result of the command?",
+        "explanation": "On Cisco switches, if you assign a port to a VLAN that does not exist, the switch will automatically create that VLAN.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The port is disabled until you create VLAN 10.", "IsCorrect": false },
+            { "Text": "The command is rejected.", "IsCorrect": false },
+            { "Text": "The switch automatically creates VLAN 10.", "IsCorrect": true },
+            { "Text": "The port is assigned to the default VLAN.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-80",
+        "questionText": "Which VLANs exist on a Cisco switch by default and cannot be deleted?",
+        "explanation": "VLAN 1 and several VLANs reserved for FDDI and Token Ring support (1002–1005)—old technologies that are no longer used—exist on Cisco switches by default. These VLANs cannot be deleted.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "VLANs 1, 1002, 1003, 1004, and 1005", "IsCorrect": true },
+            { "Text": "VLANs 1, 1001, 1002, 1003, 1004, and 1005", "IsCorrect": false },
+            { "Text": "VLANs 1, 1003, 1004, and 1005", "IsCorrect": false },
+            { "Text": "VLAN 1", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-81",
+        "questionText": "Which VLAN is untagged on a trunk port?",
+        "explanation": "When a trunk port receives untagged frames, it assigns them to the native VLAN, and when sending frames in the native VLAN, it sends them untagged. The native VLAN is VLAN 1 by default, but it can be changed with switchport trunk native vlan vlan in interface config mode.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The default VLAN", "IsCorrect": false },
+            { "Text": "The native VLAN", "IsCorrect": true },
+            { "Text": "The access VLAN", "IsCorrect": false },
+            { "Text": "VLAN 1", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-82",
+        "questionText": "How many VLANs are there in total, including reserved VLANs?",
+        "explanation": "The VLAN Identifier (VID) field of the 802.1Q tag is 12 bits in size, allowing for 2^12 = 4096 VLANs (0–4095). However, VLANs 0 and 4095 are reserved for special purposes, so a Cisco switch can have a maximum of 4094 VLANs (1–4094).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "4092", "IsCorrect": false },
+            { "Text": "4094", "IsCorrect": false },
+            { "Text": "4095", "IsCorrect": false },
+            { "Text": "4096", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-83",
+        "questionText": "Which VLANs are allowed on a trunk port by default?",
+        "explanation": "By default, all VLANs (1–4094) are allowed on a trunk port. You can use the switchport trunk allowed vlan command to allow only the necessary VLANs.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1–4094", "IsCorrect": true },
+            { "Text": "1–1001", "IsCorrect": false },
+            { "Text": "1", "IsCorrect": false },
+            { "Text": "No VLANs are allowed by default.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-84",
+        "questionText": "A LAN you are managing includes VLANs 1, 2, and 3. VLAN 4, a new VLAN, is added and it is your job to make sure that all trunk links allow it. Which command is appropriate to add VLAN 4 to each trunk’s list of allowed VLANs?",
+        "explanation": "Use switchport trunk allowed vlan add vlans to add VLANs to a trunk’s list of allowed VLANs. The add keyword is very important. If you configure switchport trunk allowed vlan 4, it won’t add VLAN 4 to the list of allowed VLANs; it will replace the current list with only VLAN 4.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "switchport trunk allowed vlan 4", "IsCorrect": false },
+            { "Text": "switchport trunk allowed vlan add 4", "IsCorrect": true },
+            { "Text": "switchport trunk allowed vlan allow 4", "IsCorrect": false },
+            { "Text": "switchport trunk vlan allow 4", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-85",
+        "questionText": "Which of the following is a security best practice related to VLANs?",
+        "explanation": "A security best practice for VLANs is to configure a non-default, unused VLAN as the native VLAN on trunk ports. This helps mitigate security exploits related to the native VLAN; it is recommended that you do not use the native VLAN in your networks.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Leave VLAN 1 as the native VLAN but don’t assign hosts to it.", "IsCorrect": false },
+            { "Text": "A port’s native VLAN should be the same as its access VLAN.", "IsCorrect": false },
+            { "Text": "Configure a non-default unused VLAN as the native VLAN.", "IsCorrect": true },
+            { "Text": "The default and native VLANs should be the same.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-86",
+        "questionText": "In a ROAS configuration, which command tells the router which VLAN to tag frames with?",
+        "explanation": "In a router-on-a-stick (ROAS) configuration, the command encapsulation dot1q vlan-id is used in subinterface configuration mode to specify the VLAN ID for tagging frames. The VLAN ID doesn’t have to match the subinterface ID (i.e. GigabitEthernet0/1.10), but it’s best to match them for simplicity’s sake.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "R1(config)# interface g0/1.10", "IsCorrect": false },
+            { "Text": "R1(config-subif)# switchport trunk vlan 10", "IsCorrect": false },
+            { "Text": "R1(config-subif)# vlan tag dot1q 10", "IsCorrect": false },
+            { "Text": "R1(config-subif)# encapsulation dot1q 10", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-87",
+        "questionText": "Which of the following is NOT a requirement for an SVI to be in an up/up state?",
+        "explanation": "For a switch virtual interface (SVI) to be in an up/up state, the switch must have either an access port associated with the VLAN or a trunk port that allows the VLAN; it is not necessary to have both.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The VLAN associated with the SVI must exist on the switch.", "IsCorrect": false },
+            { "Text": "The SVI must be enabled.", "IsCorrect": false },
+            { "Text": "The VLAN must be enabled.", "IsCorrect": false },
+            { "Text": "The switch must have both an access port associated with the VLAN and a trunk port that allows the VLAN.", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-88",
+        "questionText": "If two Cisco switches are connected with the default settings, what will be the operational mode of their ports?",
+        "explanation": "Cisco switch ports default to switchport mode dynamic auto. Two connected ports in dynamic auto mode will not form a trunk; they will operate as access ports.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Access", "IsCorrect": true },
+            { "Text": "Trunk", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-89",
+        "questionText": "Which of the following switchport mode command combinations configured on two connected ports will result in a valid trunk link?",
+        "explanation": "Although a port configured with switchport mode trunk does not use DTP to determine its own operational mode, it will still send DTP messages to encourage its connected neighbor to operate in trunk mode. This means the port in dynamic auto mode will also operate in trunk mode, forming a valid trunk link.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "dynamic auto + trunk", "IsCorrect": true },
+            { "Text": "dynamic auto + dynamic auto", "IsCorrect": false },
+            { "Text": "dynamic desirable + access", "IsCorrect": false },
+            { "Text": "trunk + access", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-90",
+        "questionText": "Which administrative modes result in a port not sending DTP frames?",
+        "explanation": "Ports configured with switchport mode access will not send DTP frames. Switch ports in other modes will, including those configured with switchport mode trunk (unless you also configure switchport nonegotiate).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Trunk and access", "IsCorrect": false },
+            { "Text": "Dynamic auto and access", "IsCorrect": false },
+            { "Text": "Access", "IsCorrect": true },
+            { "Text": "Trunk", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-91",
+        "questionText": "Which VTP mode(s) will cause a switch to sync its VLAN database to other switches in the VTP domain?",
+        "explanation": "In VTP, both server and client modes will synchronize VLAN information upon receiving a VTP message with a higher revision number. Server mode allows a switch to create, modify, and delete VLANs and propagate those changes to other switches, while client mode switches receive and apply these changes but cannot create, change, or delete VLANs.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Server", "IsCorrect": false },
+            { "Text": "Transparent", "IsCorrect": false },
+            { "Text": "Client", "IsCorrect": false },
+            { "Text": "Server and client", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-92",
+        "questionText": "What will a switch without a VTP domain name do upon receiving a VTP message on one of its trunk ports?",
+        "explanation": "A switch that does not have a VTP domain name configured will adopt the domain name from a received VTP message and sync its VLAN database.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "It will ignore the message.", "IsCorrect": false },
+            { "Text": "It will forward the message but not join the VTP domain.", "IsCorrect": false },
+            { "Text": "It will join the sender’s VTP domain.", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-93",
+        "questionText": "Which VTPv3 modes allow a switch to create VLANs and propagate them to other switches in the VTP domain?",
+        "explanation": "In VTP version 3, only the “primary server” mode allows a switch to create VLANs and propagate them across the VTP domain; regular VTPv3 servers cannot. Use vtp primary in privileged EXEC mode to make a switch the primary server.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Server", "IsCorrect": false },
+            { "Text": "Server and transparent", "IsCorrect": false },
+            { "Text": "Primary server and transparent", "IsCorrect": false },
+            { "Text": "Primary server", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-94",
+        "questionText": "Which VTP versions support extended-range VLANs?",
+        "explanation": "Only VTP version 3 supports extended-range VLANs (VLANs 1006–4094). VTPv1 and VTPv2 support only normal-range VLANs (1–1005).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "VTPv3", "IsCorrect": true },
+            { "Text": "VTPv2", "IsCorrect": false },
+            { "Text": "VTPv1, VTPv2, and VTPv3", "IsCorrect": false },
+            { "Text": "VTPv2 and VTPv3", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-95",
+        "questionText": "Which ports do switches send VTP messages out of?",
+        "explanation": "VTP messages are only sent out of a switch’s trunk ports, not access ports.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Access ports", "IsCorrect": false },
+            { "Text": "Trunk ports", "IsCorrect": true },
+            { "Text": "All ports", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-96",
+        "questionText": "Which of the following are negative effects of Layer-2 loops? (select two)",
+        "explanation": "Layer-2 loops can cause MAC address flapping, where a switch cannot determine the correct port for a MAC address due to the address repeatedly appearing on different ports. They can also cause broadcast storms, where looping broadcast frames consume network bandwidth and overwhelm network devices.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "MAC address flapping", "IsCorrect": true },
+            { "Text": "Broadcast storms", "IsCorrect": true },
+            { "Text": "Expired TTL", "IsCorrect": false },
+            { "Text": "Routing loops", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-97",
+        "questionText": "In a four-switch LAN, which of the following switches would be selected as the STP root bridge?",
+        "explanation": "The switch with the lowest Bridge ID (BID) will be selected as the root bridge in STP. The BID is a combination of the priority value and the MAC address. SW4 has the lowest priority (1) and therefore the lowest BID, so it would be the root bridge.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "SW1, BID: 32769:5254.00fa.abcd", "IsCorrect": false },
+            { "Text": "SW2, BID: 32769:5254.0000.0002", "IsCorrect": false },
+            { "Text": "SW3, BID: 36865:5254.0000.0001", "IsCorrect": false },
+            { "Text": "SW4, BID: 1:5254.00ff.f012", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-98",
+        "questionText": "How many root ports will there be in a four-switch LAN?",
+        "explanation": "In a network with four switches, there will be one root bridge and three non-root bridges. Each non-root bridge will select one root port—the port with the lowest cost to reach the root bridge. Therefore, there will be three root ports in total.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1", "IsCorrect": false },
+            { "Text": "2", "IsCorrect": false },
+            { "Text": "3", "IsCorrect": true },
+            { "Text": "4", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-99",
+        "questionText": "Which STP port roles send BPDUs?",
+        "explanation": "STP BPDUs are only sent out of designated ports. The root bridge, which has only designated ports, sends BPDUs out of all ports every 2 seconds. Then, other switches use their designated ports to propagate those BPDUs out to other switches.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Designated ports", "IsCorrect": true },
+            { "Text": "Root ports", "IsCorrect": false },
+            { "Text": "Designated and root ports", "IsCorrect": false },
+            { "Text": "Designated, root, and non-designated port", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-100",
+        "questionText": "When you connect an end host to a switch port without PortFast, how long does it take for the port to enter the STP forwarding state?",
+        "explanation": "When an end host is first connected to a switch port without PortFast, the port must transition through the STP listening and learning states before entering the forwarding state. How long the port spends in each state is determined by the forward delay timer, which is 15 seconds by default; this means it will take 30 seconds in total (15*2).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "15 seconds", "IsCorrect": false },
+            { "Text": "20 seconds", "IsCorrect": false },
+            { "Text": "30 seconds", "IsCorrect": true },
+            { "Text": "35 seconds", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-101",
+        "questionText": "What happens when a switch port configured with spanning-tree bpduguard enable receives a BPDU?",
+        "explanation": "When BPDU Guard is enabled on a port and it receives a BPDU, the port is put into an error-disabled state to prevent potential STP topology changes. This is a protective measure typically used on access ports that should be connected to end hosts.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The port ignores the BPDU.", "IsCorrect": false },
+            { "Text": "The port is error-disabled.", "IsCorrect": true },
+            { "Text": "BPDU Guard is disabled on the port.", "IsCorrect": false },
+            { "Text": "The port immediately moves to the forwarding state.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-102",
+        "questionText": "Two switches, SW1 and SW2, are connected by two links using the default STP cost values. SW2 is the root bridge. SW1 G0/1 is connected to SW2 G0/2, and SW1 G0/2 is connected to SW2 G0/1. Which port will SW1 select as its root port?",
+        "explanation": "A switch selects its port with the lowest root cost as its root port. If multiple ports are tied, it will select the port connected to the switch with the lowest BID. If multiple ports are still tied, it will select the port connected to the port with the lowest port ID. In this question, SW1 G0/2 (connected to SW2 G0/1) is connected to a port with a lower port ID than SW1 G0/1 (connected to SW2 G0/2), so SW1 G0/2 will become SW1’s root port. It’s important to note that SW1 doesn’t compare its own port IDs; it compares the neighbor’s (SW2’s) port IDs.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "G0/1", "IsCorrect": false },
+            { "Text": "G0/2", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-103",
+        "questionText": "SW3 and SW4 are part of a larger LAN. They are connected by their G0/1 ports, neither of which is a root port. Both switches have equal root costs. How will they determine which port becomes designated and which becomes non-designated?",
+        "explanation": "When two switches have equal root costs, the switch with the lower BID will have its port become the designated port. The other switch’s port will be non-designated (blocking).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The port with the lowest port ID will become designated.", "IsCorrect": false },
+            { "Text": "The port with the highest port ID will become designated.", "IsCorrect": false },
+            { "Text": "The port on the switch with the lowest BID will become designated.", "IsCorrect": true },
+            { "Text": "The port on the switch with the highest BID will become designated.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-104",
+        "questionText": "How many STP designated ports will there be in a four-switch LAN with a total of seven links?",
+        "explanation": "In an STP network, every network segment (link) will have one designated port. With seven links, there will be seven designated ports.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1", "IsCorrect": false },
+            { "Text": "4", "IsCorrect": false },
+            { "Text": "7", "IsCorrect": true },
+            { "Text": "14", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-105",
+        "questionText": "Which STP port role points away from the root bridge and is in a forwarding state?",
+        "explanation": "STP root and designated ports are in a forwarding state once the LAN has converged. Root ports point toward the root bridge; they provide each switch’s active path to the root bridge. Designated ports, on the other hand, point away from the root bridge. Each root port always connects to a designated port.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Designated", "IsCorrect": true },
+            { "Text": "Non-designated", "IsCorrect": false },
+            { "Text": "Root", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-106",
+        "questionText": "Which command is most likely to ensure that a switch becomes the root bridge for VLAN 1?",
+        "explanation": "The best way to ensure that a switch becomes the root bridge for a particular VLAN is to use spanning-tree vlan vlan-id priority 0 to make its bridge priority 0—the lowest possible value. This way, it can only be usurped by another switch with a lower MAC address that also has its priority set to 0.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "spanning-tree vlan 1 root primary", "IsCorrect": false },
+            { "Text": "spanning tree vlan 1 root 0", "IsCorrect": false },
+            { "Text": "spanning-tree vlan 1 priority root", "IsCorrect": false },
+            { "Text": "spanning-tree vlan 1 priority 0", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-107",
+        "questionText": "The output of show spanning–tree on a Cisco switch states Spanning tree enabled protocol ieee. Which version of STP is the switch running?",
+        "explanation": "Spanning tree enabled protocol ieee means that the switch is running Cisco’s Per-VLAN Spanning Tree Plus (PVST+), not IEEE-standard STP. If the switch is running Rapid PVST+, it will state Spanning tree enabled protocol rstp. Cisco switches don’t run the IEEE-standard versions of these protocols.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "IEEE-standard Rapid STP", "IsCorrect": false },
+            { "Text": "Rapid PVST+", "IsCorrect": false },
+            { "Text": "IEEE-standard STP", "IsCorrect": false },
+            { "Text": "PVST+", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-108",
+        "questionText": "You configure spanning-tree pathcost method long on a Cisco switch. Which of the following accurately represent the default port costs after issuing that command? (select two)",
+        "explanation": "The long port costs are: 10 Mbps = 2,000,000, 100 Mbps = 200,000, 1 Gbps = 20,000, 10 Gbps = 2,000, 100 Gbps = 200, 1 Tbps = 20, and 10 Tbps = 2.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1 Tbps: 2", "IsCorrect": false },
+            { "Text": "10 Gbps: 2,000", "IsCorrect": true },
+            { "Text": "10 Mbps: 20,000,000", "IsCorrect": false },
+            { "Text": "100 Mbps: 200,000", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-109",
+        "questionText": "If the RSTP sync mechanism succeeds, how long does it take for a port to transition from the discarding state to the forwarding state?",
+        "explanation": "In RSTP, when the sync mechanism succeeds, a port can transition from the discarding state to the forwarding state immediately, bypassing the 30 second wait that is necessary in classic STP. This is the primary advantage of RSTP.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "6 seconds", "IsCorrect": false },
+            { "Text": "15 seconds", "IsCorrect": false },
+            { "Text": "30 seconds", "IsCorrect": false },
+            { "Text": "It transitions immediately.", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-110",
+        "questionText": "SW1 G0/1 is not a root port or a designated port, and SW1 is not the designated bridge for the segment G0/1 is connected to. What is SW1’s G0/1’s RSTP port role?",
+        "explanation": "In RSTP, a port that is neither a root port nor a designated port, and is not the designated bridge for its segment, is an alternate port. Alternate ports provide an alternate path to the root bridge and remain in a discarding state while they are not needed.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Alternate", "IsCorrect": true },
+            { "Text": "Backup", "IsCorrect": false },
+            { "Text": "Non-designated", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-111",
+        "questionText": "Which RSTP port type will not trigger a topology change notification if the port’s status changes?",
+        "explanation": "An edge port in RSTP connects to an end device (like a PC or server)—not to another switch. If an edge port’s status changes (goes up or down), it does not trigger a topology change notification because it does not affect the RSTP topology among the switches.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Point-to-point", "IsCorrect": false },
+            { "Text": "Shared", "IsCorrect": false },
+            { "Text": "Edge", "IsCorrect": true },
+            { "Text": "Backup", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-112",
+        "questionText": "If the RSTP root bridge has two ports connected to the same segment via a hub, what will the role be of the port that is not designated?",
+        "explanation": "In RSTP, if the root bridge has multiple ports connected to the same segment via a hub, one port will be the designated port and the others will be backup ports. The backup port role is used for ports that provide a redundant path to the same segment as another port on the same switch. This is an exception to the general rule that all ports on the root bridge must be designated.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Root", "IsCorrect": false },
+            { "Text": "Alternate", "IsCorrect": false },
+            { "Text": "Blocking", "IsCorrect": false },
+            { "Text": "Backup", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-113",
+        "questionText": "Which command configures the RSTP edge link type on a port?",
+        "explanation": "The spanning-tree portfast command is used to configure an RSTP edge port. Unlike the point-to-point and shared link types, you cannot use the spanning-tree link-type command to configure an edge port.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "spanning-tree link-type edge", "IsCorrect": false },
+            { "Text": "spanning-tree portfast", "IsCorrect": true },
+            { "Text": "spanning-tree link-type portfast", "IsCorrect": false },
+            { "Text": "spanning-tree edge", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-114",
+        "questionText": "SW1’s G0/1 port is in the up/up state but has stopped receiving BPDUs from its RSTP neighbor. How long will SW1 wait before reacting and initiating a topology change?",
+        "explanation": "In RSTP, if a switch stops receiving BPDUs on a port, it waits for three times the Hello time before initiating a topology change. The default Hello time is 2 seconds, so the switch will wait 6 seconds (3*2 seconds) before reacting and initiating a topology change. Note that the switch will only wait 6 seconds if the port remains up/up; if a hardware failure or something else causes the port to go down, the switch will react immediately—no need to wait 6 seconds.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "6 seconds", "IsCorrect": true },
+            { "Text": "15 seconds", "IsCorrect": false },
+            { "Text": "20 seconds", "IsCorrect": false },
+            { "Text": "30 seconds", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-115",
+        "questionText": "Which RSTP link type is default on full-duplex ports?",
+        "explanation": "Full-duplex ports use the RSTP point-to-point link type by default; this is the only link type that can use RSTP’s sync mechanism for rapid convergence. This link type should be used for direct connections between two switches.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Full", "IsCorrect": false },
+            { "Text": "Shared", "IsCorrect": false },
+            { "Text": "Point-to-point", "IsCorrect": true },
+            { "Text": "Independent", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-116",
+        "questionText": "Four switches are interconnected, with a total of six links between them. How many of each RSTP port role are there?",
+        "explanation": "Because there are 6 links, there are a total of 12 ports (2 connected to each link). There are 4 switches, and each non-root switch must have 1 root port, so there are 3 root ports. Each link must have one designated port, so there are 6 designated ports. The remaining ports are alternate ports - they enter the discarding state to prevent loops. So, there are 3 alternate ports. There are no backup ports; hubs are extremely rare in modern networks, and no hubs are mentioned in the question.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "4 root, 4 designated, 4 alternate", "IsCorrect": false },
+            { "Text": "3 root, 6 designated, 3 alternate", "IsCorrect": true },
+            { "Text": "3 root, 3 designated", "IsCorrect": false },
+            { "Text": "3 root, 3 designated, 6 alternate", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-117",
+        "questionText": "Which optional STP feature disables a port if it stops receiving BPDUs?",
+        "explanation": "When a Loop Guard-enabled port stops receiving BPDUs, it will enter the loop-inconsistent state, effectively disabling the port. This protects against loops caused by a port erroneously transitioning to the forwarding state.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "BPDU Guard", "IsCorrect": false },
+            { "Text": "BPDU Filter", "IsCorrect": false },
+            { "Text": "Root Guard", "IsCorrect": false },
+            { "Text": "Loop Guard", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-118",
+        "questionText": "BPDU Filter has been enabled globally for all PortFast-enabled ports. What happens when one of the BPDU Filter-enabled ports receives a BPDU?",
+        "explanation": "BPDU Filter can be enabled in two ways: in interface config mode with spanning-tree bpdufilter enable, or globally on all PortFast-enabled ports with spanning-tree portfast bpdufilter default. When enabled in interface config mode, the port doesn’t send BPDUs and ignores all received BPDUs. When enabled globally, the port doesn’t send BPDUs, but if it receives a BPDU, PortFast and BPDU Filter will be disabled; the port then operates as a normal STP or RSTP port.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "PortFast and BPDU Filter are disabled on the port.", "IsCorrect": true },
+            { "Text": "The port is error-disabled.", "IsCorrect": false },
+            { "Text": "The port ignores the BPDU.", "IsCorrect": false },
+            { "Text": "The port enters the discarding state.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-119",
+        "questionText": "Which of the following statements about EtherChannel is false?",
+        "explanation": "EtherChannel does not eliminate the need for STP in a LAN. While EtherChannel can aggregate multiple physical links into a single logical link, reducing the number of ports that need to be blocked by STP, STP still plays a critical role in the larger network topology for loop prevention.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "EtherChannel combines multiple physical links into a single logical link.", "IsCorrect": false },
+            { "Text": "EtherChannel eliminates the need for STP in a LAN.", "IsCorrect": true },
+            { "Text": "A frame flooded out of a port-channel interface will only be flooded out of one of the member ports.", "IsCorrect": false },
+            { "Text": "EtherChannel formation can be dynamically negotiated or statically configured.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-120",
+        "questionText": "Which of the following dynamic EtherChannel mode combinations will result in a valid EtherChannel? (select two)",
+        "explanation": "When using Link Aggregation Control Protocol (LACP), the mode combinations that will result in a valid EtherChannel are passive+active and active+active. When using Port Aggregation Protocol (PAgP), they are auto+desirable and desirable+desirable. PAgP and LACP modes don’t mix; a switch using PAgP won’t form an EtherChannel with a switch using LACP.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "auto + auto", "IsCorrect": false },
+            { "Text": "desirable + active", "IsCorrect": false },
+            { "Text": "passive + active", "IsCorrect": true },
+            { "Text": "desirable + desirable", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-121",
+        "questionText": "Which of the following settings doesn’t have to match among the member ports of an EtherChannel?",
+        "explanation": "A description doesn’t affect a port’s operation, so each member port of an EtherChannel can have a unique description. However, settings like speed, duplex, and access/trunk mode must match among all ports in an EtherChannel.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Description", "IsCorrect": true },
+            { "Text": "Duplex", "IsCorrect": false },
+            { "Text": "Speed", "IsCorrect": false },
+            { "Text": "Operational mode (access or trunk)", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-122",
+        "questionText": "Which dynamic EtherChannel modes can form a valid EtherChannel with a neighbor configured with channel-group 1 mode on?",
+        "explanation": "Just as PAgP and LACP modes can’t form an EtherChannel with each other, neither can form an EtherChannel with a switch configured to use static EtherChannel. To form a working static EtherChannel, both sides must be configured with mode on.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Desirable or active", "IsCorrect": false },
+            { "Text": "Desirable or auto", "IsCorrect": false },
+            { "Text": "Active only", "IsCorrect": false },
+            { "Text": "None of the above", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-123",
+        "questionText": "Which protocol can be used to negotiate an EtherChannel with a non-Cisco switch?",
+        "explanation": "Link Aggregation Control Protocol (LACP) is an IEEE standard and can be used to negotiate an EtherChannel with a non-Cisco switch. PAgP, on the other hand, is a Cisco-proprietary protocol and can only be used on Cisco devices.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "PAgP", "IsCorrect": false },
+            { "Text": "LACP", "IsCorrect": true },
+            { "Text": "Neither", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-124",
+        "questionText": "Port-channel 1 and its member ports currently operate in access mode. What will happen after you configure switchport mode trunk on the port-channel 1 interface?",
+        "explanation": "When you configure the port-channel interface, the member ports inherit this configuration. Changing the port-channel interface to trunk mode automatically updates the member ports to match this configuration, ensuring consistency across the EtherChannel.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The port-channel is disabled until you configure trunk mode on the member ports.", "IsCorrect": false },
+            { "Text": "The configuration is inherited by the member ports.", "IsCorrect": true },
+            { "Text": "The member ports are disabled until you configure trunk mode on them.", "IsCorrect": false },
+            { "Text": "The command is rejected.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-125",
+        "questionText": "When connecting two switches with a Layer-3 EtherChannel, where should each switch’s IP address be configured?",
+        "explanation": "In a Layer-3 EtherChannel, IP addressing is configured on the port-channel interface rather than on the individual member ports. This setup allows the EtherChannel to function as a single logical interface at Layer 3.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "On the port-channel interface", "IsCorrect": true },
+            { "Text": "On the member ports", "IsCorrect": false },
+            { "Text": "On both the port-channel interface and the member ports", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-126",
+        "questionText": "Which type of dynamic routing protocol is used to exchange routing information within an AS?",
+        "explanation": "Interior gateway protocols (IGPs) are used to exchange routing information within an autonomous system (AS). Examples include OSPF, EIGRP, RIP, and IS-IS. This is in contrast to exterior gateway protocols (EGPs) like BGP, which are used to exchange routing information between ASs.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "IGP", "IsCorrect": true },
+            { "Text": "EGP", "IsCorrect": false },
+            { "Text": "BGP", "IsCorrect": false },
+            { "Text": "ISP", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-127",
+        "questionText": "Which of the following dynamic routing protocols use a link-state algorithm? (select two)",
+        "explanation": "IS-IS and OSPF are both link-state routing protocols. They maintain a complete map of the network topology to make routing decisions.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "IS-IS", "IsCorrect": true },
+            { "Text": "RIP", "IsCorrect": false },
+            { "Text": "OSPF", "IsCorrect": true },
+            { "Text": "EIGRP", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-128",
+        "questionText": "Which type of routing protocol is also known as “routing by rumor”?",
+        "explanation": "Distance-vector routing protocols are often referred to as “routing by rumor” because the router doesn’t build a complete map of the network; it only knows what its neighbors tell it.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "IGP", "IsCorrect": false },
+            { "Text": "Link-state", "IsCorrect": false },
+            { "Text": "Distance-vector", "IsCorrect": true },
+            { "Text": "Path-vector", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-129",
+        "questionText": "When multiple routes to the same destination network are learned via the same routing protocol, which parameter is used to select which route(s) will enter the routing table?",
+        "explanation": "When a router learns multiple routes to the same destination from the same routing protocol, the route with the lowest metric is selected for the routing table.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Prefix length", "IsCorrect": false },
+            { "Text": "Metric", "IsCorrect": true },
+            { "Text": "AD", "IsCorrect": false },
+            { "Text": "Specificity", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-130",
+        "questionText": "When multiple routes to the same destination network are learned via different routing protocols, which parameter is used to select which route(s) will enter the routing table?",
+        "explanation": "When routes to the same destination are learned via different routing protocols, the administrative distance (AD) is used to determine the preferred route. The route with the lowest AD is selected. Each routing protocol calculates route metric values differently, so they can’t be directly compared.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Prefix length", "IsCorrect": false },
+            { "Text": "Metric", "IsCorrect": false },
+            { "Text": "AD", "IsCorrect": true },
+            { "Text": "Specificity", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-131",
+        "questionText": "Which of the following accurately represent IOS default AD values? (select two)",
+        "explanation": "Here are some default AD values in Cisco IOS: connected = 0, static = 1, External BGP (EBGP) = 20, EIGRP = 90, OSPF = 110, IS-IS = 115, RIP = 120, Internal BGP (IBGP) = 200, unusable = 255.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Static = 0", "IsCorrect": false },
+            { "Text": "EIGRP = 90", "IsCorrect": true },
+            { "Text": "OSPF = 110", "IsCorrect": true },
+            { "Text": "RIP = 115", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-132",
+        "questionText": "If a Cisco router learns multiple routes to the same destination via the same routing protocol, and all routes have the same metric, what is the maximum number of routes to that destination that the router will insert into its routing table by default?",
+        "explanation": "By default, Cisco routers can load-balance across up to four equal-cost paths; this is called equal-cost multi-path (ECMP) routing. If multiple routes to the same destination have the same metric, up to four of them can be inserted into the routing table for load balancing.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1", "IsCorrect": false },
+            { "Text": "2", "IsCorrect": false },
+            { "Text": "4", "IsCorrect": true },
+            { "Text": "8", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-133",
+        "questionText": "What kind of static route acts as a backup for another route, only entering the routing table if the more preferred route is removed from the routing table?",
+        "explanation": "A floating static route is a static route with a higher AD than the primary route. It acts as a backup and is used only if the primary route is unavailable.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Default static route", "IsCorrect": false },
+            { "Text": "Floating static route", "IsCorrect": true },
+            { "Text": "Recursive static route", "IsCorrect": false },
+            { "Text": "Backup static route", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-134",
+        "questionText": "A router learns the following routes via manual configuration and dynamic routing protocols. Which route(s) will it insert into its routing table? (select all that apply)",
+        "explanation": "The router has learned routes to three different destination networks: 10.0.0.0/8, 10.0.0.0/16, and 10.0.0.0/24. It has only learned one route to each of 10.0.0.0/8 and 10.0.0.0/24, so it will insert both routes as is—no need to compare them with other routes. Then, the router will select which route to 10.0.0.0/16 to insert. The static route has a lower AD (1) than the OSPF route (110), so it will insert the static route into its routing table. Note that “select all that apply” questions will not appear on the CCNA exam; if you need to select multiple answers, it will state exactly how many you need to select (select two, select three, etc).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "10.0.0.0/8 via RIP, metric 6", "IsCorrect": true },
+            { "Text": "10.0.0.0/16 via OSPF, metric 5", "IsCorrect": false },
+            { "Text": "10.0.0.0/16 via static routing", "IsCorrect": true },
+            { "Text": "10.0.0.0/24 via EIGRP, metric 10127", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-135",
+        "questionText": "A router learns the following routes via manual configuration and dynamic routing protocols. Which route(s) will it insert into its routing table? (select all that apply)",
+        "explanation": "The router has learned four different routes to a single destination network: 192.168.1.0/24. So it will only insert one route into its routing table (unless ECMP comes into play). The static route has been configured with a non-default AD (89). However, its AD is still lower than that of the EIGRP route (90), so the router will insert the static route into its routing table. When configuring a floating static route, make sure to configure it so that its AD is sufficiently high to make it less preferred than other routes.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "192.168.1.0/24 via RIP, metric 2", "IsCorrect": false },
+            { "Text": "192.168.1.0/24 via OSPF, metric 15", "IsCorrect": false },
+            { "Text": "192.168.1.0/24 via EIGRP, metric 2345", "IsCorrect": false },
+            { "Text": "192.168.1.0/24 via static routing, AD 89", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-136",
+        "questionText": "A router receives a packet destined for 192.0.2.29. It has the following four routes in its routing table. Which route will it select to forward the packet?",
+        "explanation": "When selecting which route should be used to forward a particular packet, the router only considers one thing: the most specific matching route. AD and metric are not considered. In this case, only the route to 192.0.2.0/27 (option A) matches the packet’s destination IP address, so the router will forward the packet according to that route’s instructions.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "R 192.0.2.0/27 [120/5] via 10.0.0.2", "IsCorrect": true },
+            { "Text": "S 192.0.2.0/28 [1/0] via 10.0.0.6", "IsCorrect": false },
+            { "Text": "O 192.0.2.16/29 [110/20] via 10.0.0.10", "IsCorrect": false },
+            { "Text": "D 192.0.2.24/30 [90/1012] via 10.0.0.14", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-137",
+        "questionText": "A router receives a packet destined for 10.23.107.126. It has the following four routes in its routing table. Which route will it select to forward the packet?",
+        "explanation": "In this case, three routes match the packet’s destination IP address: the route to 10.23.107.0/25 (A), the route to 10.23.107.96/27 (C), and the route to 10.23.107.112/28 (D). The route to 10.23.107.112/28 has the longest prefix length, so it is the most specific matching route; the router will forward the packet according to that route’s instructions.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "S 10.23.107.0/25 [1/0] via 172.16.1.1", "IsCorrect": false },
+            { "Text": "O 10.23.107.0/26 [110/10] via 172.16.1.5", "IsCorrect": false },
+            { "Text": "D 10.23.107.96/27 [90/2345] via 172.16.1.9", "IsCorrect": false },
+            { "Text": "D 10.23.107.112/28 [90/3456] via 172.16.1.13", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-138",
+        "questionText": "R1’s G0/1 interface has the IP address 192.168.209.101/30. Which of the following network commands would activate OSPF on the interface? (select all that apply)",
+        "explanation": "The OSPF network command is quite flexible; as long as the appropriate bits match between the interface’s IP address and the address in the network command (those indicated by a “0” bit in the wildcard mask), OSPF will be activated on the interface. In this case, all three network statements match the appropriate bits in the interface’s IP address, so all three commands would activate OSPF on the interface.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "network 192.168.209.100 0.0.0.3 area 0", "IsCorrect": true },
+            { "Text": "network 192.168.209.101 0.0.0.0 area 0", "IsCorrect": true },
+            { "Text": "network 192.168.0.0 0.0.255.255 area 0", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-139",
+        "questionText": "R1 is part of an OSPF network, and all of its OSPF-enabled interfaces are in area 1. Furthermore, it connects to the Internet and advertises a default route to other OSPF routers. What OSPF router types apply to R1? (select all that apply).",
+        "explanation": "R1 is an internal router because all of its OSPF-enabled interfaces are in a single area (area 1). It’s also an autonomous system boundary router (ASBR) because it connects to an external network (the Internet) and advertises a default route to other OSPF routers. It is not an area border router (ABR) because it does not connect to multiple OSPF areas, nor is it a backbone router because it’s not in area 0.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Internal router", "IsCorrect": true },
+            { "Text": "Backbone router", "IsCorrect": false },
+            { "Text": "ABR", "IsCorrect": false },
+            { "Text": "ASBR", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-140",
+        "questionText": "What command should you configure on a router to ensure that all GigabitEthernet interfaces have an OSPF cost of 10?",
+        "explanation": "OSPF’s automatic cost calculation uses the formula “reference bandwidth/interface bandwidth”. The auto-cost reference-bandwidth command is configured in Mbps, so to make a 1 Gbps (1000 Mbps) interface have a cost of 10, the reference bandwidth should be 10000 Mbps (10000/1000 = 10).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "auto-cost reference-bandwidth 100", "IsCorrect": false },
+            { "Text": "auto-cost reference-bandwidth 1000", "IsCorrect": false },
+            { "Text": "auto-cost reference-bandwidth 10000", "IsCorrect": true },
+            { "Text": "auto-cost reference-bandwidth 100000", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-141",
+        "questionText": "What is the effect of the passive-interface command on an OSPF-activated interface?",
+        "explanation": "The passive-interface command in OSPF stops the router from sending OSPF hello packets out of the interface, preventing OSPF neighbor relationships from forming on that interface. However, the network connected to the interface will still be advertised to other OSPF routers.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The router will attempt to form OSPF neighbor relationships on the interface, but won’t send hello messages out of the interface.", "IsCorrect": false },
+            { "Text": "The router will advertise the interface’s network to other OSPF routers, but won’t send hello messages out of the interface.", "IsCorrect": true },
+            { "Text": "The router will send hello messages out of the interface, but won’t advertise the interface’s network to other OSPF routers.", "IsCorrect": false },
+            { "Text": "The router will send hello messages out of the interface, but won’t attempt to form OSPF neighbor relationships on the interface.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-142",
+        "questionText": "Which of the following represents the order of priority when a router decides its OSPF RID?",
+        "explanation": "The OSPF Router ID (RID) is determined in this order of priority: first, a manually configured router ID; second, the highest IP address on any active loopback interface; third, the highest IP address on any active physical interface.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1) Manual configuration, 2) Highest IP address on a loopback interface, 3) Highest IP address on a physical interface", "IsCorrect": true },
+            { "Text": "1) Manual configuration, 2) Lowest IP address on a loopback interface, 3) Lowest IP address on a physical interface", "IsCorrect": false },
+            { "Text": "1) Manual configuration, 2) Highest IP address on a physical interface, 3) Highest IP address on a loopback interface", "IsCorrect": false },
+            { "Text": "1) Manual configuration, 2) Lowest IP address on a physical interface, 3) Lowest IP address on a loopback interface", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-143",
+        "questionText": "R1 has multiple OSPF neighbor relationships. R1’s OSPF RID is 192.168.1.1, which was inherited from a physical interface’s IP address. You then configure the IP address 10.0.0.2 on a loopback interface and configure router-id 1.1.1.1 in router config mode for the OSPF process. What is R1’s RID after you issue the router-id 1.1.1.1 command?",
+        "explanation": "Once a router has determined its RID and established an OSPF neighbor relationship with another router, the only way to change the RID is to manually configure it with the router-id rid command and then reset the OSPF process with clear ip ospf process. However, the scenario does not indicate that you reset the OSPF process, so R1’s RID remains 192.168.1.1.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "192.168.1.1", "IsCorrect": true },
+            { "Text": "10.0.0.2", "IsCorrect": false },
+            { "Text": "1.1.1.1", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-144",
+        "questionText": "Which of the following commands activates OSPF on an interface without using the network command?",
+        "explanation": "You can use the ip ospf process-id area area-id in interface config mode to activate OSPF on the interface. This is generally preferred over the network command due to its simplicity.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "R1(config)# ip ospf 1 area 0", "IsCorrect": false },
+            { "Text": "R1(config-if)# ip ospf 1 area 0", "IsCorrect": true },
+            { "Text": "R1(config-router)# ip ospf 1 area 0", "IsCorrect": false },
+            { "Text": "R1(config-ospf)# ip ospf 1 area 0", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-145",
+        "questionText": "Four routers connected to a segment with the OSPF broadcast network type have the default OSPF priority. R4 is the DR and R3 is the BDR. You configure ip ospf priority 100 on R2’s interface connected to the segment and reset OSPF on R4 with clear ip ospf process. Which of the following statements is true after you reset R4’s OSPF process?",
+        "explanation": "When the OSPF process of R4 (the DR) is reset, R3 (the BDR) immediately takes over its role as the DR, even though R2’s interface now has the highest priority (100, whereas others have the default of 1). Then, an election is held to determine the new BDR; R2 wins this due to its higher priority and becomes the BDR.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "R2 is the DR and R3 is the BDR.", "IsCorrect": false },
+            { "Text": "R3 is the DR and R2 is the BDR.", "IsCorrect": true },
+            { "Text": "R2 is the DR and R4 is the BDR.", "IsCorrect": false },
+            { "Text": "R3 is the DR and R4 is the BDR", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-146",
+        "questionText": "Which of the following commands can be used to prevent routers from electing a DR/BDR?",
+        "explanation": "Whereas OSPF neighbors using the broadcast network type hold DR/BDR elections, those using the point-to-point network type do not. The default network type of Ethernet interfaces is broadcast, but you can use ip ospf network point-to-point to configure the point-to-point network type.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Router(config-if)# ip ospf network point-to-point", "IsCorrect": true },
+            { "Text": "Router(config-if)# ip ospf network broadcast", "IsCorrect": false },
+            { "Text": "Router(config-if)# ip ospf priority 1", "IsCorrect": false },
+            { "Text": "Router(config-if)# ip ospf network direct", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-147",
+        "questionText": "Which of the following are requirements for two routers to become OSPF neighbors? (select two)",
+        "explanation": "For two routers to become OSPF neighbors, their RIDs must be unique, and their hello and dead timers must match. The other two options are incorrect because the area numbers must match (not be unique) and the RIDs must be unique (not match).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Area numbers must be unique.", "IsCorrect": false },
+            { "Text": "RIDs must be unique.", "IsCorrect": true },
+            { "Text": "Hello and dead timers must match.", "IsCorrect": true },
+            { "Text": "RIDs must match.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-148",
+        "questionText": "Which of the following represents the order of priority when routers elect a DR/BDR?",
+        "explanation": "The router with the highest interface priority is elected as the DR of an OSPF broadcast network. If there is a tie, the router with the highest RID becomes the DR. Then, an election using identical rules is held to determine the BDR.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1) Lowest interface priority, 2) Lowest RID", "IsCorrect": false },
+            { "Text": "1) Lowest RID, 2) Lowest interface priority", "IsCorrect": false },
+            { "Text": "1) Highest interface priority, 2) Highest RID", "IsCorrect": true },
+            { "Text": "1) Highest RID, 2) Highest interface priority", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-149",
+        "questionText": "Which of the following statements about the virtual IP and virtual MAC used by HSRP are true?",
+        "explanation": "The Hot Standby Router Protocol (HSRP) active and standby routers share a virtual IP address (VIP) and virtual MAC address. This allows for a seamless failover from the active router to the standby router; end hosts don’t have to update their default gateway IP address or ARP table when a failover occurs.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The active and standby routers share a VIP, but each uses a different virtual MAC address.", "IsCorrect": false },
+            { "Text": "The active and standby routers each use a different VIP, but share a virtual MAC address.", "IsCorrect": false },
+            { "Text": "The active and standby routers share a VIP and virtual MAC address.", "IsCorrect": true },
+            { "Text": "The active and standby router each use different VIPs and virtual MAC addresses.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-150",
+        "questionText": "During HSRP failover, what is the purpose of the new active router sending GARP messages?",
+        "explanation": "As the previous explanation mentioned, end hosts don’t have to update their default gateway IP address or ARP table when a failover from active to standby occurs. Instead, the gratuitous ARP (GARP) messages sent by the new active router serve to make switches update their MAC address tables. This allows them to correctly forward frames to the new active router.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "To make end hosts update their ARP table.", "IsCorrect": false },
+            { "Text": "To make end hosts update their default gateway IP address.", "IsCorrect": false },
+            { "Text": "To make switches update their MAC address table.", "IsCorrect": true },
+            { "Text": "To inform the former active router of the failover.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-151",
+        "questionText": "Which virtual MAC address is used by VRRP group 12?",
+        "explanation": "The Virtual Router Redundancy Protocol (VRRP) virtual MAC uses the format 0000.5e00.01XX, where XX is the VRRP group number. However, because MAC addresses are written in hexadecimal, the virtual MAC format for VRRP group 12 is 0000.5e00.010c (0d12 = 0xc), not 0000.5e00.0112.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "0000.5e00.010c", "IsCorrect": true },
+            { "Text": "0000.5e00.0112", "IsCorrect": false },
+            { "Text": "0000.0c07.ac0c", "IsCorrect": false },
+            { "Text": "0000.0c07.ac12", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-152",
+        "questionText": "R1 is a master router, actively forwarding packets between the LAN and external networks. R2 is a backup router, waiting to take over in case R1 fails. Which FHRP are R1 and R2 using?",
+        "explanation": "In VRRP, the terms “master” and “backup” are used. HSRP uses the terms “active” and “standby”, and GLBP uses “Active Virtual Gateway (AVG)” and “Active Virtual Forwarder (AVF)”.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "HSRP", "IsCorrect": false },
+            { "Text": "VRRP", "IsCorrect": true },
+            { "Text": "GLBP", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-153",
+        "questionText": "Which FHRP facilitates load balancing of traffic within a single subnet?",
+        "explanation": "Gateway Load Balancing Protocol (GLBP) facilitates load balancing of traffic from hosts across multiple routers in a single subnet. GLBP elects up to four AVFs, each with a unique virtual MAC address, and traffic is load-balanced among the AVFs.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "HSRP", "IsCorrect": false },
+            { "Text": "VRRP", "IsCorrect": false },
+            { "Text": "GLBP", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-154",
+        "questionText": "R1 and R2 use VRRP to provide a redundant default gateway for end hosts. R1 was the master router, but a hardware failure on R1 caused R2 to take over the master role. Given the default settings, what happens when R1 recovers from its hardware failure?",
+        "explanation": "In VRRP, preemption is enabled by default. This means that if the master router (R1, in this case) recovers from a failure, it will preempt the backup router and take back its role as the master router. This ensures that the router with the highest priority always serves as the master router when it is operational.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "R1 becomes the master router again.", "IsCorrect": true },
+            { "Text": "R2 remains the master router.", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-155",
+        "questionText": "Which command configures the HSRP VIP?",
+        "explanation": "The command to configure the HSRP VIP is standby group-number ip vip in interface config mode.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "R1(config-if)# hsrp 1 vip 10.0.0.1", "IsCorrect": false },
+            { "Text": "R1(config-if)# hsrp 1 ip 10.0.0.1", "IsCorrect": false },
+            { "Text": "R1(config-if)# standby 1 vip 10.0.0.1", "IsCorrect": false },
+            { "Text": "R1(config-if)# standby 1 ip 10.0.0.1", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-156",
+        "questionText": "What is the correct order of priority when electing the HSRP active router?",
+        "explanation": "The active router in HSRP is determined first by the highest interface priority. If there is a tie in priority, the router with the highest IP address on the HSRP-enabled interface becomes the active router.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1) Lowest interface priority, 2) Lowest interface IP address", "IsCorrect": false },
+            { "Text": "1) Lowest interface IP address, 2) Lowest interface priority", "IsCorrect": false },
+            { "Text": "1) Highest interface IP address, 2) Highest interface priority", "IsCorrect": false },
+            { "Text": "1) Highest interface priority, 2) Highest interface IP address", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-157",
+        "questionText": "Which of the following are not valid IPv6 addresses? (select two)",
+        "explanation": "Option B has too many hextets (9), and option C contains invalid characters (“g” and “h”). Hexadecimal only uses 0–9 and a–f.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "2607:f8b0:4005:800::1004", "IsCorrect": false },
+            { "Text": "2607:f8b0:4005:800:1111:0:1:2:3", "IsCorrect": true },
+            { "Text": "2607:f8b0:4005:800:gh::1004", "IsCorrect": true },
+            { "Text": "fe80::204:61ff:fe9d:f156", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-158",
+        "questionText": "Which of the following is a correctly abbreviated version of the IPv6 address 2001:0db8:85a3:0000:0000:8a2e:0370:7334?",
+        "explanation": "This option correctly abbreviates the IPv6 address by removing leading zeros and consecutive all-zero hextets. Make sure to avoid common pitfalls like removing trailing zeros, failing to remove all leading zeros, and improperly abbreviating all-zero hextets.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "2001:db8:85a3::8a2e:37:7334", "IsCorrect": false },
+            { "Text": "2001:db8:85a3::0:8a2e:37:7334", "IsCorrect": false },
+            { "Text": "2001:0db8:85a3::8a2e:370:7334", "IsCorrect": false },
+            { "Text": "2001:db8:85a3::8a2e:370:7334", "IsCorrect": true }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-159",
+        "questionText": "Which command configures an IPv6 address using the specified prefix and an automatically generated interface ID?",
+        "explanation": "The command ipv6 address prefix/64 eui-64 allows you to specify a /64 network prefix and automatically generate a 64-bit interface ID from the interface’s MAC address using Modified EUI-64 rules.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ipv6 address eui-64", "IsCorrect": false },
+            { "Text": "ipv6 address 2001:db8:0:1::/64 auto", "IsCorrect": false },
+            { "Text": "ipv6 address autoconfig", "IsCorrect": false },
+            { "Text": "ipv6 address 2001:db8:0:1::/64 eui-64", "IsCorrect": true }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-160",
+        "questionText": "R1’s G0/1 interface’s MAC address is 7ea2.1097.ff27. What is its Modified EUI-64 interface ID?",
+        "explanation": "The Modified EUI-64 format inverts the 7th bit of the MAC address, and inserts ‘ff:fe’ in the middle to expand the MAC to a 64-bit interface ID. The MAC address 7ea2.1097.ff27 becomes 7ca2:10ff:fe97:ff27.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "7ea2:10ff:fe97:ff27", "IsCorrect": false },
+            { "Text": "7ca2:10ff:fe97:ff27", "IsCorrect": true },
+            { "Text": "7da2:10ff:ff97:ff27", "IsCorrect": false },
+            { "Text": "7fa2:10ff:fe97:ff27", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-161",
+        "questionText": "Which MAC address was used to generate the Modified EUI-64 interface ID 1f7d:2aff:fedd:611c?",
+        "explanation": "To find the original MAC address, remove “ff:fe” and then invert the 7th bit back to its original state. The interface ID 1f7d:2aff:fedd:611c corresponds to the MAC address 1d7d.2add.611c.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "1b7d.2add.611c", "IsCorrect": false },
+            { "Text": "1c7d.2add.611c", "IsCorrect": false },
+            { "Text": "1d7d.2add.611c", "IsCorrect": true },
+            { "Text": "1e7d.2add.611c", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-162",
+        "questionText": "Which type of IPv6 address is equivalent to a private IPv4 address?",
+        "explanation": "Unique local addresses (ULAs) in IPv6 are equivalent to private IPv4 addresses. They are used for local communications within a private network and are not routable over the Internet (although they are routable within the private network).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ULA", "IsCorrect": true },
+            { "Text": "LLA", "IsCorrect": false },
+            { "Text": "EUI", "IsCorrect": false },
+            { "Text": "GUA", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-163",
+        "questionText": "Which kind of IPv6 address is not routable?",
+        "explanation": "Link-local addresses (LLAs) are not routable beyond their local network segment. They are used for communication on a single link or network segment. IPv6 LLAs use the fe80::/10 range.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ULA", "IsCorrect": false },
+            { "Text": "LLA", "IsCorrect": true },
+            { "Text": "Multicast", "IsCorrect": false },
+            { "Text": "GUA", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-164",
+        "questionText": "Which kind of IPv6 address must be configured on every IPv6-enabled interface?",
+        "explanation": "Every IPv6-enabled interface must have an LLA. These addresses are used for various functions on the local network segment, so they are mandatory on all IPv6-enabled interfaces.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ULA", "IsCorrect": false },
+            { "Text": "LLA", "IsCorrect": true },
+            { "Text": "Anycast", "IsCorrect": false },
+            { "Text": "GUA", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-165",
+        "questionText": "Which IPv6 multicast scope remains on the local segment?",
+        "explanation": "IPv6 multicast addresses that begin with “ff02” have the “link-local” scope. These packets remain on the local segment; routers will not route them.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ff01", "IsCorrect": false },
+            { "Text": "ff02", "IsCorrect": true },
+            { "Text": "ff05", "IsCorrect": false },
+            { "Text": "ff08", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-166",
+        "questionText": "Which IPv6 multicast address can be used to achieve the same effect as a message to the IPv4 address 255.255.255.255?",
+        "explanation": "ff02::1 is the “all nodes” link-local multicast address. Although IPv6 doesn’t use the concept of “broadcast”, a packet sent to this multicast address has the same effect as a packet sent to the IPv4 broadcast address 255.255.255.255; it addresses the packet to all nodes on the local segment.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ff02::1", "IsCorrect": true },
+            { "Text": "ff02::2", "IsCorrect": false },
+            { "Text": "ff02::5", "IsCorrect": false },
+            { "Text": "ff02::a", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-167",
+        "questionText": "Which IPv6 address is equivalent to an IPv4 address in the 127.0.0.0/8 range?",
+        "explanation": "This is the IPv6 loopback address. Whereas IPv4 reserves a whole range (127.0.0.0/8) for loopback addresses, IPv6 uses only ::1. Messages sent to this address are “looped back” to the local device; they are not sent out of any interface.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "::", "IsCorrect": false },
+            { "Text": "::1", "IsCorrect": true },
+            { "Text": "::127", "IsCorrect": false },
+            { "Text": "127::1", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-168",
+        "questionText": "Which IPv6 address type involves configuring the same address on multiple hosts?",
+        "explanation": "An anycast address is indistinguishable from a unicast address; the only difference is that an anycast address is configured on multiple hosts. This is useful when providing services over the internet; by configuring the same IP address on servers in different global locations, client devices can access the server closest to their location.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Unicast", "IsCorrect": false },
+            { "Text": "Broadcast", "IsCorrect": false },
+            { "Text": "Multicast", "IsCorrect": false },
+            { "Text": "Anycast", "IsCorrect": true }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-169",
+        "questionText": "What is the IPv4 equivalent of an IPv6 neighbor table?",
+        "explanation": "In IPv4, the Address Resolution Protocol (ARP) table is used to map IPv4 addresses to MAC addresses. IPv6 doesn’t use ARP; instead, it uses Neighbor Discovery Protocol (NDP), storing IPv6-address-to-MAC-address mappings in the neighbor table.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ARP table", "IsCorrect": true },
+            { "Text": "Routing table", "IsCorrect": false },
+            { "Text": "MAC address table", "IsCorrect": false },
+            { "Text": "IPv4 neighbor table", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-170",
+        "questionText": "What scope is used by IPv6 solicited-node multicast addresses?",
+        "explanation": "IPv6 solicited-node multicast addresses have a link-local scope (beginning with “ff02”); they are only used for communication within the local segment.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Interface-local", "IsCorrect": false },
+            { "Text": "Link-local", "IsCorrect": true },
+            { "Text": "Site-local", "IsCorrect": false },
+            { "Text": "Organization-local", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-171",
+        "questionText": "What solicited-node multicast address is generated from the unicast address df56:9098:1010:fd:ab29::f892?",
+        "explanation": "The solicited-node multicast address is formed by appending the last 24 bits of the unicast address to ff02::1:ff. Therefore, df56:9098:1010:fd:ab29::f892 generates ff02::1:ff00:f892. Note that, in the original address, two all-zero hextets were abbreviated; don’t forget to include two of those abbreviated zeros after the “ff02::1:ff” prefix—ff02::1:ff:f892 is incorrect.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ff02::1:ff:f892", "IsCorrect": false },
+            { "Text": "ff02:1::ff00:f892", "IsCorrect": false },
+            { "Text": "ff02:1::ff:f892", "IsCorrect": false },
+            { "Text": "ff02::1:ff00:f892", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-172",
+        "questionText": "Which message types does NDP use for Layer-2 address resolution? (select two)",
+        "explanation": "NDP uses Neighbor Solicitation (NS)—like ARP request—and Neighbor Advertisement (NA)—like ARP reply—messages for Layer-2 address resolution.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "RS", "IsCorrect": false },
+            { "Text": "NS", "IsCorrect": true },
+            { "Text": "RA", "IsCorrect": false },
+            { "Text": "NA", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-173",
+        "questionText": "Which command can be used to view a list of IPv6-address-to-Layer-2-address mappings?",
+        "explanation": "IPv6-address-to-Layer-2-address mappings are stored in the IPv6 neighbor table, which can be viewed with show ipv6 neighbors.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "show ipv6 arp", "IsCorrect": false },
+            { "Text": "show ndp", "IsCorrect": false },
+            { "Text": "show ipv6 neighbors", "IsCorrect": true },
+            { "Text": "show ipv6 ndp", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-174",
+        "questionText": "Which command can be used to configure an IPv6 with a prefix learned via RA and an automatically generated interface ID?",
+        "explanation": "The ipv6 address autoconfig command configures an IPv6 address using the prefix advertised by Router Advertisements (RA) and automatically generates the interface ID using Modified EUI-64 rules.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ipv6 enable", "IsCorrect": false },
+            { "Text": "ipv6 address eui-64", "IsCorrect": false },
+            { "Text": "ipv6 address autoconfig", "IsCorrect": true },
+            { "Text": "ipv6 address 2001:db8::/64 eui-64", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-175",
+        "questionText": "Which NDP messages are used in the DAD process? (select two)",
+        "explanation": "For Duplicate Address Detection (DAD), a host will send an NS message to its own IPv6 address. If it doesn’t receive a reply, it determines that the address is unique on the network. But if it receives an NA in reply, it determines that the address is a duplicate; it won’t be able to use the address.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "RS", "IsCorrect": false },
+            { "Text": "NS", "IsCorrect": true },
+            { "Text": "RA", "IsCorrect": false },
+            { "Text": "NA", "IsCorrect": true }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-176",
+        "questionText": "Which of the following IPv6 static routes will not function properly, despite appearing in the routing table?",
+        "explanation": "Although Cisco IOS will allow you to configure this route, it will not function properly. Directly connected static routes can work in IPv4 because of proxy ARP, but Cisco IOS doesn’t implement an equivalent proxy NDP.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ipv6 route 2001:db8::/64 GigabitEthernet0/1", "IsCorrect": true },
+            { "Text": "ipv6 route 2001:db8::/64 2001:db8:12::2", "IsCorrect": false },
+            { "Text": "ipv6 route 2001:db8::/64 GigabitEthernet0/1 2001:db8:12::2", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-177",
+        "questionText": "Which of the following commands configures a recursive host route?",
+        "explanation": "A host route is a route to a single destination address, using a /128 prefix length (/32 in IPv4). A recursive route is configured by specifying a destination network and a next-hop address, so A is the correct answer.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ipv6 route 2001:db8::1/128 2001:db8:23::3", "IsCorrect": true },
+            { "Text": "ipv6 route 2001:db8::/64 2001:db8:23::3", "IsCorrect": false },
+            { "Text": "ipv6 route 2001:db8::1/128 GigabitEthernet0/1", "IsCorrect": false },
+            { "Text": "ipv6 route 2001:db8::/64 GigabitEthernet0/1", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-178",
+        "questionText": "Which of the following commands configures a fully specified default route?",
+        "explanation": "A default route is a route to ::/0, matching all possible IPv6 addresses. A fully specified route includes both the exit interface and the next-hop address, so option C is correct.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ipv6 route :: GigabitEthernet0/1", "IsCorrect": false },
+            { "Text": "ipv6 route ::/0 GigabitEthernet0/1", "IsCorrect": false },
+            { "Text": "ipv6 route ::/0 GigabitEthernet0/1 2001:db8::1", "IsCorrect": true },
+            { "Text": "ipv6 route :: GigabitEthernet0/1 2001:db8::1", "IsCorrect": false }
+        ],
+        "cat": "ROSW"
+    },
+    {
+        "questionId": "jit-b-179",
+        "questionText": "Which of the following protocol and port pairs are correct? (select three)",
+        "explanation": "DNS uses both TCP and UDP on port 53. DHCP servers use UDP port 67, and DHCP clients use UDP port 68. SSH uses TCP port 22 (not 23), HTTPS uses TCP port 443 (not 80), and Syslog typically uses UDP port 514.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "DNS = TCP/UDP port 53", "IsCorrect": true },
+            { "Text": "SSH = TCP port 23", "IsCorrect": false },
+            { "Text": "HTTPS = TCP port 80", "IsCorrect": false },
+            { "Text": "Syslog = TCP port 514", "IsCorrect": false },
+            { "Text": "DHCP server = UDP port 67", "IsCorrect": true },
+            { "Text": "DHCP client = UDP port 68", "IsCorrect": true }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-180",
+        "questionText": "Which TCP field does a host use to indicate how much data it can receive before sending an ACK?",
+        "explanation": "The Window Size field in the TCP header specifies the amount of data the sender can transmit before it must receive an acknowledgment from the receiving host.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Maximum Segment Size", "IsCorrect": false },
+            { "Text": "Acknowledgment Number", "IsCorrect": false },
+            { "Text": "Sequence Number", "IsCorrect": false },
+            { "Text": "Window Size", "IsCorrect": true }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-181",
+        "questionText": "Which of the following is provided by TCP, but not UDP?",
+        "explanation": "TCP provides data sequencing, ensuring that packets arrive in the correct order. UDP, being a simpler and more lightweight protocol, does not provide this feature. Both protocols support error detection (both headers include a “Checksum” field for that purpose), but only TCP ensures reliable delivery and ordered data sequencing.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Best-effort communication", "IsCorrect": false },
+            { "Text": "Data sequencing", "IsCorrect": true },
+            { "Text": "Session multiplexing", "IsCorrect": false },
+            { "Text": "Error detection", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-182",
+        "questionText": "In which of the following cases is UDP usually preferred? (select two)",
+        "explanation": "UDP is often chosen for real-time applications (like streaming and online gaming) due to its lower latency, and for simple query/response protocols like DNS due to its simplicity and lower overhead. TCP is most often used for reliable data transfer, like file transfers.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "When reliable delivery of messages is required.", "IsCorrect": false },
+            { "Text": "Real-time applications", "IsCorrect": true },
+            { "Text": "Simple query/response protocols", "IsCorrect": true },
+            { "Text": "File transfer protocols", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-183",
+        "questionText": "What is the correct sequence of the TCP three-way handshake?",
+        "explanation": "The TCP three-way handshake involves a SYN packet sent from the client to the server, a SYN-ACK response from the server, and finally an ACK from the client to the server.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "SYN, ACK, SYN, ACK", "IsCorrect": false },
+            { "Text": "SYN, ACK, SYN-ACK", "IsCorrect": false },
+            { "Text": "SYN, SYN-ACK, ACK", "IsCorrect": true },
+            { "Text": "SYN, SYN, ACK", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-184",
+        "questionText": "What does the value in a TCP segment’s Acknowledgement Number field represent?",
+        "explanation": "The Acknowledgement Number in a TCP segment indicates the sequence number of the next expected byte from the sender, effectively acknowledging receipt of all preceding bytes.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The sequence number of the last segment the host received.", "IsCorrect": false },
+            { "Text": "The sequence number of the next segment the host expects to receive.", "IsCorrect": true },
+            { "Text": "The sequence number of the first segment the host received.", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-185",
+        "questionText": "When a client sends a request to a server, which type of port does the client typically source the request from?",
+        "explanation": "Clients typically select a random ephemeral port for the source port when initiating communication to a server. Ephemeral ports are temporary ports assigned for the duration of the session.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "A registered port", "IsCorrect": false },
+            { "Text": "An ephemeral port", "IsCorrect": true },
+            { "Text": "A well-known port", "IsCorrect": false }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-186",
+        "questionText": "Which of the following protocols use a Layer-4 protocol that provides reliable delivery of messages? (select two)",
+        "explanation": "Both Telnet and FTP use TCP, which provides reliable delivery of messages. SNMP and NTP, on the other hand, use UDP, which does not provide reliable delivery.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Telnet", "IsCorrect": true },
+            { "Text": "NTP", "IsCorrect": false },
+            { "Text": "SNMP", "IsCorrect": false },
+            { "Text": "FTP", "IsCorrect": true }
+        ],
+        "cat": "IPNS"
+    },
+    {
+        "questionId": "jit-b-187",
+        "questionText": "Which of the following commands permit only the specified host’s IP address? (select three)",
+        "explanation": "When configuring a standard ACL, there are three ways to specify a single IP address: {permit|deny} ip-address, {permit|deny} ip-address 0.0.0.0, and {permit|deny} host ip-address. Option C is incorrect because it specifies the wildcard mask 255.255.255.255, which is equivalent to a /0 netmask; it matches all possible IP addresses.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "access-list 1 permit 8.8.8.8", "IsCorrect": true },
+            { "Text": "access-list 1 permit 8.8.8.8 0.0.0.0", "IsCorrect": true },
+            { "Text": "access-list 1 permit 8.8.8.8 255.255.255.255", "IsCorrect": false },
+            { "Text": "access-list 1 permit host 8.8.8.8", "IsCorrect": true }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-188",
+        "questionText": "Where should standard ACLs generally be applied?",
+        "explanation": "Standard ACLs should generally be applied as close to the destination of the traffic you want to filter. Because standard ACLs filter packets based only on their source IP address, applying a standard ACL too close to the source can filter more traffic from the host/network than intended.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "As close to the source as possible", "IsCorrect": false },
+            { "Text": "As close to the destination as possible", "IsCorrect": true }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-189",
+        "questionText": "Which of the following are valid standard ACL numbers? (select three)",
+        "explanation": "Standard ACLs can use numbers from 1 to 99 and 1300 to 1999. Therefore, 1301, 1999, and 99 are valid standard ACL numbers.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "100", "IsCorrect": false },
+            { "Text": "1301", "IsCorrect": true },
+            { "Text": "1999", "IsCorrect": true },
+            { "Text": "2000", "IsCorrect": false },
+            { "Text": "99", "IsCorrect": true },
+            { "Text": "199", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-190",
+        "questionText": "Which command can be used to create a standard named ACL?",
+        "explanation": "The correct command to create a standard named ACL is ip access-list standard name. This command brings you to standard named ACL configuration mode, where you can configure rules for the ACL.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ip access-list TEST_ACL", "IsCorrect": false },
+            { "Text": "access-list TEST_ACL", "IsCorrect": false },
+            { "Text": "ip access-list standard TEST_ACL", "IsCorrect": true },
+            { "Text": "access-list standard TEST_ACL", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-191",
+        "questionText": "Which parameters can standard ACLs use to match packets? (select all that apply)",
+        "explanation": "Standard ACLs can only match packets based on the source IP address. They cannot filter based on destination IP, protocol, or port numbers.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Source IP address", "IsCorrect": true },
+            { "Text": "Destination IP address", "IsCorrect": false },
+            { "Text": "Protocol", "IsCorrect": false },
+            { "Text": "Source and/or destination port numbers", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-192",
+        "questionText": "You create an ACL with a single ACE: deny 192.168.1.0 0.0.0.255. You then apply the ACL to an interface. What is the effect of this ACL?",
+        "explanation": "Since the only ACE in the ACL denies packets from 192.168.1.0/24, and ACLs have an implicit “deny any” at the end, all packets will be denied. The ACL needs an explicit permit statement to allow other traffic.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Packets sourced from 192.168.1.0/24 are denied.", "IsCorrect": false },
+            { "Text": "All packets are denied.", "IsCorrect": true },
+            { "Text": "All packets are permitted.", "IsCorrect": false },
+            { "Text": "Packets sourced from 192.168.1.0/24 are permitted.", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-193",
+        "questionText": "Which command applies ACL 1 to an interface, filtering packets received by the interface?",
+        "explanation": "The correct command to apply an ACL to an interface to filter incoming traffic is ip address-group acl in.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "ip access-list 1 in", "IsCorrect": false },
+            { "Text": "ip-access-list 1 out", "IsCorrect": false },
+            { "Text": "ip access-group 1 in", "IsCorrect": true },
+            { "Text": "ip-access-group 1 out", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-194",
+        "questionText": "What is the effect of an ACL that has been created, but not applied to an interface?",
+        "explanation": "An ACL that has been created but not applied to any interface has no effect on traffic. ACLs must be applied to interfaces to filter traffic.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "The ACL has no effect.", "IsCorrect": true },
+            { "Text": "The ACL filters all packets received by the router.", "IsCorrect": false },
+            { "Text": "The ACL filters all packets forwarded by the router.", "IsCorrect": false },
+            { "Text": "The ACL filters all packets sent by the router itself.", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-195",
+        "questionText": "Which of the following are valid extended ACL numbers? (select three)",
+        "explanation": "Extended ACLs can use numbers from 100–199 and 2000–2699. Therefore, 2000, 199, and 2599 are valid extended ACL numbers.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "99", "IsCorrect": false },
+            { "Text": "2000", "IsCorrect": true },
+            { "Text": "1999", "IsCorrect": false },
+            { "Text": "199", "IsCorrect": true },
+            { "Text": "2599", "IsCorrect": true },
+            { "Text": "200", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-196",
+        "questionText": "Which of the following extended ACL entries blocks requests from clients to an HTTPS server?",
+        "explanation": "HTTPS uses TCP port 443. When clients send requests to an HTTPS server, they use destination port (not source port) 443. So, B is correct because it denies requests destined for port 443 on the server.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "deny tcp any eq 443 host 192.0.2.1", "IsCorrect": false },
+            { "Text": "deny tcp any host 192.0.2.1 eq 443", "IsCorrect": true },
+            { "Text": "deny tcp any eq 80 host 192.0.2.1", "IsCorrect": false },
+            { "Text": "deny tcp any host 192.0.2.1 eq 80", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-197",
+        "questionText": "Which of the following extended ACL entries permits all messages from the server with IP address 203.0.113.1 except its responses to SSH clients?",
+        "explanation": "SSH uses TCP port 22. This time, we are filtering the server’s responses, so the ACE must filter based on source port 22, not destination port 22—the opposite of the previous example. Use neq 22 (not equal to 22) to permit everything except responses to SSH clients (which would be sourced from port 22).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "permit tcp 203.0.113.1 0.0.0.0 neq 22 any", "IsCorrect": true },
+            { "Text": "permit tcp 203.0.113.1 0.0.0.0 eq 22 any", "IsCorrect": false },
+            { "Text": "permit tcp 203.0.113.1 0.0.0.0 any neq 22", "IsCorrect": false },
+            { "Text": "permit tcp 203.0.113.1 0.0.0.0 any eq 22", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-198",
+        "questionText": "Which of the following extended ACL entries denies connections from clients to port 21 of an FTP server?",
+        "explanation": "FTP uses TCP (not UDP) port 21 for control connections, and the equivalent keyword when configuring an ACE is ftp (ftp-data matches port 20).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "deny tcp any host 198.51.100.1 eq ftp-data", "IsCorrect": false },
+            { "Text": "deny udp any host 198.51.100.1 eq ftp-data", "IsCorrect": false },
+            { "Text": "deny tcp any host 198.51.100.1 eq ftp", "IsCorrect": true },
+            { "Text": "deny udp any host 198.51.100.1 eq ftp", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-199",
+        "questionText": "Which of the following is an accurate description of the effect of this ACE: deny icmp 172.16.24.0 0.0.1.255 any",
+        "explanation": "The ACE specifies the ICMP protocol, the source subnet 172.16.24.0/23, and any destination; option B is an accurate description.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Deny all ICMP messages from hosts in the 172.16.24.0/24 subnet.", "IsCorrect": false },
+            { "Text": "Deny all ICMP messages from hosts in the 172.16.24.0/23 subnet.", "IsCorrect": true },
+            { "Text": "Deny all ICMP messages destined for hosts in the 172.16.24.0/24 subnet.", "IsCorrect": false },
+            { "Text": "Deny all ICMP messages destined for hosts in the 172.16.24.0/23 subnet.", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-200",
+        "questionText": "Which of the following extended ACL entries permits Telnet connections from hosts in the 192.168.2.0/25 subnet to hosts in the 10.0.0.0/9 subnet?",
+        "explanation": "Telnet uses TCP port 23. This ACE correctly specifies source subnet 192.168.2.0/25 (wildcard mask 0.0.0.127) and destination subnet 10.0.0.0/9 (wildcard mask 0.127.255.255).",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "permit tcp 192.168.2.0 0.0.0.127 10.0.0.0 255.128.0.0 eq 23", "IsCorrect": false },
+            { "Text": "permit tcp 192.168.2.0 0.0.0.127 10.0.0.0 0.127.255.255 eq 22", "IsCorrect": false },
+            { "Text": "permit tcp 192.168.2.0 0.0.0.127 10.0.0.0 0.127.255.255 eq 23", "IsCorrect": true },
+            { "Text": "permit tcp 192.168.2.0 255.255.255.128 10.0.0.0 255.128.0.0 eq 23", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-201",
+        "questionText": "Which command can be used to create an extended named ACL?",
+        "explanation": "The correct command to create a standard named ACL is ip access-list extended name. This command brings you to extended named ACL configuration mode, where you can configure rules for the ACL.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "access-list TEST_ACL", "IsCorrect": false },
+            { "Text": "ip access-list TEST_ACL", "IsCorrect": false },
+            { "Text": "access-list extended TEST_ACL", "IsCorrect": false },
+            { "Text": "ip access-list extended TEST_ACL", "IsCorrect": true }
+        ],
+        "cat": "NETSEC"
+    },
+    {
+        "questionId": "jit-b-202",
+        "questionText": "What is the effect of the command ip access-list resequence 100 10 5?",
+        "explanation": "The syntax for the command is ip access-list resequence {name|number} starting-seq-num increment. The command specifies ACL 100, a starting sequence number of 10, and an increment of 5.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            { "Text": "Change the sequence number of ACL 100’s first ACE to 10 and add 5 for each subsequent ACE.", "IsCorrect": true },
+            { "Text": "Change the sequence number of the ACL’s first ACE to 100, add 10 for the second ACE, and 5 for the third ACE.", "IsCorrect": false },
+            { "Text": "Change the sequence numbers of ACL 100’s first 10 ACEs to use increments of 5.", "IsCorrect": false },
+            { "Text": "Change the sequence number of ACL 5’s first ACE to 1000 and add 10 for each subsequent ACE.", "IsCorrect": false }
+        ],
+        "cat": "NETSEC"
     }
+
 ]
