@@ -24052,5 +24052,911 @@
 }
 ],
 "cat": "NETT"
-}
+},{
+        "questionId": "F83E6EA7-C3E5-4608-829B-9272AE4DE23C",
+        "questionText": "Considering the differences between NAT and PAT, which is the most accurate description?",
+        "explanation": "Both NAT and PAT can support multiple protocols for each of their translations. PAT translates multiple inside local addresses into a single global address. PAT is also used with pools when there are more inside devices than addresses in the pool and the keyword overload has been used in the configuration.NAT is a one-to-one translation of IP to IP.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003eICND2-18-04\u003c/p\u003e",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "NAT allows for multiple protocols across a single IP address.",
+                "IsCorrect": false
+            },
+            {
+                "Text": "NAT translates many IP addresses into a few or even one IP address.",
+                "IsCorrect": false
+            },
+            {
+                "Text": "PAT allows for multiple protocols across multiple IP addresses.",
+                "IsCorrect": false
+            },
+            {
+                "Text": "PAT translates many IP addresses into a few or even one IP address.",
+                "IsCorrect": true
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "08AC1CC0-D5FA-4CC0-A3B7-9A31E991DB8B",
+        "questionText": "NAT translates a private address 192.168.1.1 to a public IP address 12.150.146.100. How would 192.168.1.1 be described?",
+        "explanation": "The term inside refers to a host inside the Enterprise network, which often uses a private (RFC 1918) address inside the Enterprise. The term local refers to an address used for that host in the local, or Enterprise, network.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003eCD-I1-3-04-001-1\u003c/p\u003e",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Global",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Inside",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Local",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Outside",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "1A10EE9C-CF29-4DA3-81D2-B777114B0F2C",
+        "questionText": "A colleague asked you to help troubleshoot a problem with their NAT/PAT configuration on router R1. NAT/PAT should translate packets sent by hosts in subnet 10.1.2.0/24 that are destined for the Internet. All translations should use R1\u0026#39;s IP address in network 192.0.2.0 from the Internet link. (Consider network 192.0.2.0 to be a public IP network for this question.) Which answer identifies the action required to fix the configuration error?",
+        "explanation": "For the correct answer, as configured, ACL 1 matches only the address 10.1.2.2. The syntax shown in a standard ACL implies matching a host (a single IP address). The correct command, which matches all IP address in the subnet, is access-list 1 permit 10.1.2.0 0.0.0.255.\n\n\tFor the incorrect answers, the ip nat inside command has no issues, and the ip nat inside and ip nat outside reside on the correct R1 interfaces. Moving the configuration to router R2 would not work because R2 has no public IP addresses to use, and the configuration, if moved as is, still has the configuration issue with access-list 1.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003e\n\tCD-I2-7-58-002-1\u003c/p\u003e\n",
+        "exhibits": [
+            {
+                "ExhibitId": "289D468A-4A6E-417D-B810-07FCD47A45C7",
+                "ExhibitTitle": "4",
+                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/289D468A-4A6E-417D-B810-07FCD47A45C7/200301-GB-v2-3-10-09.html"
+            },
+            {
+                "ExhibitId": "0C1336FE-8BAF-4E72-B3D6-FDDFA4DDB5B9",
+                "ExhibitTitle": "1",
+                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/0C1336FE-8BAF-4E72-B3D6-FDDFA4DDB5B9/200301-GB-v2-3-10-09.jpg"
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "6633E887-A23C-40C1-8EF4-E6244B0375D4",
+        "questionText": "The internetworks created by Enterprises A and B both connect to the Internet, allowing all users to connect to hosts in the Internet and hosts in the other Enterprise.\u0026nbsp;Enterprise C is totally isolated, not connecting to the Internet or to other companies. Which of the following\u0026nbsp;are true\u0026nbsp;about the use of public and private IP addresses in this scenario?",
+        "explanation": "Private IP networks were originally intended for use inside  organizations that had no reason to connect to the Internet or to other  organizations. However, the looming IPv4 address shortage in the early  1990s required some solutions, one of which is NAT/PAT. PAT allows  organizations to use a small number of public IP addresses, assigning  private IP addresses to each individual host, with a device translating  addresses in packets sent to and from the Internet. This allows two  organizations to\u0026nbsp;use the same IP address ranges and still be able to  communicate through the Internet.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003e11/1, 4/8 - query to Au, CD-I1-3-06-002-1\u003c/p\u003e\n",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Enterprises A and B must assign public IP addresses to all hosts in their respective internetworks",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Enterprises A and B can both use private IP networks, but they cannot use the same private network",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Enterprise C can use any private network",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Enterprises A and B can both use private network 10.0.0.0 as long as they also use NAT or PAT",
+                "IsCorrect": true
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "B9BC8331-B278-44D6-A651-EDD7251ACADC",
+        "questionText": "For a particular NAT implementation, a private address 192.168.1.1 should always be translated with a 1:1 mapping to IP address 12.150.146.100. Which command accomplishes this?",
+        "explanation": "You accomplish 1:1 static mapping with the ip nat inside source command, with the first IP address being the inside local address, and the second being the inside global address.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003eCD-I2-7-57-001-1\u003c/p\u003e",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "\u003cstrong\u003eip nat inside source static 192.168.1.1 12.150.146.100\u003c/strong\u003e",
+                "IsCorrect": true
+            },
+            {
+                "Text": "\u003cstrong\u003eip nat outside source static 192.168.1.1 12.150.146.100\u003c/strong\u003e",
+                "IsCorrect": false
+            },
+            {
+                "Text": "\u003cstrong\u003eip nat inside source int s0 overload\u003c/strong\u003e",
+                "IsCorrect": false
+            },
+            {
+                "Text": "\u003cstrong\u003eip nat inside source list 1 pool outside\u003c/strong\u003e",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "A8B4A803-2632-4843-B48C-F3EA45B46BFA",
+        "questionText": "Your company has configured all the internal IP addressing using private IP addresses. You then realize that some users will also want Internet access. What is the practical approach to solving this problem?",
+        "explanation": "Using NAT at a perimeter router, and converting the private source addresses to global addresses before sending those packets into the public networks, would allow the internal users to access Internet resources.Using NAT to make the entire Internet appear as an inside local private address space is not reasonable. Assigning permanent static public IPs to individual hosts or dual homing those hosts just for Internet access is also not practical.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003eICND1-12-03\u003c/p\u003e",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Assign the internal hosts that need to access the Internet static public IP addresses on their workstations",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Use a second network adapter on their workstation for the public access",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Use NAT to make the Internet appear as local IP addresses, which are reachable by internal users",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Configure translation to make the Internet believe the users have public addresses",
+                "IsCorrect": true
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "D7537EA2-5F15-4A58-A277-FA80199C9225",
+        "questionText": "You are the administrator of the network pictured in the figure. The exhibit shows the configuration for router A that a colleague has proposed. The goal of the configuration is to use PAT, translating addresses for hosts on router A\u0026#39;s LAN, with a single global IP address from the serial 0 interface. Which of the following answers best describes what you must change for your colleague\u0026#39;s configuration to correctly implement PAT?",
+        "explanation": "The configuration does have an issue (a fact that rules out one answer as incorrect). The correct answer lists the reason: the ip nat inside and ip nat outside commands were on incorrect interfaces.\n\n\tAs for the other incorrect answers, they suggest changing the ip nat inside source command or the ACL used by NAT. Both are correct as is.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003eCD-I2-7-58-001-1\u003c/p\u003e",
+        "exhibits": [
+            {
+                "ExhibitId": "671F02B1-DAFC-45C2-BCFB-31ECF6B2C8D3",
+                "ExhibitTitle": "4",
+                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/671F02B1-DAFC-45C2-BCFB-31ECF6B2C8D3/icnd36.txt"
+            },
+            {
+                "ExhibitId": "D3E654E9-7140-41C1-B800-EB4FE062593D",
+                "ExhibitTitle": "1",
+                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/D3E654E9-7140-41C1-B800-EB4FE062593D/SE2-I1-816-W-24-016-3.jpg"
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "87204E38-7239-4681-B7E5-09061596F3B5",
+        "questionText": "Which QoS options are recommended by Cisco when designing for a voice network?",
+        "explanation": "Cisco recommends that when designing for a voice network, one-way delay is kept below 150 ms, jitter is kept below 30 ms, and loss is kept under 1%.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Jitter \u0026lt; 30 ms",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Loss \u0026lt; 1%",
+                "IsCorrect": true
+            },
+            {
+                "Text": "One-way delay \u0026lt; 200 ms",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Jitter \u0026lt; 50 ms",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Loss \u0026lt; 2%",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Round-trip delay \u0026lt; 200 ms",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "617988D8-6720-4857-8FF9-0C1FECB5E22B",
+        "questionText": "Which DSCP value is suggested to be used for packets that need low latency, low jitter, and low loss?",
+        "explanation": "DiffServ defines the Expedited Forwarding (EF) Differentiated Services Code Point (DSCP) value for use on traffic that requires low latency, low jitter, and low loss.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "AF31",
+                "IsCorrect": false
+            },
+            {
+                "Text": "EF",
+                "IsCorrect": true
+            },
+            {
+                "Text": "CS4",
+                "IsCorrect": false
+            },
+            {
+                "Text": "PR",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "E9C5DF4F-7C89-4AAD-BD40-10F34B6925EC",
+        "questionText": "Which options are not one of the manageable QoS characteristics of network traffic?",
+        "explanation": "There are four QoS characteristics of network traffic: bandwidth, delay, jitter, and loss.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Delay",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Jitter",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Queue size",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Clock rate",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Bandwidth",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Loss",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "9ED62BDB-06ED-4B6E-B2CE-18F5E3333420",
+        "questionText": "Which QoS feature is typically used outbound to an ISP to reduce the amount of traffic that is dropped by exceeding the purchased rate?",
+        "explanation": "Often a connection to an Internet service provider (ISP) is physically connected with a technology that exceeds the purchased rate. To control the amount of traffic that is allowed onto their network, ISPs limit the rate that traffic is allowed to flow into the network. This is done with traffic policers; to limit the amount of traffic that could potentially be dropped by the ISP\u0026rsquo;s policer, an enterprise could choose to shape the traffic going out of their network and to the ISP.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003e\n\t7/28 - query to Au\u003c/p\u003e\n",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Traffic shaping",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Traffic policing",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Traffic limiting",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Traffic classification",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "000F6C81-6E1A-439F-AD2C-1C3E7C30A0A4",
+        "questionText": "What is the name of the IPv6 packet field that is used for marking DSCP values?",
+        "explanation": "The IPv6 header includes the Traffic Class field that is used for marking traffic with Differentiated Services Code Point (DSCP) values.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Type of Service",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Traffic Class",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Class of Service",
+                "IsCorrect": false
+            },
+            {
+                "Text": "IPv6 Priority",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "3983DC19-4D06-4285-818A-1C48BA53D4F3",
+        "questionText": "Which QoS options are recommended by Cisco when designing for a video network?",
+        "explanation": "Cisco recommends that when designing for a video network, one-way delay is kept below 400 ms (200 to 400 ms), jitter is kept below 50 ms (preferably lower than 30 ms), and loss is kept under 1%.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "One-way delay \u0026lt; 400 ms",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Round-trip delay \u0026lt; 400 ms",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Loss \u0026lt; 5%",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Loss \u0026lt; 2%",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Jitter \u0026lt; 100 ms",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Jitter \u0026lt; 50 ms",
+                "IsCorrect": true
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "C75A5440-FEAA-4E0B-8756-33851A50A596",
+        "questionText": "Which QoS feature is typically used inbound to a network to limit the amount of traffic that is allowed to flow in?",
+        "explanation": "Typically traffic policers are used to control the flow of traffic coming into a network from a separate network (e.g., another company or customer). They do this by setting a limit to the amount of traffic that is allowed to be sent. There are a variety of ways that this rate can be configured, but generally a committed information rate (CIR) is used as an average measurement of allowed rate with an ability to allow for traffic spikes over short amounts of time.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Traffic classification",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Traffic shaping",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Traffic limiting",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Traffic policing",
+                "IsCorrect": true
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "8ECCD185-7AF5-4227-B526-4EB7A3F6E6CB",
+        "questionText": "What is the field that is used on modern systems that allows an IP packet to be marked with a specific QoS value?",
+        "explanation": "On modern networks, the IP Type of Service field is split into two subfields: the Differentiated Services Code Point (DSCP) and the Explicit Congestion Notification (ECN) field; of these, the DSCP is primarily used for marking traffic with a specific QoS value.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "EXP",
+                "IsCorrect": false
+            },
+            {
+                "Text": "CoS",
+                "IsCorrect": false
+            },
+            {
+                "Text": "DSCP",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Traffic Class",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "6B3935E6-E886-49FD-ABF4-6ACACC909141",
+        "questionText": "__________ means that the QoS tool changes one or more header fields, setting a value in the header.",
+        "explanation": "Marking means that the QoS tool changes one or more header fields, setting a value in the header.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Marking",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Classifying",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Insertion",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Qualifying",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "6FB11EFF-D9FF-4331-BAF1-93D26687465A",
+        "questionText": "Which congestion management solution was designed specifically for voice and video that has specialized low delay, jitter, and loss requirements?",
+        "explanation": "The Low Latency Queuing (LLQ) congestion management solution was designed specifically for traffic that has specific low delay, jitter, and loss requirements. LLQ provides preferential treatment for this traffic over other class-based queuing methods so that regardless of the current congestion conditions the traffic is forwarded.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Class-Based Weighted Fair Queuing",
+                "IsCorrect": false
+            },
+            {
+                "Text": "First-In First-Out Queuing",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Low Latency Queuing",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Priority Specialized Queuing",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "0D3FC017-B5AD-44FB-AFD5-A55FD36D3726",
+        "questionText": "The term _________ refers to the process of matching the fields in a message to make a choice to take some QoS action.",
+        "explanation": "The term classification refers to the process of matching the fields in a message to make a choice to take some QoS action.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "classification",
+                "IsCorrect": true
+            },
+            {
+                "Text": "marking",
+                "IsCorrect": false
+            },
+            {
+                "Text": "inspection",
+                "IsCorrect": false
+            },
+            {
+                "Text": "analysis",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "205EB8DA-1F3E-405A-B29F-C40EEB1D0954",
+        "questionText": "What is the name of the Cisco feature that allows for the identification of protocols that are traditionally hard to classify because of their operation?",
+        "explanation": "Cisco\u0026rsquo;s Network Based Application Recognition (NBAR) and its successor NBAR2 allow for engineers to match protocols that have been traditionally very hard to classify because of their operation; an example includes the use of various dynamic ports.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "DSCP",
+                "IsCorrect": false
+            },
+            {
+                "Text": "NBAR",
+                "IsCorrect": true
+            },
+            {
+                "Text": "DTerm",
+                "IsCorrect": false
+            },
+            {
+                "Text": "CBWFQ",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "1436BE16-B6E1-4FE1-A1FD-C9BDE6243E94",
+        "questionText": "Which QoS options are recommended by Cisco when designing for a voice network?",
+        "explanation": "Cisco recommends that when designing for a voice network, one-way delay is kept below 150 ms, jitter is kept below 30 ms, and loss is kept under 1%.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003e\n\t12/13 - good as-is, 11/27 - query to Au, 5/12 - Good as-is, 5/9 - query to Au\u003c/p\u003e\n",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Jitter \u0026lt; 100 ms",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Round-trip delay \u0026lt; 150 ms",
+                "IsCorrect": false
+            },
+            {
+                "Text": "One-way delay \u0026lt; 150 ms",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Jitter \u0026lt; 30 ms",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Loss \u0026lt; 5%",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Loss \u0026lt; 2%",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "6E5C3E65-386A-4719-9707-DD2597A11BDA",
+        "questionText": "Which DSCP marking group was created to be backward compatible with Internet Protocol Precedence (IPP) values?",
+        "explanation": "DiffServ defines the Class Selector (CS) Differentiated Services Code Point (DSCP) as a set of values \u0026nbsp;designed to be backward compatible with Internet Protocol Precedence (IPP) numbering. IPP was used on networks before DSCPs were defined.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "EF",
+                "IsCorrect": false
+            },
+            {
+                "Text": "AF",
+                "IsCorrect": false
+            },
+            {
+                "Text": "CS",
+                "IsCorrect": true
+            },
+            {
+                "Text": "PF",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "27644CFD-B275-4E46-B5AC-F2BCB5176B6D",
+        "questionText": "Which DSCP Assured Forwarding value provides the worst drop and worst queue performance?",
+        "explanation": "DiffServ defines the Assured Forwarding (AF) Differentiated Services Code Point (DSCP) as a set of values that are used with each other. Traffic is separated into four different classes and three different drop priorities, resulting in a grid of 12 different AF values that are marked based on the intended use of the traffic. The AF13 marking results in traffic having the lowest queue priority and the highest drop probability.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003e\n\t4/12 - ok as-is, \u0026quot; You\u0026rsquo;d think AF11 would be worst and worst, respectively, particularly as it\u0026rsquo;s decimal value is the lowest number, but they didn\u0026rsquo;t do it that way. AF13 is indeed worst of all 12 AF values. See Figure 11-11 in Volume 2. EG, both AF11 and AF13 has the worst queuing preference. But AF11 is the best preference for drop, while AF13 is the worst, because AF13 has a higher percentage chance of being dropped compared to AFx1.\u0026quot;\u0026nbsp;\u0026nbsp; 4/11 - query to Au\u003c/p\u003e\n",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "AF41",
+                "IsCorrect": false
+            },
+            {
+                "Text": "AF43",
+                "IsCorrect": false
+            },
+            {
+                "Text": "AF11",
+                "IsCorrect": false
+            },
+            {
+                "Text": "AF13",
+                "IsCorrect": true
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "A8BEE843-9827-402F-BBA7-FD469B6C9205",
+        "questionText": "A router uses the low latency queuing (LLQ) feature on its WAN interface, with all voice packets using the priority queue and three data classes using non-priority queues. The WAN link becomes congested with both voice and data traffic. How does the router service the queues?",
+        "explanation": "Routers that use Low Latency Queuing (LLQ) always schedule the priority queue if packets exist in the queue. As a result, the other queues might suffer queue starvation when the link has too much load. To combat that issue, the LLQ feature also limits the amount of traffic that can be sent through the priority queue, discarding any excess traffic using a policing function, thereby leaving enough bandwidth for the non-priority queues.\n\n\tIn this specific question, for the correct answers, the LLQ feature schedules the queue with priority scheduling for the priority queue, but with limits as implemented by policing. It also schedules the other queues in a round-robin fashion.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003e\n\t5/13 - query to Au\u003c/p\u003e\n",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Priority scheduling with no limits for voice",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Priority scheduling with limits (policing) for voice",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Round robin scheduling for the three data queues",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Round robin scheduling for all four queues",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "663CAEA1-686E-4826-B034-008F53832B96",
+        "questionText": "Which answers list a feature of GLBP that is not true about VRRPv3 or HSRPv2?",
+        "explanation": "The question asks for answers that are true of GLBP but false\u0026nbsp;of VRRPv3 or HSRPv2. The one correct answer notes a feature unique to GLBP among the three: The routers in the same group use unique MAC addresses.\n\nThree incorrect answers list factual statements about GLBP that are also true about HSRP. The facts in those three answers include:\n\n\n\tCisco proprietary\n\tUses multicast address 224.0.0.102\n\tRequires the VIP to be different than any router\u0026rsquo;s interface address.\n\n\nThe other two incorrect answers list statements false about GLBP:\n\n\n\tGLBP does not support active/standby balancing but instead supports active/active.\n\tGLBP does not use MAC addresses beginning with 0000.0c, instead using addresses that begin 0007:b40.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Uses a unique virtual MAC address per router in the same group",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Defined by Cisco (Cisco proprietary)",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Routers must use different interface IP addresses as compared to the FHRP VIP",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Supports active/standby load balancing within one group",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Uses multicast address 224.0.0.102 for messages",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Uses a virtual MAC address that begins 0000.0c",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "8864F060-8CFE-4364-BEFC-09144DEA0CAD",
+        "questionText": "How many active routers can be forwarding at the same time with a single HSRP group?",
+        "explanation": "HSRP works in an active/standby configuration where only a single router is forwarding at the same time within the same HSRP group.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Unlimited",
+                "IsCorrect": false
+            },
+            {
+                "Text": "4",
+                "IsCorrect": false
+            },
+            {
+                "Text": "1",
+                "IsCorrect": true
+            },
+            {
+                "Text": "2",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "494F23E1-C40C-46E0-BF19-1F5E3AF4857D",
+        "questionText": "There are two Layer 3 switches acting as core routers called SW1 and SW2. SW1 and SW2 have the IP addresses 192.168.1.1 and 192.168.1.2 on VLAN 10, respectively. If host 1 has a configured default gateway of 192.168.1.1 and SW1 were to have a failure that brings the device offline, what protocol should be implemented to mitigate this failure scenario?",
+        "explanation": "In a design situation like this, where VLANs are being spanned between multiple Layer 3 switches that have corresponding SVIs, you would want to implement a First Hop Redundancy Protocol, such as Hot Standby Router Protocol (HSRP). There is a specific failure situation if you do not implement a FHRP. With host 1 having a configured default gateway of SW1, and SW1 having a failure situation that brings the device offline, host 1 has essentially lost all connectivity outside the local area network (VLAN). If you were to implement a FHRP like HSRP, this situation would be mitigated because the default gateway address would be a virtual IP address and MAC address that is shared between both SW1 and SW2.\n\n\tSTP prevents switching loops and should be used while also using any FHRP solution, with STP design considered with FHRP design. For example, the root bridge and secondary root bridge placements should be on SW1 and SW2 in the question to match the FHRP active and standby roles, respectively. With that said, STP is not the protocol that can resolve the issue with a default gateway going offline.\n\n\tRunning an IGP is important but the issue at hand is more of a default gateway redundancy situation.\n\n\tBGP is not pertinent to this question.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "IGP",
+                "IsCorrect": false
+            },
+            {
+                "Text": "STP",
+                "IsCorrect": false
+            },
+            {
+                "Text": "HSRP",
+                "IsCorrect": true
+            },
+            {
+                "Text": "BGP",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "355308F6-ED6D-44DF-B7CD-25E095E0E173",
+        "questionText": "In the figure, layer 3 switches D1 and D2 use HSRP for subnet 172.16.1.0/24 in the LAN. The figure summarizes the HSRPv2 settings on D1 and D2. D1 and D2 do not use interface tracking. In sequence, D1 boots up and holds an HSRP election. One month later, the staff powers on D2. Both correctly configure HSRP to use the same group with the same VIP of 172.16.1.9. \u0026nbsp;Which answers accurately describe the results of this HSRP configuration under the conditions described in the question? (Choose two answers.)",
+        "explanation": "Two answers discuss what happens during the first month of operation when only D1 works. HSRP, and all the FHRPs, work even a router realizes no other routers are participating in the group. D1 holds an HSRP election, finds no competition, wins, and becomes the HSRP active router.\n\nFor the other two related answers, you need to recall these facts about HSRP:\n\n\n\tIt defaults to a priority value of 100.\n\tHigher priority wins the election.\n\tThe preemption feature defaults to disabled.\n\tThe per-device preemption setting defines that device\u0026rsquo;s ability to preempt (or not.) \n\n\nFor the two answers that describe what happens after D2 powers up, note that neither layer 3 switch enables preemption. The question describes a classic case with a router joining the group after another router has been elected HSRP active (D1 in this case.) With preemption disabled, D2 does not attempt to take over the active role, even with a higher (better) HSRP priority.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [
+            {
+                "ExhibitId": "8D2D7119-6209-430C-9A0B-380FC9C7724C",
+                "ExhibitTitle": "1",
+                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/8D2D7119-6209-430C-9A0B-380FC9C7724C/200301-11-WO-v2-4-16-04.png"
+            }
+        ],
+        "answerChoices": [
+            {
+                "Text": "During the first month of operation, D1 becomes HSRP active and acts as VIP 172.16.1.9.",
+                "IsCorrect": true
+            },
+            {
+                "Text": "During the first month of operation, D1 rejects becoming HSRP active because no other routers exist in the subnet, so it does not act as VIP 172.16.1.9.",
+                "IsCorrect": false
+            },
+            {
+                "Text": "When D2 powers up, D2 becomes the HSRP active router.",
+                "IsCorrect": false
+            },
+            {
+                "Text": "When D2 powers up, D1 remains the HSRP active router.",
+                "IsCorrect": true
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "D2EE167B-3217-4B78-9D46-4B4D6FBF3F18",
+        "questionText": "An FHRP design scenario requires an active/standby solution that can load balance traffic per VLAN based. Which FHRP solution should be chosen?",
+        "explanation": "There are only two FHRP protocols listed, HSRP and GLBP. HSRP is an active/standby protocol while GLBP is an active/active protocol. In addition, HSRP load balances traffic per VLAN (subnet) while GLBP load balances traffic per host or end client.\n\n\tSTP is used to mitigate switching loops and when utilizing FHRP solutions, STP should be designed at the same time. For example, root bridge and secondary root bridge placements should be on SW1 and SW2 in the question. With that said, STP is not the protocol that can resolve the issue with a default gateway going offline.\n\n\tSVIs are the default gateways for the VLANs in question.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "SVI",
+                "IsCorrect": false
+            },
+            {
+                "Text": "HSRP",
+                "IsCorrect": true
+            },
+            {
+                "Text": "GLBP",
+                "IsCorrect": false
+            },
+            {
+                "Text": "STP",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "4567F5CE-F793-4C9B-9C68-7DAB01B05221",
+        "questionText": "The three routers all join one HSRP group for each of the three subnets in the figure. The virtual IP address the devices in VLAN 10 use is 10.0.0.50. VLAN 10 contains more than ten hosts, with PC1, PC2, and PC3 as examples. How many of the routers will be actively forwarding traffic for the VLAN 10 users?",
+        "explanation": "In HSRP, routers do not share the workload for a specific VLAN. If load balancing is wanted, a preference could be configured for each router to actively forward for a single subnet and provide standby service for the other VLANs. There is only one active forwarder per VLAN per group in HSRP.\n\nBecause the correct answer is one forwarder per VLAN/network, the other choices are not correct.",
+        "difficulty": "1",
+        "comments": "",
+        "exhibits": [
+            {
+                "ExhibitId": "E631A9A8-E61F-4C9A-A28B-C89B0B635593",
+                "ExhibitTitle": "1",
+                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/E631A9A8-E61F-4C9A-A28B-C89B0B635593/200301-GB-v2-3-12-04-6.png"
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "4EB9E69B-BE0D-46BD-99E4-9073F9EBF599",
+        "questionText": "Which answers list a feature of VRRPv3 that is not true about either HSRPv2 or GLBP? (Choose two answers.)",
+        "explanation": "The question stem asks for answers true of VRRPv3 but also not true of HSRPv2 or GLBP. Of the listed answers, the two correct answers are true of VRRPv3 and untrue of the others. Of the incorrect answers:\n\n\u0026bull;\u0026nbsp;\u0026nbsp; \u0026nbsp;Both HSRPv2 and GLBP, but not VRRPv3, use multicast address 224.0.0.102.\n\u0026bull;\u0026nbsp;\u0026nbsp; \u0026nbsp;GLBP, but not others, uses virtual MAC addresses beginning with 0007.b4.\n\u0026bull;\u0026nbsp;\u0026nbsp; \u0026nbsp;Both HSRPv2 and VRRPv3 support active/standby load balancing within one group.\n\u0026bull;\u0026nbsp;\u0026nbsp; \u0026nbsp;VRRPv3 \u0026nbsp;does not use a unique virtual MAC per router, instead sharing one virtual MAC address among all the routers in the group.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003eFormerly\u0026nbsp;200301-WO-v2-2-app-004 from 2023 Exam Updates question batch.\u003c/p\u003e\n",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Uses a unique virtual MAC address per router in the same group",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Defined by RFC",
+                "IsCorrect": true
+            },
+            {
+                "Text": "The VIP may be identical to one of the group\u0026rsquo;s router interface IP addresses",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Supports active/standby load balancing within one group",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Uses multicast address 224.0.0.102",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Uses a virtual MAC address that begins 0007.b4",
+                "IsCorrect": false
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "37F93562-CB4D-48E2-961E-BA9C0301A220",
+        "questionText": "Layer 3 switches D1 and D2 use GLBP with group number 20 and VIP 172.16.1.99. GLBP identifies layer three switch D1 as router 01 and D2 as router 02. All links in the figure work. The PCs use 172.16.1.99 as their default router. Which statement best describes how GLBP achieves load balancing? (Choose two answers.)",
+        "explanation": "GLBP uses active/active load balancing within one GLBP group. To do so, one router or multilayer switch acts as the active virtual gateway (AVG), performing some important asks for the group. However, all routers (or multilayer switches) act as active virtual forwarders (AVFs), actively forwarding packets. (Those facts show the reasons for one correct and one incorrect answer.)\n\nTo allow multiple concurrent AVFs, each AVF uses a unique virtual MAC address. Over time, when different hosts ARP looking for the MAC address associated with the GLBP VIP, the AVG alternates replies, one with the virtual MAC of one of the AVFs, and the next for another AVF. By alternating the ARP responses, a subset of the hosts in the subnet refers to each AVF\u0026rsquo;s virtual MAC. So, a single host always sends packets to one AVF, but collectively the hosts send some packets to one AVF and some to the other.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003eFormerly\u0026nbsp;200301-WO-v2-1-app-006 from the 2023 Exam Updates question batch.\u003c/p\u003e\n",
+        "exhibits": [
+            {
+                "ExhibitId": "2533C874-6F94-4084-B022-1DC588DBCEBF",
+                "ExhibitTitle": "1",
+                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/2533C874-6F94-4084-B022-1DC588DBCEBF/200301-WO-v2-1-app-006.jpg"
+            }
+        ],
+        "answerChoices": [
+            {
+                "Text": "Both multilayer switches act as an AVF to provide active/active load balancing.",
+                "IsCorrect": true
+            },
+            {
+                "Text": "Both multilayer switches act as an AVG to provide active/active load balancing.",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Both multilayer implement the same virtual MAC address",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Each multilayer switch implements a unique virtual MAC address",
+                "IsCorrect": true
+            }
+        ],
+        "cat": "NELA"
+    },
+    {
+        "questionId": "F9D6B2AD-4469-4CF1-9D26-F5C3915633A9",
+        "questionText": "Which answers list a feature of HSRPv2 that is not true about VRRPv3 or GLBP?",
+        "explanation": "The question asks for answers true of HSRPv2 but also not true of VRRPv3 or GLBP. Of the listed answers, the one correct answer is the only one both true of HSRPv2 and untrue of the others. Of the incorrect answers:\n\n\u0026bull;\u0026nbsp;\u0026nbsp; \u0026nbsp;Both HSRPv2 and GLBP are Cisco proprietary, use multicast address 224.0.0.102, and require the VIP to be different than any router\u0026rsquo;s interface address.\n\u0026bull;\u0026nbsp;\u0026nbsp; \u0026nbsp;Both HSRPv2 and VRRPv3 support active/standby load balancing within one group.\n\u0026bull;\u0026nbsp;\u0026nbsp; \u0026nbsp;HSRPv2 does not use a unique virtual MAC per router.",
+        "difficulty": "1",
+        "comments": "\u003cp\u003eFormerly\u0026nbsp;200301-WO-v2-1-app-004 from 2023 Exam Updates question batch.\u003c/p\u003e\n",
+        "exhibits": [],
+        "answerChoices": [
+            {
+                "Text": "Uses a unique virtual MAC address per router in the same group",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Cisco proprietary",
+                "IsCorrect": false
+            },
+            {
+                "Text": "The VIP cannot be the same as any of the routers\u0026rsquo; interface IP addresses in the group",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Supports active/standby load balancing within one group",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Uses multicast address 224.0.0.102 for messages",
+                "IsCorrect": false
+            },
+            {
+                "Text": "Uses a virtual MAC address that begins 0000.0c",
+                "IsCorrect": true
+            }
+        ],
+        "cat": "NELA"
+    }
+
 ]
