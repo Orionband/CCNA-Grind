@@ -126,6 +126,7 @@
         .chart-wrapper, .chart-summary-container {
             position: relative; 
             height: auto;
+            min-height: 200px; /* Prevent collapsing to zero height */
         }
         .chart-summary-container {
             margin-top: 30px; padding: 20px;
@@ -162,10 +163,8 @@
         }
         .clear-data-btn:hover { background-color: var(--danger-bg); color: var(--danger-border); }
 
-        .submit-btn { display: block; width: 220px; margin: 30px auto; }
-        .restart-btn {
-            display: block; width: 220px; 
-            margin: 40px auto 10px;
+        .submit-btn, .restart-btn { 
+            display: block; width: 220px; margin: 30px auto; 
         }
 
         /* Quiz Specific Styling */
@@ -396,14 +395,8 @@
         summaryContainer.className = 'chart-summary-container';
         summaryContainer.innerHTML = '<h3>This Quiz Performance</h3><canvas id="quizSummaryChart"></canvas>';
         resultsContainer.appendChild(summaryContainer);
-        const uniqueCategoriesInQuiz = new Set(quizAttempt.questions.map(q => q.category || 'N/A'));
-        const numCategories = uniqueCategoriesInQuiz.size;
-        const dynamicHeight = Math.max(150, (numCategories * 40) + 80); 
-        summaryContainer.style.height = `${dynamicHeight}px`;
         renderQuizSummaryChart(quizAttempt);
         revealAnswers();
-        
-        // FIXED: Button is now appended to the quiz container
         const restartBtn = document.createElement('button');
         restartBtn.id = 'restartBtn'; restartBtn.className = 'restart-btn'; restartBtn.textContent = 'Take Another Test';
         restartBtn.onclick = () => { mainScreen.classList.remove('hidden'); quizContainer.innerHTML = ''; resultsContainer.innerHTML = ''; updateMaxQuestions(); };
@@ -437,10 +430,6 @@
     function renderCategoryChart() {
         const ctx = document.getElementById('categoryChart')?.getContext('2d');
         if (!ctx) return;
-        const container = ctx.canvas.parentNode;
-        const numCategories = Object.keys(CATEGORY_MAP).length;
-        const requiredHeight = (numCategories * 35) + 80;
-        container.style.height = `${requiredHeight}px`;
         if (chartInstances.category) chartInstances.category.destroy();
         const categoryStats = {};
         for(const code in CATEGORY_MAP) { categoryStats[code] = { correct: 0, total: 0 }; }
@@ -455,7 +444,6 @@
     function renderHistoryChart() {
         const ctx = document.getElementById('historyChart')?.getContext('2d');
         if (!ctx) return;
-        ctx.canvas.parentNode.style.height = '350px';
         if (chartInstances.history) chartInstances.history.destroy();
         const chartData = quizHistory.map(quiz => ({ x: quiz.timestamp, y: (quiz.score / quiz.total) * 100 }));
         const themeOptions = getChartThemeOptions();
