@@ -34,20 +34,23 @@
             --font-mono: "Courier New", Courier, monospace;
         }
 
-        .dark-mode {
-            --primary-color: #60a5fa;
-            --primary-color-hover: #3b82f6;
-            --bg-color: #0f172a;
-            --surface-color: #1e293b;
-            --text-color: #e2e8f0;
-            --text-muted-color: #94a3b8;
-            --border-color: #334155;
-            --success-bg: #143621;
-            --success-border: #22c55e;
-            --danger-bg: #451a1a;
-            --danger-border: #ef4444;
-            --info-bg: #1e3a8a;
-            --info-border: #60a5fa;
+        /* System-based Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #60a5fa;
+                --primary-color-hover: #3b82f6;
+                --bg-color: #0f172a;
+                --surface-color: #1e293b;
+                --text-color: #e2e8f0;
+                --text-muted-color: #94a3b8;
+                --border-color: #334155;
+                --success-bg: #143621;
+                --success-border: #22c55e;
+                --danger-bg: #451a1a;
+                --danger-border: #ef4444;
+                --info-bg: #1e3a8a;
+                --info-border: #60a5fa;
+            }
         }
 
         /* General Styling */
@@ -64,7 +67,7 @@
         }
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1100px; /* Increased width for wide exhibits */
             background: var(--surface-color);
             padding: 20px 40px;
             border-radius: 12px;
@@ -72,32 +75,6 @@
             border: 1px solid var(--border-color);
             position: relative;
         }
-
-        /* Theme Toggle */
-        #theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted-color);
-        }
-        #theme-toggle:hover {
-            background-color: var(--border-color);
-        }
-        #theme-toggle svg {
-            width: 24px;
-            height: 24px;
-        }
-        #theme-toggle .moon-icon { display: none; }
-        .dark-mode #theme-toggle .sun-icon { display: none; }
-        .dark-mode #theme-toggle .moon-icon { display: block; }
 
         /* Header and Options Panel */
         h1, h2, h3 {
@@ -200,6 +177,9 @@
             font-size: 0.9em; margin: 0; background-color: var(--surface-color);
             border-bottom-left-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);
         }
+        .question-exhibit, .question-exhibit-frame {
+            max-width: 100%; height: auto; border-radius: var(--border-radius); margin: 15px 0; border: 1px solid var(--border-color);
+        }
         .answer-choice { margin-bottom: 12px; padding: 12px; border-radius: 6px; display: block; cursor: pointer; transition: background-color 0.2s; position: relative; padding-left: 40px; border: 1px solid transparent; }
         .fb-input { padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1em; margin: 0 5px; width: 200px; background-color: var(--surface-color); color: var(--text-color); }
         .fb-input.correct { border-color: var(--success-border); background-color: var(--success-bg); }
@@ -224,23 +204,7 @@
     </style>
 </head>
 <body>
-    <!-- Theme loader script to prevent FOUC -->
-    <script>
-        (function() {
-            const theme = localStorage.getItem('theme') || 'light';
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark-mode');
-                document.body.classList.add('dark-mode');
-            }
-        })();
-    </script>
-
     <div class="container">
-        <button id="theme-toggle" title="Toggle theme">
-            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-6.364-.386 1.591-1.591M3 12h2.25m.386-6.364 1.591 1.591M12 12a2.25 2.25 0 0 0-2.25 2.25 2.25 2.25 0 0 0 2.25 2.25c.69 0 1.323-.289 1.767-.773.444-.485.733-1.141.733-1.873A2.25 2.25 0 0 0 12 12Z" /></svg>
-            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" /></svg>
-        </button>
-
         <h1>CCNA Practice</h1>
         
         <div id="mainScreen">
@@ -262,7 +226,6 @@
                  <div class="option-group"><label for="categorySelect">Filter by Topic:</label><select id="categorySelect"><option value="ALL">All Topics</option></select></div>
                  <div class="option-group"><label for="numQuestions">Questions:</label><input type="number" id="numQuestions" value="10" min="1"></div>
                  <div class="option-group-checkbox"><label for="randomize">Randomize:</label><input type="checkbox" id="randomize" checked></div>
-                 <div class="option-group-checkbox"><label for="examMode">Exam Simulation:</label><input type="checkbox" id="examMode"></div>
                  <button id="startBtn" disabled>Loading...</button>
             </div>
         </div>
@@ -278,7 +241,6 @@
     const mainScreen = document.getElementById('mainScreen');
     const categorySelect = document.getElementById('categorySelect');
     const modeSelect = document.getElementById('modeSelect');
-    const themeToggle = document.getElementById('theme-toggle');
 
     const CATEGORY_MAP = {
         "NETFD": "Network Fundamentals",
@@ -292,11 +254,8 @@
 
     let allQuestions = [];
     let currentQuizQuestions = [];
-    let currentQuizAttempt = null;
     let quizHistory = [];
     let bookmarkedQuestions = [];
-    let isExamMode = false;
-    let timerInterval;
     let chartInstances = {};
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -311,23 +270,13 @@
         startBtn.addEventListener('click', loadAndDisplayQuiz);
         modeSelect.addEventListener('change', updateMaxQuestions);
         document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
-        themeToggle.addEventListener('click', toggleTheme);
+        
+        // Listen for system theme changes to update charts
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', renderDashboard);
     });
     
-    function toggleTheme() {
-        const isDark = document.body.classList.toggle('dark-mode');
-        document.documentElement.classList.toggle('dark-mode', isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-
-        // Re-render charts with new theme colors
-        renderDashboard();
-        if (quizContainer.classList.contains('hidden') && currentQuizAttempt) {
-            renderQuizSummaryChart(currentQuizAttempt);
-        }
-    }
-
     function getChartThemeOptions() {
-        const isDark = document.body.classList.contains('dark-mode');
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
         const textColor = isDark ? '#e2e8f0' : '#1e293b';
         return {
@@ -354,8 +303,6 @@
         const randomize = document.getElementById('randomize').checked;
         const mode = modeSelect.value;
         const category = categorySelect.value;
-        isExamMode = document.getElementById('examMode').checked;
-        currentQuizAttempt = null; // Reset quiz attempt
         let questionPool = [];
         if (mode === 'mistakes') { const mistakeIds = getMistakeQuestionIds(); questionPool = allQuestions.filter(q => mistakeIds.includes(q.questionId)); } else if (mode === 'flagged') { questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId)); } else { questionPool = allQuestions; }
         if (category !== 'ALL') { questionPool = questionPool.filter(q => q.cat === category); }
@@ -371,33 +318,32 @@
         mainScreen.classList.add('hidden');
         quizContainer.classList.remove('hidden');
         resultsContainer.innerHTML = '';
-        quizContainer.innerHTML = '';
-        let quizHtml = '<h2>Quiz</h2>';
-        if (isExamMode) { quizHtml += `<div id="timerDisplay"></div>`; startTimer(currentQuizQuestions.length * 90); }
+        quizContainer.innerHTML = '<h2>Quiz</h2>'; // Simple header
         currentQuizQuestions.forEach((q, index) => {
-            quizHtml += `<div class="question" id="q-${index}" data-question-id="${q.questionId}">`;
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.id = `q-${index}`;
+            questionDiv.dataset.questionId = q.questionId;
             const isBookmarked = bookmarkedQuestions.includes(q.questionId);
             const bookmarkedClass = isBookmarked ? 'bookmarked' : '';
             let questionTextHtml = `<div class="question-header"><button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this)">🚩</button><div class="question-text">${index + 1}. <span class="question-category">(${(q.cat || 'N/A')})</span> ${q.questionText}</div></div>`;
             if (q.answerType === 'FB') { const inputField = `<input type="text" class="fb-input" id="fb-input-${index}" autocomplete="off">`; questionTextHtml = questionTextHtml.replace(/___/g, inputField); }
-            quizHtml += questionTextHtml;
-            if (q.exhibits && q.exhibits.length > 0) { q.exhibits.forEach(exhibit => { const localPath = exhibit.localPath; if (!localPath) return; const filename = decodeURIComponent(localPath.split('/').pop()); const filenameLower = filename.toLowerCase(); if (filenameLower.endsWith('.txt')) { quizHtml += `<div class="exhibit-container"><strong>Exhibit: ${filename}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`; } else if (filenameLower.endsWith('.html')) { quizHtml += `<iframe src="${localPath}" class="question-exhibit-frame" title="Exhibit: ${filename}"></iframe>`; } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) { quizHtml += `<img src="${localPath}" alt="Exhibit: ${filename}" class="question-exhibit">`; } }); }
-            if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio'; q.answerChoices.forEach((choice, choiceIndex) => { quizHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choiceIndex}"><span class="checkmark"></span></label>`; }); }
-            quizHtml += `</div>`;
+            let exhibitsHtml = '';
+            if (q.exhibits && q.exhibits.length > 0) { q.exhibits.forEach(exhibit => { const localPath = exhibit.localPath; if (!localPath) return; const filename = decodeURIComponent(localPath.split('/').pop()); const filenameLower = filename.toLowerCase(); if (filenameLower.endsWith('.txt')) { exhibitsHtml += `<div class="exhibit-container"><strong>Exhibit: ${filename}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`; } else if (filenameLower.endsWith('.html')) { exhibitsHtml += `<iframe src="${localPath}" class="question-exhibit-frame" title="Exhibit: ${filename}"></iframe>`; } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) { exhibitsHtml += `<img src="${localPath}" alt="Exhibit: ${filename}" class="question-exhibit">`; } }); }
+            let answersHtml = '';
+            if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio'; q.answerChoices.forEach((choice, choiceIndex) => { answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choiceIndex}"><span class="checkmark"></span></label>`; }); }
+            questionDiv.innerHTML = questionTextHtml + exhibitsHtml + answersHtml;
+            quizContainer.appendChild(questionDiv);
         });
-        quizHtml += '<button id="submitBtn" class="submit-btn">Submit Test</button>';
-        quizContainer.innerHTML = quizHtml;
-        document.getElementById('submitBtn').addEventListener('click', showResults);
+        const submitButton = document.createElement('button');
+        submitButton.id = 'submitBtn'; submitButton.className = 'submit-btn'; submitButton.textContent = 'Submit Test';
+        submitButton.addEventListener('click', showResults);
+        quizContainer.appendChild(submitButton);
     }
     
-    function startTimer(duration) { let timer = duration, minutes, seconds; const display = document.getElementById('timerDisplay'); timerInterval = setInterval(() => { minutes = parseInt(timer / 60, 10); seconds = parseInt(timer % 60, 10); minutes = minutes < 10 ? "0" + minutes : minutes; seconds = seconds < 10 ? "0" + seconds : seconds; display.textContent = minutes + ":" + seconds; if (--timer < 0) { clearInterval(timerInterval); alert("Time's up!"); showResults(); } }, 1000); }
-
     function showResults() {
-        if (timerInterval) clearInterval(timerInterval);
-        
         let score = 0;
         const quizAttempt = { timestamp: Date.now(), score: 0, total: currentQuizQuestions.length, questions: [] };
-        
         currentQuizQuestions.forEach((q, index) => {
             let isQuestionCorrect = false;
             if (q.answerType === 'FB') { const userInput = document.querySelector(`#fb-input-${index}`); if (userInput) { const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks && q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); if (userValue && correctAnswers.includes(userValue)) isQuestionCorrect = true; }
@@ -405,45 +351,36 @@
             if (isQuestionCorrect) score++;
             quizAttempt.questions.push({ questionId: q.questionId, isCorrect: isQuestionCorrect, category: q.cat });
         });
-        
-        currentQuizAttempt = quizAttempt; // Store current attempt for theme toggling
         quizHistory.push(quizAttempt);
         saveDataToStorage();
         renderDashboard();
-        
         const answerInputs = quizContainer.querySelectorAll('.answer-choice input, .fb-input');
         answerInputs.forEach(input => { input.disabled = true; const label = input.closest('label.answer-choice'); if (label) { label.style.cursor = 'default'; } });
         document.getElementById('submitBtn').remove();
-        
         const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
         resultsContainer.innerHTML = '';
         const scoreHeader = document.createElement('h2');
         scoreHeader.innerHTML = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%)`;
         resultsContainer.appendChild(scoreHeader);
-        
         const summaryContainer = document.createElement('div');
         summaryContainer.className = 'chart-summary-container';
         summaryContainer.innerHTML = '<h3>This Quiz Performance</h3><canvas id="quizSummaryChart"></canvas>';
         resultsContainer.appendChild(summaryContainer);
         renderQuizSummaryChart(quizAttempt);
-        
-        if (isExamMode) { const reviewBtn = document.createElement('button'); reviewBtn.id = 'reviewBtn'; reviewBtn.className = 'review-btn'; reviewBtn.textContent = 'Review Answers'; reviewBtn.onclick = () => { revealAnswers(); reviewBtn.remove(); }; resultsContainer.appendChild(reviewBtn);
-        } else { revealAnswers(); }
-        
+        revealAnswers();
         const restartBtn = document.createElement('button');
         restartBtn.id = 'restartBtn'; restartBtn.className = 'restart-btn'; restartBtn.textContent = 'Take Another Test';
-        restartBtn.onclick = () => { mainScreen.classList.remove('hidden'); quizContainer.classList.add('hidden'); quizContainer.innerHTML = ''; resultsContainer.innerHTML = ''; currentQuizAttempt = null; updateMaxQuestions(); };
+        restartBtn.onclick = () => { mainScreen.classList.remove('hidden'); quizContainer.classList.add('hidden'); quizContainer.innerHTML = ''; resultsContainer.innerHTML = ''; updateMaxQuestions(); };
         resultsContainer.appendChild(restartBtn);
     }
     
     function revealAnswers() {
         currentQuizQuestions.forEach((q, index) => {
             const questionElement = document.getElementById(`q-${index}`);
+            if (!questionElement) return;
             if (q.answerType === 'FB') { const userInput = questionElement.querySelector(`#fb-input-${index}`); const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); userInput.classList.add(correctAnswers.includes(userValue) ? 'correct' : 'incorrect'); const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0]}<br><br>${q.explanation}`; questionElement.insertAdjacentHTML('beforeend', `<div class="result-explanation">${explanationText}</div>`);
             } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const labels = questionElement.querySelectorAll('.answer-choice'); labels.forEach((label, choiceIndex) => { if (q.answerChoices[choiceIndex].IsCorrect) { label.classList.add('correct'); } else if (userAnswers.includes(choiceIndex)) { label.classList.add('incorrect'); } }); const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`; questionElement.insertAdjacentHTML('beforeend', explanationHtml); }
         });
-        const reviewBtn = document.getElementById('reviewBtn');
-        if (reviewBtn) reviewBtn.remove();
     }
     
     function renderDashboard() { renderCategoryChart(); renderHistoryChart(); }
@@ -454,7 +391,10 @@
         if (chartInstances.summary) chartInstances.summary.destroy();
         const categoryStats = {};
         quizAttempt.questions.forEach(qResult => { const category = qResult.category || 'N/A'; if (!categoryStats[category]) { categoryStats[category] = { correct: 0, total: 0 }; } categoryStats[category].total++; if (qResult.isCorrect) { categoryStats[category].correct++; } });
-        const includedCategories = Object.keys(categoryStats); const labels = includedCategories.map(cat => CATEGORY_MAP[cat] || cat); const data = includedCategories.map(cat => { const stats = categoryStats[cat]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
+        const includedCategories = Object.keys(categoryStats); 
+        // FIX: Provide a fallback if a category name is not found in the map
+        const labels = includedCategories.map(cat => CATEGORY_MAP[cat] || cat); 
+        const data = includedCategories.map(cat => { const stats = categoryStats[cat]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
         const themeOptions = getChartThemeOptions();
         chartInstances.summary = new Chart(ctx, { type: 'bar', data: { labels: labels, datasets: [{ label: '% Correct', data: data, backgroundColor: 'rgba(25, 135, 84, 0.6)', borderColor: 'rgba(25, 135, 84, 1)', borderWidth: 1 }] }, options: { indexAxis: 'y', scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, plugins: { legend: { display: false }, title: { display: false }, datalabels: { anchor: 'end', align: 'end', color: themeOptions.color, font: { weight: 'bold' }, formatter: (v) => v.toFixed(0) + '%' } }, responsive: true, maintainAspectRatio: false } });
     }
@@ -466,7 +406,9 @@
         const categoryStats = {};
         for(const code in CATEGORY_MAP) { categoryStats[code] = { correct: 0, total: 0 }; }
         quizHistory.forEach(quiz => { quiz.questions.forEach(qResult => { const questionData = allQuestions.find(q => q.questionId === qResult.questionId); if (questionData && questionData.cat && categoryStats[questionData.cat]) { categoryStats[questionData.cat].total++; if(qResult.isCorrect) { categoryStats[questionData.cat].correct++; } } }); });
-        const sortedCategoryCodes = Object.keys(CATEGORY_MAP).sort((a,b) => CATEGORY_MAP[a].localeCompare(CATEGORY_MAP[b])); const labels = sortedCategoryCodes.map(code => CATEGORY_MAP[code]); const data = sortedCategoryCodes.map(code => { const stats = categoryStats[code]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
+        const sortedCategoryCodes = Object.keys(CATEGORY_MAP).sort((a,b) => CATEGORY_MAP[a].localeCompare(CATEGORY_MAP[b])); 
+        const labels = sortedCategoryCodes.map(code => CATEGORY_MAP[code]); 
+        const data = sortedCategoryCodes.map(code => { const stats = categoryStats[code]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
         const themeOptions = getChartThemeOptions();
         chartInstances.category = new Chart(ctx, { type: 'bar', data: { labels: labels, datasets: [{ label: '% Correct by Topic', data: data, backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 1 }] }, options: { indexAxis: 'y', scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, plugins: { legend: { display: false }, title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color }, datalabels: { anchor: 'end', align: 'end', color: themeOptions.color, formatter: (v) => v > 0 ? v.toFixed(0) + '%' : '', font: { weight: 'bold' } } }, responsive: true, maintainAspectRatio: false } });
     }
