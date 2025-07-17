@@ -482,7 +482,6 @@
     }
 
     function updateMaxQuestions() {
-        // Unchanged
         const mode = modeSelect.value;
         const category = categorySelect.value;
         let pool = [];
@@ -516,7 +515,6 @@
     }
 
     function normalizeQuestions(data) {
-        // Unchanged
         return data.map(q => {
             if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) {
                 q.answerChoices = q.rawAnswer.MultipleChoice.map(choice => ({
@@ -532,7 +530,6 @@
     }
 
     function loadQuestions() {
-        // Unchanged
         startBtn.disabled = true;
         startBtn.textContent = 'Loading Deck...';
         quizContainer.innerHTML = '';
@@ -554,7 +551,6 @@
     }
 
     async function loadAndDisplayQuiz() {
-        // Unchanged
         const numQuestionsInput = document.getElementById('numQuestions');
         const randomize = document.getElementById('randomize').checked;
         const mode = modeSelect.value;
@@ -614,7 +610,6 @@
     }
 
     function displayQuiz() {
-        // Unchanged
         mainScreen.classList.add('hidden');
         quizContainer.classList.remove('hidden');
         resultsContainer.innerHTML = '';
@@ -682,7 +677,6 @@
     }
     
     function toggleBookmark(questionId, buttonElement) {
-        // Unchanged
         const index = bookmarkedQuestions.indexOf(questionId);
         if (index > -1) {
             bookmarkedQuestions.splice(index, 1);
@@ -695,7 +689,6 @@
     }
     
     function startTimer(duration) {
-        // Unchanged
         let timer = duration, minutes, seconds;
         const display = document.getElementById('timerDisplay');
         
@@ -716,7 +709,7 @@
         }, 1000);
     }
 
-    // --- REWRITTEN showResults function ---
+    // --- FIXED showResults function ---
     function showResults() {
         if (timerInterval) clearInterval(timerInterval);
         
@@ -761,22 +754,18 @@
         
         const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
         
-        // 1. Clear the container completely.
         resultsContainer.innerHTML = '';
         
-        // 2. Create and append the score header.
         const scoreHeader = document.createElement('h2');
         scoreHeader.innerHTML = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%)`;
         resultsContainer.appendChild(scoreHeader);
         
-        // 3. Create the structure for the summary chart and then render the chart into it.
         const summaryContainer = document.createElement('div');
         summaryContainer.className = 'chart-summary-container';
         summaryContainer.innerHTML = '<h3>This Quiz Performance</h3><canvas id="quizSummaryChart"></canvas>';
         resultsContainer.appendChild(summaryContainer);
         renderQuizSummaryChart(quizAttempt);
         
-        // 4. Handle answer reveals and buttons using safe, non-destructive appendChild.
         if (isExamMode) {
             const reviewBtn = document.createElement('button');
             reviewBtn.id = 'reviewBtn';
@@ -791,7 +780,6 @@
             revealAnswers();
         }
         
-        // 5. Create and append the restart button.
         const restartBtn = document.createElement('button');
         restartBtn.id = 'restartBtn';
         restartBtn.className = 'restart-btn';
@@ -800,14 +788,13 @@
              mainScreen.classList.remove('hidden');
              quizContainer.classList.add('hidden');
              quizContainer.innerHTML = '';
-             resultsContainer.innerHTML = ''; // This will wipe the results including the summary chart.
+             resultsContainer.innerHTML = '';
              updateMaxQuestions();
         };
         resultsContainer.appendChild(restartBtn);
     }
     
     function revealAnswers() {
-        // Unchanged
         currentQuizQuestions.forEach((q, index) => {
             const questionElement = document.getElementById(`q-${index}`);
             
@@ -839,15 +826,14 @@
     }
     
     function renderDashboard() {
-        // Unchanged
         renderCategoryChart();
         renderHistoryChart();
     }
     
-    // REWRITTEN: This function now ONLY draws the chart. It assumes the canvas exists.
+    // --- FIXED renderQuizSummaryChart function ---
     function renderQuizSummaryChart(quizAttempt) {
         const ctx = document.getElementById('quizSummaryChart')?.getContext('2d');
-        if (!ctx) return; // Exit if the canvas isn't found
+        if (!ctx) return;
         
         if (chartInstances.summary) {
             chartInstances.summary.destroy();
@@ -915,6 +901,7 @@
         });
     }
     
+    // --- FIXED renderCategoryChart function ---
     function renderCategoryChart() {
         const ctx = document.getElementById('categoryChart').getContext('2d');
         if (chartInstances.category) chartInstances.category.destroy();
@@ -980,11 +967,12 @@
                     }
                 },
                 responsive: true,
-                maintainAspectRatio: false // Changed to false for better layout
+                maintainAspectRatio: false
             }
         });
     }
 
+    // --- FIXED renderHistoryChart function ---
     function renderHistoryChart() {
         const ctx = document.getElementById('historyChart').getContext('2d');
         if (chartInstances.history) chartInstances.history.destroy();
