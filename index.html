@@ -67,7 +67,7 @@
         }
         .container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1100px; /* Increased width for wide exhibits */
             background: var(--surface-color);
             padding: 20px 40px;
             border-radius: 12px;
@@ -87,6 +87,7 @@
              border-bottom: 1px solid var(--border-color);
              color: var(--text-color);
         }
+        /* FIXED: Options panel layout */
         .options-panel {
             padding: 25px;
             background-color: var(--bg-color);
@@ -99,19 +100,36 @@
             align-items: end;
         }
         .option-group { display: flex; flex-direction: column; }
-        .option-group label { font-weight: 600; margin-bottom: 8px; font-size: 0.9em; color: var(--text-muted-color); }
-        .option-group input[type="number"], .option-group select { padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--surface-color); color: var(--text-color); font-size: 1em; width: 100%; }
-        .option-group-checkbox { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; }
+        .option-group label {
+            font-weight: 600; margin-bottom: 8px; font-size: 0.9em;
+            color: var(--text-muted-color);
+        }
+        .option-group input[type="number"], .option-group select {
+            padding: 10px; border-radius: 6px; border: 1px solid var(--border-color);
+            background-color: var(--surface-color); color: var(--text-color);
+            font-size: 1em; width: 100%; box-sizing: border-box;
+        }
+        .option-group-checkbox {
+            display: flex; align-items: center; gap: 10px;
+            padding-bottom: 10px; /* Aligns with button */
+        }
         .option-group-checkbox label { margin-bottom: 0; }
 
         /* Dashboard & Charts */
         #dashboardContainer, #categoryDescriptions {
             margin-bottom: 20px; padding: 20px; border: 1px solid var(--border-color);
-            border-radius: var(--border-radius); background-color: var(--bg-color);
+            border-radius: var(--border-radius);
+            background-color: var(--bg-color);
         }
         .chart-container { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        .chart-wrapper { position: relative; } /* Added for dynamic height */
-        .chart-summary-container { margin-top: 30px; padding: 20px; border: 1px solid var(--border-color); border-radius: var(--border-radius); }
+        .chart-wrapper, .chart-summary-container {
+            position: relative; /* Essential for Chart.js responsiveness */
+            height: auto; /* Allow dynamic height calculation */
+        }
+        .chart-summary-container {
+            margin-top: 30px; padding: 20px;
+            border: 1px solid var(--border-color); border-radius: var(--border-radius);
+        }
         
         /* Category Descriptions */
         #categoryDescriptions summary { font-weight: 600; cursor: pointer; color: var(--primary-color); }
@@ -120,6 +138,7 @@
         #categoryList li strong { display: inline-block; width: 65px; font-family: var(--font-mono); color: var(--text-muted-color); }
         @media (max-width: 600px) { #categoryList { column-count: 1; } }
 
+
         /* Buttons */
         button {
             background-color: var(--primary-color); color: white; border: none;
@@ -127,15 +146,23 @@
             font-size: 16px; font-weight: 600;
             transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
-        button:hover { background-color: var(--primary-color-hover); transform: translateY(-2px); box-shadow: var(--shadow); }
-        button:disabled { background-color: var(--text-muted-color); cursor: not-allowed; transform: none; box-shadow: none; }
+        button:hover {
+            background-color: var(--primary-color-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        button:disabled {
+            background-color: var(--text-muted-color); cursor: not-allowed;
+            transform: none; box-shadow: none;
+        }
         .clear-data-btn {
             background-color: transparent; border: 1px solid var(--danger-border);
             color: var(--danger-border); font-size: 12px; padding: 5px 10px;
             margin-top: 15px; font-weight: 500;
         }
         .clear-data-btn:hover { background-color: var(--danger-bg); color: var(--danger-border); }
-        .submit-btn, .restart-btn { display: block; width: 220px; margin: 30px auto; }
+
+        .submit-btn, .restart-btn, .review-btn { display: block; width: 220px; margin: 30px auto; }
 
         /* Quiz Specific Styling */
         .question { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid var(--border-color); }
@@ -144,10 +171,20 @@
         .question-category { color: var(--text-muted-color); font-weight: 500; font-size: 0.9em; margin-right: 8px; }
         .bookmark-btn { background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; line-height: 1; opacity: 0.5; transition: opacity 0.2s, transform 0.2s; }
         .bookmark-btn.bookmarked { opacity: 1; transform: scale(1.2); }
-        .exhibit-container { border: 1px solid var(--border-color); border-radius: var(--border-radius); background-color: var(--bg-color); margin: 15px 0; }
-        .exhibit-container strong { display: block; padding: 8px 12px; background-color: var(--border-color); border-bottom: 1px solid var(--border-color); border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); font-size: 0.9em; color: var(--text-muted-color); }
-        .question-exhibit-text { padding: 15px; white-space: pre-wrap; word-wrap: break-word; font-family: var(--font-mono); font-size: 0.9em; margin: 0; background-color: var(--surface-color); border-bottom-left-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius); }
-        .question-exhibit, .question-exhibit-frame { max-width: 100%; height: auto; border-radius: var(--border-radius); margin: 15px 0; border: 1px solid var(--border-color); }
+        .exhibit-container { border: 1px solid var(--border-color); border-radius: var(--border-radius); background-color: var(--bg-color); }
+        .exhibit-container strong {
+            display: block; padding: 8px 12px; background-color: var(--border-color);
+            border-bottom: 1px solid var(--border-color); border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius); font-size: 0.9em; color: var(--text-muted-color);
+        }
+        .question-exhibit-text {
+            padding: 15px; white-space: pre-wrap; word-wrap: break-word; font-family: var(--font-mono);
+            font-size: 0.9em; margin: 0; background-color: var(--surface-color);
+            border-bottom-left-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);
+        }
+        .question-exhibit, .question-exhibit-frame {
+            max-width: 100%; height: auto; border-radius: var(--border-radius); margin: 15px 0; border: 1px solid var(--border-color);
+        }
         .answer-choice { margin-bottom: 12px; padding: 12px; border-radius: 6px; display: block; cursor: pointer; transition: background-color 0.2s; position: relative; padding-left: 40px; border: 1px solid transparent; }
         .fb-input { padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1em; margin: 0 5px; width: 200px; background-color: var(--surface-color); color: var(--text-color); }
         .fb-input.correct { border-color: var(--success-border); background-color: var(--success-bg); }
@@ -211,8 +248,12 @@
     const modeSelect = document.getElementById('modeSelect');
 
     const CATEGORY_MAP = {
-        "NETFD": "Network Fundamentals", "NETSEC": "Network Security & Access Control", "IPNS": "IP Networking & Services",
-        "ROSW": "Routing & Switching", "OPTR": "Operations & Troubleshooting", "WWCN": "Wireless & WAN Connectivity",
+        "NETFD": "Network Fundamentals",
+        "NETSEC": "Network Security & Access Control",
+        "IPNS": "IP Networking & Services",
+        "ROSW": "Routing & Switching",
+        "OPTR": "Operations & Troubleshooting",
+        "WWCN": "Wireless & WAN Connectivity",
         "NAPR": "Network Automation and Programmability"
     };
 
@@ -221,9 +262,32 @@
     let quizHistory = [];
     let bookmarkedQuestions = [];
     let chartInstances = {};
-    let currentQuizAttempt = null; // Used to redraw summary chart on theme change
 
-    // --- CHART FUNCTIONS (Robust and Themed) ---
+    document.addEventListener('DOMContentLoaded', () => {
+        Chart.register(ChartDataLabels);
+
+        loadDataFromStorage();
+        populateCategoryFilter();
+        populateCategoryDescriptions();
+        renderDashboard(); 
+        loadQuestions(); 
+
+        startBtn.addEventListener('click', loadAndDisplayQuiz);
+        modeSelect.addEventListener('change', updateMaxQuestions);
+        document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            renderDashboard();
+            const summaryCtx = document.getElementById('quizSummaryChart')?.getContext('2d');
+            if (summaryCtx) {
+                const latestAttempt = quizHistory[quizHistory.length - 1];
+                if (latestAttempt) {
+                    renderQuizSummaryChart(latestAttempt);
+                }
+            }
+        });
+    });
+    
     function getChartThemeOptions() {
         const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
@@ -234,164 +298,32 @@
             ticks: { color: textColor }
         };
     }
-
-    function renderQuizSummaryChart(quizAttempt) {
-        if (!quizAttempt) return;
-        const ctx = document.getElementById('quizSummaryChart')?.getContext('2d');
-        if (!ctx) return; 
-        if (chartInstances.summary) chartInstances.summary.destroy();
-        
-        const categoryStats = {};
-        quizAttempt.questions.forEach(qResult => {
-            const category = qResult.category || 'N/A';
-            if (!categoryStats[category]) categoryStats[category] = { correct: 0, total: 0 };
-            categoryStats[category].total++;
-            if (qResult.isCorrect) categoryStats[category].correct++;
-        });
-
-        const includedCategories = Object.keys(categoryStats); 
-        const labels = includedCategories.map(cat => CATEGORY_MAP[cat] || cat); 
-        const data = includedCategories.map(cat => { const stats = categoryStats[cat]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
-        const themeOptions = getChartThemeOptions();
-
-        ctx.canvas.parentElement.style.height = `${Math.max(150, (labels.length * 40) + 80)}px`;
-
-        chartInstances.summary = new Chart(ctx, { type: 'bar', data: { labels, datasets: [{ data, backgroundColor: 'rgba(34, 197, 94, 0.7)' }] },
-            options: {
-                indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-                scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } },
-                plugins: { legend: { display: false }, title: { display: false }, datalabels: { anchor: 'end', align: 'end', color: themeOptions.color, font: { weight: 'bold' }, formatter: (v) => v.toFixed(0) + '%' } }
-            }
-        });
-    }
     
-    function renderCategoryChart() {
-        const ctx = document.getElementById('categoryChart')?.getContext('2d');
-        if (!ctx) return;
-        if (chartInstances.category) chartInstances.category.destroy();
-
-        const categoryStats = Object.fromEntries(Object.keys(CATEGORY_MAP).map(code => [code, { correct: 0, total: 0 }]));
-        quizHistory.forEach(quiz => {
-            quiz.questions.forEach(qResult => {
-                if (qResult.category && categoryStats[qResult.category]) {
-                    categoryStats[qResult.category].total++;
-                    if (qResult.isCorrect) categoryStats[qResult.category].correct++;
-                }
-            });
-        });
-
-        const sortedCategoryCodes = Object.keys(CATEGORY_MAP).sort((a,b) => CATEGORY_MAP[a].localeCompare(CATEGORY_MAP[b])); 
-        const labels = sortedCategoryCodes.map(code => CATEGORY_MAP[code]); 
-        const data = sortedCategoryCodes.map(code => { const stats = categoryStats[code]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
-        const themeOptions = getChartThemeOptions();
-
-        ctx.canvas.parentElement.style.height = `${(labels.length * 35) + 80}px`;
-
-        chartInstances.category = new Chart(ctx, { type: 'bar', data: { labels, datasets: [{ data, backgroundColor: 'rgba(59, 130, 246, 0.7)' }] },
-            options: {
-                indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-                scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } },
-                plugins: { legend: { display: false }, title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color }, datalabels: { anchor: 'end', align: 'end', color: themeOptions.color, formatter: (v) => v > 0 ? v.toFixed(0) + '%' : '', font: { weight: 'bold' } } }
-            }
-        });
-    }
-
-    function renderHistoryChart() {
-        const ctx = document.getElementById('historyChart')?.getContext('2d');
-        if (!ctx) return;
-        if (chartInstances.history) chartInstances.history.destroy();
-        const chartData = quizHistory.map(quiz => ({ x: quiz.timestamp, y: (quiz.score / quiz.total) * 100 }));
-        const themeOptions = getChartThemeOptions();
-
-        ctx.canvas.parentElement.style.height = '350px';
-
-        chartInstances.history = new Chart(ctx, { type: 'line', data: { datasets: [{ label: 'Score %', data: chartData, borderColor: 'rgb(34, 197, 94)', tension: 0.1 }] },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                scales: { x: { type: 'time', time: { unit: 'day', tooltipFormat: 'PP' }, title: { display: true, text: 'Date', color: themeOptions.color }, ...themeOptions }, y: { beginAtZero: true, max: 100, title: { display: true, text: 'Score %', color: themeOptions.color }, ...themeOptions } },
-                plugins: { legend: { display: false }, title: { display: true, text: 'Score Over Time', color: themeOptions.color }, datalabels: { display: false } }
-            }
-        });
-    }
-    
-    function renderDashboard() { renderCategoryChart(); renderHistoryChart(); }
-
-    // --- DATA AND UI HELPER FUNCTIONS (Original Stable Logic) ---
+    // All data handling functions remain the same
     function loadDataFromStorage() { quizHistory = JSON.parse(localStorage.getItem('quizHistory')) || []; bookmarkedQuestions = JSON.parse(localStorage.getItem('bookmarkedQuestions')) || []; }
     function saveDataToStorage() { localStorage.setItem('quizHistory', JSON.stringify(quizHistory)); localStorage.setItem('bookmarkedQuestions', JSON.stringify(bookmarkedQuestions)); }
-    function clearAllData() { if (confirm("Are you sure? This will delete all your quiz history and bookmarks.")) { quizHistory = []; bookmarkedQuestions = []; saveDataToStorage(); renderDashboard(); updateMaxQuestions(); alert("All study data has been cleared."); } }
-    function populateCategoryDescriptions() { const list = document.getElementById('categoryList'); if (!list) return; list.innerHTML = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1])).map(([code, desc]) => `<li><strong>${code}</strong> - ${desc}</li>`).join(''); }
-    function populateCategoryFilter() { Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1])).forEach(([code, desc]) => categorySelect.appendChild(new Option(desc, code))); }
-    function getMistakeQuestionIds() { return Array.from(new Set(quizHistory.flatMap(q => q.questions).filter(q => !q.isCorrect).map(q => q.questionId))); }
-    function getLocalExhibitPath(fullUrl) { if (!fullUrl) return ''; try { let filename = fullUrl.split('/').pop(); return `./images/${filename.replaceAll(':', '_')}`; } catch (e) { return ''; } }
-    function updateMaxQuestions() {
-        const mode = modeSelect.value;
-        const category = categorySelect.value;
-        let pool = [];
-        if (mode === 'standard') { pool = allQuestions; } 
-        else if (mode === 'mistakes') { const ids = getMistakeQuestionIds(); pool = allQuestions.filter(q => ids.includes(q.questionId)); } 
-        else if (mode === 'flagged') { pool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId)); }
-        if (category !== 'ALL') { pool = pool.filter(q => q.cat === category); }
-        
-        const numInput = document.getElementById('numQuestions');
-        numInput.max = pool.length;
-        if (pool.length > 0) {
-           numInput.value = Math.min(parseInt(numInput.value) || 10, pool.length);
-           startBtn.disabled = false;
-           startBtn.textContent = 'Start Test';
-        } else {
-           numInput.value = 0;
-           startBtn.disabled = true;
-           startBtn.textContent = 'No Questions in Pool';
-        }
-    }
-    function normalizeQuestions(data) { return data.map(q => { if (!q.answerType && q.answerChoices) { const correctCount = q.answerChoices.filter(c => c.IsCorrect).length; q.answerType = correctCount > 1 ? 'MS' : 'MC'; } return q; }); }
-    
-    // --- CORE APPLICATION FLOW (Original Stable Logic) ---
-    function loadQuestions() {
-        startBtn.disabled = true;
-        startBtn.textContent = 'Loading Deck...';
-        return fetch('questions.json')
-            .then(response => { if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); return response.json(); })
-            .then(data => { allQuestions = normalizeQuestions(data); })
-            .catch(error => {
-                console.error(`Error fetching questions.json:`, error);
-                mainScreen.innerHTML = `<p style="color: red; text-align: center;">CRITICAL ERROR: Could not load questions.json. Ensure it's in the same folder.</p>`;
-                startBtn.textContent = 'Load Failed';
-                throw error; // Propagate error to stop initialization
-            });
-    }
+    function clearAllData() { if (confirm("Are you sure?")) { quizHistory = []; bookmarkedQuestions = []; saveDataToStorage(); renderDashboard(); updateMaxQuestions(); alert("All study data has been cleared."); } }
+    function populateCategoryDescriptions() { const listElement = document.getElementById('categoryList'); if (!listElement) return; listElement.innerHTML = ''; const sortedCategories = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1])); for (const [code, description] of sortedCategories) { const listItem = document.createElement('li'); listItem.innerHTML = `<strong>${code}</strong> - ${description}`; listElement.appendChild(listItem); } }
+    function populateCategoryFilter() { const sortedCategories = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1])); for (const [code, description] of sortedCategories) { const option = document.createElement('option'); option.value = code; option.textContent = description; categorySelect.appendChild(option); } }
+    function getMistakeQuestionIds() { const mistakeIds = new Set(); quizHistory.forEach(quiz => { quiz.questions.forEach(q => { if (!q.isCorrect) { mistakeIds.add(q.questionId); } }); }); return Array.from(mistakeIds); }
+    function getLocalExhibitPath(fullUrl) { if (!fullUrl) return ''; try { const url = new URL(fullUrl); let rawPath = fullUrl.substring(url.origin.length); rawPath = rawPath.replaceAll(':', '_'); return `./images${rawPath}`; } catch (e) { console.error(`Could not parse URL: "${fullUrl}". Using simple fallback.`, e); let filename = fullUrl.split('/').pop(); filename = filename.replaceAll(':', '_'); return `./images/${filename}`; } }
+    function updateMaxQuestions() { const mode = modeSelect.value; const category = categorySelect.value; let pool = []; if (mode === 'standard') { pool = (category === 'ALL') ? allQuestions : allQuestions.filter(q => q.cat === category); } else if (mode === 'mistakes') { const mistakeIds = getMistakeQuestionIds(); pool = allQuestions.filter(q => mistakeIds.includes(q.questionId)); if (category !== 'ALL') { pool = pool.filter(q => q.cat === category); } } else if (mode === 'flagged') { pool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId)); if (category !== 'ALL') { pool = pool.filter(q => q.cat === category); } } const numInput = document.getElementById('numQuestions'); numInput.max = pool.length; if (pool.length > 0) { numInput.value = Math.min(numInput.value, pool.length); startBtn.disabled = false; startBtn.textContent = 'Start Test'; } else { numInput.value = 0; startBtn.disabled = true; startBtn.textContent = 'No Questions in Pool'; } }
+    function normalizeQuestions(data) { return data.map(q => { if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) { q.answerChoices = q.rawAnswer.MultipleChoice.map(choice => ({ Text: choice.Text.replace(/ltpgt-open|ltpgt-close/g, '').trim(), IsCorrect: choice.IsCorrect })); } else if (!q.answerType && q.answerChoices) { const correctCount = q.answerChoices.filter(c => c.IsCorrect).length; q.answerType = correctCount > 1 ? 'MS' : 'MC'; } return q; }); }
+    function loadQuestions() { startBtn.disabled = true; startBtn.textContent = 'Loading Deck...'; quizContainer.innerHTML = ''; fetch('questions.json') .then(response => { if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); return response.json(); }) .then(data => { allQuestions = normalizeQuestions(data); updateMaxQuestions(); }) .catch(error => { console.error(`Error fetching questions.json:`, error); mainScreen.innerHTML = `<p style="color: red; text-align: center;">CRITICAL ERROR: Could not load questions.json.</p>`; startBtn.textContent = 'Load Failed'; }); }
     
     async function loadAndDisplayQuiz() {
         const numQuestionsInput = document.getElementById('numQuestions');
         const randomize = document.getElementById('randomize').checked;
-        let questionPool = [];
-        // Same logic as updateMaxQuestions to select the pool
         const mode = modeSelect.value;
         const category = categorySelect.value;
-        if (mode === 'standard') { questionPool = allQuestions; } 
-        else if (mode === 'mistakes') { const ids = getMistakeQuestionIds(); questionPool = allQuestions.filter(q => ids.includes(q.questionId)); } 
-        else if (mode === 'flagged') { questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId)); }
+        let questionPool = [];
+        if (mode === 'mistakes') { const mistakeIds = getMistakeQuestionIds(); questionPool = allQuestions.filter(q => mistakeIds.includes(q.questionId)); } else if (mode === 'flagged') { questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId)); } else { questionPool = allQuestions; }
         if (category !== 'ALL') { questionPool = questionPool.filter(q => q.cat === category); }
-
         if (questionPool.length === 0) { alert("There are no questions available for your selected criteria."); return; }
         const numQuestions = Math.min(parseInt(numQuestionsInput.value), questionPool.length);
-        currentQuizQuestions = randomize ? [...questionPool].sort(() => 0.5 - Math.random()).slice(0, numQuestions) : questionPool.slice(0, numQuestions);
-        
-        // This is the original, working exhibit loading logic
-        const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => {
-            if (!exhibit.ExhibitFileName) return null;
-            exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName);
-            if (exhibit.localPath && exhibit.localPath.toLowerCase().endsWith('.txt')) {
-                return fetch(exhibit.localPath)
-                    .then(response => response.ok ? response.text() : `Error loading exhibit.`)
-                    .then(text => { exhibit.textContent = text; })
-                    .catch(error => { exhibit.textContent = `Error: ${error.message}`; });
-            }
-            return null;
-        }).filter(Boolean));
+        if (randomize) { currentQuizQuestions = [...questionPool].sort(() => Math.random() - 0.5).slice(0, numQuestions); } else { currentQuizQuestions = questionPool.slice(0, numQuestions); }
+        const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => { if (!exhibit.ExhibitFileName) return null; exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName); if (exhibit.localPath.toLowerCase().endsWith('.txt')) { return fetch(exhibit.localPath) .then(response => { if (!response.ok) throw new Error(`Failed to fetch ${exhibit.localPath}`); return response.text(); }) .then(text => { exhibit.textContent = text; }) .catch(error => { console.error('Error fetching exhibit:', error); exhibit.textContent = `Error: Could not load exhibit.`; }); } return null; }).filter(Boolean));
         await Promise.all(exhibitPromises);
-        
         displayQuiz();
     }
 
@@ -400,80 +332,64 @@
         quizContainer.classList.remove('hidden');
         resultsContainer.innerHTML = '';
         quizContainer.innerHTML = '<h2>Quiz</h2>';
-        
         currentQuizQuestions.forEach((q, index) => {
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
             questionDiv.id = `q-${index}`;
+            questionDiv.dataset.questionId = q.questionId;
             const isBookmarked = bookmarkedQuestions.includes(q.questionId);
-            
-            let content = `<div class="question-header"><button class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" onclick="toggleBookmark('${q.questionId}', this)">🚩</button><div class="question-text">${index + 1}. <span class="question-category">(${q.cat || 'N/A'})</span> ${q.questionText}</div></div>`;
-            
-            if (q.exhibits) {
-                content += q.exhibits.map(exhibit => {
-                    if (!exhibit.localPath) return '';
-                    const filenameLower = exhibit.localPath.toLowerCase();
-                    if (filenameLower.endsWith('.txt')) {
-                        return `<div class="exhibit-container"><strong>Exhibit</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`;
-                    } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) {
-                        return `<img src="${exhibit.localPath}" alt="Exhibit" class="question-exhibit">`;
-                    }
-                    return ''; // Add more types like .html if needed
-                }).join('');
-            }
-            if (q.answerChoices) {
-                content += q.answerChoices.map((choice, choiceIndex) => `<label class="answer-choice">${choice.Text}<input type="${q.answerType === 'MS' ? 'checkbox' : 'radio'}" name="question-${index}" value="${choiceIndex}"><span class="checkmark"></span></label>`).join('');
-            }
-            questionDiv.innerHTML = content;
+            const bookmarkedClass = isBookmarked ? 'bookmarked' : '';
+            let questionTextHtml = `<div class="question-header"><button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this)">🚩</button><div class="question-text">${index + 1}. <span class="question-category">(${(q.cat || 'N/A')})</span> ${q.questionText}</div></div>`;
+            if (q.answerType === 'FB') { const inputField = `<input type="text" class="fb-input" id="fb-input-${index}" autocomplete="off">`; questionTextHtml = questionTextHtml.replace(/___/g, inputField); }
+            let exhibitsHtml = '';
+            if (q.exhibits && q.exhibits.length > 0) { q.exhibits.forEach(exhibit => { const localPath = exhibit.localPath; if (!localPath) return; const filename = decodeURIComponent(localPath.split('/').pop()); const filenameLower = filename.toLowerCase(); if (filenameLower.endsWith('.txt')) { exhibitsHtml += `<div class="exhibit-container"><strong>Exhibit: ${filename}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`; } else if (filenameLower.endsWith('.html')) { exhibitsHtml += `<iframe src="${localPath}" class="question-exhibit-frame" title="Exhibit: ${filename}"></iframe>`; } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) { exhibitsHtml += `<img src="${localPath}" alt="Exhibit: ${filename}" class="question-exhibit">`; } }); }
+            let answersHtml = '';
+            if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio'; q.answerChoices.forEach((choice, choiceIndex) => { answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choiceIndex}"><span class="checkmark"></span></label>`; }); }
+            questionDiv.innerHTML = questionTextHtml + exhibitsHtml + answersHtml;
             quizContainer.appendChild(questionDiv);
         });
-        
         const submitButton = document.createElement('button');
         submitButton.id = 'submitBtn'; submitButton.className = 'submit-btn'; submitButton.textContent = 'Submit Test';
         submitButton.addEventListener('click', showResults);
         quizContainer.appendChild(submitButton);
     }
     
-    function toggleBookmark(questionId, buttonElement) {
-        const index = bookmarkedQuestions.indexOf(questionId);
-        if (index > -1) { bookmarkedQuestions.splice(index, 1); buttonElement.classList.remove('bookmarked'); } 
-        else { bookmarkedQuestions.push(questionId); buttonElement.classList.add('bookmarked'); }
-        saveDataToStorage();
-    }
+    function toggleBookmark(questionId, buttonElement) { const index = bookmarkedQuestions.indexOf(questionId); if (index > -1) { bookmarkedQuestions.splice(index, 1); buttonElement.classList.remove('bookmarked'); } else { bookmarkedQuestions.push(questionId); buttonElement.classList.add('bookmarked'); } saveDataToStorage(); }
 
     function showResults() {
         let score = 0;
-        currentQuizAttempt = { timestamp: Date.now(), score: 0, total: currentQuizQuestions.length, questions: [] };
-        
+        const quizAttempt = { timestamp: Date.now(), score: 0, total: currentQuizQuestions.length, questions: [] };
         currentQuizQuestions.forEach((q, index) => {
-            const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`));
-            const userAnswers = userChoices.map(input => parseInt(input.value));
-            const correctAnswers = q.answerChoices.map((choice, i) => choice.IsCorrect ? i : -1).filter(i => i !== -1);
-            const isCorrect = userAnswers.length === correctAnswers.length && userAnswers.sort().toString() === correctAnswers.sort().toString();
-            if (isCorrect) score++;
-            currentQuizAttempt.questions.push({ questionId: q.questionId, isCorrect, category: q.cat });
+            let isQuestionCorrect = false;
+            if (q.answerType === 'FB') { const userInput = document.querySelector(`#fb-input-${index}`); if (userInput) { const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks && q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); if (userValue && correctAnswers.includes(userValue)) isQuestionCorrect = true; }
+            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const correctAnswers = q.answerChoices.map((choice, i) => choice.IsCorrect ? i : -1).filter(i => i !== -1); isQuestionCorrect = userAnswers.length === correctAnswers.length && userAnswers.sort().toString() === correctAnswers.sort().toString(); }
+            if (isQuestionCorrect) score++;
+            quizAttempt.questions.push({ questionId: q.questionId, isCorrect: isQuestionCorrect, category: q.cat });
         });
-        
-        currentQuizAttempt.score = score;
-        quizHistory.push(currentQuizAttempt);
+        quizHistory.push(quizAttempt);
         saveDataToStorage();
-        renderDashboard(); // Update main dashboard
-        
+        renderDashboard();
+        const answerInputs = quizContainer.querySelectorAll('.answer-choice input, .fb-input');
+        answerInputs.forEach(input => { input.disabled = true; const label = input.closest('label.answer-choice'); if (label) { label.style.cursor = 'default'; } });
         document.getElementById('submitBtn').remove();
-        quizContainer.querySelectorAll('input').forEach(input => input.disabled = true);
-        
-        const scorePercentage = Math.round((score / currentQuizAttempt.total) * 100);
-        resultsContainer.innerHTML = `<h2>Your Score: ${score} out of ${currentQuizAttempt.total} (${scorePercentage}%)</h2>
-            <div class="chart-summary-container">
-                <h3>This Quiz Performance</h3><canvas id="quizSummaryChart"></canvas>
-            </div>`;
-        
-        renderQuizSummaryChart(currentQuizAttempt); // Render the summary chart for this specific quiz
-        revealAnswers(); // Show correct/incorrect answers
-        
+        const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
+        resultsContainer.innerHTML = '';
+        const scoreHeader = document.createElement('h2');
+        scoreHeader.innerHTML = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%)`;
+        resultsContainer.appendChild(scoreHeader);
+        const summaryContainer = document.createElement('div');
+        summaryContainer.className = 'chart-summary-container';
+        summaryContainer.innerHTML = '<h3>This Quiz Performance</h3><canvas id="quizSummaryChart"></canvas>';
+        resultsContainer.appendChild(summaryContainer);
+        const uniqueCategoriesInQuiz = new Set(quizAttempt.questions.map(q => q.category || 'N/A'));
+        const numCategories = uniqueCategoriesInQuiz.size;
+        const dynamicHeight = Math.max(150, (numCategories * 40) + 80); 
+        summaryContainer.style.height = `${dynamicHeight}px`;
+        renderQuizSummaryChart(quizAttempt);
+        revealAnswers();
         const restartBtn = document.createElement('button');
-        restartBtn.className = 'restart-btn'; restartBtn.textContent = 'Take Another Test';
-        restartBtn.onclick = () => { mainScreen.classList.remove('hidden'); quizContainer.classList.add('hidden'); resultsContainer.innerHTML = ''; currentQuizAttempt = null; updateMaxQuestions(); };
+        restartBtn.id = 'restartBtn'; restartBtn.className = 'restart-btn'; restartBtn.textContent = 'Take Another Test';
+        restartBtn.onclick = () => { mainScreen.classList.remove('hidden'); quizContainer.classList.add('hidden'); quizContainer.innerHTML = ''; resultsContainer.innerHTML = ''; updateMaxQuestions(); };
         resultsContainer.appendChild(restartBtn);
     }
     
@@ -481,44 +397,53 @@
         currentQuizQuestions.forEach((q, index) => {
             const questionElement = document.getElementById(`q-${index}`);
             if (!questionElement) return;
-            const userAnswers = Array.from(questionElement.querySelectorAll('input:checked')).map(input => parseInt(input.value));
-            questionElement.querySelectorAll('.answer-choice').forEach((label, choiceIndex) => {
-                if (q.answerChoices[choiceIndex].IsCorrect) label.classList.add('correct');
-                else if (userAnswers.includes(choiceIndex)) label.classList.add('incorrect');
-            });
-            const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`;
-            questionElement.insertAdjacentHTML('beforeend', explanationHtml);
+            if (q.answerType === 'FB') { const userInput = questionElement.querySelector(`#fb-input-${index}`); const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); userInput.classList.add(correctAnswers.includes(userValue) ? 'correct' : 'incorrect'); const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0]}<br><br>${q.explanation}`; questionElement.insertAdjacentHTML('beforeend', `<div class="result-explanation">${explanationText}</div>`);
+            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const labels = questionElement.querySelectorAll('.answer-choice'); labels.forEach((label, choiceIndex) => { if (q.answerChoices[choiceIndex].IsCorrect) { label.classList.add('correct'); } else if (userAnswers.includes(choiceIndex)) { label.classList.add('incorrect'); } }); const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`; questionElement.insertAdjacentHTML('beforeend', explanationHtml); }
         });
     }
+    
+    function renderDashboard() { renderCategoryChart(); renderHistoryChart(); }
 
-    // --- INITIALIZATION ---
-    document.addEventListener('DOMContentLoaded', () => {
-        Chart.register(ChartDataLabels);
-        
-        // Set up theme listener first
-        const onThemeChange = () => {
-            renderDashboard(); // Redraw dashboard
-            if (currentQuizAttempt) renderQuizSummaryChart(currentQuizAttempt); // Redraw summary if it exists
-        };
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', onThemeChange);
+    function renderQuizSummaryChart(quizAttempt) {
+        const ctx = document.getElementById('quizSummaryChart')?.getContext('2d');
+        if (!ctx) return; 
+        if (chartInstances.summary) chartInstances.summary.destroy();
+        const categoryStats = {};
+        quizAttempt.questions.forEach(qResult => { const category = qResult.category || 'N/A'; if (!categoryStats[category]) { categoryStats[category] = { correct: 0, total: 0 }; } categoryStats[category].total++; if (qResult.isCorrect) { categoryStats[category].correct++; } });
+        const includedCategories = Object.keys(categoryStats); 
+        const labels = includedCategories.map(cat => CATEGORY_MAP[cat] || cat); 
+        const data = includedCategories.map(cat => { const stats = categoryStats[cat]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
+        const themeOptions = getChartThemeOptions();
+        chartInstances.summary = new Chart(ctx, { type: 'bar', data: { labels: labels, datasets: [{ label: '% Correct', data: data, backgroundColor: 'rgba(34, 197, 94, 0.7)', borderColor: 'rgb(34, 197, 94)', borderWidth: 1 }] }, options: { indexAxis: 'y', scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, plugins: { legend: { display: false }, title: { display: false }, datalabels: { anchor: 'end', align: 'end', color: themeOptions.color, font: { weight: 'bold' }, formatter: (v) => v.toFixed(0) + '%' } }, responsive: true, maintainAspectRatio: false } });
+    }
+    
+    function renderCategoryChart() {
+        const ctx = document.getElementById('categoryChart')?.getContext('2d');
+        if (!ctx) return;
+        const container = ctx.canvas.parentNode;
+        const numCategories = Object.keys(CATEGORY_MAP).length;
+        const requiredHeight = (numCategories * 35) + 80;
+        container.style.height = `${requiredHeight}px`;
+        if (chartInstances.category) chartInstances.category.destroy();
+        const categoryStats = {};
+        for(const code in CATEGORY_MAP) { categoryStats[code] = { correct: 0, total: 0 }; }
+        quizHistory.forEach(quiz => { quiz.questions.forEach(qResult => { const questionData = allQuestions.find(q => q.questionId === qResult.questionId); if (questionData && questionData.cat && categoryStats[questionData.cat]) { categoryStats[questionData.cat].total++; if(qResult.isCorrect) { categoryStats[questionData.cat].correct++; } } }); });
+        const sortedCategoryCodes = Object.keys(CATEGORY_MAP).sort((a,b) => CATEGORY_MAP[a].localeCompare(CATEGORY_MAP[b])); 
+        const labels = sortedCategoryCodes.map(code => CATEGORY_MAP[code]); 
+        const data = sortedCategoryCodes.map(code => { const stats = categoryStats[code]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
+        const themeOptions = getChartThemeOptions();
+        chartInstances.category = new Chart(ctx, { type: 'bar', data: { labels: labels, datasets: [{ label: '% Correct by Topic', data: data, backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 1 }] }, options: { indexAxis: 'y', scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, plugins: { legend: { display: false }, title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color }, datalabels: { anchor: 'end', align: 'end', color: themeOptions.color, formatter: (v) => v > 0 ? v.toFixed(0) + '%' : '', font: { weight: 'bold' } } }, responsive: true, maintainAspectRatio: false } });
+    }
 
-        // Load data and then initialize the UI
-        loadDataFromStorage();
-        populateCategoryFilter();
-        populateCategoryDescriptions();
-
-        loadQuestions().then(() => {
-            // This block runs only after questions.json is successfully fetched
-            updateMaxQuestions();
-            renderDashboard(); // Initial render
-        });
-
-        // Set up interactive element listeners
-        startBtn.addEventListener('click', loadAndDisplayQuiz);
-        modeSelect.addEventListener('change', updateMaxQuestions);
-        categorySelect.addEventListener('change', updateMaxQuestions);
-        document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
-    });
+    function renderHistoryChart() {
+        const ctx = document.getElementById('historyChart')?.getContext('2d');
+        if (!ctx) return;
+        ctx.canvas.parentNode.style.height = '350px';
+        if (chartInstances.history) chartInstances.history.destroy();
+        const chartData = quizHistory.map(quiz => ({ x: quiz.timestamp, y: (quiz.score / quiz.total) * 100 }));
+        const themeOptions = getChartThemeOptions();
+        chartInstances.history = new Chart(ctx, { type: 'line', data: { datasets: [{ label: 'Quiz Score %', data: chartData, fill: false, borderColor: 'rgb(34, 197, 94)', tension: 0.1 }] }, options: { scales: { x: { type: 'time', time: { unit: 'day', tooltipFormat: 'PP' }, title: { display: true, text: 'Date', color: themeOptions.color }, ...themeOptions }, y: { beginAtZero: true, max: 100, title: { display: true, text: 'Score %', color: themeOptions.color }, ...themeOptions } }, plugins: { legend: { display: false }, title: { display: true, text: 'Score Over Time', color: themeOptions.color }, datalabels: { align: 'top', backgroundColor: 'rgba(34, 197, 94, 0.7)', borderRadius: 4, color: 'white', font: { size: 10, weight: 'bold' }, formatter: (v) => Math.round(v.y) + '%', display: 'auto' } }, responsive: true, maintainAspectRatio: false } });
+    }
     </script>
 </body>
 </html>
