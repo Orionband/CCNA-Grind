@@ -553,16 +553,14 @@
             currentQuizQuestions = questionPool.slice(0, numQuestions);
         }
         
-        // Fetch text exhibits. Path is special for these.
         const textExhibitPromises = currentQuizQuestions.flatMap(q => 
             (q.exhibits || []).map(exhibit => {
                 const fullUrl = exhibit.ExhibitFileName;
                 if (fullUrl && fullUrl.toLowerCase().endsWith('.txt')) {
                     const localFileName = fullUrl.split('/').pop();
-                    // Text files are located directly in /images/
-                    const localPath = `images/${localFileName}`; 
+                    const localPath = `/images/${localFileName}`;
                     exhibit.localFileName = localFileName;
-                    return fetch(localPath) 
+                    return fetch(localPath)
                         .then(response => response.ok ? response.text() : Promise.reject(`Failed to fetch ${localPath}`))
                         .then(text => { exhibit.textContent = text; })
                         .catch(error => {
@@ -609,7 +607,6 @@
             }
             quizHtml += questionTextHtml;
             
-            // Display exhibits with the CORRECT path logic
             if (q.exhibits && q.exhibits.length > 0) {
                  q.exhibits.forEach(exhibit => {
                     const fullUrl = exhibit.ExhibitFileName;
@@ -618,26 +615,31 @@
                     const filename = fullUrl.split('/').pop();
                     const filenameLower = filename.toLowerCase();
 
-                    if (filenameLower.endsWith('.txt')) {
-                        // Text file content is pre-fetched, just display it
-                        quizHtml += `<div class="exhibit-container"><strong>Exhibit: ${exhibit.localFileName}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`;
-                    } else {
-                        // For images and HTML, construct the nested path
-                        let localPath = '';
-                        try {
-                            const urlObject = new URL(fullUrl);
-                            const pathName = urlObject.pathname; // e.g., /Content/Exhibits/GUID/file.png
-                            localPath = `images${pathName}`;     // e.g., images/Content/Exhibits/GUID/file.png
-                        } catch (e) {
-                            console.error("Could not parse exhibit URL:", fullUrl, e);
-                            return; // Skip this exhibit if URL is invalid
-                        }
+                    // This is where the main path logic change happens.
+                    let localPath;
 
-                        if (filenameLower.endsWith('.html')) {
-                            quizHtml += `<iframe src="${localPath}" class="question-exhibit-frame" title="Exhibit: ${filename}"></iframe>`;
-                        } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) {
-                            quizHtml += `<img src="${localPath}" alt="Exhibit: ${filename}" class="question-exhibit">`;
+                    if (filenameLower.endsWith('.txt')) {
+                        // Text files are handled differently; we just display pre-loaded content.
+                        quizHtml += `<div class="exhibit-container"><strong>Exhibit: ${exhibit.localFileName}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`;
+                        return; // Skip the rest of the logic for this exhibit
+                    } else {
+                        // For images and HTML, construct the complex local path.
+                        const contentPathIndex = fullUrl.indexOf('/Content/');
+                        if (contentPathIndex !== -1) {
+                            const relativePath = fullUrl.substring(contentPathIndex);
+                            localPath = `images${relativePath}`; // e.g., images/Content/Exhibits/GUID/file.png
+                        } else {
+                            // Fallback for unexpected URL formats
+                            localPath = `images/${filename}`;
+                            console.warn(`Unexpected exhibit URL format, using fallback path: ${fullUrl}`);
                         }
+                    }
+
+                    // Now, build the HTML for images and iframes with the correct localPath.
+                    if (filenameLower.endsWith('.html')) {
+                        quizHtml += `<iframe src="${localPath}" class="question-exhibit-frame" title="Exhibit: ${filename}"></iframe>`;
+                    } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) {
+                        quizHtml += `<img src="${localPath}" alt="Exhibit: ${filename}" class="question-exhibit">`;
                     }
                 });
             }
