@@ -93,10 +93,9 @@
             grid-template-columns: 1fr; 
             gap: 30px;
         }
-        /* UPDATED: Styles for chart wrappers */
         .chart-wrapper, .chart-summary-container {
-            position: relative; /* Essential for Chart.js responsiveness */
-            height: 350px;     /* A good default height */
+            position: relative; 
+            height: 350px;    
         }
         .chart-summary-container {
             margin-top: 30px;
@@ -170,23 +169,13 @@
         }
         .clear-data-btn:hover { background-color: #bb2d3b; }
 
-        .submit-btn, .restart-btn, .review-btn {
+        .submit-btn, .restart-btn {
             display: block;
             width: 220px;
             margin: 30px auto;
         }
 
         /* Quiz Specific Styling */
-        #timerDisplay {
-            font-size: 1.5em;
-            font-weight: bold;
-            text-align: center;
-            color: #0d6efd;
-            margin-bottom: 20px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
         .question {
             margin-bottom: 35px;
             padding-bottom: 25px;
@@ -320,7 +309,6 @@
             <div id="dashboardContainer">
                 <h2>Dashboard</h2>
                 <div class="chart-container">
-                    <!-- UPDATED: Added chart-wrapper class -->
                     <div class="chart-wrapper">
                         <canvas id="categoryChart"></canvas>
                     </div>
@@ -361,10 +349,7 @@
                     <label for="randomize">Randomize:</label>
                     <input type="checkbox" id="randomize" checked>
                 </div>
-                <div class="option-group-checkbox">
-                    <label for="examMode">Exam Simulation:</label>
-                    <input type="checkbox" id="examMode">
-                </div>
+                <!-- REMOVED: Exam Simulation Checkbox -->
                 <button id="startBtn" disabled>Loading...</button>
             </div>
         </div>
@@ -396,8 +381,7 @@
     let userAnswers = {};
     let quizHistory = [];
     let bookmarkedQuestions = [];
-    let isExamMode = false;
-    let timerInterval;
+    // REMOVED: isExamMode and timerInterval variables
     let chartInstances = {};
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -561,7 +545,7 @@
         const randomize = document.getElementById('randomize').checked;
         const mode = modeSelect.value;
         const category = categorySelect.value;
-        isExamMode = document.getElementById('examMode').checked;
+        // REMOVED: Reading the examMode checkbox
         
         let questionPool = [];
 
@@ -623,11 +607,8 @@
         userAnswers = {};
 
         let quizHtml = '<h2>Quiz</h2>';
-        if (isExamMode) {
-            quizHtml += `<div id="timerDisplay"></div>`;
-            startTimer(currentQuizQuestions.length * 90);
-        }
-
+        // REMOVED: Logic to add timer
+        
         currentQuizQuestions.forEach((q, index) => {
             quizHtml += `<div class="question" id="q-${index}" data-question-id="${q.questionId}">`;
             
@@ -694,30 +675,10 @@
         saveDataToStorage();
     }
     
-    function startTimer(duration) {
-        let timer = duration, minutes, seconds;
-        const display = document.getElementById('timerDisplay');
-        
-        timerInterval = setInterval(() => {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-
-            display.textContent = minutes + ":" + seconds;
-
-            if (--timer < 0) {
-                clearInterval(timerInterval);
-                alert("Time's up!");
-                showResults();
-            }
-        }, 1000);
-    }
-
-    // --- UPDATED showResults function ---
+    // REMOVED: startTimer function
+    
     function showResults() {
-        if (timerInterval) clearInterval(timerInterval);
+        // REMOVED: Clearing timerInterval
         
         let score = 0;
         const quizAttempt = { timestamp: Date.now(), score: 0, total: currentQuizQuestions.length, questions: [] };
@@ -771,28 +732,15 @@
         summaryContainer.innerHTML = '<h3>This Quiz Performance</h3><canvas id="quizSummaryChart"></canvas>';
         resultsContainer.appendChild(summaryContainer);
         
-        // ** NEW **: Dynamically set the container height before rendering the chart
         const uniqueCategoriesInQuiz = new Set(quizAttempt.questions.map(q => q.category || 'N/A'));
         const numCategories = uniqueCategoriesInQuiz.size;
-        // Calc: 40px per bar + 80px for padding, title, and axes. Minimum 150px.
         const dynamicHeight = Math.max(150, (numCategories * 40) + 80); 
         summaryContainer.style.height = `${dynamicHeight}px`;
 
         renderQuizSummaryChart(quizAttempt);
         
-        if (isExamMode) {
-            const reviewBtn = document.createElement('button');
-            reviewBtn.id = 'reviewBtn';
-            reviewBtn.className = 'review-btn';
-            reviewBtn.textContent = 'Review Answers';
-            reviewBtn.onclick = () => {
-                revealAnswers();
-                reviewBtn.remove();
-            };
-            resultsContainer.appendChild(reviewBtn);
-        } else {
-            revealAnswers();
-        }
+        // SIMPLIFIED: Always reveal answers immediately
+        revealAnswers();
         
         const restartBtn = document.createElement('button');
         restartBtn.id = 'restartBtn';
@@ -835,8 +783,7 @@
                 questionElement.insertAdjacentHTML('beforeend', explanationHtml);
             }
         });
-        const reviewBtn = document.getElementById('reviewBtn');
-        if (reviewBtn) reviewBtn.remove();
+        // REMOVED: Logic for review button
     }
     
     function renderDashboard() {
@@ -914,14 +861,11 @@
         });
     }
     
-    // --- UPDATED renderCategoryChart function ---
     function renderCategoryChart() {
         const ctx = document.getElementById('categoryChart').getContext('2d');
         const container = ctx.canvas.parentNode;
 
-        // ** NEW **: Dynamically set container height to ensure all categories fit
         const numCategories = Object.keys(CATEGORY_MAP).length;
-        // Calc: 35px per bar + 80px for title/padding/axes
         const requiredHeight = (numCategories * 35) + 80;
         container.style.height = `${requiredHeight}px`;
 
@@ -995,7 +939,6 @@
 
     function renderHistoryChart() {
         const ctx = document.getElementById('historyChart').getContext('2d');
-        // Ensure its container has a reasonable default height
         ctx.canvas.parentNode.style.height = '350px';
 
         if (chartInstances.history) chartInstances.history.destroy();
