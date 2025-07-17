@@ -450,27 +450,28 @@
     }
     
     /**
-     * REWRITTEN: Creates a universal local path for an exhibit from its URL.
+     * REWRITTEN AGAIN: Creates a universal local path for an exhibit from its URL.
+     * This version avoids decoding URL characters and replaces OS-forbidden characters.
      * @param {string} fullUrl - The original URL from the JSON file.
      * @returns {string} The corrected local relative path.
      */
     function getLocalExhibitPath(fullUrl) {
         if (!fullUrl) return '';
         try {
-            // Use the standard URL object to reliably parse any valid URL
             const url = new URL(fullUrl);
             
-            // url.pathname is everything after the domain (e.g., "/wp-content/uploads/...")
-            // We must decode it to handle spaces and other special characters in filenames
-            const decodedPath = decodeURIComponent(url.pathname);
+            // Get the path part of the URL *without* decoding it.
+            // We get everything after the domain (origin).
+            let rawPath = fullUrl.substring(url.origin.length);
+
+            // Replace colons with underscores for OS compatibility.
+            rawPath = rawPath.replaceAll(':', '_');
             
-            // Construct the final local path relative to the HTML file
-            return `./images${decodedPath}`;
+            return `./images${rawPath}`;
         } catch (e) {
-            // This catches invalid URLs that can't be parsed.
-            // Fallback to the simplest method: just using the filename.
             console.error(`Could not parse URL: "${fullUrl}". Using simple fallback.`, e);
-            const filename = fullUrl.split('/').pop();
+            let filename = fullUrl.split('/').pop();
+            filename = filename.replaceAll(':', '_'); // Also apply to fallback
             return `./images/${filename}`;
         }
     }
@@ -582,15 +583,12 @@
             currentQuizQuestions = questionPool.slice(0, numQuestions);
         }
         
-        // SIMPLIFIED: Pre-calculate local paths and pre-fetch text content for all exhibits
         const exhibitPromises = currentQuizQuestions.flatMap(q => 
             (q.exhibits || []).map(exhibit => {
                 if (!exhibit.ExhibitFileName) return null;
 
-                // Use the new universal function to get the correct local path for ALL file types
                 exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName);
                 
-                // If it's a text file, fetch its content now using the correct path
                 if (exhibit.localPath.toLowerCase().endsWith('.txt')) {
                     return fetch(exhibit.localPath)
                         .then(response => {
@@ -647,7 +645,7 @@
                     const localPath = exhibit.localPath;
                     if (!localPath) return;
 
-                    const filename = localPath.split('/').pop();
+                    const filename = decodeURIComponent(localPath.split('/').pop());
                     const filenameLower = filename.toLowerCase();
                     
                     if (filenameLower.endsWith('.txt')) {
