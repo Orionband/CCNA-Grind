@@ -13220,39 +13220,7 @@
         ],
         "cat": "ROSW"
     },
-    {
-        "questionId": "C925C19A-CEF8-42FC-A331-D99147B0AB86",
-        "questionText": "Based on the exhibit provided, what command is used to enable BPDU Guard on GigabitEthernet0/1?",
-        "explanation": "BPDU Guard can be enabled on all PortFast-enabled access interfaces with the global command spanning-tree portfast edge bpduguard default or by issuing the spanning-tree bpduguard enable command on the interface. The output shown is from using the interface command. spanning-tree portfast edge is an interface command used to enable PortFast on an access port. spanning-tree portfast edge default globally enables PortFast on all access ports.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "4B2F3F22-71F3-4142-9139-8E906B966DEC",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/4B2F3F22-71F3-4142-9139-8E906B966DEC/Question 14 Exhibit 1.txt"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "spanning-tree portfast edge",
-                "IsCorrect": false
-            },
-            {
-                "Text": "spanning-tree portfast edge bpduguard default",
-                "IsCorrect": false
-            },
-            {
-                "Text": "spanning-tree bpduguard enable",
-                "IsCorrect": true
-            },
-            {
-                "Text": "spanning-tree portfast edge default",
-                "IsCorrect": false
-            }
-        ]
-    },
+    
     {
         "questionId": "EEAE8A71-BF0D-4C8B-9817-1DF5C6E2C418",
         "questionText": "In a VLAN in which all RSTP priorities tie, the current root switch just failed. The answers list the MAC address used in the Bridge ID of the remaining switches. Which switch will take over as the root?",
@@ -13342,39 +13310,7 @@
         ],
         "cat": "ROSW"
     },
-    {
-        "questionId": "101CCB66-EC17-456D-B2AB-4E90032EF6FF",
-        "questionText": "Based on the exhibit provided, which command is used to enable Loop Guard on GigabitEthernet0/1?",
-        "explanation": "The spanning-tree loopguard default command is used in global configuration mode to enable Loop Guard on all designated ports. The words &ldquo;Loop guard is enabled by default on the port&rdquo; indicate that the global configuration command was used. The command spanning-tree guard loop is for individual interface configuration. Root Guard is a different feature that monitors for incoming superior hellos and disables the port when one is received. This prevents another switch from becoming the root inadvertently. spanning-tree guard none simply turns off all the guard features of STP on an interface.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "8DCEA0B0-D61D-4C22-9BC6-52CA5E013A00",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/8DCEA0B0-D61D-4C22-9BC6-52CA5E013A00/Question 19 Exhibit 1.txt"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "spanning-tree loopguard default",
-                "IsCorrect": true
-            },
-            {
-                "Text": "spanning-tree guard root",
-                "IsCorrect": false
-            },
-            {
-                "Text": "spanning-tree guard loop",
-                "IsCorrect": false
-            },
-            {
-                "Text": "spanning-tree guard none",
-                "IsCorrect": false
-            }
-        ]
-    },
+    
     {
         "questionId": "1C3EF86F-D48D-44AB-B12D-5388EF5EECA5",
         "questionText": "Which of the following are LACP modes that you can use with EtherChannel configuration?",
@@ -13439,105 +13375,9 @@
         ],
         "cat": "ROSW"
     },
-    {
-        "questionId": "F78C53A6-4862-495E-9E86-5EFFB8BABC74",
-        "questionText": "Based on the exhibit provided, which command is used to enable Loop Guard on GigabitEthernet0/1?",
-        "explanation": "You use the interface configuration command spanning-tree guard loop to get the output to appear. The words &ldquo;Loop guard is enabled on the port&rdquo; indicate that the interface configuration command was used. The spanning-tree loopguard default command is used in global configuration mode to enable Loop Guard on all designated ports. Root Guard is a different feature that monitors for incoming superior hellos and disables the port when one is received. This prevents another switch from becoming the root inadvertently. spanning-tree guard none simply turns off all the guard features of STP on an interface.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "3D7D4E12-FFAC-4761-B011-580CEDA5AF25",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/3D7D4E12-FFAC-4761-B011-580CEDA5AF25/Question 18 Exhibit 1.txt"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "spanning-tree loopguard default",
-                "IsCorrect": false
-            },
-            {
-                "Text": "spanning-tree guard root",
-                "IsCorrect": false
-            },
-            {
-                "Text": "spanning-tree guard loop",
-                "IsCorrect": true
-            },
-            {
-                "Text": "spanning-tree guard none",
-                "IsCorrect": false
-            }
-        ]
-    },
-    {
-        "questionId": "A7F7441A-1571-440F-984D-719034696264",
-        "questionText": "Based on the exhibit provided, what is the cost to the root bridge for VLAN 10?",
-        "explanation": "The spanning tree port cost is a locally significant number. Every switch independently calculates the cost for its ports based on their speeds. Cost is used by the STP algorithm to compute the best paths to the root bridge within the network. Port cost configuration is significant only to the switch where it was configured but does affect other switches and how they calculate STP. The default cost for a GigabitEthernet interface is 4. Cost can also be modified manually to influence the behavior of STP, which is the case for G0/2. G0/2 is the root port that faces the root bridge and has a configured cost of 2. The 128.3 is a port priority and is only used as a tiebreaker if the port costs are the same. The lower the port priority, the more preferred the port will be.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "346DB303-743A-4F92-BE60-899BB1B361BD",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/346DB303-743A-4F92-BE60-899BB1B361BD/Question 13 Exhibit 1.txt"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "4",
-                "IsCorrect": false
-            },
-            {
-                "Text": "3",
-                "IsCorrect": false
-            },
-            {
-                "Text": "128.3",
-                "IsCorrect": false
-            },
-            {
-                "Text": "2",
-                "IsCorrect": true
-            }
-        ]
-    },
-    {
-        "questionId": "E1EFE083-D1F1-4B69-B530-823CABAC54A9",
-        "questionText": "Based on the exhibit provided, what two things are true?",
-        "explanation": "The spanning tree port cost is a locally significant number. Every switch independently calculates the cost for its ports based on their speeds. Cost is used by the STP algorithm to compute the best paths within the network. Port cost configuration is significant only to the switch where it was configured but does affect other switches and how they calculate STP. The default cost for a GigabitEthernet interface is 4. Cost can also be modified manually to influence the behavior of STP. G0/2 is the root port that faces the root bridge.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "9E125683-370C-493F-9DF6-8589EFD75913",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/9E125683-370C-493F-9DF6-8589EFD75913/Question 12 Exhibit 1.txt"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "SW2 uses an interface cost of 4 to reach the root bridge.",
-                "IsCorrect": true
-            },
-            {
-                "Text": "Gi0/0 is the root port for VLAN 1.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "SW2 uses an interface cost of 3 to reach the root bridge.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Gi0/2 is the root port for VLAN 1.",
-                "IsCorrect": true
-            }
-        ]
-    },
+    
+    
+    
     {
         "questionId": "F2EBDBF0-3DD5-4BCB-AA66-8E4FDF471D9D",
         "questionText": "Two switches are connected by four Fast Ethernet trunks. Four VLANs exist, with members of each VLAN on each of the two switches. The network engineer would like to have the switches treat all 4 trunks as a single 400 Mbps trunk, with some of the traffic being forwarded over each of the links between the switches. Which of the following statements are true of such a configuration?",
@@ -15490,39 +15330,7 @@
             }
         ]
     },
-    {
-        "questionId": "EC3AB932-7101-4933-8309-0158BCF85DC1",
-        "questionText": "Based on the exhibit provided, if you configured the 10.1.23.0/24 address on the GigabitEthernet0/0 interface will the command be accepted or rejected, and what would the IP address be on the interface?",
-        "explanation": "The ip address command will not be able to overwrite the previous IP address and mask on the interface with the newly configured IP address because it overlaps with the subnet IP. Two reserved IP addresses are not allowed to be configured on the interface: the subnet IP of 10.1.23.0 and the broadcast IP of 10.1.23.255. Therefore, the interface will not accept it. This means that the old IP address of GigabitEthernet0/0 10.1.23.2/24 will be not be overwritten and will remain unchanged. You will receive an error message stating, &ldquo;Bad mask /24 for address 10.1.23.0.&rdquo;",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "B35C7A42-A373-4773-8327-53B2773E933C",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/B35C7A42-A373-4773-8327-53B2773E933C/Question 23 Exhibit 1.txt"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "10.1.23.0/24",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Rejected",
-                "IsCorrect": true
-            },
-            {
-                "Text": "10.1.23.2/24",
-                "IsCorrect": true
-            },
-            {
-                "Text": "Accepted",
-                "IsCorrect": false
-            }
-        ]
-    },
+    
     {
         "questionId": "5C96BFB2-3F65-452F-A581-108B889D731E",
         "questionText": "Which of the following can be used to place a valid route into the routing table of a Cisco IOS router?",
@@ -15685,39 +15493,7 @@
         ],
         "cat": "ROSW"
     },
-    {
-        "questionId": "99F1C74B-FB1C-4080-9A43-757E88135541",
-        "questionText": "Based on the exhibit provided, if you configured the 10.1.23.10/24 address on the GigabitEthernet0/1 interface will the command be accepted or rejected, and what would the IP address be on the interface?",
-        "explanation": "The ip address command will not be able to overwrite the previous IP address and mask on the interface with the newly configured IP address because it overlaps with the IP address on the GigabitEthernet0/0 IP address and mask. Therefore, the interface will not accept it. You will receive a error message stating &ldquo;% 10.1.23.0 overlaps with GigabitEthernet0/0.&rdquo; This means that the old IP address on GigabitEthernet0/1 of 10.1.34.3/24 will be not be overwritten and will remain unchanged.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "C3E15208-FD39-49C9-B9BC-9188846E94E9",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/C3E15208-FD39-49C9-B9BC-9188846E94E9/Question 22 Exhibit 1.txt"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "Rejected",
-                "IsCorrect": true
-            },
-            {
-                "Text": "192.168.12.3/28",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Accepted",
-                "IsCorrect": false
-            },
-            {
-                "Text": "10.1.34.3/24",
-                "IsCorrect": true
-            }
-        ]
-    },
+    
     {
         "questionId": "F71FA2F9-9B9C-47C2-920F-858B0B196AF3",
         "questionText": "All routers and interfaces in the figure work. The text below shows the only current IP route for subnet 172.16.30.192/26 in router R1. At that point, an engineer configures the command ip route 172.16.30.192 255.255.255.192 172.16.13.3 120 on router R1. Which answer describes how router R1 processes the command?\n\n\nR1# show ip route\n! Lines omitted for brevity\n      172.16.0.0/16 is variably subnetted, 4 subnets, 2 masks\nO        172.16.30.192/26 [110/3] via 172.16.12.2, 00:04:56, GigabitEthernet0/0/1",
@@ -15745,39 +15521,7 @@
         ],
         "cat": "ROSW"
     },
-    {
-        "questionId": "52D6E1C9-ADB0-43E6-95FB-B48B64A9A6CC",
-        "questionText": "Based on the exhibit provided, if you configured the 10.1.23.255/24 address on the GigabitEthernet0/0 interface will the command be accepted or rejected, and what would the IP address be on the interface?",
-        "explanation": "The ip address command will not be able to overwrite the previous IP address and mask on the interface with the newly configured IP address because it overlaps with the broadcast IP of the subnet. Two reserved IP addresses are not allowed to be configured on the interface: the subnet IP of 10.1.23.0 and the broadcast IP of 10.1.23.255. Therefore, the interface will not accept it. This means that the old IP address of GigabitEthernet0/0 10.1.23.2/24 will be not be overwritten and will remain unchanged. You will receive an error message stating, &ldquo;Bad mask /24 for address 10.1.23.255.&rdquo;",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "E39D2EA2-8444-47A7-9FBE-29A46F219AAD",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/E39D2EA2-8444-47A7-9FBE-29A46F219AAD/Question 24 Exhibit 1.txt"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "Accepted",
-                "IsCorrect": false
-            },
-            {
-                "Text": "10.1.23.255/24",
-                "IsCorrect": false
-            },
-            {
-                "Text": "10.1.23.2",
-                "IsCorrect": true
-            },
-            {
-                "Text": "Rejected",
-                "IsCorrect": true
-            }
-        ]
-    },
+    
     {
         "questionId": "5B85E5D0-154D-47C8-96E3-BE7EF94104E6",
         "questionText": "Refer to the diagram. Which static route statements on R1 would be configured to ensure that:\n\t- all normal device traffic going to the 30.30.30.0 network would be routed via the primary path, and\n\t- all traffic going to ServerA would be routed via the high-priority path?",
@@ -15811,39 +15555,7 @@
             }
         ]
     },
-    {
-        "questionId": "5C3540C4-64A4-4259-A429-C3D0AE9C41A1",
-        "questionText": "Based on the exhibit provided, if you configured the 192.168.12.3/28 address on the GigabitEthernet0/0 interface will the command be accepted or rejected, and what would the IP address be on the interface?",
-        "explanation": "The ip address command will overwrite the previous IP address and mask on the interface with whatever the newly configured IP address and mask are, and the interface will accept it. This means that the old IP address of 10.1.23.3/24 will be overwritten to 192.168.12.3/28.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "79A5D35E-0944-40F5-A431-C94B6601CCEA",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/79A5D35E-0944-40F5-A431-C94B6601CCEA/Question 21 Exhibit 1.txt"
-            }
-        ],
-        "cat": "ROSW",
-        "answerChoices": [
-            {
-                "Text": "Rejected",
-                "IsCorrect": false
-            },
-            {
-                "Text": "192.168.12.3/28",
-                "IsCorrect": true
-            },
-            {
-                "Text": "Accepted",
-                "IsCorrect": true
-            },
-            {
-                "Text": "10.1.23.3/24",
-                "IsCorrect": false
-            }
-        ]
-    },
+    
     {
         "questionId": "3CEEAF99-DC64-4B2E-982E-C4ED8E887AE0",
         "questionText": "When using static routes, you type in ip route 10.1.1.0 255.255.255.0, and two options are available to specify the next hop as the next parameters in the command. Select the two valid choices.",
