@@ -28,7 +28,7 @@
             --danger-border: #fca5a5;
             --info-bg: #e0f2fe;
             --info-border: #7dd3fc;
-            --flag-color: #f59e0b; /* New: Gold color for flagged items */
+            --flag-color: #f59e0b; /* Gold color for flagged items */
             --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --border-radius: 8px;
             --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -163,7 +163,6 @@
         .clear-data-btn:hover { background-color: var(--danger-bg); color: var(--danger-border); }
 
         .submit-btn { display: block; width: 220px; margin: 30px auto; }
-        /* FIXED: Added specific top margin to restart button to prevent clipping */
         .restart-btn {
             display: block; width: 220px; 
             margin: 40px auto 10px;
@@ -175,7 +174,6 @@
         .question-text { font-weight: 600; font-size: 1.15em; flex-grow: 1; }
         .question-category { color: var(--text-muted-color); font-weight: 500; font-size: 0.9em; margin-right: 8px; }
         
-        /* FIXED: High-contrast bookmarking */
         .bookmark-btn {
             background: none; border: none; font-size: 24px; cursor: pointer;
             padding: 0; line-height: 1; opacity: 0.4;
@@ -404,10 +402,12 @@
         summaryContainer.style.height = `${dynamicHeight}px`;
         renderQuizSummaryChart(quizAttempt);
         revealAnswers();
+        
+        // FIXED: Button is now appended to the quiz container
         const restartBtn = document.createElement('button');
         restartBtn.id = 'restartBtn'; restartBtn.className = 'restart-btn'; restartBtn.textContent = 'Take Another Test';
-        restartBtn.onclick = () => { mainScreen.classList.remove('hidden'); quizContainer.classList.add('hidden'); quizContainer.innerHTML = ''; resultsContainer.innerHTML = ''; updateMaxQuestions(); };
-        resultsContainer.appendChild(restartBtn);
+        restartBtn.onclick = () => { mainScreen.classList.remove('hidden'); quizContainer.innerHTML = ''; resultsContainer.innerHTML = ''; updateMaxQuestions(); };
+        quizContainer.appendChild(restartBtn);
     }
     
     function revealAnswers() {
