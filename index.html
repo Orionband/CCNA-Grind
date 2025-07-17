@@ -93,6 +93,11 @@
             grid-template-columns: 1fr; 
             gap: 30px;
         }
+        /* UPDATED: Styles for chart wrappers */
+        .chart-wrapper, .chart-summary-container {
+            position: relative; /* Essential for Chart.js responsiveness */
+            height: 350px;     /* A good default height */
+        }
         .chart-summary-container {
             margin-top: 30px;
             padding: 20px;
@@ -315,10 +320,11 @@
             <div id="dashboardContainer">
                 <h2>Dashboard</h2>
                 <div class="chart-container">
-                    <div>
+                    <!-- UPDATED: Added chart-wrapper class -->
+                    <div class="chart-wrapper">
                         <canvas id="categoryChart"></canvas>
                     </div>
-                    <div>
+                    <div class="chart-wrapper">
                         <canvas id="historyChart"></canvas>
                     </div>
                 </div>
@@ -709,7 +715,7 @@
         }, 1000);
     }
 
-    // --- FIXED showResults function ---
+    // --- UPDATED showResults function ---
     function showResults() {
         if (timerInterval) clearInterval(timerInterval);
         
@@ -764,6 +770,14 @@
         summaryContainer.className = 'chart-summary-container';
         summaryContainer.innerHTML = '<h3>This Quiz Performance</h3><canvas id="quizSummaryChart"></canvas>';
         resultsContainer.appendChild(summaryContainer);
+        
+        // ** NEW **: Dynamically set the container height before rendering the chart
+        const uniqueCategoriesInQuiz = new Set(quizAttempt.questions.map(q => q.category || 'N/A'));
+        const numCategories = uniqueCategoriesInQuiz.size;
+        // Calc: 40px per bar + 80px for padding, title, and axes. Minimum 150px.
+        const dynamicHeight = Math.max(150, (numCategories * 40) + 80); 
+        summaryContainer.style.height = `${dynamicHeight}px`;
+
         renderQuizSummaryChart(quizAttempt);
         
         if (isExamMode) {
@@ -830,7 +844,6 @@
         renderHistoryChart();
     }
     
-    // --- FIXED renderQuizSummaryChart function ---
     function renderQuizSummaryChart(quizAttempt) {
         const ctx = document.getElementById('quizSummaryChart')?.getContext('2d');
         if (!ctx) return;
@@ -901,9 +914,17 @@
         });
     }
     
-    // --- FIXED renderCategoryChart function ---
+    // --- UPDATED renderCategoryChart function ---
     function renderCategoryChart() {
         const ctx = document.getElementById('categoryChart').getContext('2d');
+        const container = ctx.canvas.parentNode;
+
+        // ** NEW **: Dynamically set container height to ensure all categories fit
+        const numCategories = Object.keys(CATEGORY_MAP).length;
+        // Calc: 35px per bar + 80px for title/padding/axes
+        const requiredHeight = (numCategories * 35) + 80;
+        container.style.height = `${requiredHeight}px`;
+
         if (chartInstances.category) chartInstances.category.destroy();
 
         const categoryStats = {};
@@ -972,9 +993,11 @@
         });
     }
 
-    // --- FIXED renderHistoryChart function ---
     function renderHistoryChart() {
         const ctx = document.getElementById('historyChart').getContext('2d');
+        // Ensure its container has a reasonable default height
+        ctx.canvas.parentNode.style.height = '350px';
+
         if (chartInstances.history) chartInstances.history.destroy();
         
         const chartData = quizHistory.map(quiz => ({
