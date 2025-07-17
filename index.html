@@ -371,33 +371,53 @@
     
     function toggleBookmark(questionId, buttonElement) { const index = bookmarkedQuestions.indexOf(questionId); if (index > -1) { bookmarkedQuestions.splice(index, 1); buttonElement.classList.remove('bookmarked'); } else { bookmarkedQuestions.push(questionId); buttonElement.classList.add('bookmarked'); } saveDataToStorage(); }
 
-    function showResults() {
+        function showResults() {
         let score = 0;
+        // The quizAttempt object is created with score: 0
         const quizAttempt = { timestamp: Date.now(), score: 0, total: currentQuizQuestions.length, questions: [] };
+        
         currentQuizQuestions.forEach((q, index) => {
             let isQuestionCorrect = false;
-            if (q.answerType === 'FB') { const userInput = document.querySelector(`#fb-input-${index}`); if (userInput) { const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks && q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); if (userValue && correctAnswers.includes(userValue)) isQuestionCorrect = true; }
-            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const correctAnswers = q.answerChoices.map((choice, i) => choice.IsCorrect ? i : -1).filter(i => i !== -1); isQuestionCorrect = userAnswers.length === correctAnswers.length && userAnswers.sort().toString() === correctAnswers.sort().toString(); }
+            // Logic to check answers...
+            if (q.answerType === 'FB') { 
+                const userInput = document.querySelector(`#fb-input-${index}`); 
+                if (userInput) { 
+                    const userValue = userInput.value.trim().toLowerCase(); 
+                    const correctAnswers = (q.blanks && q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); 
+                    if (userValue && correctAnswers.includes(userValue)) isQuestionCorrect = true; 
+                }
+            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { 
+                const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); 
+                const userAnswers = userChoices.map(input => parseInt(input.value)); 
+                const correctAnswers = q.answerChoices.map((choice, i) => choice.IsCorrect ? i : -1).filter(i => i !== -1); 
+                isQuestionCorrect = userAnswers.length === correctAnswers.length && userAnswers.sort().toString() === correctAnswers.sort().toString(); 
+            }
+            
+            // The local `score` variable is correctly incremented
             if (isQuestionCorrect) score++;
+
             quizAttempt.questions.push({ questionId: q.questionId, isCorrect: isQuestionCorrect, category: q.cat });
         });
+
+        // *** FIX: Assign the calculated score to the object that gets saved. ***
+        quizAttempt.score = score; 
+
         quizHistory.push(quizAttempt);
         saveDataToStorage();
-        renderDashboard();
+        renderDashboard(); // Now this will render the graph with the correct data
+
         const answerInputs = quizContainer.querySelectorAll('.answer-choice input, .fb-input');
         answerInputs.forEach(input => { input.disabled = true; const label = input.closest('label.answer-choice'); if (label) { label.style.cursor = 'default'; } });
         document.getElementById('submitBtn').remove();
+
         const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
         resultsContainer.innerHTML = '';
         const scoreHeader = document.createElement('h2');
         scoreHeader.innerHTML = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%)`;
         resultsContainer.appendChild(scoreHeader);
         
-        // --- START: FIX for chart overflow ---
         const summaryContainer = document.createElement('div');
         summaryContainer.className = 'chart-summary-container';
-        // Wrap the canvas in its own div to separate it from the h3 title.
-        // This ensures Chart.js has a clean container to size itself into, preventing overflow.
         summaryContainer.innerHTML = `
             <h3>This Quiz Performance</h3>
             <div class="chart-wrapper">
@@ -410,13 +430,11 @@
         const numCategories = uniqueCategoriesInQuiz.size;
         const dynamicHeight = Math.max(150, (numCategories * 40) + 80);
         
-        // Apply the dynamic height to the new wrapper, not the outer container.
         const chartWrapper = summaryContainer.querySelector('.chart-wrapper');
         if(chartWrapper) {
             chartWrapper.style.height = `${dynamicHeight}px`;
         }
-        // --- END: FIX for chart overflow ---
-
+        
         renderQuizSummaryChart(quizAttempt);
         revealAnswers();
         
