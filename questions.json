@@ -32566,6 +32566,7 @@
             { "Text": "Change the sequence number of ACL 5’s first ACE to 1000 and add 10 for each subsequent ACE.", "IsCorrect": false }
         ],
         "cat": "NETSEC"
+<<<<<<< HEAD
     },{
         "questionId": "itn-p-1",
         "questionText": "A network administrator is using the router-on-a-stick method to configure inter-VLAN routing. Switch port Gi1/1 is used to connect to the router. Which command should be entered to prepare this port for the task?",
@@ -34463,4 +34464,8 @@
 
 
 
+=======
+    }
+
+>>>>>>> 5709bf548d2bc919e16f3c97fe84c8ba2a948b71
 ]
