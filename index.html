@@ -358,11 +358,33 @@
             if (q.answerType === 'FB') { const inputField = `<input type="text" class="fb-input" id="fb-input-${index}" autocomplete="off">`; questionTextHtml = questionTextHtml.replace(/___/g, inputField); }
             let exhibitsHtml = '';
             if (q.exhibits && q.exhibits.length > 0) { q.exhibits.forEach(exhibit => { const localPath = exhibit.localPath; if (!localPath) return; const filename = decodeURIComponent(localPath.split('/').pop()); const filenameLower = filename.toLowerCase(); if (filenameLower.endsWith('.txt')) { exhibitsHtml += `<div class="exhibit-container"><strong>Exhibit: ${filename}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`; } else if (filenameLower.endsWith('.html')) { exhibitsHtml += `<iframe src="${localPath}" class="question-exhibit-frame" title="Exhibit: ${filename}"></iframe>`; } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) { exhibitsHtml += `<img src="${localPath}" alt="Exhibit: ${filename}" class="question-exhibit">`; } }); }
+            
             let answersHtml = '';
-            if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio'; q.answerChoices.forEach((choice, choiceIndex) => { answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choiceIndex}"><span class="checkmark"></span></label>`; }); }
+            // --- START: MODIFICATION FOR ANSWER SHUFFLING ---
+            if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
+                const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio';
+                
+                // 1. Create a temporary array with original index preserved
+                const choicesToShuffle = q.answerChoices.map((choice, originalIndex) => ({
+                    ...choice,
+                    originalIndex: originalIndex 
+                }));
+
+                // 2. Shuffle the temporary array
+                choicesToShuffle.sort(() => Math.random() - 0.5);
+
+                // 3. Loop through the SHUFFLED array to build the HTML
+                choicesToShuffle.forEach(choice => {
+                    // Use the originalIndex for the input value so answer checking still works!
+                    answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choice.originalIndex}"><span class="checkmark"></span></label>`; 
+                });
+            }
+            // --- END: MODIFICATION FOR ANSWER SHUFFLING ---
+
             questionDiv.innerHTML = questionTextHtml + exhibitsHtml + answersHtml;
             quizContainer.appendChild(questionDiv);
         });
+
         const submitButton = document.createElement('button');
         submitButton.id = 'submitBtn'; submitButton.className = 'submit-btn'; submitButton.textContent = 'Submit Test';
         submitButton.addEventListener('click', showResults);
