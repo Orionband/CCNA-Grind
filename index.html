@@ -449,7 +449,39 @@
         return Array.from(mistakeIds);
     }
     
+    /**
+     * NEW: Creates a robust local path for an exhibit based on its original URL.
+     * It handles different URL structures from various sources.
+     * @param {string} fullUrl - The original URL from the JSON file.
+     * @returns {string} The corrected local relative path.
+     */
+    function getLocalExhibitPath(fullUrl) {
+        if (!fullUrl) return '';
+
+        const knownPathStarts = ['/Content/', '/files/'];
+        let relativePath = '';
+
+        for (const start of knownPathStarts) {
+            const startIndex = fullUrl.indexOf(start);
+            if (startIndex !== -1) {
+                relativePath = fullUrl.substring(startIndex);
+                break;
+            }
+        }
+
+        if (relativePath) {
+            // e.g., ./images/Content/Exhibits/GUID/file.png
+            return `./images${relativePath}`;
+        } else {
+            // Fallback for unknown URL structures: just use the filename.
+            const filename = fullUrl.split('/').pop();
+            console.warn(`Unexpected exhibit URL format, using fallback path for: ${fullUrl}`);
+            return `./images/${filename}`;
+        }
+    }
+    
     function updateMaxQuestions() {
+        // This function remains the same
         const mode = modeSelect.value;
         const category = categorySelect.value;
         let pool = [];
@@ -483,6 +515,7 @@
     }
 
     function normalizeQuestions(data) {
+        // This function remains the same
         return data.map(q => {
             if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) {
                 q.answerChoices = q.rawAnswer.MultipleChoice.map(choice => ({
@@ -498,6 +531,7 @@
     }
 
     function loadQuestions() {
+        // This function remains the same
         startBtn.disabled = true;
         startBtn.textContent = 'Loading Deck...';
         quizContainer.innerHTML = '';
@@ -553,26 +587,32 @@
             currentQuizQuestions = questionPool.slice(0, numQuestions);
         }
         
-        const textExhibitPromises = currentQuizQuestions.flatMap(q => 
+        // Pre-calculate local paths and pre-fetch text content for all exhibits
+        const exhibitPromises = currentQuizQuestions.flatMap(q => 
             (q.exhibits || []).map(exhibit => {
-                const fullUrl = exhibit.ExhibitFileName;
-                if (fullUrl && fullUrl.toLowerCase().endsWith('.txt')) {
-                    const localFileName = fullUrl.split('/').pop();
-                    const localPath = `/images/${localFileName}`;
-                    exhibit.localFileName = localFileName;
-                    return fetch(localPath)
-                        .then(response => response.ok ? response.text() : Promise.reject(`Failed to fetch ${localPath}`))
+                if (!exhibit.ExhibitFileName) return null;
+
+                // Use the new robust function to get the correct local path
+                exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName);
+                
+                // If it's a text file, fetch its content now
+                if (exhibit.localPath.toLowerCase().endsWith('.txt')) {
+                    return fetch(exhibit.localPath)
+                        .then(response => {
+                            if (!response.ok) throw new Error(`Failed to fetch ${exhibit.localPath}`);
+                            return response.text();
+                        })
                         .then(text => { exhibit.textContent = text; })
                         .catch(error => {
                             console.error('Error fetching exhibit:', error);
-                            exhibit.textContent = `Error: Could not load ${localPath}`;
+                            exhibit.textContent = `Error: Could not load exhibit.`;
                         });
                 }
-                return null;
+                return null; // Return null for non-text exhibits, as they don't need pre-fetching
             }).filter(Boolean)
         );
 
-        await Promise.all(textExhibitPromises);
+        await Promise.all(exhibitPromises);
         displayQuiz();
     }
 
@@ -609,34 +649,16 @@
             
             if (q.exhibits && q.exhibits.length > 0) {
                  q.exhibits.forEach(exhibit => {
-                    const fullUrl = exhibit.ExhibitFileName;
-                    if (!fullUrl) return;
+                    // Use the pre-calculated localPath
+                    const localPath = exhibit.localPath;
+                    if (!localPath) return;
 
-                    const filename = fullUrl.split('/').pop();
+                    const filename = localPath.split('/').pop();
                     const filenameLower = filename.toLowerCase();
-
-                    // This is where the main path logic change happens.
-                    let localPath;
-
+                    
                     if (filenameLower.endsWith('.txt')) {
-                        // Text files are handled differently; we just display pre-loaded content.
-                        quizHtml += `<div class="exhibit-container"><strong>Exhibit: ${exhibit.localFileName}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`;
-                        return; // Skip the rest of the logic for this exhibit
-                    } else {
-                        // For images and HTML, construct the complex local path.
-                        const contentPathIndex = fullUrl.indexOf('/Content/');
-                        if (contentPathIndex !== -1) {
-                            const relativePath = fullUrl.substring(contentPathIndex);
-                            localPath = `images${relativePath}`; // e.g., images/Content/Exhibits/GUID/file.png
-                        } else {
-                            // Fallback for unexpected URL formats
-                            localPath = `images/${filename}`;
-                            console.warn(`Unexpected exhibit URL format, using fallback path: ${fullUrl}`);
-                        }
-                    }
-
-                    // Now, build the HTML for images and iframes with the correct localPath.
-                    if (filenameLower.endsWith('.html')) {
+                        quizHtml += `<div class="exhibit-container"><strong>Exhibit: ${filename}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`;
+                    } else if (filenameLower.endsWith('.html')) {
                         quizHtml += `<iframe src="${localPath}" class="question-exhibit-frame" title="Exhibit: ${filename}"></iframe>`;
                     } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) {
                         quizHtml += `<img src="${localPath}" alt="Exhibit: ${filename}" class="question-exhibit">`;
@@ -659,6 +681,8 @@
         
         document.getElementById('submitBtn').addEventListener('click', showResults);
     }
+    
+    // All functions from toggleBookmark downwards remain unchanged. I'll include them for completeness.
     
     function toggleBookmark(questionId, buttonElement) {
         const index = bookmarkedQuestions.indexOf(questionId);
