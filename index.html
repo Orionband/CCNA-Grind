@@ -31,7 +31,6 @@
             --error-bg: #f8d7da;
             --error-border: #f1aeb5;
             --shadow-color: rgba(0, 0, 0, 0.1);
-            --icon-fill: #495057;
 
             /* Transitions */
             --transition-speed: 0.3s;
@@ -54,7 +53,6 @@
             --error-bg: #4d1822;
             --error-border: #8c2a3e;
             --shadow-color: rgba(0, 0, 0, 0.4);
-            --icon-fill: #e0e0e0;
         }
 
         /* General Styling */
@@ -84,11 +82,9 @@
             position: relative;
         }
 
-        /* Header and Dark Mode Toggle */
+        /* Header */
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 1.5rem;
             margin-bottom: 1.5rem;
@@ -102,28 +98,6 @@
             text-align: center;
             color: var(--text-color);
             padding-bottom: 10px;
-        }
-        #darkModeToggle {
-            background: none;
-            border: 2px solid var(--border-color);
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-            transition: background-color var(--transition-speed), border-color var(--transition-speed);
-        }
-        #darkModeToggle:hover {
-            background-color: var(--surface-alt-color);
-        }
-        #darkModeToggle svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--icon-fill);
-            transition: fill var(--transition-speed);
         }
         
         /* Options Panel */
@@ -291,9 +265,7 @@
     <div class="container">
         <div class="header">
             <h1>CCNA Practice</h1>
-            <button id="darkModeToggle" title="Toggle Dark Mode">
-                <!-- Icons will be injected by JS -->
-            </button>
+            <!-- Dark mode toggle removed, now system-based -->
         </div>
         
         <div id="mainScreen">
@@ -349,6 +321,7 @@
     </div>
 
     <script>
+    // --- GLOBAL VARIABLES ---
     const startBtn = document.getElementById('startBtn');
     const quizContainer = document.getElementById('quizContainer');
     const resultsContainer = document.getElementById('resultsContainer');
@@ -369,52 +342,126 @@
     let bookmarkedQuestions = [];
     let chartInstances = {};
 
-    // --- DARK MODE LOGIC ---
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM17.836 17.836a.75.75 0 01-1.06 0l-1.59-1.591a.75.75 0 111.06-1.06l1.59 1.59a.75.75 0 010 1.061zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.964 17.836a.75.75 0 010-1.06l-1.59-1.59a.75.75 0 01-1.061 1.06l1.59 1.59a.75.75 0 011.06 0zM4.5 12a.75.75 0 01-.75.75H1.5a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM6.106 6.106a.75.75 0 011.06 0l1.591 1.59a.75.75 0 01-1.06 1.06l-1.59-1.591a.75.75 0 010-1.06z"/></svg>`;
-    const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.981A10.503 10.503 0 0112 21a10.5 10.5 0 01-10.5-10.5c0-4.368 2.667-8.112 6.46-9.772a.75.75 0 01.818.162z" /></svg>`;
-    
+    // --- REORDERED FUNCTIONS TO FIX ReferenceError ---
+
+    // --- DARK MODE & THEME LOGIC ---
     function setDarkMode(isDark) {
-        if (isDark) {
-            document.documentElement.classList.add('dark-mode');
-            darkModeToggle.innerHTML = sunIcon;
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark-mode');
-            darkModeToggle.innerHTML = moonIcon;
-            localStorage.setItem('theme', 'light');
-        }
-        // Re-render charts with new theme colors
+        document.documentElement.classList.toggle('dark-mode', isDark);
+        // Re-render all visible charts with new theme colors
         renderDashboard();
-        if (quizContainer.classList.contains('hidden') && resultsContainer.innerHTML !== '') {
+        if (currentQuizAttempt) {
             renderQuizSummaryChart(currentQuizAttempt);
         }
     }
 
-    darkModeToggle.addEventListener('click', () => {
-        const isDark = !document.documentElement.classList.contains('dark-mode');
-        setDarkMode(isDark);
-    });
+    // --- CHART RENDERING ---
+    function getChartThemeOptions() {
+        const isDark = document.documentElement.classList.contains('dark-mode');
+        const textColor = isDark ? '#e0e0e0' : '#6c757d';
+        const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+        return {
+            color: textColor,
+            scales: {
+                x: { ticks: { color: textColor }, grid: { color: gridColor, borderColor: gridColor } },
+                y: { ticks: { color: textColor }, grid: { color: gridColor, borderColor: gridColor } }
+            }
+        };
+    }
 
-    // --- END DARK MODE LOGIC ---
+    function renderQuizSummaryChart(quizAttempt) {
+        if (!quizAttempt) return;
+        const ctx = document.getElementById('quizSummaryChart')?.getContext('2d');
+        if (!ctx) return;
+        if (chartInstances.summary) chartInstances.summary.destroy();
 
-    document.addEventListener('DOMContentLoaded', () => {
-        Chart.register(ChartDataLabels);
+        const categoryStats = {};
+        quizAttempt.questions.forEach(qResult => {
+            const cat = qResult.category || 'N/A';
+            if (!categoryStats[cat]) categoryStats[cat] = { correct: 0, total: 0 };
+            categoryStats[cat].total++;
+            if (qResult.isCorrect) categoryStats[cat].correct++;
+        });
+        
+        const labels = Object.keys(categoryStats).map(cat => CATEGORY_MAP[cat] || cat);
+        const data = Object.values(categoryStats).map(stats => (stats.correct / stats.total) * 100);
 
-        // Apply saved theme on page load
-        const savedTheme = localStorage.getItem('theme');
-        setDarkMode(savedTheme === 'dark');
+        chartInstances.summary = new Chart(ctx, {
+            type: 'bar',
+            data: { labels, datasets: [{ label: '% Correct', data, backgroundColor: 'rgba(25, 135, 84, 0.7)' }] },
+            options: {
+                ...getChartThemeOptions(),
+                indexAxis: 'y',
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { display: false }, datalabels: { color: '#fff', formatter: (v) => v.toFixed(0) + '%' } }
+            }
+        });
+    }
+    
+    function renderCategoryChart() {
+        const ctx = document.getElementById('categoryChart')?.getContext('2d');
+        if (!ctx) return;
+        const container = ctx.canvas.parentNode;
+        container.style.height = `${(Object.keys(CATEGORY_MAP).length * 35) + 80}px`;
 
-        loadDataFromStorage();
-        populateCategoryFilter();
-        populateCategoryDescriptions();
-        renderDashboard(); 
-        loadQuestions(); 
+        if (chartInstances.category) chartInstances.category.destroy();
 
-        startBtn.addEventListener('click', loadAndDisplayQuiz);
-        modeSelect.addEventListener('change', updateMaxQuestions);
-        document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
-    });
+        const categoryStats = Object.fromEntries(Object.keys(CATEGORY_MAP).map(code => [code, { correct: 0, total: 0 }]));
+        quizHistory.forEach(quiz => quiz.questions.forEach(q => {
+            if (q.category && categoryStats[q.category]) {
+                categoryStats[q.category].total++;
+                if (q.isCorrect) categoryStats[q.category].correct++;
+            }
+        }));
+        
+        const sortedCodes = Object.keys(CATEGORY_MAP).sort((a,b) => CATEGORY_MAP[a].localeCompare(CATEGORY_MAP[b]));
+        const labels = sortedCodes.map(code => CATEGORY_MAP[code]);
+        const data = sortedCodes.map(code => {
+            const stats = categoryStats[code];
+            return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
+        });
+
+        chartInstances.category = new Chart(ctx, {
+            type: 'bar',
+            data: { labels, datasets: [{ label: '% Correct', data, backgroundColor: 'rgba(13, 110, 253, 0.7)' }] },
+            options: {
+                ...getChartThemeOptions(),
+                indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                plugins: { 
+                    legend: { display: false },
+                    title: { display: true, text: 'Overall Performance by Topic', color: getChartThemeOptions().color },
+                    datalabels: { color: '#fff', formatter: (v) => v > 0 ? v.toFixed(0) + '%' : '' } 
+                }
+            }
+        });
+    }
+
+    function renderHistoryChart() {
+        const ctx = document.getElementById('historyChart')?.getContext('2d');
+        if (!ctx) return;
+        if (chartInstances.history) chartInstances.history.destroy();
+        
+        const chartData = quizHistory.map(quiz => ({ x: quiz.timestamp, y: (quiz.score / quiz.total) * 100 }));
+
+        chartInstances.history = new Chart(ctx, {
+            type: 'line',
+            data: { datasets: [{ label: 'Score %', data: chartData, borderColor: 'rgb(25, 135, 84)', tension: 0.1 }] },
+            options: {
+                ...getChartThemeOptions(),
+                responsive: true, maintainAspectRatio: false,
+                scales: { x: { ...getChartThemeOptions().scales.x, type: 'time', time: { unit: 'day', tooltipFormat: 'PP' } }, y: getChartThemeOptions().scales.y },
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Score Over Time', color: getChartThemeOptions().color },
+                    datalabels: { display: false }
+                }
+            }
+        });
+    }
+
+    function renderDashboard() {
+        renderCategoryChart();
+        renderHistoryChart();
+    }
     
     // --- UTILITY AND DATA FUNCTIONS ---
     function loadDataFromStorage() {
@@ -490,7 +537,7 @@
             const response = await fetch('questions.json');
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const data = await response.json();
-            allQuestions = data; // Assuming normalization is not strictly needed now
+            allQuestions = data;
             updateMaxQuestions();
         } catch (error) {
             console.error(`Error fetching questions.json:`, error);
@@ -605,7 +652,6 @@
         
         document.getElementById('submitBtn').remove();
         
-        // --- Build Results View ---
         resultsContainer.innerHTML = '';
         const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
         const scoreHeader = document.createElement('h2');
@@ -645,6 +691,7 @@
             const userAnswers = userChoices.map(input => parseInt(input.value));
             
             questionElement.querySelectorAll('.answer-choice').forEach((label, choiceIndex) => {
+                label.style.cursor = 'default';
                 if (q.answerChoices[choiceIndex].IsCorrect) {
                     label.classList.add('correct');
                 } else if (userAnswers.includes(choiceIndex)) {
@@ -656,110 +703,21 @@
         });
         quizContainer.querySelectorAll('input').forEach(input => input.disabled = true);
     }
-    
-    // --- CHART RENDERING ---
-    function getChartThemeOptions() {
-        const isDark = document.documentElement.classList.contains('dark-mode');
-        const textColor = isDark ? '#e0e0e0' : '#6c757d';
-        const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-        return {
-            color: textColor,
-            scales: {
-                x: { ticks: { color: textColor }, grid: { color: gridColor, borderColor: gridColor } },
-                y: { ticks: { color: textColor }, grid: { color: gridColor, borderColor: gridColor } }
-            }
-        };
-    }
-    
-    function renderQuizSummaryChart(quizAttempt) {
-        if (!quizAttempt) return;
-        const ctx = document.getElementById('quizSummaryChart')?.getContext('2d');
-        if (!ctx) return;
-        if (chartInstances.summary) chartInstances.summary.destroy();
 
-        const categoryStats = {};
-        quizAttempt.questions.forEach(qResult => {
-            const cat = qResult.category || 'N/A';
-            if (!categoryStats[cat]) categoryStats[cat] = { correct: 0, total: 0 };
-            categoryStats[cat].total++;
-            if (qResult.isCorrect) categoryStats[cat].correct++;
-        });
-        
-        const labels = Object.keys(categoryStats).map(cat => CATEGORY_MAP[cat] || cat);
-        const data = Object.values(categoryStats).map(stats => (stats.correct / stats.total) * 100);
+    // --- SCRIPT INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', () => {
+        Chart.register(ChartDataLabels);
 
-        chartInstances.summary = new Chart(ctx, {
-            type: 'bar',
-            data: { labels, datasets: [{ label: '% Correct', data, backgroundColor: 'rgba(25, 135, 84, 0.7)' }] },
-            options: {
-                ...getChartThemeOptions(),
-                indexAxis: 'y',
-                responsive: true, maintainAspectRatio: false,
-                plugins: { legend: { display: false }, datalabels: { color: '#fff', formatter: (v) => v.toFixed(0) + '%' } }
-            }
-        });
-    }
-    
-    function renderCategoryChart() {
-        const ctx = document.getElementById('categoryChart')?.getContext('2d');
-        if (!ctx) return;
-        const container = ctx.canvas.parentNode;
-        container.style.height = `${(Object.keys(CATEGORY_MAP).length * 35) + 80}px`;
+        // Set up system-based dark mode
+        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        setDarkMode(darkModeMediaQuery.matches);
+        darkModeMediaQuery.addEventListener('change', e => setDarkMode(e.matches));
 
-        if (chartInstances.category) chartInstances.category.destroy();
-
-        const categoryStats = Object.fromEntries(Object.keys(CATEGORY_MAP).map(code => [code, { correct: 0, total: 0 }]));
-        quizHistory.forEach(quiz => quiz.questions.forEach(q => {
-            if (q.category && categoryStats[q.category]) {
-                categoryStats[q.category].total++;
-                if (q.isCorrect) categoryStats[q.category].correct++;
-            }
-        }));
-        
-        const sortedCodes = Object.keys(CATEGORY_MAP).sort((a,b) => CATEGORY_MAP[a].localeCompare(CATEGORY_MAP[b]));
-        const labels = sortedCodes.map(code => CATEGORY_MAP[code]);
-        const data = sortedCodes.map(code => {
-            const stats = categoryStats[code];
-            return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
-        });
-
-        chartInstances.category = new Chart(ctx, {
-            type: 'bar',
-            data: { labels, datasets: [{ label: '% Correct', data, backgroundColor: 'rgba(13, 110, 253, 0.7)' }] },
-            options: {
-                ...getChartThemeOptions(),
-                indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-                plugins: { 
-                    legend: { display: false },
-                    title: { display: true, text: 'Overall Performance by Topic', color: getChartThemeOptions().color },
-                    datalabels: { color: '#fff', formatter: (v) => v > 0 ? v.toFixed(0) + '%' : '' } 
-                }
-            }
-        });
-    }
-
-    function renderHistoryChart() {
-        const ctx = document.getElementById('historyChart')?.getContext('2d');
-        if (!ctx) return;
-        if (chartInstances.history) chartInstances.history.destroy();
-        
-        const chartData = quizHistory.map(quiz => ({ x: quiz.timestamp, y: (quiz.score / quiz.total) * 100 }));
-
-        chartInstances.history = new Chart(ctx, {
-            type: 'line',
-            data: { datasets: [{ label: 'Score %', data: chartData, borderColor: 'rgb(25, 135, 84)', tension: 0.1 }] },
-            options: {
-                ...getChartThemeOptions(),
-                responsive: true, maintainAspectRatio: false,
-                scales: { x: { ...getChartThemeOptions().scales.x, type: 'time', time: { unit: 'day', tooltipFormat: 'PP' } }, y: getChartThemeOptions().scales.y },
-                plugins: {
-                    legend: { display: false },
-                    title: { display: true, text: 'Score Over Time', color: getChartThemeOptions().color },
-                    datalabels: { display: false }
-                }
-            }
-        });
-    }
+        loadDataFromStorage();
+        populateCategoryFilter();
+        populateCategoryDescriptions();
+        loadQuestions(); 
+    });
     </script>
 </body>
 </html>
