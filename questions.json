@@ -9003,39 +9003,6 @@
         "cat": "NAPR"
     },
     {
-        "questionId": "DA9E48F9-3118-4336-B6FD-4E24B0353160",
-        "questionText": "What type of output is shown in the exhibit?",
-        "explanation": "This output is directly from a DNA Center RESTful API request called &ldquo;Get Network Device by IP&rdquo; and the output is in JSON form.",
-        "difficulty": "1",
-        "comments": "",
-        "exhibits": [
-            {
-                "ExhibitId": "9AF3CBF5-9D16-4F45-942C-69AD8EE25D88",
-                "ExhibitTitle": "4",
-                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/9AF3CBF5-9D16-4F45-942C-69AD8EE25D88/200301-ZZ-v2-2-18-19.html"
-            }
-        ],
-        "answerChoices": [
-            {
-                "Text": "YAML",
-                "IsCorrect": false
-            },
-            {
-                "Text": "JSON",
-                "IsCorrect": true
-            },
-            {
-                "Text": "XML",
-                "IsCorrect": false
-            },
-            {
-                "Text": "JavaScript",
-                "IsCorrect": false
-            }
-        ],
-        "cat": "NAPR"
-    },
-    {
         "questionId": "6EF4D553-7B62-4262-9125-5BEB95E49D1A",
         "questionText": "Using the exhibit as a reference, what option(s) is a key:value pair?",
         "explanation": "The key:value pair is &ldquo;lastUpdateTime&quot;: 1572317520439, which includes both the key and the value. As for the incorrect options, &ldquo;role&rdquo; is a key and &ldquo;CSR1000V&rdquo; is a value but neither are full key:value pairs. Finally, &ldquo;platformId&rdquo;: lists both the key and the colon but it omits the value.\n\nNote:&nbsp;This output is directly from a Cisco Catalyst Center RESTful API request called &ldquo;Get Network Device by IP&rdquo; and the output is in JSON form.",
