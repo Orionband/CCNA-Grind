@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/dist/date-fns.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-    <!-- NEW: Chart.js Plugin for Data Labels -->
+    <!-- Chart.js Plugin for Data Labels -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.1.0"></script>
 
 
@@ -90,7 +90,7 @@
         }
         .chart-container {
             display: grid;
-            grid-template-columns: 1fr; /* Changed to single column for better layout */
+            grid-template-columns: 1fr; 
             gap: 30px;
         }
         .chart-summary-container {
@@ -198,7 +198,6 @@
             font-size: 1.15em;
             flex-grow: 1;
         }
-        /* NEW: Style for the category abbreviation */
         .question-category {
             color: #6c757d;
             font-weight: 500;
@@ -396,7 +395,6 @@
     let chartInstances = {};
 
     document.addEventListener('DOMContentLoaded', () => {
-        // NEW: Register the datalabels plugin globally
         Chart.register(ChartDataLabels);
 
         loadDataFromStorage();
@@ -590,9 +588,7 @@
         const exhibitPromises = currentQuizQuestions.flatMap(q => 
             (q.exhibits || []).map(exhibit => {
                 if (!exhibit.ExhibitFileName) return null;
-
                 exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName);
-                
                 if (exhibit.localPath.toLowerCase().endsWith('.txt')) {
                     return fetch(exhibit.localPath)
                         .then(response => {
@@ -632,7 +628,6 @@
             const isBookmarked = bookmarkedQuestions.includes(q.questionId);
             const bookmarkedClass = isBookmarked ? 'bookmarked' : '';
 
-            // MODIFIED: Added span for category
             let questionTextHtml = `
                 <div class="question-header">
                     <button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this)">🚩</button>
@@ -722,7 +717,6 @@
         
         currentQuizQuestions.forEach((q, index) => {
             let isQuestionCorrect = false;
-            // ... (rest of the scoring logic is unchanged)
             if (q.answerType === 'FB') {
                 const userInput = document.querySelector(`#fb-input-${index}`);
                 if (userInput) {
@@ -758,26 +752,48 @@
         document.getElementById('submitBtn').remove();
         
         const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
-        resultsContainer.innerHTML = `<h2>Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%)</h2>`;
-
-        // NEW: Add the summary chart to the results
+        
+        // --- REWRITTEN RESULTS CONTAINER LOGIC ---
+        // 1. Clear the container completely.
+        resultsContainer.innerHTML = '';
+        
+        // 2. Create and append the score header.
+        const scoreHeader = document.createElement('h2');
+        scoreHeader.innerHTML = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%)`;
+        resultsContainer.appendChild(scoreHeader);
+        
+        // 3. Render the summary chart. This appends it safely.
         renderQuizSummaryChart(quizAttempt);
-
+        
+        // 4. Handle answer reveals and buttons.
         if (isExamMode) {
-            resultsContainer.innerHTML += '<button id="reviewBtn" class="review-btn">Review Answers</button>';
-            document.getElementById('reviewBtn').addEventListener('click', revealAnswers);
+            const reviewBtn = document.createElement('button');
+            reviewBtn.id = 'reviewBtn';
+            reviewBtn.className = 'review-btn';
+            reviewBtn.textContent = 'Review Answers';
+            reviewBtn.onclick = () => {
+                revealAnswers();
+                reviewBtn.remove(); // Remove itself after clicking
+            };
+            resultsContainer.appendChild(reviewBtn);
         } else {
             revealAnswers();
         }
         
-        resultsContainer.innerHTML += '<button id="restartBtn" class="restart-btn">Take Another Test</button>';
-        document.getElementById('restartBtn').addEventListener('click', () => {
+        // 5. Create and append the restart button. This is non-destructive.
+        const restartBtn = document.createElement('button');
+        restartBtn.id = 'restartBtn';
+        restartBtn.className = 'restart-btn';
+        restartBtn.textContent = 'Take Another Test';
+        restartBtn.onclick = () => {
              mainScreen.classList.remove('hidden');
              quizContainer.classList.add('hidden');
              quizContainer.innerHTML = '';
              resultsContainer.innerHTML = '';
              updateMaxQuestions();
-        });
+        };
+        resultsContainer.appendChild(restartBtn);
+        // --- END OF REWRITTEN LOGIC ---
     }
     
     function revealAnswers() {
@@ -816,9 +832,7 @@
         renderHistoryChart();
     }
     
-    // NEW FUNCTION: Renders a summary chart for a single quiz attempt on the results page.
     function renderQuizSummaryChart(quizAttempt) {
-        // Create a container and canvas for the new chart
         const container = document.createElement('div');
         container.className = 'chart-summary-container';
         container.innerHTML = '<h3>This Quiz Performance</h3><canvas id="quizSummaryChart"></canvas>';
@@ -829,7 +843,6 @@
 
         const categoryStats = {};
         
-        // Aggregate stats only for the questions in this specific quiz
         quizAttempt.questions.forEach(qResult => {
             const category = qResult.category || 'N/A';
             if (!categoryStats[category]) {
@@ -841,13 +854,15 @@
             }
         });
         
-        const labels = Object.keys(categoryStats).map(cat => CATEGORY_MAP[cat] || cat);
-        const data = Object.values(categoryStats).map(stats => {
+        const includedCategories = Object.keys(categoryStats);
+        const labels = includedCategories.map(cat => CATEGORY_MAP[cat] || cat);
+        const data = includedCategories.map(cat => {
+            const stats = categoryStats[cat];
             return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
         });
 
         chartInstances.summary = new Chart(ctx, {
-            type: 'bar', // Can be 'bar' (vertical) or 'bar' with indexAxis: 'y' (horizontal)
+            type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
@@ -859,7 +874,7 @@
                 }]
             },
             options: {
-                indexAxis: 'y', // This makes the bar chart horizontal
+                indexAxis: 'y',
                 scales: { 
                     x: { 
                         beginAtZero: true, 
@@ -871,7 +886,7 @@
                 },
                 plugins: { 
                     legend: { display: false }, 
-                    title: { display: false }, // No need for title as we have an H3
+                    title: { display: false },
                     datalabels: {
                         anchor: 'end',
                         align: 'end',
@@ -888,7 +903,6 @@
         });
     }
     
-    // MODIFIED: Dashboard category chart is now horizontal and has data labels
     function renderCategoryChart() {
         const ctx = document.getElementById('categoryChart').getContext('2d');
         if (chartInstances.category) chartInstances.category.destroy();
@@ -910,8 +924,9 @@
             });
         });
         
-        const labels = Object.values(CATEGORY_MAP);
-        const data = Object.keys(CATEGORY_MAP).map(code => {
+        const sortedCategoryCodes = Object.keys(CATEGORY_MAP).sort((a,b) => CATEGORY_MAP[a].localeCompare(CATEGORY_MAP[b]));
+        const labels = sortedCategoryCodes.map(code => CATEGORY_MAP[code]);
+        const data = sortedCategoryCodes.map(code => {
             const stats = categoryStats[code];
             return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
         });
@@ -929,7 +944,7 @@
                 }]
             },
             options: {
-                indexAxis: 'y', // This makes the bar chart horizontal
+                indexAxis: 'y',
                 scales: { 
                     x: { 
                         beginAtZero: true, 
@@ -946,16 +961,18 @@
                         anchor: 'end',
                         align: 'end',
                         color: '#363636',
-                        formatter: (value) => value > 0 ? value.toFixed(1) + '%' : ''
+                        formatter: (value) => value > 0 ? value.toFixed(1) + '%' : '',
+                        font: {
+                            weight: 'bold'
+                        }
                     }
                 },
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: true
             }
         });
     }
 
-    // MODIFIED: Score over time now shows data labels
     function renderHistoryChart() {
         const ctx = document.getElementById('historyChart').getContext('2d');
         if (chartInstances.history) chartInstances.history.destroy();
@@ -997,7 +1014,8 @@
                         borderRadius: 4,
                         color: 'white',
                         font: {
-                            size: 10
+                            size: 10,
+                            weight: 'bold'
                         },
                         formatter: (value) => Math.round(value.y) + '%',
                         display: 'auto'
