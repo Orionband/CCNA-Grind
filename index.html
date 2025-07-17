@@ -9,6 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/dist/date-fns.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <!-- NEW: Chart.js Plugin for Data Labels -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.1.0"></script>
+
 
     <style>
         /* General Styling */
@@ -78,7 +81,7 @@
              margin-bottom: 0;
         }
 
-        /* Dashboard */
+        /* Dashboard & Charts */
         #dashboardContainer {
             margin-bottom: 20px;
             padding: 20px;
@@ -87,8 +90,14 @@
         }
         .chart-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr; /* Changed to single column for better layout */
+            gap: 30px;
+        }
+        .chart-summary-container {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
         }
         
         /* Category Descriptions Styling */
@@ -188,6 +197,13 @@
             font-weight: 600;
             font-size: 1.15em;
             flex-grow: 1;
+        }
+        /* NEW: Style for the category abbreviation */
+        .question-category {
+            color: #6c757d;
+            font-weight: 500;
+            font-size: 0.9em;
+            margin-right: 8px;
         }
         .bookmark-btn {
             background: none;
@@ -380,6 +396,9 @@
     let chartInstances = {};
 
     document.addEventListener('DOMContentLoaded', () => {
+        // NEW: Register the datalabels plugin globally
+        Chart.register(ChartDataLabels);
+
         loadDataFromStorage();
         populateCategoryFilter();
         populateCategoryDescriptions();
@@ -449,35 +468,22 @@
         return Array.from(mistakeIds);
     }
     
-    /**
-     * REWRITTEN AGAIN: Creates a universal local path for an exhibit from its URL.
-     * This version avoids decoding URL characters and replaces OS-forbidden characters.
-     * @param {string} fullUrl - The original URL from the JSON file.
-     * @returns {string} The corrected local relative path.
-     */
     function getLocalExhibitPath(fullUrl) {
         if (!fullUrl) return '';
         try {
             const url = new URL(fullUrl);
-            
-            // Get the path part of the URL *without* decoding it.
-            // We get everything after the domain (origin).
             let rawPath = fullUrl.substring(url.origin.length);
-
-            // Replace colons with underscores for OS compatibility.
             rawPath = rawPath.replaceAll(':', '_');
-            
             return `./images${rawPath}`;
         } catch (e) {
             console.error(`Could not parse URL: "${fullUrl}". Using simple fallback.`, e);
             let filename = fullUrl.split('/').pop();
-            filename = filename.replaceAll(':', '_'); // Also apply to fallback
+            filename = filename.replaceAll(':', '_');
             return `./images/${filename}`;
         }
     }
 
     function updateMaxQuestions() {
-        // This function remains the same
         const mode = modeSelect.value;
         const category = categorySelect.value;
         let pool = [];
@@ -511,7 +517,6 @@
     }
 
     function normalizeQuestions(data) {
-        // This function remains the same
         return data.map(q => {
             if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) {
                 q.answerChoices = q.rawAnswer.MultipleChoice.map(choice => ({
@@ -527,7 +532,6 @@
     }
 
     function loadQuestions() {
-        // This function remains the same
         startBtn.disabled = true;
         startBtn.textContent = 'Loading Deck...';
         quizContainer.innerHTML = '';
@@ -628,10 +632,13 @@
             const isBookmarked = bookmarkedQuestions.includes(q.questionId);
             const bookmarkedClass = isBookmarked ? 'bookmarked' : '';
 
+            // MODIFIED: Added span for category
             let questionTextHtml = `
                 <div class="question-header">
                     <button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this)">🚩</button>
-                    <div class="question-text">${index + 1}. ${q.questionText}</div>
+                    <div class="question-text">
+                        ${index + 1}. <span class="question-category">(${(q.cat || 'N/A')})</span> ${q.questionText}
+                    </div>
                 </div>`;
 
             if (q.answerType === 'FB') {
@@ -674,8 +681,6 @@
         document.getElementById('submitBtn').addEventListener('click', showResults);
     }
     
-    // All functions from toggleBookmark downwards remain unchanged.
-    
     function toggleBookmark(questionId, buttonElement) {
         const index = bookmarkedQuestions.indexOf(questionId);
         if (index > -1) {
@@ -717,6 +722,7 @@
         
         currentQuizQuestions.forEach((q, index) => {
             let isQuestionCorrect = false;
+            // ... (rest of the scoring logic is unchanged)
             if (q.answerType === 'FB') {
                 const userInput = document.querySelector(`#fb-input-${index}`);
                 if (userInput) {
@@ -732,7 +738,7 @@
             }
 
             if (isQuestionCorrect) score++;
-            quizAttempt.questions.push({ questionId: q.questionId, isCorrect: isQuestionCorrect });
+            quizAttempt.questions.push({ questionId: q.questionId, isCorrect: isQuestionCorrect, category: q.cat });
         });
         
         quizAttempt.score = score;
@@ -753,6 +759,9 @@
         
         const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
         resultsContainer.innerHTML = `<h2>Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%)</h2>`;
+
+        // NEW: Add the summary chart to the results
+        renderQuizSummaryChart(quizAttempt);
 
         if (isExamMode) {
             resultsContainer.innerHTML += '<button id="reviewBtn" class="review-btn">Review Answers</button>';
@@ -807,6 +816,79 @@
         renderHistoryChart();
     }
     
+    // NEW FUNCTION: Renders a summary chart for a single quiz attempt on the results page.
+    function renderQuizSummaryChart(quizAttempt) {
+        // Create a container and canvas for the new chart
+        const container = document.createElement('div');
+        container.className = 'chart-summary-container';
+        container.innerHTML = '<h3>This Quiz Performance</h3><canvas id="quizSummaryChart"></canvas>';
+        resultsContainer.appendChild(container);
+
+        const ctx = document.getElementById('quizSummaryChart').getContext('2d');
+        if (chartInstances.summary) chartInstances.summary.destroy();
+
+        const categoryStats = {};
+        
+        // Aggregate stats only for the questions in this specific quiz
+        quizAttempt.questions.forEach(qResult => {
+            const category = qResult.category || 'N/A';
+            if (!categoryStats[category]) {
+                categoryStats[category] = { correct: 0, total: 0 };
+            }
+            categoryStats[category].total++;
+            if (qResult.isCorrect) {
+                categoryStats[category].correct++;
+            }
+        });
+        
+        const labels = Object.keys(categoryStats).map(cat => CATEGORY_MAP[cat] || cat);
+        const data = Object.values(categoryStats).map(stats => {
+            return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
+        });
+
+        chartInstances.summary = new Chart(ctx, {
+            type: 'bar', // Can be 'bar' (vertical) or 'bar' with indexAxis: 'y' (horizontal)
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '% Correct',
+                    data: data,
+                    backgroundColor: 'rgba(25, 135, 84, 0.6)',
+                    borderColor: 'rgba(25, 135, 84, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y', // This makes the bar chart horizontal
+                scales: { 
+                    x: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        ticks: {
+                            callback: function(value) { return value + "%" }
+                        }
+                    } 
+                },
+                plugins: { 
+                    legend: { display: false }, 
+                    title: { display: false }, // No need for title as we have an H3
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'end',
+                        color: '#363636',
+                        font: {
+                            weight: 'bold'
+                        },
+                        formatter: (value) => value.toFixed(1) + '%'
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+    
+    // MODIFIED: Dashboard category chart is now horizontal and has data labels
     function renderCategoryChart() {
         const ctx = document.getElementById('categoryChart').getContext('2d');
         if (chartInstances.category) chartInstances.category.destroy();
@@ -828,8 +910,8 @@
             });
         });
         
-        const labels = Object.keys(categoryStats);
-        const data = labels.map(code => {
+        const labels = Object.values(CATEGORY_MAP);
+        const data = Object.keys(CATEGORY_MAP).map(code => {
             const stats = categoryStats[code];
             return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
         });
@@ -847,14 +929,33 @@
                 }]
             },
             options: {
-                scales: { y: { beginAtZero: true, max: 100 } },
-                plugins: { legend: { display: false }, title: { display: true, text: 'Performance by Topic' } },
+                indexAxis: 'y', // This makes the bar chart horizontal
+                scales: { 
+                    x: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        ticks: {
+                            callback: function(value) { return value + "%" }
+                        }
+                    } 
+                },
+                plugins: { 
+                    legend: { display: false }, 
+                    title: { display: true, text: 'Overall Performance by Topic' },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'end',
+                        color: '#363636',
+                        formatter: (value) => value > 0 ? value.toFixed(1) + '%' : ''
+                    }
+                },
                 responsive: true,
                 maintainAspectRatio: false
             }
         });
     }
 
+    // MODIFIED: Score over time now shows data labels
     function renderHistoryChart() {
         const ctx = document.getElementById('historyChart').getContext('2d');
         if (chartInstances.history) chartInstances.history.destroy();
@@ -889,7 +990,18 @@
                 },
                 plugins: {
                     legend: { display: false },
-                    title: { display: true, text: 'Score Over Time' }
+                    title: { display: true, text: 'Score Over Time' },
+                    datalabels: {
+                        align: 'top',
+                        backgroundColor: 'rgba(25, 135, 84, 0.7)',
+                        borderRadius: 4,
+                        color: 'white',
+                        font: {
+                            size: 10
+                        },
+                        formatter: (value) => Math.round(value.y) + '%',
+                        display: 'auto'
+                    }
                 },
                 responsive: true,
                 maintainAspectRatio: false
