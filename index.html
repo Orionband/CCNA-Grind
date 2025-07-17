@@ -360,7 +360,6 @@
     const categorySelect = document.getElementById('categorySelect');
     const modeSelect = document.getElementById('modeSelect');
 
-    // Updated Category Map
     const CATEGORY_MAP = {
         "NETFD": "Network Fundamentals",
         "NETSEC": "Network Security & Access Control",
@@ -554,15 +553,14 @@
             currentQuizQuestions = questionPool.slice(0, numQuestions);
         }
         
-        // Fetch text exhibits using the new /images/ path
         const textExhibitPromises = currentQuizQuestions.flatMap(q => 
             (q.exhibits || []).map(exhibit => {
                 const fullUrl = exhibit.ExhibitFileName;
                 if (fullUrl && fullUrl.toLowerCase().endsWith('.txt')) {
                     const localFileName = fullUrl.split('/').pop();
-                    const localPath = `/images/${localFileName}`; // New path
+                    const localPath = `/images/${localFileName}`;
                     exhibit.localFileName = localFileName;
-                    return fetch(localPath) // Use new path
+                    return fetch(localPath)
                         .then(response => response.ok ? response.text() : Promise.reject(`Failed to fetch ${localPath}`))
                         .then(text => { exhibit.textContent = text; })
                         .catch(error => {
@@ -609,19 +607,36 @@
             }
             quizHtml += questionTextHtml;
             
-            // Display exhibits using the new /images/ path
             if (q.exhibits && q.exhibits.length > 0) {
                  q.exhibits.forEach(exhibit => {
                     const fullUrl = exhibit.ExhibitFileName;
                     if (!fullUrl) return;
 
                     const filename = fullUrl.split('/').pop();
-                    const localPath = `/images/${filename}`; // Construct local path
-
                     const filenameLower = filename.toLowerCase();
+
+                    // This is where the main path logic change happens.
+                    let localPath;
+
                     if (filenameLower.endsWith('.txt')) {
+                        // Text files are handled differently; we just display pre-loaded content.
                         quizHtml += `<div class="exhibit-container"><strong>Exhibit: ${exhibit.localFileName}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`;
-                    } else if (filenameLower.endsWith('.html')) {
+                        return; // Skip the rest of the logic for this exhibit
+                    } else {
+                        // For images and HTML, construct the complex local path.
+                        const contentPathIndex = fullUrl.indexOf('/Content/');
+                        if (contentPathIndex !== -1) {
+                            const relativePath = fullUrl.substring(contentPathIndex);
+                            localPath = `images${relativePath}`; // e.g., images/Content/Exhibits/GUID/file.png
+                        } else {
+                            // Fallback for unexpected URL formats
+                            localPath = `images/${filename}`;
+                            console.warn(`Unexpected exhibit URL format, using fallback path: ${fullUrl}`);
+                        }
+                    }
+
+                    // Now, build the HTML for images and iframes with the correct localPath.
+                    if (filenameLower.endsWith('.html')) {
                         quizHtml += `<iframe src="${localPath}" class="question-exhibit-frame" title="Exhibit: ${filename}"></iframe>`;
                     } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) {
                         quizHtml += `<img src="${localPath}" alt="Exhibit: ${filename}" class="question-exhibit">`;

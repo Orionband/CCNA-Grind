@@ -1,0 +1,106 @@
+a.
+
+!
+interface GigabitEthernet0/1
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/2
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/3
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/4
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface Port-channel10
+ no switchport
+ ip address 10.10.10.1 255.255.255.0
+!
+
+
+b.
+
+!
+interface GigabitEthernet0/1
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/2
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/3
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/4
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface Port-channel1
+ ip address 10.10.10.1 255.255.255.0
+!
+
+c.
+
+!
+interface GigabitEthernet0/1
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/2
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/3
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/4
+ no switchport
+ no ip address
+ channel-group 1 mode on
+!
+interface Port-channel1
+ no switchport
+ ip address 10.10.10.1 255.255.255.0
+!
+
+d.
+
+!
+interface GigabitEthernet0/1
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/2
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/3
+ no ip address
+ channel-group 1 mode on
+!
+interface GigabitEthernet0/4
+ no ip address
+ channel-group 1 mode on
+!
+interface Port-channel1
+ ip address 10.10.10.1 255.255.255.0
+!

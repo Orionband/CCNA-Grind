@@ -1,0 +1,22 @@
+ SW1#show spanning-tree interface gigabitEthernet 0/1 detail
+ Port 2 (GigabitEthernet0/1) of VLAN0001 is designated forwarding 
+   Port path cost 4, Port priority 128, Port Identifier 128.2.
+   Designated root has priority 4097, address 5254.000d.9610
+   Designated bridge has priority 4097, address 5254.000d.9610
+   Designated port id is 128.2, designated path cost 0
+   Timers: message age 0, forward delay 0, hold 0
+   Number of transitions to forwarding state: 1
+   Link type is point-to-point by default
+   Bpdu guard is enabled
+   BPDU: sent 45022, received 3
+
+ Port 2 (GigabitEthernet0/1) of VLAN0010 is designated forwarding 
+   Port path cost 4, Port priority 128, Port Identifier 128.2.
+   Designated root has priority 32778, address 5254.0002.e7f3
+   Designated bridge has priority 32778, address 5254.000d.9610
+   Designated port id is 128.2, designated path cost 2
+   Timers: message age 0, forward delay 0, hold 0
+   Number of transitions to forwarding state: 1
+   Link type is point-to-point by default
+   Bpdu guard is enabled
+   BPDU: sent 44915, received 2

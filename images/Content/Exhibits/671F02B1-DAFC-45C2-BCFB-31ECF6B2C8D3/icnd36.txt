@@ -1,0 +1,6 @@
+Int s0
+  Ip nat inside
+Int e0
+  Ip nat outside
+Access-list 1 permit any
+Ip nat inside source list 1 interface s0 overload

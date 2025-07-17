@@ -1,0 +1,31 @@
+1.
+
+access-list extended Test_ACL
+ deny tcp any host 10.1.2.3 eq telnet
+ deny tcp any host 10.1.2.3 eq ftp
+ deny tcp any host 10.1.2.3 eq www
+ permit ip any any
+
+2.
+
+ip access-list extended Test_ACL
+ deny tcp any host 10.1.2.3 eq telnet
+ deny tcp any host 10.1.2.3 eq ftp
+ deny tcp any host 10.1.2.3 eq www
+ permit ip any any
+ 
+3.
+
+ip access extended Test_ACL
+ list 101 deny tcp any host 10.1.2.3 eq telnet
+ list 101 deny tcp any host 10.1.2.3 eq ftp
+ list 101 deny tcp any host 10.1.2.3 eq www
+ list 101 permit ip any any
+ 
+4.
+
+access extended Test_ACL
+ list 101 deny tcp any host 10.1.2.3 eq telnet
+ list 101 deny tcp any host 10.1.2.3 eq ftp
+ list 101 deny tcp any host 10.1.2.3 eq www
+ list 101 permit ip any any
