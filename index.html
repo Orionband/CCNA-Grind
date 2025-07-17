@@ -265,7 +265,6 @@
     <div class="container">
         <div class="header">
             <h1>CCNA Practice</h1>
-            <!-- Dark mode toggle removed, now system-based -->
         </div>
         
         <div id="mainScreen">
@@ -342,14 +341,11 @@
     let bookmarkedQuestions = [];
     let chartInstances = {};
 
-    // --- REORDERED FUNCTIONS TO FIX ReferenceError ---
-
     // --- DARK MODE & THEME LOGIC ---
     function setDarkMode(isDark) {
         document.documentElement.classList.toggle('dark-mode', isDark);
-        // Re-render all visible charts with new theme colors
-        renderDashboard();
-        if (currentQuizAttempt) {
+        renderDashboard(); // Re-render dashboard charts
+        if (currentQuizAttempt) { // Re-render summary chart if it exists
             renderQuizSummaryChart(currentQuizAttempt);
         }
     }
@@ -388,10 +384,7 @@
         chartInstances.summary = new Chart(ctx, {
             type: 'bar',
             data: { labels, datasets: [{ label: '% Correct', data, backgroundColor: 'rgba(25, 135, 84, 0.7)' }] },
-            options: {
-                ...getChartThemeOptions(),
-                indexAxis: 'y',
-                responsive: true, maintainAspectRatio: false,
+            options: { ...getChartThemeOptions(), indexAxis: 'y', responsive: true, maintainAspectRatio: false,
                 plugins: { legend: { display: false }, datalabels: { color: '#fff', formatter: (v) => v.toFixed(0) + '%' } }
             }
         });
@@ -400,9 +393,7 @@
     function renderCategoryChart() {
         const ctx = document.getElementById('categoryChart')?.getContext('2d');
         if (!ctx) return;
-        const container = ctx.canvas.parentNode;
-        container.style.height = `${(Object.keys(CATEGORY_MAP).length * 35) + 80}px`;
-
+        ctx.canvas.parentNode.style.height = `${(Object.keys(CATEGORY_MAP).length * 35) + 80}px`;
         if (chartInstances.category) chartInstances.category.destroy();
 
         const categoryStats = Object.fromEntries(Object.keys(CATEGORY_MAP).map(code => [code, { correct: 0, total: 0 }]));
@@ -415,20 +406,14 @@
         
         const sortedCodes = Object.keys(CATEGORY_MAP).sort((a,b) => CATEGORY_MAP[a].localeCompare(CATEGORY_MAP[b]));
         const labels = sortedCodes.map(code => CATEGORY_MAP[code]);
-        const data = sortedCodes.map(code => {
-            const stats = categoryStats[code];
-            return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
-        });
+        const data = sortedCodes.map(code => (categoryStats[code].total > 0 ? (categoryStats[code].correct / categoryStats[code].total) * 100 : 0));
 
         chartInstances.category = new Chart(ctx, {
             type: 'bar',
             data: { labels, datasets: [{ label: '% Correct', data, backgroundColor: 'rgba(13, 110, 253, 0.7)' }] },
-            options: {
-                ...getChartThemeOptions(),
-                indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+            options: { ...getChartThemeOptions(), indexAxis: 'y', responsive: true, maintainAspectRatio: false,
                 plugins: { 
-                    legend: { display: false },
-                    title: { display: true, text: 'Overall Performance by Topic', color: getChartThemeOptions().color },
+                    legend: { display: false }, title: { display: true, text: 'Overall Performance by Topic', color: getChartThemeOptions().color },
                     datalabels: { color: '#fff', formatter: (v) => v > 0 ? v.toFixed(0) + '%' : '' } 
                 }
             }
@@ -445,15 +430,9 @@
         chartInstances.history = new Chart(ctx, {
             type: 'line',
             data: { datasets: [{ label: 'Score %', data: chartData, borderColor: 'rgb(25, 135, 84)', tension: 0.1 }] },
-            options: {
-                ...getChartThemeOptions(),
-                responsive: true, maintainAspectRatio: false,
+            options: { ...getChartThemeOptions(), responsive: true, maintainAspectRatio: false,
                 scales: { x: { ...getChartThemeOptions().scales.x, type: 'time', time: { unit: 'day', tooltipFormat: 'PP' } }, y: getChartThemeOptions().scales.y },
-                plugins: {
-                    legend: { display: false },
-                    title: { display: true, text: 'Score Over Time', color: getChartThemeOptions().color },
-                    datalabels: { display: false }
-                }
+                plugins: { legend: { display: false }, title: { display: true, text: 'Score Over Time', color: getChartThemeOptions().color }, datalabels: { display: false } }
             }
         });
     }
@@ -482,7 +461,6 @@
         }
     }
 
-    // --- SETUP AND UI POPULATION ---
     function populateCategoryDescriptions() {
         const listElement = document.getElementById('categoryList');
         if (!listElement) return;
@@ -536,17 +514,15 @@
         try {
             const response = await fetch('questions.json');
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const data = await response.json();
-            allQuestions = data;
-            updateMaxQuestions();
+            allQuestions = await response.json();
         } catch (error) {
             console.error(`Error fetching questions.json:`, error);
-            mainScreen.innerHTML = `<p style="color: var(--danger-color); text-align: center;">CRITICAL ERROR: Could not load questions.json. Ensure it's in the same folder and there are no network issues.</p>`;
+            mainScreen.innerHTML = `<p style="color: var(--danger-color); text-align: center;">CRITICAL ERROR: Could not load questions.json. Ensure it's in the same folder.</p>`;
             startBtn.textContent = 'Load Failed';
         }
     }
 
-    function loadAndDisplayQuiz() {
+    async function loadAndDisplayQuiz() {
         const numQuestionsInput = document.getElementById('numQuestions');
         const randomize = document.getElementById('randomize').checked;
         const mode = modeSelect.value;
@@ -562,17 +538,28 @@
             questionPool = allQuestions;
         }
         
-        if (category !== 'ALL') {
-            questionPool = questionPool.filter(q => q.cat === category);
-        }
+        if (category !== 'ALL') { questionPool = questionPool.filter(q => q.cat === category); }
 
         if (questionPool.length === 0) {
-            alert("There are no questions available for your selected criteria. Try a different mode or topic.");
+            alert("There are no questions available for your selected criteria.");
             return;
         }
 
         const numQuestions = Math.min(parseInt(numQuestionsInput.value), questionPool.length);
         currentQuizQuestions = randomize ? [...questionPool].sort(() => 0.5 - Math.random()).slice(0, numQuestions) : questionPool.slice(0, numQuestions);
+        
+        // RESTORED: Fetch text for exhibits
+        const exhibitPromises = currentQuizQuestions.flatMap(q => 
+            (q.exhibits || []).map(exhibit => {
+                if (!exhibit.ExhibitFileName || !exhibit.ExhibitFileName.endsWith('.txt')) return null;
+                const localPath = `./images/${exhibit.ExhibitFileName.split('/').pop().replaceAll(':', '_')}`;
+                return fetch(localPath)
+                    .then(response => response.ok ? response.text() : `Error loading ${localPath}`)
+                    .then(text => { exhibit.textContent = text; })
+                    .catch(err => { exhibit.textContent = `Error: ${err.message}`; });
+            }).filter(Boolean)
+        );
+        await Promise.all(exhibitPromises);
         
         displayQuiz();
     }
@@ -581,42 +568,45 @@
         mainScreen.classList.add('hidden');
         quizContainer.classList.remove('hidden');
         resultsContainer.innerHTML = '';
-        quizContainer.innerHTML = '';
+        quizContainer.innerHTML = '<h2>Quiz</h2>';
 
-        let quizHtml = '<h2>Quiz</h2>';
         currentQuizQuestions.forEach((q, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.id = `q-${index}`;
+            questionDiv.dataset.questionId = q.questionId;
+            
             const isBookmarked = bookmarkedQuestions.includes(q.questionId);
-            const bookmarkedClass = isBookmarked ? 'bookmarked' : '';
             const inputType = (q.answerChoices.filter(c => c.IsCorrect).length > 1) ? 'checkbox' : 'radio';
 
-            let questionTextHtml = `
+            let content = `
                 <div class="question-header">
-                    <button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this)">🚩</button>
+                    <button class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" onclick="toggleBookmark('${q.questionId}', this)">🚩</button>
                     <div class="question-text">
                         ${index + 1}. <span class="question-category">(${(q.cat || 'N/A')})</span> ${q.questionText}
                     </div>
                 </div>`;
             
-            quizHtml += `<div class="question" id="q-${index}" data-question-id="${q.questionId}">${questionTextHtml}`;
-
             if (q.exhibits && q.exhibits.length > 0) {
-                 q.exhibits.forEach(exhibit => {
-                    const localPath = `./images/${exhibit.ExhibitFileName.split('/').pop().replaceAll(':', '_')}`;
-                    quizHtml += `<div class="exhibit-container"><strong>Exhibit</strong><pre class="question-exhibit-text">${exhibit.textContent || 'Exhibit content not loaded.'}</pre></div>`;
-                });
+                 content += q.exhibits.map(exhibit =>
+                    `<div class="exhibit-container"><strong>Exhibit</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`
+                ).join('');
             }
-
             if (q.answerChoices) {
-                 q.answerChoices.forEach((choice, choiceIndex) => {
-                    quizHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choiceIndex}"><span class="checkmark"></span></label>`;
-                });
+                 content += q.answerChoices.map((choice, choiceIndex) => 
+                    `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choiceIndex}"><span class="checkmark"></span></label>`
+                ).join('');
             }
-            quizHtml += `</div>`;
+            questionDiv.innerHTML = content;
+            quizContainer.appendChild(questionDiv);
         });
         
-        quizHtml += '<button id="submitBtn" class="submit-btn">Submit Test</button>';
-        quizContainer.innerHTML = quizHtml;
-        document.getElementById('submitBtn').addEventListener('click', showResults);
+        const submitButton = document.createElement('button');
+        submitButton.id = 'submitBtn';
+        submitButton.className = 'submit-btn';
+        submitButton.textContent = 'Submit Test';
+        submitButton.addEventListener('click', showResults);
+        quizContainer.appendChild(submitButton);
     }
     
     function toggleBookmark(questionId, buttonElement) {
@@ -653,19 +643,16 @@
         document.getElementById('submitBtn').remove();
         
         resultsContainer.innerHTML = '';
-        const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
-        const scoreHeader = document.createElement('h2');
-        scoreHeader.textContent = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%)`;
-        resultsContainer.appendChild(scoreHeader);
-        
-        const summaryContainer = document.createElement('div');
-        summaryContainer.className = 'chart-summary-container';
-        summaryContainer.innerHTML = '<h3>This Quiz Performance</h3><canvas id="quizSummaryChart"></canvas>';
-        resultsContainer.appendChild(summaryContainer);
-        
+        const scorePercentage = Math.round((score / currentQuizAttempt.total) * 100);
+        resultsContainer.innerHTML = `<h2>Your Score: ${score} out of ${currentQuizAttempt.total} (${scorePercentage}%)</h2>
+            <div class="chart-summary-container">
+                <h3>This Quiz Performance</h3>
+                <canvas id="quizSummaryChart"></canvas>
+            </div>`;
+
+        const summaryContainer = resultsContainer.querySelector('.chart-summary-container');
         const uniqueCategoriesInQuiz = new Set(currentQuizAttempt.questions.map(q => q.category || 'N/A'));
-        const dynamicHeight = Math.max(150, (uniqueCategoriesInQuiz.size * 40) + 80); 
-        summaryContainer.style.height = `${dynamicHeight}px`;
+        summaryContainer.style.height = `${Math.max(150, (uniqueCategoriesInQuiz.size * 40) + 80)}px`;
         renderQuizSummaryChart(currentQuizAttempt);
         
         revealAnswers();
@@ -687,8 +674,7 @@
     function revealAnswers() {
         currentQuizQuestions.forEach((q, index) => {
             const questionElement = document.getElementById(`q-${index}`);
-            const userChoices = Array.from(questionElement.querySelectorAll(`input[type="checkbox"]:checked, input[type="radio"]:checked`));
-            const userAnswers = userChoices.map(input => parseInt(input.value));
+            const userAnswers = Array.from(questionElement.querySelectorAll('input:checked')).map(input => parseInt(input.value));
             
             questionElement.querySelectorAll('.answer-choice').forEach((label, choiceIndex) => {
                 label.style.cursor = 'default';
@@ -705,19 +691,29 @@
     }
 
     // --- SCRIPT INITIALIZATION ---
-    document.addEventListener('DOMContentLoaded', () => {
+    async function initializeApp() {
         Chart.register(ChartDataLabels);
 
-        // Set up system-based dark mode
         const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         setDarkMode(darkModeMediaQuery.matches);
         darkModeMediaQuery.addEventListener('change', e => setDarkMode(e.matches));
 
         loadDataFromStorage();
+        await loadQuestions(); // Wait for questions to be fetched
+
+        // Now that data is loaded, populate the UI
         populateCategoryFilter();
         populateCategoryDescriptions();
-        loadQuestions(); 
-    });
+        updateMaxQuestions();
+        renderDashboard(); // Initial render with loaded data
+
+        // Set up event listeners
+        startBtn.addEventListener('click', loadAndDisplayQuiz);
+        modeSelect.addEventListener('change', updateMaxQuestions);
+        document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
+    }
+
+    document.addEventListener('DOMContentLoaded', initializeApp);
     </script>
 </body>
 </html>
