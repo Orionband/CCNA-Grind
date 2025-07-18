@@ -1,0 +1,115 @@
+Example of exhibits being used
+{
+        "questionId": "8A9378B8-DFFA-4643-8D2E-48A4C9882C18",
+        "questionText": "Refer to the diagram. What method of authentication is being used?",
+        "explanation": "&nbsp;\n\n\tThe figure shows the use of EAP between the laptop (the supplicant) and the WLC (the authenticator). Those flows indicate the use of the&nbsp;802.1x/EAP authentication method.\n\n\t1- The device authenticates with the AP, and the actual client authentication process is done with an external authentication server through the WLC.\n\t2- The WLC controls the user access with 802.1x and communicates with the authentication server .\n\n\tThe incorrect answers do not happen to use the processes shown in the figure. For instance, open authentication does not authenticate the client. In the past, WEP provided encryption and authentication, but was deprecated long ago. CCMP works as a useful current encryption method, but it does not use the protocols shown in the figure.",
+        "difficulty": "1",
+        "comments": "<p>\n\t6/22 - query to Au re: term</p>\n",
+        "exhibits": [
+            {
+                "ExhibitId": "72C3E45E-6698-4E0C-858A-FC031D32F198",
+                "ExhibitTitle": "1",
+                "ExhibitFileName": "https://builder.pearsonitcertification.com/Content/Exhibits/72C3E45E-6698-4E0C-858A-FC031D32F198/200301-LS-v1-1-28-01.jpg"
+            }
+        ],
+        "answerChoices": [
+            {
+                "Text": "Open authentication",
+                "IsCorrect": false
+            },
+            {
+                "Text": "CCMP",
+                "IsCorrect": false
+            },
+            {
+                "Text": "WEP",
+                "IsCorrect": false
+            },
+            {
+                "Text": "802.1x",
+                "IsCorrect": true
+            }
+        ],
+        "cat": "WWCN"
+    },
+Cat is categories:
+NETSEC - Network Security & Access Control
+
+NETFD - Network Fundamentals
+
+IPNS - IP Networking & Services
+
+ROSW - Routing & Switching
+
+OPTR - Operations & Troubleshooting
+
+WWCN - Wireless & WAN Connectivity
+
+NAPR - Network Automation and Programmability
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Path to the JSON file
+$jsonPath = "questions.json"
+
+# Read and parse JSON
+$jsonContent = Get-Content -Raw -Path $jsonPath | ConvertFrom-Json
+
+# Base folder for images
+$baseFolder = "images"
+
+# Loop through all questions
+foreach ($question in $jsonContent) {
+    if ($question.exhibits) {
+        foreach ($exhibit in $question.exhibits) {
+            $url = $exhibit.ExhibitFileName
+            if (-not [string]::IsNullOrEmpty($url)) {
+                # Extract the path after the domain (after https://...)
+                $uri = [uri]$url
+                $relativePath = $uri.AbsolutePath.TrimStart('/')
+                
+                # Replace colons ':' with underscores '_' for Windows compatibility
+                $relativePath = $relativePath -replace ':', '_'
+                
+                # Local file path
+                $localPath = Join-Path $baseFolder $relativePath
+                
+                # Ensure directory exists
+                $dir = Split-Path $localPath
+                if (-not (Test-Path $dir)) {
+                    New-Item -ItemType Directory -Path $dir -Force | Out-Null
+                }
+                
+                # Download if file doesn't exist
+                if (-not (Test-Path $localPath)) {
+                    Write-Host "Downloading $url to $localPath"
+                    try {
+                        Invoke-WebRequest -Uri $url -OutFile $localPath -UseBasicParsing
+                    } catch {
+                        Write-Warning "Failed to download $url"
+                    }
+                } else {
+                    Write-Host "File already exists: $localPath"
+                }
+            }
+        }
+    }
+}
