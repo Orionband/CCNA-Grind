@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: https://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8">
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
+	
+					<link rel="icon" href="https://itexamanswers.net/wp-content/uploads/2021/11/itexam-fa.png" type="image/x-icon" />
+		
+					<!-- IE10 Tile.-->
+			<meta name="msapplication-TileColor" content="#FFFFFF">
+			<meta name="msapplication-TileImage" content="https://itexamanswers.net/wp-content/uploads/2020/09/itexamanswers-Metro-icon.jpg">
+		
+					<!--iOS/android/handheld specific -->
+			<link rel="apple-touch-icon-precomposed" href="https://itexamanswers.net/wp-content/uploads/2020/09/ITExamAnswers-Touch-icon.jpg" />
+		
+					<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta name="apple-mobile-web-app-capable" content="yes">
+			<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+			<link rel="pingback" href="https://itexamanswers.net/xmlrpc.php" />
+		<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script>
+<!-- Search Engine Optimization by Rank Math - https://rankmath.com/ -->
+<title>PT Activity - CCNA (200-301) Certification Practice Exam</title>
+<style>.flying-press-lazy-bg{background-image:none!important;}</style>
+<link rel='preload' href='https://itexamanswers.net/wp-content/themes/mts_splash/images/pattern24.png' as='image' fetchpriority='high' />
+<link rel='preload' href='https://itexamanswers.net/wp-content/plugins/wpdiscuz/assets/img/loading.gif' as='image' fetchpriority='high' />
+<link rel='preload' href='https://itexamanswers.net/wp-content/uploads/2019/02/itexam-1.png' as='image' imagesrcset='' imagesizes=''/>
+<link rel='preload' href='https://itexamanswers.net/wp-content/cache/flying-press/gravatar-2dc72d06b2dd.png' as='image' imagesrcset='https://itexamanswers.net/wp-content/cache/flying-press/gravatar-4c0d14902359.png 2x' imagesizes=''/>
+<link rel='preload' href='https://itexamanswers.net/wp-content/cache/flying-press/gravatar-66afb5aa6dde.png' as='image' imagesrcset='https://itexamanswers.net/wp-content/cache/flying-press/gravatar-a2d9f04c4d9e.png 2x' imagesizes=''/>
+<link rel='preload' href='https://itexamanswers.net/wp-content/themes/mts_splash/fonts/fontawesome-webfont.woff2' as='font' type='font/woff2' fetchpriority='high' crossorigin='anonymous'><link rel='preload' href='https://itexamanswers.net/wp-content/plugins/wpdiscuz/assets/third-party/font-awesome-5.13.0/webfonts/fa-solid-900.woff2' as='font' type='font/woff2' fetchpriority='high' crossorigin='anonymous'><link rel='preload' href='https://itexamanswers.net/wp-content/plugins/wpdiscuz/assets/third-party/font-awesome-5.13.0/webfonts/fa-regular-400.woff2' as='font' type='font/woff2' fetchpriority='high' crossorigin='anonymous'>
+<meta name="robots" content="follow, noindex"/>
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="PT Activity - CCNA (200-301) Certification Practice Exam" />
+<meta property="og:url" content="https://itexamanswers.net/download/pt-activity-ccna-200-301-certification-practice-exam" />
+<meta property="og:site_name" content="ITExamAnswers.net" />
+<meta property="article:publisher" content="https://www.facebook.com/itexamanswers.net/" />
+<meta property="fb:app_id" content="920078731716725" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PT Activity - CCNA (200-301) Certification Practice Exam" />
+<meta name="twitter:site" content="@examanswers_it" />
+<meta name="twitter:creator" content="@examanswers_it" />
+<!-- /Rank Math WordPress SEO plugin -->
+
+<style id='classic-theme-styles-inline-css' type='text/css'>/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id='global-styles-inline-css' type='text/css'>:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel='stylesheet' id='wpdm-font-awesome-css' href="https://itexamanswers.net/wp-content/cache/flying-press/all.css" type='text/css' media='all'  data-origin-href="https://use.fontawesome.com/releases/v6.7.2/css/all.css?ver=e65c0a729b3f18f6ede453b93607a1e8"/>
+<link rel='stylesheet' id='wpdm-front-css' href='https://itexamanswers.net/wp-content/cache/flying-press/40a0a2ca5978.front.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='dwqa-font-awesome-css' href='https://itexamanswers.net/wp-content/cache/flying-press/269550530cc1.font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='dwqa-style-css' href='https://itexamanswers.net/wp-content/cache/flying-press/c321d7de2dbf.style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='dwqa-style-rtl-css' href='https://itexamanswers.net/wp-content/cache/flying-press/ccb8c06ffcb7.rtl.css' type='text/css' media='all' />
+<link rel='stylesheet' id='dwqa-akismet-button-report-spam-style-css' href='https://itexamanswers.net/wp-content/cache/flying-press/6abb5d71bd51.dwqa-akismet-button-report-spam.css' type='text/css' media='all' />
+<link rel='stylesheet' id='foobox-free-min-css' href='https://itexamanswers.net/wp-content/cache/flying-press/c9abd650cc8d.foobox.free.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wpProQuiz_front_style-css' href='https://itexamanswers.net/wp-content/cache/flying-press/7a63fc2d626c.wpProQuiz_front.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='ivory-search-styles-css' href='https://itexamanswers.net/wp-content/cache/flying-press/45083ef30a6e.ivory-search.min.css' type='text/css' media='all' />
+<style id='akismet-widget-style-inline-css' type='text/css'>.a-stats {
+				--akismet-color-mid-green: #357b49;
+				--akismet-color-white: #fff;
+				--akismet-color-light-grey: #f6f7f7;
+
+				max-width: 350px;
+				width: auto;
+			}
+
+			.a-stats * {
+				all: unset;
+				box-sizing: border-box;
+			}
+
+			.a-stats strong {
+				font-weight: 600;
+			}
+
+			.a-stats a.a-stats__link,
+			.a-stats a.a-stats__link:visited,
+			.a-stats a.a-stats__link:active {
+				background: var(--akismet-color-mid-green);
+				border: none;
+				box-shadow: none;
+				border-radius: 8px;
+				color: var(--akismet-color-white);
+				cursor: pointer;
+				display: block;
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+				font-weight: 500;
+				padding: 12px;
+				text-align: center;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+
+			/* Extra specificity to deal with TwentyTwentyOne focus style */
+			.widget .a-stats a.a-stats__link:focus {
+				background: var(--akismet-color-mid-green);
+				color: var(--akismet-color-white);
+				text-decoration: none;
+			}
+
+			.a-stats a.a-stats__link:hover {
+				filter: brightness(110%);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 0 2px rgba(0, 0, 0, 0.16);
+			}
+
+			.a-stats .count {
+				color: var(--akismet-color-white);
+				display: block;
+				font-size: 1.5em;
+				line-height: 1.4;
+				padding: 0 13px;
+				white-space: nowrap;
+			}</style>
+<link rel='stylesheet' id='dwqa_leaderboard-css' href='https://itexamanswers.net/wp-content/cache/flying-press/41628ff0e44a.leaderboard.css' type='text/css' media='all' />
+<link rel='stylesheet' id='heateor_sss_frontend_css-css' href='https://itexamanswers.net/wp-content/cache/flying-press/ba4cc2135d79.sassy-social-share-public.css' type='text/css' media='all' />
+<style id='heateor_sss_frontend_css-inline-css' type='text/css'>.heateor_sss_button_instagram span.heateor_sss_svg,a.heateor_sss_instagram span.heateor_sss_svg{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}.heateor_sss_horizontal_sharing .heateor_sss_svg,.heateor_sss_standard_follow_icons_container .heateor_sss_svg{color:#fff;border-width:0px;border-style:solid;border-color:transparent}.heateor_sss_horizontal_sharing .heateorSssTCBackground{color:#666}.heateor_sss_horizontal_sharing span.heateor_sss_svg:hover,.heateor_sss_standard_follow_icons_container span.heateor_sss_svg:hover{border-color:transparent;}.heateor_sss_vertical_sharing span.heateor_sss_svg,.heateor_sss_floating_follow_icons_container span.heateor_sss_svg{color:#fff;border-width:0px;border-style:solid;border-color:transparent;}.heateor_sss_vertical_sharing .heateorSssTCBackground{color:#666;}.heateor_sss_vertical_sharing span.heateor_sss_svg:hover,.heateor_sss_floating_follow_icons_container span.heateor_sss_svg:hover{border-color:transparent;}@media screen and (max-width:783px) {.heateor_sss_vertical_sharing{display:none!important}}.heateor_sss_sharing_container {
+    margin-bottom: 14px;
+}</style>
+<link rel='stylesheet' id='wpdiscuz-frontend-css-css' href='https://itexamanswers.net/wp-content/cache/flying-press/d5bb3e36ef57.style.css' type='text/css' media='all' />
+<style id='wpdiscuz-frontend-css-inline-css' type='text/css'>#wpdcom .wpd-blog-administrator .wpd-comment-label{color:#ffffff;background-color:#dd3333;border:none}#wpdcom .wpd-blog-administrator .wpd-comment-author, #wpdcom .wpd-blog-administrator .wpd-comment-author a{color:#dd3333}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-administrator .wpd-avatar img{border-color:#dd3333}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-administrator{border-left:3px solid #dd3333}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-administrator .wpd-avatar img{border-bottom-color:#dd3333}#wpdcom.wpd-layout-3 .wpd-blog-administrator .wpd-comment-subheader{border-top:1px dashed #dd3333}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-administrator .wpd-comment-right{border-left:1px solid #dd3333}#wpdcom .wpd-blog-editor .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-editor .wpd-comment-author, #wpdcom .wpd-blog-editor .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-editor .wpd-avatar img{border-color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-editor{border-left:3px solid #00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-editor .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-editor .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-editor .wpd-comment-right{border-left:1px solid #00B38F}#wpdcom .wpd-blog-author .wpd-comment-label{color:#ffffff;background-color:#dd3333;border:none}#wpdcom .wpd-blog-author .wpd-comment-author, #wpdcom .wpd-blog-author .wpd-comment-author a{color:#dd3333}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-author .wpd-avatar img{border-color:#dd3333}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-author .wpd-avatar img{border-bottom-color:#dd3333}#wpdcom.wpd-layout-3 .wpd-blog-author .wpd-comment-subheader{border-top:1px dashed #dd3333}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-author .wpd-comment-right{border-left:1px solid #dd3333}#wpdcom .wpd-blog-contributor .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-contributor .wpd-comment-author, #wpdcom .wpd-blog-contributor .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-contributor .wpd-avatar img{border-color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-contributor .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-contributor .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-contributor .wpd-comment-right{border-left:1px solid #00B38F}#wpdcom .wpd-blog-subscriber .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-subscriber .wpd-comment-author, #wpdcom .wpd-blog-subscriber .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-subscriber .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-subscriber .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom .wpd-blog-quizmaker_member .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-quizmaker_member .wpd-comment-author, #wpdcom .wpd-blog-quizmaker_member .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-quizmaker_member .wpd-avatar img{border-color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-quizmaker_member .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-quizmaker_member .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-quizmaker_member .wpd-comment-right{border-left:1px solid #00B38F}#wpdcom .wpd-blog-quizmaker_manager .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-quizmaker_manager .wpd-comment-author, #wpdcom .wpd-blog-quizmaker_manager .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-quizmaker_manager .wpd-avatar img{border-color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-quizmaker_manager .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-quizmaker_manager .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-quizmaker_manager .wpd-comment-right{border-left:1px solid #00B38F}#wpdcom .wpd-blog-student .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-student .wpd-comment-author, #wpdcom .wpd-blog-student .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-student .wpd-avatar img{border-color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-student .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-student .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-student .wpd-comment-right{border-left:1px solid #00B38F}#wpdcom .wpd-blog-wpdmpp_customer .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-wpdmpp_customer .wpd-comment-author, #wpdcom .wpd-blog-wpdmpp_customer .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-wpdmpp_customer .wpd-avatar img{border-color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-wpdmpp_customer .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-wpdmpp_customer .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-wpdmpp_customer .wpd-comment-right{border-left:1px solid #00B38F}#wpdcom .wpd-blog-post_author .wpd-comment-label{color:#ffffff;background-color:#dd3333;border:none}#wpdcom .wpd-blog-post_author .wpd-comment-author, #wpdcom .wpd-blog-post_author .wpd-comment-author a{color:#dd3333}#wpdcom .wpd-blog-post_author .wpd-avatar img{border-color:#dd3333}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-post_author .wpd-avatar img{border-color:#dd3333}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-post_author{border-left:3px solid #dd3333}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-post_author .wpd-avatar img{border-bottom-color:#dd3333}#wpdcom.wpd-layout-3 .wpd-blog-post_author .wpd-comment-subheader{border-top:1px dashed #dd3333}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-post_author .wpd-comment-right{border-left:1px solid #dd3333}#wpdcom .wpd-blog-guest .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-guest .wpd-comment-author, #wpdcom .wpd-blog-guest .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-guest .wpd-comment-subheader{border-top:1px dashed #00B38F}#comments, #respond, .comments-area, #wpdcom{}#wpdcom .ql-editor > *{color:#4f4f4f}#wpdcom .ql-editor::before{}#wpdcom .ql-toolbar{border:1px solid #DDDDDD;border-top:none}#wpdcom .ql-container{border:1px solid #DDDDDD;border-bottom:none}#wpdcom .wpd-form-row .wpdiscuz-item input[type="text"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="email"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="url"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="color"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="date"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="datetime"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="datetime-local"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="month"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="number"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="time"], #wpdcom textarea, #wpdcom select{border:1px solid #DDDDDD;color:#303030}#wpdcom .wpd-form-row .wpdiscuz-item textarea{border:1px solid #DDDDDD}#wpdcom input::placeholder, #wpdcom textarea::placeholder, #wpdcom input::-moz-placeholder, #wpdcom textarea::-webkit-input-placeholder{}#wpdcom .wpd-comment-text{color:#303030}#wpdcom .wpd-thread-head .wpd-thread-info{border-bottom:2px solid #0288d1}#wpdcom .wpd-thread-head .wpd-thread-info.wpd-reviews-tab svg{fill:#0288d1}#wpdcom .wpd-thread-head .wpdiscuz-user-settings{border-bottom:2px solid #0288d1}#wpdcom .wpd-thread-head .wpdiscuz-user-settings:hover{color:#0288d1}#wpdcom .wpd-comment .wpd-follow-link:hover{color:#0288d1}#wpdcom .wpd-comment-status .wpd-sticky{color:#0288d1}#wpdcom .wpd-thread-filter .wpdf-active{color:#0288d1;border-bottom-color:#0288d1}#wpdcom .wpd-comment-info-bar{border:1px dashed #35a0db;background:#e6f4fb}#wpdcom .wpd-comment-info-bar .wpd-current-view i{color:#0288d1}#wpdcom .wpd-filter-view-all:hover{background:#0288d1}#wpdcom .wpdiscuz-item .wpdiscuz-rating > label{color:#DDDDDD}#wpdcom .wpdiscuz-item .wpdiscuz-rating:not(:checked) > label:hover, .wpdiscuz-rating:not(:checked) > label:hover ~ label{}#wpdcom .wpdiscuz-item .wpdiscuz-rating > input ~ label:hover, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:not(:checked) ~ label:hover ~ label, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:not(:checked) ~ label:hover ~ label{color:#FFED85}#wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover, #wpdcom .wpdiscuz-item .wpdiscuz-rating > label:hover ~ input:checked ~ label, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked + label:hover ~ label, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover ~ label, .wpd-custom-field .wcf-active-star, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label{color:#FFD700}#wpd-post-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-star{fill:#DDDDDD}#wpd-post-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-active{fill:#FFD700}#wpd-post-rating .wpd-rating-wrap .wpd-rate-starts svg .wpd-star{fill:#DDDDDD}#wpd-post-rating .wpd-rating-wrap .wpd-rate-starts:hover svg .wpd-star{fill:#FFED85}#wpd-post-rating.wpd-not-rated .wpd-rating-wrap .wpd-rate-starts svg:hover ~ svg .wpd-star{fill:#DDDDDD}.wpdiscuz-post-rating-wrap .wpd-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-star{fill:#DDDDDD}.wpdiscuz-post-rating-wrap .wpd-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-active{fill:#FFD700}#wpdcom .wpd-comment .wpd-follow-active{color:#ff7a00}#wpdcom .page-numbers{color:#555;border:#555 1px solid}#wpdcom span.current{background:#555}#wpdcom.wpd-layout-1 .wpd-new-loaded-comment > .wpd-comment-wrap > .wpd-comment-right{background:#FFFAD6}#wpdcom.wpd-layout-2 .wpd-new-loaded-comment.wpd-comment > .wpd-comment-wrap > .wpd-comment-right{background:#FFFAD6}#wpdcom.wpd-layout-2 .wpd-new-loaded-comment.wpd-comment.wpd-reply > .wpd-comment-wrap > .wpd-comment-right{background:transparent}#wpdcom.wpd-layout-2 .wpd-new-loaded-comment.wpd-comment.wpd-reply > .wpd-comment-wrap{background:#FFFAD6}#wpdcom.wpd-layout-3 .wpd-new-loaded-comment.wpd-comment > .wpd-comment-wrap > .wpd-comment-right{background:#FFFAD6}#wpdcom .wpd-follow:hover i, #wpdcom .wpd-unfollow:hover i, #wpdcom .wpd-comment .wpd-follow-active:hover i{color:#0288d1}#wpdcom .wpdiscuz-readmore{cursor:pointer;color:#0288d1}.wpd-custom-field .wcf-pasiv-star, #wpcomm .wpdiscuz-item .wpdiscuz-rating > label{color:#DDDDDD}.wpd-wrapper .wpd-list-item.wpd-active{border-top:3px solid #0288d1}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply.wpd-unapproved-comment .wpd-comment-wrap{border-left:3px solid #FFFAD6}#wpdcom.wpd-layout-3 .wpd-comment.wpd-reply.wpd-unapproved-comment .wpd-comment-right{border-left:1px solid #FFFAD6}#wpdcom .wpd-prim-button{background-color:#0288d1;color:#FFFFFF}#wpdcom .wpd_label__check i.wpdicon-on{color:#0288d1;border:1px solid #81c4e8}#wpd-bubble-wrapper #wpd-bubble-all-comments-count{color:#0288d1}#wpd-bubble-wrapper > div{background-color:#0288d1}#wpd-bubble-wrapper > #wpd-bubble #wpd-bubble-add-message{background-color:#0288d1}#wpd-bubble-wrapper > #wpd-bubble #wpd-bubble-add-message::before{border-left-color:#0288d1;border-right-color:#0288d1}#wpd-bubble-wrapper.wpd-right-corner > #wpd-bubble #wpd-bubble-add-message::before{border-left-color:#0288d1;border-right-color:#0288d1}.wpd-inline-icon-wrapper path.wpd-inline-icon-first{fill:#0288d1}.wpd-inline-icon-count{background-color:#0288d1}.wpd-inline-icon-count::before{border-right-color:#0288d1}.wpd-inline-form-wrapper::before{border-bottom-color:#0288d1}.wpd-inline-form-question{background-color:#0288d1}.wpd-inline-form{background-color:#0288d1}.wpd-last-inline-comments-wrapper{border-color:#0288d1}.wpd-last-inline-comments-wrapper::before{border-bottom-color:#0288d1}.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments{background:#0288d1}.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:hover,.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:active,.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:focus{background-color:#0288d1}#wpdcom .ql-snow .ql-tooltip[data-mode="link"]::before{content:"Enter link:"}#wpdcom .ql-snow .ql-tooltip.ql-editing a.ql-action::after{content:"Save"}.comments-area{width:auto}</style>
+<link rel='stylesheet' id='wpdiscuz-fa-css' href='https://itexamanswers.net/wp-content/cache/flying-press/777575d3ec30.fa.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wpdiscuz-combo-css-css' href='https://itexamanswers.net/wp-content/cache/flying-press/eb71d6b027e8.wpdiscuz-combo.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='dwqa-choose-style-css' href='https://itexamanswers.net/wp-content/cache/flying-press/ba099c4e64ee.style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='splash-stylesheet-css' href='https://itexamanswers.net/wp-content/cache/flying-press/529495575357.style.css' type='text/css' media='all' />
+<style id='splash-stylesheet-inline-css' type='text/css'>body {background-color:#ffffff;background-image:url(https://itexamanswers.net/wp-content/themes/mts_splash/images/pattern24.png);}
+		#site-footer {background-color:#fafafa;background-image:url(https://itexamanswers.net/wp-content/themes/mts_splash/images/hbg2.png);}
+
+		.pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div, .pagination .nav-previous a:hover, .pagination .nav-next a:hover, #load-posts a:hover, .post-number, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, .mts-cart > span:hover, input[type='submit'], .woocommerce-product-search input[type='submit'] { background: #0288d1; }
+		.postauthor h5, .copyrights a, ..single_post a:not(.wp-block-button__link), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .latestPost .title a:hover, .post-info a:hover, #tabber .inside li a:hover, .readMore a:hover, .fn a, .postauthor .fn, a, a:hover, #sidebar a, .cnumber, #site-footer .wpt_widget_content .entry-title a, #site-footer .wp_review_tab_widget_content .entry-title a { color:#0288d1; }
+		.primary-navigation .navigation li a:hover { color:#0288d1!important; }
+		#commentform input#submit:hover, .contact-form input[type='submit']:hover, #move-to-top:hover, .navigation ul .current-menu-item > a, .secondary-navigation .navigation ul li:hover, #tabber ul.tabs li a.selected, .tagcloud a:hover, .navigation ul .sfHover a, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .popular-posts .thecomment, #sidebar .popular-posts li:hover, .woocommerce-account .woocommerce-MyAccount-navigation li.is-active, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#0288d1; color: #fff!important; }
+		.owl-prev:hover, .owl-next:hover { background-color:#0288d1!important; }
+		.wpmm-megamenu-showing.wpmm-light-scheme { background-color:#0288d1!important; }
+		.secondary-navigation, .mobile-menu-active .navigation.mobile-menu-wrapper, .navigation ul ul li { background: #222222; }
+		.navigation ul ul:after { border-bottom-color: #222222; }
+		
+		
+		
+		
+		
+		.widget li {
+    margin-bottom: 9px;
+    margin-left: 0
+}
+
+.sidebar .widget li {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 7px
+}
+
+.sidebar .widget li::marker {
+    display: none
+}
+
+.widget-header {
+    margin-top: 5px
+}
+
+.logo-wrap {
+    margin: 12px 0;
+    padding: 0
+}
+
+.secondary-navigation {
+    margin-top: 6px
+}
+
+.main-container {
+    width: 1120px
+}
+
+#page,.container {
+    max-width: 1120px
+}
+
+.secondary-navigation {
+    width: 1120px
+}
+
+#content_box {
+    padding-right: 1%;
+    width: 99%
+}
+
+table {
+    border: 1px solid #111
+}
+
+table td {
+    border: #111 1px solid
+}
+
+table th,table thead td {
+    border: 1px solid #111;
+    border-right: none;
+    background-color: #dbe5f1;
+    text-align: center;
+    padding: 10px 15px;
+    color: #111;
+    vertical-align: top;
+    font-size: 14px;
+    font-weight: 600
+}
+
+.bottomad {
+    width: 100%
+}
+
+.title {
+    line-height: normal
+}
+
+#navigation.secondary-navigation a {
+    line-height: nomal;
+    padding: 15px 16px;
+    text-transform: none
+}
+
+p {
+    margin: 0 0 12px
+}
+
+article ol {
+    margin: .1em 0 .5em 1em
+}
+
+article ul {
+    margin: 0 0 .5em 2em;
+    list-style-type: disc;
+    list-style-position: outside
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin-bottom: 6px;
+    margin-top: 10px
+}
+
+code {
+    background-color: #f5f5f5;
+    color: #ea002f;
+    font-family: roboto mono, courier new, monospace!important;
+    padding: .25em .5em
+}
+pre {font-family: roboto mono, courier new, monospace!important;
+color: #222;
+}
+
+h1 .single-title {
+    margin-top: 0;
+    color: #ce0044
+}
+
+.navigation ul ul a,.navigation ul ul a:link,.navigation ul ul a:visited {
+    padding: 10px 5px 10px 10px
+}
+
+.primary-navigation .navigation ul li ul li a {
+    color: #383838!important
+}
+
+.modern-share-item.facebookbtn {
+    min-width: 75px
+}
+
+a {
+    color: #0999d7
+}
+
+#advanced_iframe {
+    min-height: 370px
+}
+
+@media screen and (min-width:900px) {
+    #logo:before {
+        content: "";
+        position: absolute;
+        left: -665px;
+        top: -460px;
+        width: 250px;
+        height: 15px;
+        background-color: rgba(255,255,255,.5);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-animation: searchLights 1.5s ease-out 1s infinite;
+        -o-animation: searchLights 1.5s ease-out 1s infinite;
+        animation: searchLights 1.5s ease-out 1s infinite
+    }
+}
+
+@media only screen and (min-width:1024px) and (max-width:1280px) {
+    #logo {
+        margin-right: 30px
+    }
+}
+
+@media only screen and (max-width:1023px) {
+    #logo {
+        margin-right: 0
+    }
+}
+
+img {
+    height: auto;
+    max-width: 100%
+}
+
+/*! CSS keyframes */
+@-webkit-keyframes searchLights {
+    0% {
+        left: -100px;
+        top: 0
+    }
+
+    to {
+        left: 250px;
+        top: 0
+    }
+}
+
+@-o-keyframes searchLights {
+    0% {
+        left: -100px;
+        top: 0
+    }
+
+    to {
+        left: 250px;
+        top: 0
+    }
+}
+
+@-moz-keyframes searchLights {
+    0% {
+        left: -100px;
+        top: 0
+    }
+
+    to {
+        left: 250px;
+        top: 0
+    }
+}
+
+@keyframes searchLights {
+    0% {
+        left: -100px;
+        top: 0
+    }
+
+    to {
+        left: 250px;
+        top: 0
+    }
+}
+
+#sidebar a {
+    color: #007bff
+}
+
+.latestPost .title a:hover {
+    color: #007bff!important
+}
+
+blockquote {
+    font-size: 17px
+}
+
+.toggle .toggleta span,.toggle .wps_togglet span {
+    color: #343434
+}
+
+.dwqa-question-filter .dwqa-sort-by {
+    height: 18px
+}
+
+.dwqa-question-item .dwqa-question-title a {
+    font-size: 1rem
+}
+
+pre {
+    padding: 15px!important;
+    background: #f2f2f2!important;
+    border-left: 5px solid #369cea;
+    color: #000!important
+}
+
+.note {
+    border: 1px solid #decd95!important;
+    color: #856404!important;
+    background-color: #fff3cd!important
+}
+
+.announce {
+    border: 1px solid #8dbfd6!important;
+    color: #004085!important
+}
+
+.success {
+    border: 1px solid #82ca93!important;
+    color: #155724!important;
+    background-color: #d4edda!important
+}
+
+.warning {
+    color: #721c24!important;
+    background-color: #f8d7da!important
+}
+
+.tab_widget ul.wps_tabs li a {
+    font-size: 13px!important
+}
+
+pre:before {
+    display: none
+}
+
+sup {
+    vertical-align: super;
+    font-size: smaller
+}
+
+.eapps-paypal-button {
+    width: 100%;
+    margin: 0 auto
+}
+
+#comments .avatar {
+    float: left;
+    margin-right: 0;
+    margin-top: 0
+}
+
+.btn_blue {
+    background-color: #167ac6
+}
+
+.btn_blue:hover {
+    background-color: #0962a5
+}
+
+#dwqa-search .ui-autocomplete-input {
+    border: 2px solid #2db2eb
+}
+
+.main-container {
+    border: 1px solid #e8e8e8
+}
+
+.wp-social-login-provider-list p {
+    display: inline-block
+}
+
+.w3eden .itsec-pwls-login-wrap {
+    display: none
+}
+
+#wpdcom .wpd-comment .wpd-comment-right:before {
+    content: "";
+    top: 30px;
+    position: absolute;
+    left: -9px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #f4f4f4;
+    transform: translatey(-50%) rotate(-90deg)
+}
+
+#wpdcom .wpd-comment .wpd-comment-wrap {
+    padding-bottom: 15px
+}
+
+#wpdcom .wpd-comment .wpd-comment-right {
+    padding: 5px 15px;
+    background-color: #f4f4f4;
+    position: relative;
+    border-radius: 11px
+}
+
+#wpdcom .wpd-comment .wpd-comment-left {
+    margin-right: 15px
+}
+
+@media only screen and (max-width:600px) {
+    .wpdiscuz-search-box .wpdiscuz-comm-search {
+        width: 100%!important
+    }
+
+    #wpdcom .wpd-comment .wpd-comment-right {
+        margin-top: 10px
+    }
+
+    #wpdcom .wpd-comment .wpd-comment-right:before {
+        left: 11px!important;
+        transform: none!important;
+        top: -6px!important
+    }
+
+    #wpdcom .wpd-comment .wpd-comment-label {
+        margin: 10px auto!important
+    }
+
+    #wpdcom .wpd-thread-head .wpd-thread-info {
+        flex-basis: auto
+    }
+}
+
+#wp-dwqa-answer-content-editor-tools br,.dwqa-answer-form .dwqa-select,.dwqa-answers,.dwqa-comments,.dwqa-question-filter,.dwqa-question-item .avatar,.dwqa-question-status,.dwqa-question-vote,.dwqa-questions-footer,.page-id-61685 .entry-title {
+    display: none
+}
+
+.single-dwqa-question .dwqa-question-item {
+    padding-left: 0
+}
+
+.dwqa-question-item {
+    padding: 0
+}
+
+.code_answer {
+    color: red!important
+}
+
+.dwqa-views-count,.dwqa-votes-count {
+    display: none!important
+}
+
+.dwqa-question-meta,.dwqa-questions-list div.dwqa-question-item .avatar {
+    display: none
+}
+
+.dwqa-questions-list .dwqa-question-item {
+    padding: 20px 0 12px
+}
+
+.attention {
+    background-color: #ff9;
+    padding: 2px;
+    margin: 2px
+}
+
+.single-dwqa-question .dwqa-answer-content,.single-dwqa-question .dwqa-question-content {
+    font-size: 17px
+}
+
+.correct_answer {
+    color: red;
+    font-weight: 700
+}
+
+.single_post .fa {
+    margin-right: 3px
+}
+
+.wp-post-nav-shortcode {
+    background: #fff!important
+}
+
+#wpd-bubble-wrapper {
+    bottom: 115px
+}
+
+.single-dwqa-question .dwqa-answer-content,.single-dwqa-question .dwqa-question-content {
+    border: 0;
+    border-width: 0;
+    padding: 0
+}
+
+kbd,kbd.menu {
+    font-family: monospace,sans-serif;
+    font-size: 100%
+}
+
+kbd {
+    margin: 0;
+    border: 0;
+    outline: 0;
+    color: #000;
+    vertical-align: baseline;
+    background: 0 0;
+    border-color: #e6e6e6 #bebebe #bebebe #e6e6e6;
+    border-style: solid;
+    border-width: 1px 3px 4px;
+    padding: 0 5px;
+    background-color: #d2d2d2;
+    background-color: rgba(210,210,210,.9);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+
+kbd.menu {
+    -moz-border-radius: 3px;
+    -moz-box-shadow: 0 1px 0 rgba(0,0,0,.2),0 0 0 2px #fff inset;
+    -webkit-border-radius: 3px;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.2),0 0 0 2px #fff inset;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(0,0,0,.2),0 0 0 2px #fff inset;
+    color: #333;
+    display: inline-block;
+    line-height: 1.4;
+    margin: 0 .1em;
+    padding: .1em .6em;
+    text-shadow: 0 1px 0#fff
+}
+
+.nav-previous,.post-navigation .nav-previous,.posts-navigation .nav-previous {
+    width: 48%;
+    float: left;
+    display: block;
+    position: relative;
+    margin-right: 2%
+}
+
+.nav-next,.post-navigation .nav-next,.posts-navigation .nav-next {
+    width: 48%;
+    display: block;
+    position: relative;
+    float: right;
+    text-align: right;
+    margin-left: 2%
+}
+
+.post-navigation .post-title {
+    font-weight: 700
+}
+
+@media screen and (max-width:865px) {
+    .post-single-content .navigation {
+        display: inline!important
+    }
+
+    .post-navigation .nav-links {
+        display: block
+    }
+}
+
+.dwqa-question-footer {
+    margin-top: 12px
+}
+
+.post-single-content .nav-links {
+    border-top: 1px solid #ccc;
+    padding-top: 10px
+}
+
+.comment {
+    float: none;
+    width: auto
+}
+
+#move-to-top {
+    opacity: .5;
+    bottom: 140px;
+    color: #fff;
+    background: #000;
+    border-radius: 3px
+}
+#adngin-top-0 {text-align: center;}
+#ftwp-container.ftwp-fixed-to-post.ftwp-middle-left #ftwp-trigger { top: 250px;}</style>
+<link rel='stylesheet' id='responsive-css' href='https://itexamanswers.net/wp-content/cache/flying-press/0e78ab639ff6.responsive.css' type='text/css' media='all' />
+<link rel='stylesheet' id='fontawesome-css' href='https://itexamanswers.net/wp-content/cache/flying-press/ef072eac3a9c.font-awesome.min.css' type='text/css' media='all' />
+<script type="text/javascript" src="https://itexamanswers.net/wp-includes/js/jquery/jquery.min.js?ver=826eb77e86b0" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=9ffeb32e2d9e" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="jquery-js-after">
+/* <![CDATA[ */
+jQuery(document).ready(function() {
+	jQuery(".92f2483bb651eed307c93e619d752c78").click(function() {
+		jQuery.post(
+			"https://itexamanswers.net/wp-admin/admin-ajax.php", {
+				"action": "quick_adsense_onpost_ad_click",
+				"quick_adsense_onpost_ad_index": jQuery(this).attr("data-index"),
+				"quick_adsense_nonce": "8d5fc6a464",
+			}, function(response) { }
+		);
+	});
+});
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/plugins/download-manager/assets/js/wpdm.min.js?ver=d257ca66cf91" id="wpdmjs-js"></script>
+<script type="text/javascript" id="wpdm-frontjs-js-extra">
+/* <![CDATA[ */
+var wpdm_url = {"home":"https:\/\/itexamanswers.net\/","site":"https:\/\/itexamanswers.net\/","ajax":"https:\/\/itexamanswers.net\/wp-admin\/admin-ajax.php"};
+var wpdm_js = {"spinner":"<i class=\"fas fa-sun fa-spin\"><\/i>","client_id":"45993b97cdddbb5ae6f006e7455ee88f"};
+var wpdm_strings = {"pass_var":"Password Verified!","pass_var_q":"Please click following button to start download.","start_dl":"Start Download"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/plugins/download-manager/assets/js/front.min.js?ver=2656e115cc8c" id="wpdm-frontjs-js"></script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/plugins/dw-question-answer-pro/assets/js/dwqa-akismet-button-report-spam.js?ver=f3f001318f06" id="dwqa-akismet-button-report-spam-script-js"></script>
+<script type="text/javascript" id="google-recaptcha-js-extra">
+/* <![CDATA[ */
+var dwqa_gcv2 = {"public_key":"6LfuC78ZAAAAAFMwZMuOx4BzNZIaDOCn-vXtYUAg"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="google-recaptcha-js" data-loading-method="user-interaction" data-src="https://www.google.com/recaptcha/api.js?ver=e65c0a729b3f18f6ede453b93607a1e8"></script>
+<script type="text/javascript" id="foobox-free-min-js-before">
+/* <![CDATA[ */
+/* Run FooBox FREE (v2.7.35) */
+var FOOBOX = window.FOOBOX = {
+	ready: true,
+	disableOthers: false,
+	o: {wordpress: { enabled: true }, hideScrollbars:false, showCount:false, captions: { dataTitle: ["captionTitle","title"], dataDesc: ["captionDesc","description"] }, rel: '', excludes:'.fbx-link,.nofoobox,.nolightbox,a[href*="pinterest.com/pin/create/button/"]', affiliate : { enabled: false }, error: "Could not load the item"},
+	selectors: [
+		".wp-caption", ".wp-block-image", "a:has(img[class*=wp-image-])", ".foobox"
+	],
+	pre: function( $ ){
+		// Custom JavaScript (Pre)
+		
+	},
+	post: function( $ ){
+		// Custom JavaScript (Post)
+		
+		// Custom Captions Code
+		
+	},
+	custom: function( $ ){
+		// Custom Extra JS
+		
+	}
+};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/plugins/foobox-image-lightbox/free/js/foobox.free.min.js?ver=894dc9f04c1b" id="foobox-free-min-js"></script>
+<link rel="https://api.w.org/" href="https://itexamanswers.net/wp-json/" />
+<style type="text/css">#logo a { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 38px; color: #2db2eb;text-transform: uppercase; }
+#navigation.primary-navigation a { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 15px; color: #474747; }
+#navigation.secondary-navigation a { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 14px; color: #ffffff; }
+.latestPost .title a { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 24px; color: #2b2b2b;line-height: normal; }
+.single-title { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 26px; color: #333333;line-height: normal; margin-top: 0px; }
+body { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 17px; color: #222222;line-height: 26px; }
+.sidebar .widget h3 { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 20px; color: #ce0044; }
+.sidebar .widget, .sidebar .widget li { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 15px; color: #333333; }
+#site-footer, .footer-widgets { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 16px; color: #333333; }
+.footer-widgets h3 { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 18px; color: #222222; }
+.post-single-content h1 { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 28px; color: #c42952;border-bottom: 1px dashed #cfcaca;margin-bottom: 4px; margin-top: 30px; }
+.single_post h2 { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 25px; color: #50317b;border-bottom: 1px dashed #cfcaca;margin-bottom: 14px; margin-top: 20px; }
+.single_post h3 { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 23px; color: #1e73be;border-bottom: 1px dashed #cfcaca;margin-bottom: 14px; margin-top: 20px; }
+h4 { font-family: Helvetica, Arial, sans-serif; font-weight: 700; font-size: 21px; color: #009174; }
+h5 { font-family: Helvetica, Arial, sans-serif; font-weight: 700; font-size: 19px; color: #2b2b2b; }
+h6 { font-family: Helvetica, Arial, sans-serif; font-weight: normal; font-size: 16px; color: #222222; }</style>
+<script async data-cfasync="false" type="text/javascript" data-loading-method="user-interaction" data-src="https://cdn.snigelweb.com/adengine/itexamanswers.net/loader.js"></script>
+<script data-cfasync="false" type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+        const style = document.createElement("style");
+        style.textContent = `
+            div#adngin-siderail_left-0 {
+            position: fixed;
+            display: block;
+            overflow: visible;
+            top: 40px;
+            left: 20px;
+            transition: all 500ms ease-in;
+            z-index: 999;
+            margin: 0;
+            padding: 0;
+            }
+            `;
+        document.head.appendChild(style);
+    });
+</script><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://itexamanswers.net/wp-content/uploads/2021/11/itexam-fa-75x75.png" sizes="32x32" />
+<link rel="icon" href="https://itexamanswers.net/wp-content/uploads/2021/11/itexam-fa-200x200.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://itexamanswers.net/wp-content/uploads/2021/11/itexam-fa-200x200.png" />
+<meta name="msapplication-TileImage" content="https://itexamanswers.net/wp-content/uploads/2021/11/itexam-fa.png" />
+<meta name="generator" content="WordPress Download Manager 6.7.2" />
+		        <style>/* WPDM Link Template Styles */</style>
+		        <style>:root {
+                --color-primary: #4a8eff;
+                --color-primary-rgb: 74, 142, 255;
+                --color-primary-hover: #4a8eff;
+                --color-primary-active: #4a8eff;
+                --clr-sec: #6c757d;
+                --clr-sec-rgb: 108, 117, 125;
+                --clr-sec-hover: #6c757d;
+                --clr-sec-active: #6c757d;
+                --color-success: #18ce0f;
+                --color-success-rgb: 24, 206, 15;
+                --color-success-hover: #18ce0f;
+                --color-success-active: #18ce0f;
+                --color-info: #2CA8FF;
+                --color-info-rgb: 44, 168, 255;
+                --color-info-hover: #2CA8FF;
+                --color-info-active: #2CA8FF;
+                --color-warning: #FFB236;
+                --color-warning-rgb: 255, 178, 54;
+                --color-warning-hover: #FFB236;
+                --color-warning-active: #FFB236;
+                --color-danger: #ff5062;
+                --color-danger-rgb: 255, 80, 98;
+                --color-danger-hover: #ff5062;
+                --color-danger-active: #ff5062;
+                --color-green: #30b570;
+                --color-blue: #0073ff;
+                --color-purple: #8557D3;
+                --color-red: #ff5062;
+                --color-muted: rgba(69, 89, 122, 0.6);
+                --wpdm-font:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            }
+
+            .wpdm-download-link.btn.btn-primary {
+                border-radius: 4px;
+            }</style>
+		        <script>
+            function wpdm_rest_url(request) {
+                return "https://itexamanswers.net/wp-json/wpdm/" + request;
+            }
+        </script>
+		<script type="speculationrules">{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/*.php","\/wp-(admin|includes|content|login|signup|json)(.*)?","\/*\\?(.+)","\/(cart|checkout|logout)(.*)?"]}}]},"eagerness":"moderate"}]}</script></head>
+<body data-rsssl=1 id="blog" class="wp-singular wpdmpro-template-default single single-wpdmpro postid-102854 wp-theme-mts_splash main mts_splash">	   
+	<div class="main-container">
+		<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+			<div class="container clearfix">
+									<div id="navigation" class="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+											<nav class="navigation clearfix">
+							<ul id="menu-top-menu" class="menu clearfix"><li id="menu-item-41660" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41660"><a title="IT Questions Bank" href="https://itexamanswers.net/questions-bank" style="color: #28a745;"><i class="fa fa-bank"></i> IT Questions Bank</a></li>
+<li id="menu-item-27724" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-27724"><a title="Cisco IOS Command List" href="https://itexamanswers.net/cisco-ios-command-list-router-switch-configuration-commands.html"><i class="fa fa-terminal"></i> IOS Command List</a></li>
+<li id="menu-item-32212" class="menu-item menu-item-type-taxonomy menu-item-object-wpdmcategory menu-item-32212"><a href="https://itexamanswers.net/downloads/ebooks"><i class="fa fa-book"></i> Ebooks</a></li>
+<li id="menu-item-4739" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4739"><a href="#"><i class="fa fa-calculator"></i> IP Calculators</a>
+<ul class="sub-menu">
+	<li id="menu-item-55369" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-55369"><a title="Wildcard Mask Calculator Online" href="https://itexamanswers.net/subnet-mask-wildcard-mask-calculator-online.html">Wildcard Mask Calculator</a></li>
+	<li id="menu-item-33695" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33695"><a href="https://itexamanswers.net/ipv4-classless-inter-domain-routing-cidr-subnet-calculator-online.html">IPv4 CIDR Calculator</a></li>
+	<li id="menu-item-33696" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33696"><a href="https://itexamanswers.net/quick-vlsm-calculator-online-ipv4-subnetting-tool.html">IPv4 VLSM Calculator</a></li>
+	<li id="menu-item-33694" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33694"><a href="https://itexamanswers.net/ipv6-subnet-calculator-online.html">IPv6 Subnetting Calculator</a></li>
+	<li id="menu-item-33693" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33693"><a href="https://itexamanswers.net/convert-an-ipv4-to-binary-online-decimal-to-binary-table.html">IPv4 to Binary</a></li>
+	<li id="menu-item-33692" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33692"><a href="https://itexamanswers.net/ip-subnetting-practice-test.html">IPv4 Subnettig Practice</a></li>
+</ul>
+</li>
+<li id="menu-item-23384" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23384"><a title="Donation ITExam Answers" href="https://itexamanswers.net/donation"><i class="fa fa-coffee"></i> Donations</a></li>
+</ul>						</nav>
+													<div class="header-search"><form method="get" id="searchform" class="search-form" action="https://itexamanswers.net" _lpchecked="1">
+	<fieldset>
+		<input type="search" name="s" id="s" value="" placeholder="Search the site"  autocomplete="off" />
+		<button id="search-image" class="sbutton" type="submit" value=""><i class="fa fa-search"></i></button>
+	</fieldset>
+</form>
+</div>
+											</div>
+							</div>
+			<div class="container clearfix">
+				<div id="adngin-top-0"></div>
+				<div id="header">
+					<div class="logo-wrap">
+																					<h2 id="logo" class="image-logo" itemprop="headline">
+									<a href="https://itexamanswers.net"><img src="https://itexamanswers.net/wp-content/uploads/2019/02/itexam-1.png" alt="ITExamAnswers.net" width="294" height="70" loading="eager" fetchpriority="high" decoding="async"></a>
+								</h2><!-- END #logo -->
+													
+					</div>					
+											<div id="navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+											<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav class="navigation clearfix">
+								<ul id="menu-main-menu" class="menu clearfix"><li id="menu-item-71975" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-71975"><a title="IT Exam Answers" href="https://itexamanswers.net/"><i class="fa fa-home"></i> Home</a></li>
+<li id="menu-item-36974" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-36974"><a href="https://itexamanswers.net/ccna-1-introduction-to-networks-v5-1-v6-0-exams-answers"><i class="fa fa-star"></i> CCNA</a>
+<ul class="sub-menu">
+	<li id="menu-item-75707" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75707"><a title="CCNA 1 v6 Exams Answers" href="https://itexamanswers.net/ccna-1-introduction-to-networks-v5-1-v6-0-exams-answers">CCNA 1 Exams Answers</a></li>
+	<li id="menu-item-75708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75708"><a title="CCNA 2 v6 Exam Answers" href="https://itexamanswers.net/ccna-2-routing-switching-essentials-v5-0-3-v6-0-exam-answers">CCNA 2 Exam Answers</a></li>
+	<li id="menu-item-75710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75710"><a title="CCNA 3 v6 Exam Answers" href="https://itexamanswers.net/ccna-3-scaling-networks-v5-0-3-v6-0-exam-answers">CCNA 3 Exam Answers</a></li>
+	<li id="menu-item-75711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75711"><a title="CCNA 4 v6 Exam Answers" href="https://itexamanswers.net/ccna-4-connecting-networks-v5-0-3-v6-0-exam-answers">CCNA 4 Exam Answers</a></li>
+	<li id="menu-item-75712" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-75712"><a href="https://itexamanswers.net/120-labs">120 Labs CCNA</a></li>
+</ul>
+</li>
+<li id="menu-item-4207" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4207"><a title="CCNA Security v2.0 Exam Answers" href="https://itexamanswers.net/ccna-security-v2-0-exam-answers-labs-guide-test-online">Security</a>
+<ul class="sub-menu">
+	<li id="menu-item-11163" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11163"><a title="CCNA Security v2.0 Activities Lab Packet Tracer Instructions Answers" href="https://itexamanswers.net/ccna-security-v2-0-labs-activities-instructions-answers-pt">Labs/Activities</a></li>
+</ul>
+</li>
+<li id="menu-item-29458" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-has-children menu-item-29458"><a title="Cyber Ops v1.1 Exam Answers" href="https://itexamanswers.net/ccna-cybersecurity-operations-cyber-ops-v1-1-exam-answers.html">CyberOps</a>
+<ul class="sub-menu">
+	<li id="menu-item-31767" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31767"><a title="CCNA CyberOps Labs &#8211; Activities" href="https://itexamanswers.net/ccna-cyberops-labs-activities">Labs &#8211; Activities</a></li>
+</ul>
+</li>
+</ul>							</nav>
+							<nav class="navigation mobile-only clearfix mobile-menu-wrapper">
+								<ul id="menu-main-menu-mobile-public" class="menu clearfix"><li id="menu-item-41659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41659"><a title="IT Questions Bank" href="https://itexamanswers.net/questions-bank"><i class="fa fa-bank"></i> IT Questions Bank</a></li>
+<li id="menu-item-33375" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33375"><a title="IOS Command List" href="https://itexamanswers.net/cisco-ios-command-list-router-switch-configuration-commands.html"><i class="fa fa-terminal"></i> IOS Command List</a></li>
+<li id="menu-item-33330" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-33330"><a href="#">CCNA</a>
+<ul class="sub-menu">
+	<li id="menu-item-33331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-33331"><a title="CCNA 1 v6.0 Exam Answers" href="https://itexamanswers.net/ccna-1-introduction-to-networks-v5-1-v6-0-exams-answers">CCNA 1 Exam Answers</a>
+	<ul class="sub-menu">
+		<li id="menu-item-33332" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33332"><a title="CCNA 1 Activities Lab Packet Tracer Instructions Answers" href="https://itexamanswers.net/ccna-1-activities-lab-manuals-packet-tracer-instructions-answers">CCNA 1 Labs/Activities</a></li>
+	</ul>
+</li>
+	<li id="menu-item-33333" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-33333"><a title="CCNA 2 v6.0 Exam Answers" href="https://itexamanswers.net/ccna-2-routing-switching-essentials-v5-0-3-v6-0-exam-answers">CCNA 2 Exam Answers</a>
+	<ul class="sub-menu">
+		<li id="menu-item-33334" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33334"><a title="CCNA 2 Activities Lab Packet Tracer Instructions Answers" href="https://itexamanswers.net/ccna-2-activities-lab-manuals-packet-tracer-instructions-answers">CCNA 2 Labs/Activities</a></li>
+	</ul>
+</li>
+	<li id="menu-item-33335" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-33335"><a title="CCNA 3 v6.0 Exam Answers" href="https://itexamanswers.net/ccna-3-scaling-networks-v5-0-3-v6-0-exam-answers">CCNA 3 Exam Answers</a>
+	<ul class="sub-menu">
+		<li id="menu-item-33336" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33336"><a title="CCNA 3 Activities Lab Packet Tracer Instructions Answers" href="https://itexamanswers.net/ccna-3-activities-lab-manuals-packet-tracer-instructions-answers">CCNA 3 Labs/Activities</a></li>
+	</ul>
+</li>
+	<li id="menu-item-33337" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-33337"><a title="CCNA 4 v6.0 Exam Answers" href="https://itexamanswers.net/ccna-4-connecting-networks-v5-0-3-v6-0-exam-answers">CCNA 4 Exam Answers</a>
+	<ul class="sub-menu">
+		<li id="menu-item-33338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33338"><a title="CCNA 4 Activities Lab Packet Tracer Instructions Answers" href="https://itexamanswers.net/ccna-4-activities-lab-manuals-packet-tracer-instructions-answers">CCNA 4 Labs/Activities</a></li>
+	</ul>
+</li>
+	<li id="menu-item-33339" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-33339"><a title="120 Labs for the CCNA Exam" href="https://itexamanswers.net/120-labs">120 Labs CCNA</a></li>
+</ul>
+</li>
+<li id="menu-item-33348" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-33348"><a title="CCNA Security v2.0 Exam Answers" href="https://itexamanswers.net/ccna-security-v2-0-exam-answers-labs-guide-test-online">CCNA Security v2.0</a>
+<ul class="sub-menu">
+	<li id="menu-item-33349" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33349"><a title="CCNA Security v2.0 Activities Lab Packet Tracer Instructions Answers" href="https://itexamanswers.net/ccna-security-v2-0-labs-activities-instructions-answers-pt">Labs/Activities</a></li>
+</ul>
+</li>
+<li id="menu-item-33350" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-has-children menu-item-33350"><a title="Cyber Ops v1.1 Exam Answers" href="https://itexamanswers.net/ccna-cybersecurity-operations-cyber-ops-v1-1-exam-answers.html">Cybersecurity</a>
+<ul class="sub-menu">
+	<li id="menu-item-33351" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-33351"><a title="CCNA CyberOps Labs – Activities" href="https://itexamanswers.net/ccna-cyberops-labs-activities">Labs &#8211; Activities</a></li>
+</ul>
+</li>
+<li id="menu-item-66323" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-66323"><a title="Networking Essentials v2.0 Exam Answers" href="https://itexamanswers.net/networking-essentials-v2-0-exam-answers-labs-instruction.html">Networking Essentials</a></li>
+<li id="menu-item-33381" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-33381"><a href="#">IP Subnet Calculators</a>
+<ul class="sub-menu">
+	<li id="menu-item-55370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-55370"><a title="Wildcard Mask Calculator Online" href="https://itexamanswers.net/subnet-mask-wildcard-mask-calculator-online.html">Wildcard Mask Calculator</a></li>
+	<li id="menu-item-33700" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33700"><a href="https://itexamanswers.net/ipv4-classless-inter-domain-routing-cidr-subnet-calculator-online.html">IPv4 CIDR Calculator</a></li>
+	<li id="menu-item-33701" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33701"><a href="https://itexamanswers.net/quick-vlsm-calculator-online-ipv4-subnetting-tool.html">IPv4 VLSM Calculator</a></li>
+	<li id="menu-item-33699" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33699"><a href="https://itexamanswers.net/ipv6-subnet-calculator-online.html">IPv6 Subnetting Calculator</a></li>
+	<li id="menu-item-33698" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33698"><a href="https://itexamanswers.net/convert-an-ipv4-to-binary-online-decimal-to-binary-table.html">IPv4 to Binary</a></li>
+	<li id="menu-item-33697" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-33697"><a href="https://itexamanswers.net/ip-subnetting-practice-test.html">IPv4 Subnettig Practice</a></li>
+</ul>
+</li>
+<li id="menu-item-33384" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33384"><a href="https://itexamanswers.net/donation">Donation</a></li>
+<li id="menu-item-33385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33385"><a href="https://itexamanswers.net/contact-us">Contact</a></li>
+</ul>							</nav>
+											</div>
+									</div><!--#header-->
+			</div><!--.container-->
+		</header>
+
+<div id="page" class="single clearfix">
+
+	
+	<article class="article">
+		<div id="content_box" >
+							<div id="post-102854" class="g post post-102854 wpdmpro type-wpdmpro status-publish hentry wpautop">
+													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">PT Activity &#8211; CCNA (200-301) Certification Practice Exam</h1>
+													<div class="post-info">
+								<span class="thetime date updated"><i class="fa fa-calendar"></i> <span>Dec 6, 2024</span></span>
+							<span class="modified-time"><i class="fa fa-refresh"></i> Last Updated: Dec 6, 2024</span>
+							<span class="thecategory"><i class="fa fa-tags"></i> </span>
+							<span class="thecomment"><i class="fa fa-comments"></i> <a href="https://itexamanswers.net/download/pt-activity-ccna-200-301-certification-practice-exam#respond" itemprop="interactionCount">No Comments</a></span>
+						</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																						<div class="topad">
+													<div id="adngin-instream-0"></div>												</div>
+																					<div class="thecontent clearfix">
+											<div class='w3eden' ><!-- WPDM Template: Default Template -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-3 p-3 hide_empty wpdm_hide wpdm_remove_empty">[featured_image]</div>
+    </div>
+    <div class="col-md-5">
+        <div class="wpdm-button-area mb-3">
+            <a class='wpdm-download-link download-on-click btn btn-primary '  rel='nofollow' href='#' data-downloadurl="https://itexamanswers.net/download/pt-activity-ccna-200-301-certification-practice-exam?wpdmdl=102854&refresh=687354a8cdd2b1752388776">Download</a>
+        </div>
+        <ul class="list-group ml-0 mb-2">
+            <li class="list-group-item d-flex justify-content-between align-items-center wpdm_hide wpdm_remove_empty">
+                Version
+                <span class="badge"></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:download_count]">
+                Download
+                <span class="badge">414</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:file_size]">
+                File Size
+                <span class="badge">50.57 KB</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:file_count]">
+                File Count
+                <span class="badge">1</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:create_date]">
+                Create Date
+                <span class="badge">Dec 6, 2024</span>
+            </li>
+            <li class="list-group-item  d-flex justify-content-between align-items-center [hide_empty:update_date]">
+                Last Updated
+                <span class="badge">Dec 6, 2024</span>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="col-md-7">
+        <h1 class="mt-0">PT Activity - CCNA (200-301) Certification Practice Exam</h1>
+        
+        <h3>Attached Files</h3>
+        <div  data-packageid='102854' id='wpdm-filelist-area-102854' class='wpdm-filelist-area wpdm-filelist-area-102854' style='position:relative'><table id='wpdm-filelist-102854' class='wpdm-filelist table table-hover'><thead><tr><th>File</th><th>Action</th></tr></thead><tbody><tr><td>i350850v1n1_350850.pka</td><td style='white-space: nowrap;'  class='text-right'><a href='https://itexamanswers.net/download/pt-activity-ccna-200-301-certification-practice-exam?ind=1733448460053&filename=i350850v1n1_350850.pka&wpdmdl=102854&refresh=687354a8c2d251752388776'  class='inddl btn btn-primary btn-xs' rel='nofollow'>Download</a>  </td></tr></tbody></table></div>
+        <div class="wel">
+            
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0; padding: 0; clear: both;"></div>										</div>
+																																<div class="bottomad">
+													<div id="ad-bottom" style="width: 970px;"><div id="adngin-bottom-0"></div></div>												</div>
+																				</div><!--.post-single-content-->
+								</div><!--.single_post-->
+												</div><!--.g post-->
+				    <div class="wpdiscuz_top_clearing"></div>
+    <div id='comments' class='comments-area'><div id='respond' style='width: 0;height: 0;clear: both;margin: 0;padding: 0;'></div>    <div id="wpdcom" class="wpdiscuz_unauth wpd-default wpd-layout-1 wpd-comments-open">
+                    <div class="wc_social_plugin_wrapper">
+                            </div>
+            <div class="wpd-form-wrap">
+                <div class="wpd-form-head">
+                                            <div class="wpd-sbs-toggle">
+                            <i class="far fa-envelope"></i> <span
+                                class="wpd-sbs-title">Subscribe</span>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                                            <div class="wpd-auth">
+                                                <div class="wpd-login">
+                                                    </div>
+                    </div>
+                </div>
+                                                    <div class="wpdiscuz-subscribe-bar wpdiscuz-hidden">
+                                                    <form action="https://itexamanswers.net/wp-admin/admin-ajax.php?action=wpdAddSubscription"
+                                  method="post" id="wpdiscuz-subscribe-form">
+                                <div class="wpdiscuz-subscribe-form-intro">Notify of </div>
+                                <div class="wpdiscuz-subscribe-form-option"
+                                     style="width:40%;">
+                                    <select class="wpdiscuz_select" name="wpdiscuzSubscriptionType">
+                                                                                    <option value="post">new follow-up comments</option>
+                                                                                                                                <option
+                                                value="all_comment" >new replies to my comments</option>
+                                                                                </select>
+                                </div>
+                                                                    <div class="wpdiscuz-item wpdiscuz-subscribe-form-email">
+                                        <input class="email" type="email" name="wpdiscuzSubscriptionEmail"
+                                               required="required" value=""
+                                               placeholder="Email"/>
+                                    </div>
+                                                                    <div class="wpdiscuz-subscribe-form-button">
+                                    <input id="wpdiscuz_subscription_button" class="wpd-prim-button wpd_not_clicked"
+                                           type="submit"
+                                           value="&rsaquo;"
+                                           name="wpdiscuz_subscription_button"/>
+                                </div>
+                                <input type="hidden" id="wpdiscuz_subscribe_form_nonce" name="wpdiscuz_subscribe_form_nonce" value="bbf3f6602a" /><input type="hidden" name="_wp_http_referer" value="/download/pt-activity-ccna-200-301-certification-practice-exam" />                            </form>
+                                                </div>
+                            <div
+            class="wpd-form wpd-form-wrapper wpd-main-form-wrapper" id='wpd-main-form-wrapper-0_0'>
+                                        <form  method="post" enctype="multipart/form-data" data-uploading="false" class="wpd_comm_form wpd_main_comm_form"                >
+                                        <div class="wpd-field-comment">
+                        <div class="wpdiscuz-item wc-field-textarea">
+                            <div class="wpdiscuz-textarea-wrap ">
+                                                                                                        <div class="wpd-avatar">
+                                        <img alt='guest' src="https://itexamanswers.net/wp-content/cache/flying-press/gravatar-2dc72d06b2dd.png" srcset="https://itexamanswers.net/wp-content/cache/flying-press/gravatar-4c0d14902359.png 2x" class='avatar avatar-56 photo' height='56' width='56' decoding="async" loading="eager" fetchpriority="high"/>                                    </div>
+                                                <div id="wpd-editor-wraper-0_0" style="display: none;">
+                <div id="wpd-editor-char-counter-0_0"
+                     class="wpd-editor-char-counter"></div>
+                <label style="display: none;" for="wc-textarea-0_0">Label</label>
+                <textarea id="wc-textarea-0_0" name="wc_comment"
+                          class="wc_comment wpd-field"></textarea>
+                <div id="wpd-editor-0_0"></div>
+                        <div id="wpd-editor-toolbar-0_0">
+                            <button title="Bold"
+                        class="ql-bold"  ></button>
+                                <button title="Italic"
+                        class="ql-italic"  ></button>
+                                <button title="Underline"
+                        class="ql-underline"  ></button>
+                                <button title="Strike"
+                        class="ql-strike"  ></button>
+                                <button title="Ordered List"
+                        class="ql-list" value='ordered' ></button>
+                                <button title="Unordered List"
+                        class="ql-list" value='bullet' ></button>
+                                <button title="Blockquote"
+                        class="ql-blockquote"  ></button>
+                                <button title="Code Block"
+                        class="ql-code-block"  ></button>
+                                <button title="Link"
+                        class="ql-link"  ></button>
+                                <button title="Source Code"
+                        class="ql-sourcecode"  data-wpde_button_name='sourcecode'>{}</button>
+                                <button title="Spoiler"
+                        class="ql-spoiler"  data-wpde_button_name='spoiler'>[+]</button>
+                            <div class="wpd-editor-buttons-right">
+                            </div>
+        </div>
+                    </div>
+                                        </div>
+                        </div>
+                    </div>
+                    <div class="wpd-form-foot" style='display:none;'>
+                        <div class="wpdiscuz-textarea-foot">
+                                                        <div class="wpdiscuz-button-actions"></div>
+                        </div>
+                                <div class="wpd-form-row">
+                    <div class="wpd-form-col-left">
+                        <div class="wpdiscuz-item wc_name-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i
+                            class="fas fa-user"></i>
+                    </div>
+                                    <input id="wc_name-0_0" value="" required='required' aria-required='true'                       class="wc_name wpd-field" type="text"
+                       name="wc_name"
+                       placeholder="Name*"
+                       maxlength="50" pattern='.{3,50}'                       title="">
+                <label for="wc_name-0_0"
+                       class="wpdlb">Name*</label>
+                            </div>
+                        <div class="wpdiscuz-item wc_email-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i
+                            class="fas fa-at"></i>
+                    </div>
+                                    <input id="wc_email-0_0" value="" required='required' aria-required='true'                       class="wc_email wpd-field" type="email"
+                       name="wc_email"
+                       placeholder="Email*"/>
+                <label for="wc_email-0_0"
+                       class="wpdlb">Email*</label>
+                            </div>
+                    </div>
+                <div class="wpd-form-col-right">
+                    <div class="wc-field-submit">
+                                                                                    <label class="wpd_label"
+                               wpd-tooltip="Notify of new replies to this comment">
+                            <input id="wc_notification_new_comment-0_0"
+                                   class="wc_notification_new_comment-0_0 wpd_label__checkbox"
+                                   value="comment" type="checkbox"
+                                   name="wpdiscuz_notification_type" />
+                            <span class="wpd_label__text">
+                                <span class="wpd_label__check">
+                                    <i class="fas fa-bell wpdicon wpdicon-on"></i>
+                                    <i class="fas fa-bell-slash wpdicon wpdicon-off"></i>
+                                </span>
+                            </span>
+                        </label>
+                                                                <input id="wpd-field-submit-0_0"
+                   class="wc_comm_submit wpd_not_clicked wpd-prim-button" type="submit"
+                   name="submit" value="Post Comment"
+                   aria-label="Post Comment"/>
+        </div>
+                </div>
+                    <div class="clearfix"></div>
+        </div>
+                            </div>
+                                        <input type="hidden" class="wpdiscuz_unique_id" value="0_0"
+                           name="wpdiscuz_unique_id">
+                    <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2ad570a78c" /></p><p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="31"/><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p>                </form>
+                        </div>
+                <div id="wpdiscuz_hidden_secondary_form" style="display: none;">
+                    <div
+            class="wpd-form wpd-form-wrapper wpd-secondary-form-wrapper" id='wpd-secondary-form-wrapper-wpdiscuzuniqueid' style='display: none;'>
+                            <div class="wpd-secondary-forms-social-content"></div>
+                <div class="clearfix"></div>
+                                        <form  method="post" enctype="multipart/form-data" data-uploading="false" class="wpd_comm_form wpd-secondary-form-wrapper"                >
+                                        <div class="wpd-field-comment">
+                        <div class="wpdiscuz-item wc-field-textarea">
+                            <div class="wpdiscuz-textarea-wrap ">
+                                                                                                        <div class="wpd-avatar">
+                                        <img alt='guest' src="https://itexamanswers.net/wp-content/cache/flying-press/gravatar-66afb5aa6dde.png" srcset="https://itexamanswers.net/wp-content/cache/flying-press/gravatar-a2d9f04c4d9e.png 2x" class='avatar avatar-56 photo' height='56' width='56' decoding="async" loading="eager" fetchpriority="high"/>                                    </div>
+                                                <div id="wpd-editor-wraper-wpdiscuzuniqueid" style="display: none;">
+                <div id="wpd-editor-char-counter-wpdiscuzuniqueid"
+                     class="wpd-editor-char-counter"></div>
+                <label style="display: none;" for="wc-textarea-wpdiscuzuniqueid">Label</label>
+                <textarea id="wc-textarea-wpdiscuzuniqueid" name="wc_comment"
+                          class="wc_comment wpd-field"></textarea>
+                <div id="wpd-editor-wpdiscuzuniqueid"></div>
+                        <div id="wpd-editor-toolbar-wpdiscuzuniqueid">
+                            <button title="Bold"
+                        class="ql-bold"  ></button>
+                                <button title="Italic"
+                        class="ql-italic"  ></button>
+                                <button title="Underline"
+                        class="ql-underline"  ></button>
+                                <button title="Strike"
+                        class="ql-strike"  ></button>
+                                <button title="Ordered List"
+                        class="ql-list" value='ordered' ></button>
+                                <button title="Unordered List"
+                        class="ql-list" value='bullet' ></button>
+                                <button title="Blockquote"
+                        class="ql-blockquote"  ></button>
+                                <button title="Code Block"
+                        class="ql-code-block"  ></button>
+                                <button title="Link"
+                        class="ql-link"  ></button>
+                                <button title="Source Code"
+                        class="ql-sourcecode"  data-wpde_button_name='sourcecode'>{}</button>
+                                <button title="Spoiler"
+                        class="ql-spoiler"  data-wpde_button_name='spoiler'>[+]</button>
+                            <div class="wpd-editor-buttons-right">
+                            </div>
+        </div>
+                    </div>
+                                        </div>
+                        </div>
+                    </div>
+                    <div class="wpd-form-foot" style='display:none;'>
+                        <div class="wpdiscuz-textarea-foot">
+                                                        <div class="wpdiscuz-button-actions"></div>
+                        </div>
+                                <div class="wpd-form-row">
+                    <div class="wpd-form-col-left">
+                        <div class="wpdiscuz-item wc_name-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i
+                            class="fas fa-user"></i>
+                    </div>
+                                    <input id="wc_name-wpdiscuzuniqueid" value="" required='required' aria-required='true'                       class="wc_name wpd-field" type="text"
+                       name="wc_name"
+                       placeholder="Name*"
+                       maxlength="50" pattern='.{3,50}'                       title="">
+                <label for="wc_name-wpdiscuzuniqueid"
+                       class="wpdlb">Name*</label>
+                            </div>
+                        <div class="wpdiscuz-item wc_email-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i
+                            class="fas fa-at"></i>
+                    </div>
+                                    <input id="wc_email-wpdiscuzuniqueid" value="" required='required' aria-required='true'                       class="wc_email wpd-field" type="email"
+                       name="wc_email"
+                       placeholder="Email*"/>
+                <label for="wc_email-wpdiscuzuniqueid"
+                       class="wpdlb">Email*</label>
+                            </div>
+                    </div>
+                <div class="wpd-form-col-right">
+                    <div class="wc-field-submit">
+                                                                                    <label class="wpd_label"
+                               wpd-tooltip="Notify of new replies to this comment">
+                            <input id="wc_notification_new_comment-wpdiscuzuniqueid"
+                                   class="wc_notification_new_comment-wpdiscuzuniqueid wpd_label__checkbox"
+                                   value="comment" type="checkbox"
+                                   name="wpdiscuz_notification_type" />
+                            <span class="wpd_label__text">
+                                <span class="wpd_label__check">
+                                    <i class="fas fa-bell wpdicon wpdicon-on"></i>
+                                    <i class="fas fa-bell-slash wpdicon wpdicon-off"></i>
+                                </span>
+                            </span>
+                        </label>
+                                                                <input id="wpd-field-submit-wpdiscuzuniqueid"
+                   class="wc_comm_submit wpd_not_clicked wpd-prim-button" type="submit"
+                   name="submit" value="Post Comment"
+                   aria-label="Post Comment"/>
+        </div>
+                </div>
+                    <div class="clearfix"></div>
+        </div>
+                            </div>
+                                        <input type="hidden" class="wpdiscuz_unique_id" value="wpdiscuzuniqueid"
+                           name="wpdiscuz_unique_id">
+                    <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2ad570a78c" /></p><p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_2" name="ak_js" value="76"/><script>document.getElementById( "ak_js_2" ).setAttribute( "value", ( new Date() ).getTime() );</script></p>                </form>
+                        </div>
+                </div>
+                    </div>
+                        <div id="wpd-threads" class="wpd-thread-wrapper">
+                <div class="wpd-thread-head">
+                    <div class="wpd-thread-info "
+                         data-comments-count="0">
+                        <span class='wpdtc' title='0'>0</span> Comments                    </div>
+                                        <div class="wpd-space"></div>
+                    <div class="wpd-thread-filter">
+                                            </div>
+                </div>
+                <div class="wpd-comment-info-bar">
+                    <div class="wpd-current-view"><i
+                            class="fas fa-quote-left"></i> Inline Feedbacks                    </div>
+                    <div class="wpd-filter-view-all">View all comments</div>
+                </div>
+                                <div class="wpd-thread-list">
+                                        <div class="wpdiscuz-comment-pagination">
+                                            </div>
+                </div>
+            </div>
+                </div>
+        </div>
+    <div id="wpdiscuz-loading-bar"
+         class="wpdiscuz-loading-bar-unauth"></div>
+    <div id="wpdiscuz-comment-message"
+         class="wpdiscuz-comment-message-unauth"></div>
+    		</div>
+	</article>
+		<aside id="sidebar" class="sidebar c-4-12 clearfix" role="complementary" itemscope itemtype="http://schema.org/WPSideBar">
+		<div id="text-12" class="widget widget_text"><h3 class="widget-title">CCNA v5 + v6.0 Exam Answers</h3>			<div class="textwidget"><div class="tab_widget wp_shortcodes_tabs"><ul class="wps_tabs"><li><a href="#" data-tab="tab-0-ccna-1">CCNA 1</a></li><li><a href="#" data-tab="tab-1-ccna-2">CCNA 2</a></li><li><a href="#" data-tab="tab-2-ccna-3">CCNA 3</a></li><li><a href="#" data-tab="tab-3-ccna-4">CCNA 4</a></li></ul><div class="tab_container"><div id="tab-0-ccna-1" class="tab_content clearfix"><table>
+<tbody>
+<tr><td><a title="CCNA 1 Pretest Exam Answers" href="https://itexamanswers.net/ccna-1-pretest-v5-1-v6-0-exam-answers-100-full.html">CCNA 1 - Pretest</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 1 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-1-exam-answers-100-full.html">CCNA 1 - Chapter 1</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 2 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-2-exam-answers-100-full.html">CCNA 1 - Chapter 2</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 3 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-3-exam-answers-100-full.html">CCNA 1 - Chapter 3</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 4 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-4-exam-answers-100-full.html">CCNA 1 - Chapter 4</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 5 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-5-exam-answers-100-full.html">CCNA 1 - Chapter 5</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 6 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-6-exam-answers-100-full.html">CCNA 1 - Chapter 6</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 6 Skills AssessmentExam Answers" href="https://itexamanswers.net/ccna-1-v5-1-chapter-6-pt-practice-skills-assessment-packet-tracer.html">CCNA 1 - Chapter 6 Skills PT</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 7 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-7-exam-answers-100-full.html">CCNA 1 - Chapter 7</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 8 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-8-exam-answers-100-full.html">CCNA 1 - Chapter 8</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 9 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-9-exam-answers-100-full.html">CCNA 1 - Chapter 9</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 10 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-10-exam-answers-100-full.html">CCNA 1 - Chapter 10</a></td></tr>
+<tr><td><a title="CCNA 1 Chapter 11 Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-11-exam-answers-100-full.html">CCNA 1 - Chapter 11</a></td></tr>
+<tr><td><a title="CCNA 1 PT Practice Skills exam answers" href="https://itexamanswers.net/ccna-1-v6-0-itn-practice-skills-assessment-packet-tracer-exam-answers.html">CCNA 1 PT Practice Skills</a></td></tr>
+<tr><td><a title="CCNA 1 Practice Final Exam Answers" href="https://itexamanswers.net/ccna-1-v5-1-v6-0-practice-final-exam-answers-100-full.html">CCNA 1 - Practice Final</a></td></tr>
+<tr><td><a title="CCNA 1 Final Exam Answers" href="https://itexamanswers.net/ccna-1-final-exam-answers-v5-1-v6-0-introduction-to-networks.html"><strong>CCNA 1 - Final Exam</strong></a></td></tr></tbody>
+</table></div><div id="tab-1-ccna-2" class="tab_content clearfix"><table>
+<tbody><tr><td><a title="CCNA 2 Pretest Exam Answers" href="https://itexamanswers.net/ccna-2-pretest-exam-answers-v5-03-v5-1-v6-0-full-100.html">CCNA 2 - Pretest</a></td></tr>
+<tr><td><a title="CCNA 2 Chapter 1 Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-chapter-1-exam-answers-100-full.html">CCNA 2 - Chapter 1</a></td></tr>
+<tr><td><a title="CCNA 2 Chapter 2 Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-chapter-2-exam-answers-100-full.html">CCNA 2 - Chapter 2</a></td></tr>
+<tr><td><a title="ccna 2 Chapter 2 SIC Practice Skills exam answers" href="https://itexamanswers.net/ccna-2-rse-chapter-2-sic-practice-skills-assessment-packet-tracer-answers.html">Chapter 2 SIC Practice Skills</a></td></tr>
+<tr><td><a title="CCNA 2 Chapter 3 Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-chapter-3-exam-answers-100-full.html">CCNA 2 - Chapter 3</a></td></tr>
+<tr><td><a title="CCNA 2 Chapter 4 Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-chapter-4-exam-answers-100-full.html">CCNA 2 - Chapter 4</a></td></tr>
+<tr><td><a title="CCNA 2 Chapter 5 Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-chapter-5-exam-answers-100-full.html">CCNA 2 - Chapter 5</a></td></tr>
+<tr><td><a title="CCNA 2 Chapter 6 Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-chapter-6-exam-answers-100-full.html">CCNA 2 - Chapter 6</a></td></tr>
+<tr><td><a title="CCNA 2 Chapter 7 Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-chapter-7-exam-answers-100-full.html">CCNA 2 - Chapter 7</a></td></tr>
+<tr><td><a title="ccna 2 Chapter 7 SIC Practice Skills exam answers" href="https://itexamanswers.net/chapter-7-rse-practice-skills-assessment-exam-answers.html">Chapter 7 SIC Practice Skills</a></td></tr>
+<tr><td><a title="CCNA 2 Chapter 8 Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-chapter-8-exam-answers-100-full.html">CCNA 2 - Chapter 8</a></td></tr>
+<tr><td><a title="CCNA 2 Chapter 9 Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-chapter-9-exam-answers-100-full.html">CCNA 2 - Chapter 9</a></td></tr>
+<tr><td><a title="CCNA 2 Chapter 10 Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-chapter-10-exam-answers-100-full.html">CCNA 2 - Chapter 10</a></td></tr>
+<tr><td><a title="CCNA 1 ITN Practice Skills Assessment PT Answers" href="https://itexamanswers.net/ccna-1-v6-0-itn-practice-skills-assessment-packet-tracer-exam-answers.html">ITN Practice Skills(CCNA 1)</a></td></tr>
+<tr><td><a title="CCNA 2 RSE Practice Skills Assessment Part 1 PT Exam Answers" href="https://itexamanswers.net/ccna-routing-switching-essentials-practice-skills-assessment-part-1.html">RSE Practice Skills Part 1</a></td></tr>
+<tr><td><a title="CCNA 2 RSE Practice Skills Assessment Part 2 PT Exam Answers" href="https://itexamanswers.net/ccna-routing-switching-essentials-practice-skills-assessment-part-ii.html">RSE Practice Skills Part 2</a></td></tr>
+<tr><td><a title="CCNA 2 Practice Final Exam Answers" href="https://itexamanswers.net/ccna-2-v5-0-3-v6-0-practice-final-exam-answers-100-full.html">CCNA 2 - Practice Final</a></td></tr>
+<tr><td><a title="CCENT (ICND1) Practice Certification Exam Answer" href="https://itexamanswers.net/ccna-2-v6-0-ccent-icnd1-practice-certification-exam-answers.html">CCENT (ICND1) Practice Exam</a></td></tr>
+<tr><td><a title="CCNA 2 Final Exam Answers" href="https://itexamanswers.net/ccna-2-v6-0-final-exam-answers-routing-switching-essentials.html"><strong>CCNA 2 - Final Exam</strong></a></td></tr></tbody>
+</table></div><div id="tab-2-ccna-3" class="tab_content clearfix"><table>
+<tbody><tr><td><a title="CCNA 3 Pretest Exam Answers" href="https://itexamanswers.net/ccna-3-pretest-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 3 - Pretest</a></td></tr>
+<tr><td><a title="CCNA 3 Chapter 1 Exam Answers" href="https://itexamanswers.net/ccna-3-v5-0-3-v6-0-chapter-1-exam-answers-100-full.html">CCNA 3 - Chapter 1</a></td></tr>
+<tr><td><a title="CCNA 3 Chapter 2 Exam Answers" href="https://itexamanswers.net/ccna-3-v5-0-3-v6-0-chapter-2-exam-answers-100-full.html">CCNA 3 - Chapter 2</a></td></tr>
+<tr><td><a title="CCNA 3 Chapter 3 Exam Answers" href="https://itexamanswers.net/ccna-3-v5-0-3-v6-0-chapter-3-exam-answers-100-full.html">CCNA 3 - Chapter 3</a></td></tr>
+<tr><td><a title="CCNA 3 Chapter 4 Exam Answers" href="https://itexamanswers.net/ccna-3-v5-0-3-v6-0-chapter-4-exam-answers-100-full.html">CCNA 3 - Chapter 4</a></td></tr>
+<tr><td><a title="CCNA 3 Chapter 5 Exam Answers" href="https://itexamanswers.net/ccna-3-v5-0-3-v6-0-chapter-5-exam-answers-100-full.html">CCNA 3 - Chapter 5</a></td></tr>
+<tr><td><a title="CCNA 3 Chapter 6 Exam Answers" href="https://itexamanswers.net/ccna-3-v5-0-3-v6-0-chapter-6-exam-answers-100-full.html">CCNA 3 - Chapter 6</a></td></tr>
+<tr><td><a title="CCNA 3 Chapter 7 Exam Answers" href="https://itexamanswers.net/ccna-3-v5-0-3-v6-0-chapter-7-exam-answers-100-full.html">CCNA 3 - Chapter 7</a></td></tr>
+<tr><td><a title="CCNA 3 Chapter 8 Exam Answers" href="https://itexamanswers.net/ccna-3-v5-0-3-v6-0-chapter-8-exam-answers-100-full.html">CCNA 3 - Chapter 8</a></td></tr>
+<tr><td><a title="CCNA 3 Chapter 9 Exam Answers" href="https://itexamanswers.net/ccna-3-v5-0-3-v6-0-chapter-9-exam-answers-100-full.html">CCNA 3 - Chapter 9</a></td></tr>
+<tr><td><a title="CCNA 3 Chapter 10 Exam Answers" href="https://itexamanswers.net/ccna-3-v5-0-3-v6-0-chapter-10-exam-answers-100-full.html">CCNA 3 - Chapter 10</a></td></tr>
+<tr><td><a title="CCNA 1 ITN Practice Skills Assessment PT Answers" href="https://itexamanswers.net/ccna-1-v6-0-itn-practice-skills-assessment-packet-tracer-exam-answers.html">ITN Practice Skills (CCNA 1)</a></td></tr>
+<tr><td><a title="CCNA 2 RSE Practice Skills Assessment Part 1 PT Exam Answers" href="https://itexamanswers.net/ccna-routing-switching-essentials-practice-skills-assessment-part-1.html">RSE PT Skills Part 1 (CCNA 2)</a></td></tr>
+<tr><td><a title="CCNA 2 RSE Practice Skills Assessment Part 2 PT Exam Answers" href="https://itexamanswers.net/ccna-routing-switching-essentials-practice-skills-assessment-part-ii.html">RSE PT Skills Part 2 (CCNA 2)</a></td></tr>
+<tr><td><a title="Scaling Networks (Version 6.00) - ScaN EIGRP Practice Skills Assessment - PT" href="https://itexamanswers.net/scaling-networks-v6-0-scan-eigrp-practice-skills-assessment-answers.html">ScaN EIGRP Practice Skills Assessment</a></td></tr>
+<tr><td><a title="CCNA 3 OSPF Practice Skills Exam Answer" href="https://itexamanswers.net/ccna-3-v5-0-v6-0-ospf-practice-skills-assessment-exam-answer.html">ScaN OSPF Practice Skills Assessment</a></td></tr>
+<tr><td><a title="CCNA 3 Practice Final Exam Answers" href="https://itexamanswers.net/ccna-3-practice-final-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 3 - Practice Final</a></td></tr>
+<tr><td><a title="CCNA 3 Final Exam Answers" href="https://itexamanswers.net/ccna-3-final-exam-answers-v5-0-3-v6-0-scaling-networks.html"><strong>CCNA 3 - Final Exam</strong></a></td></tr></tbody>
+</table></div><div id="tab-3-ccna-4" class="tab_content clearfix"><table>
+<tbody><tr><td><a title="CCNA 4 Pretest Exam Answers" href="https://itexamanswers.net/ccna-4-pretest-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 4 - Pretest</a></td></tr>
+<tr><td><a title="CCNA 4 Chapter 1 Exam Answers" href="https://itexamanswers.net/ccna-4-chapter-1-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 4 - Chapter 1</a></td></tr>
+<tr><td><a title="CCNA 4 Chapter 2 Exam Answers" href="https://itexamanswers.net/ccna-4-chapter-2-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 4 - Chapter 2</a></td></tr>
+<tr><td><a title="CCNA 4 Chapter 3 Exam Answers" href="https://itexamanswers.net/ccna-4-chapter-3-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 4 - Chapter 3</a></td></tr>
+<tr><td><a title="CCNA 4 Chapter 3 Skills Assessment packet tracer" href="https://itexamanswers.net/chapter-3-sic-ppp-routing-remote-access-vpn-pt-skills-assessment.html">CCNA 4 Chapter 3 Skills Assessment</a></td></tr>
+<tr><td><a title="CCNA 4 Chapter 4 Exam Answers" href="https://itexamanswers.net/ccna-4-chapter-4-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 4 - Chapter 4</a></td></tr>
+<tr><td><a title="CCNA 4 Chapter 5 Exam Answers" href="https://itexamanswers.net/ccna-4-chapter-5-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 4 - Chapter 5</a></td></tr>
+<tr><td><a title="CCNA 4 Chapter 5 Skills Assessment packet tracer" href="https://itexamanswers.net/chapter-5-sic-access-control-list-snmp-configuration-pt-skills-assessment.html">CCNA 4 Chapter 5 Skills Assessment</a></td></tr>
+<tr><td><a title="CCNA 4 Chapter 6 Exam Answers" href="https://itexamanswers.net/ccna-4-chapter-6-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 4 - Chapter 6</a></td></tr>
+<tr><td><a title="CCNA 4 Chapter 7 Exam Answers" href="https://itexamanswers.net/ccna-4-chapter-7-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 4 - Chapter 7</a></td></tr>
+<tr><td><a title="CCNA 4 Chapter 8 Exam Answers" href="https://itexamanswers.net/ccna-4-chapter-8-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 4 - Chapter 8</a></td></tr>
+<tr><td><a title="CCNA 1 ITN Practice Skills Assessment PT Answers" href="https://itexamanswers.net/ccna-1-v6-0-itn-practice-skills-assessment-packet-tracer-exam-answers.html">ITN Practice Skills (CCNA 1)</a></td></tr>
+<tr><td><a title="CCNA 2 RSE Practice Skills Assessment Part 1 PT Exam Answers" href="https://itexamanswers.net/ccna-routing-switching-essentials-practice-skills-assessment-part-1.html">RSE PT Skills Part 1 (CCNA 2)</a></td></tr>
+<tr><td><a title="CCNA 2 RSE Practice Skills Assessment Part 2 PT Exam Answers" href="https://itexamanswers.net/ccna-routing-switching-essentials-practice-skills-assessment-part-ii.html">RSE PT Skills Part 2 (CCNA 2)</a></td></tr>
+<tr><td><a title="Scaling Networks (Version 6.00) - ScaN EIGRP Practice Skills Assessment - PT" href="https://itexamanswers.net/scaling-networks-v6-0-scan-eigrp-practice-skills-assessment-answers.html">ScaN EIGRP PT Skills (CCNA 3)</a></td></tr>
+<tr><td><a title="CCNA 3 OSPF Practice Skills Exam Answer" href="https://itexamanswers.net/ccna-3-v5-0-v6-0-ospf-practice-skills-assessment-exam-answer.html">ScaN OSPF PT Skills (CCNA 3)</a></td></tr>
+<tr><td><a title="CCNA 4 CN Practice Skills Assessment - PT" href="https://itexamanswers.net/connecting-networks-v6-0-cn-practice-skills-assessment-pt.html">CN Practice Skills Assessment-PT</a></td></tr>
+<tr><td><a title="CCENT (ICND 1) Practice Certification Exam Answer" href="https://itexamanswers.net/ccna-2-v6-0-ccent-icnd1-practice-certification-exam-answers.html">CCENT (ICND 1) Practice Exam</a></td></tr>
+<tr><td><a title="CCENT (ICND 2) Practice Certification Exam Answer" href="https://itexamanswers.net/ccna-4-connecting-networks-v6-0-ccna-icnd2-cert-practice-exam-answers.html">CCENT (ICND 2) Practice Exam</a></td></tr>
+<tr><td><a title="CCNA 4 Practice Final Exam Answers" href="https://itexamanswers.net/ccna-4-practice-final-exam-answers-v5-0-3-v6-0-full-100.html">CCNA 4 - Practice Final</a></td></tr>
+<tr><td><a title="CCNA 4 Final Exam Answers" href="https://itexamanswers.net/ccna-4-final-exam-answers-v5-0-3-v6-0-connecting-networks.html "><strong>CCNA 4 - Final Exam</strong></a></td></tr></tbody>
+</table></div></div></div><div class="clear"></div></div>
+		</div><div id="custom_html-6" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div id="adngin-sidebar_1-0"></div></div></div><div id="mts_related_posts_widget-20" class="widget widget_mts_related_posts_widget horizontal-small"><h3 class="widget-title">Related Posts</h3><ul class="related-posts-widget">				<li class="post-box horizontal-small horizontal-container no-thumb"><div class="horizontal-container-inner">										<div class="post-data">
+						<div class="post-data-container">
+							<div class="post-title">
+								<a href="https://itexamanswers.net/part-1-cisco-ccna-200-125-exam-dumps-latest-version-online-exam.html" title="[PART 1] Cisco CCNA 200-125 Exam Dumps Latest version Online Exam">[PART 1] Cisco CCNA 200-125 Exam Dumps Latest version Online Exam</a>
+							</div>
+																				</div>
+					</div>
+				</div></li>							<li class="post-box horizontal-small horizontal-container no-thumb"><div class="horizontal-container-inner">										<div class="post-data">
+						<div class="post-data-container">
+							<div class="post-title">
+								<a href="https://itexamanswers.net/ccna-1-itnv6-chapter-4-check-your-understanding-answers.html" title="CCNA 1 ITNv6 Chapter 4: Check Your Understanding Answers">CCNA 1 ITNv6 Chapter 4: Check Your Understanding Answers</a>
+							</div>
+																				</div>
+					</div>
+				</div></li>							<li class="post-box horizontal-small horizontal-container no-thumb"><div class="horizontal-container-inner">										<div class="post-data">
+						<div class="post-data-container">
+							<div class="post-title">
+								<a href="https://itexamanswers.net/it-essentials-v6-0-chapter-10-mobile-linux-and-os-x-operating-systems.html" title="IT Essentials v6.0 &#8211; Chapter 10: Mobile, Linux, and OS X Operating Systems">IT Essentials v6.0 &#8211; Chapter 10: Mobile, Linux, and OS X Operating Systems</a>
+							</div>
+																				</div>
+					</div>
+				</div></li>							<li class="post-box horizontal-small horizontal-container no-thumb"><div class="horizontal-container-inner">										<div class="post-data">
+						<div class="post-data-container">
+							<div class="post-title">
+								<a href="https://itexamanswers.net/ccnp-enarsi-v8-chapters-18-20-vpns-test-online.html" title="CCNP ENARSI v8 Chapters 18 – 20: VPNs Test Online">CCNP ENARSI v8 Chapters 18 – 20: VPNs Test Online</a>
+							</div>
+																				</div>
+					</div>
+				</div></li>							<li class="post-box horizontal-small horizontal-container no-thumb"><div class="horizontal-container-inner">										<div class="post-data">
+						<div class="post-data-container">
+							<div class="post-title">
+								<a href="https://itexamanswers.net/4-4-1-2-lab-configuring-zone-based-policy-firewalls-answers.html" title="4.4.1.2 Lab &#8211; Configuring Zone-Based Policy Firewalls Answers">4.4.1.2 Lab &#8211; Configuring Zone-Based Policy Firewalls Answers</a>
+							</div>
+																				</div>
+					</div>
+				</div></li>							<li class="post-box horizontal-small horizontal-container no-thumb"><div class="horizontal-container-inner">										<div class="post-data">
+						<div class="post-data-container">
+							<div class="post-title">
+								<a href="https://itexamanswers.net/1-1-1-2-lab-how-connected-are-you-answers.html" title="1.1.1.2 Lab &#8211; How Connected are You? Answers">1.1.1.2 Lab &#8211; How Connected are You? Answers</a>
+							</div>
+																				</div>
+					</div>
+				</div></li>							<li class="post-box horizontal-small horizontal-container no-thumb"><div class="horizontal-container-inner">										<div class="post-data">
+						<div class="post-data-container">
+							<div class="post-title">
+								<a href="https://itexamanswers.net/ccna-2-chapter-2-v5-0-exam-answers-2015-100-2.html" title="CCNA 2 Chapter 2 v5.0 Exam Answers 2015 (100%)">CCNA 2 Chapter 2 v5.0 Exam Answers 2015 (100%)</a>
+							</div>
+																				</div>
+					</div>
+				</div></li>							<li class="post-box horizontal-small horizontal-container no-thumb"><div class="horizontal-container-inner">										<div class="post-data">
+						<div class="post-data-container">
+							<div class="post-title">
+								<a href="https://itexamanswers.net/6-3-1-8-lab-draw-an-electric-schematic-for-your-project-answers.html" title="6.3.1.8 Lab &#8211; Draw an Electric Schematic for Your Project (Answers)">6.3.1.8 Lab &#8211; Draw an Electric Schematic for Your Project (Answers)</a>
+							</div>
+																				</div>
+					</div>
+				</div></li>							<li class="post-box horizontal-small horizontal-container no-thumb"><div class="horizontal-container-inner">										<div class="post-data">
+						<div class="post-data-container">
+							<div class="post-title">
+								<a href="https://itexamanswers.net/programming-essentials-in-c-chapter-8-assignment-cla-exam-answers.html" title="Programming Essentials in C: Chapter 8 Assignment (CLA) Exam Answers">Programming Essentials in C: Chapter 8 Assignment (CLA) Exam Answers</a>
+							</div>
+																				</div>
+					</div>
+				</div></li>							<li class="post-box horizontal-small horizontal-container no-thumb"><div class="horizontal-container-inner">										<div class="post-data">
+						<div class="post-data-container">
+							<div class="post-title">
+								<a href="https://itexamanswers.net/3-5-3-quiz-information-gathering-and-vulnerability-scanning-answers.html" title="3.5.3 Quiz &#8211; Information Gathering and Vulnerability Scanning Answers">3.5.3 Quiz &#8211; Information Gathering and Vulnerability Scanning Answers</a>
+							</div>
+																				</div>
+					</div>
+				</div></li>			</ul>
+</div><div id="recent-comments-22" class="widget widget_recent_comments" style="content-visibility: auto;contain-intrinsic-size: auto 314px;"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Nic</span> on <a href="https://itexamanswers.net/5-5-1-packet-tracer-ipv4-acl-implementation-challenge-answers.html#comment-80944">5.5.1 Packet Tracer &#8211; IPv4 ACL Implementation Challenge (Answers)</a></li><li class="recentcomments"><span class="comment-author-link">Yeik</span> on <a href="https://itexamanswers.net/ccna-1-v7-0-final-exam-answers-full-introduction-to-networks.html#comment-80941">CCNA 1 v7.0 Final Exam Answers Full &#8211; Introduction to Networks</a></li><li class="recentcomments"><span class="comment-author-link">Ejay</span> on <a href="https://itexamanswers.net/ccna-1-v5-1-v6-0-chapter-1-exam-answers-100-full.html#comment-80940">CCNA 1 (v5.1 + v6.0) Chapter 1 Exam Answers 2020 &#8211; 100% Full</a></li><li class="recentcomments"><span class="comment-author-link">belkata</span> on <a href="https://itexamanswers.net/itn-version-7-00-final-pt-skills-assessment-ptsa-exam-answers.html#comment-80893">ITN (Version 7.00) Final PT Skills Assessment (PTSA) Exam Answers</a></li><li class="recentcomments"><span class="comment-author-link">lora</span> on <a href="https://itexamanswers.net/ccna-1-v5-1-v6-0-practice-final-exam-answers-100-full.html#comment-80886">CCNA 1 ITN (v5.1 + v6.0) Practice Final Exam Answers 100% Full 2020</a></li></ul></div><div id="custom_html-7" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div id="adngin-sidebar_2-0"></div></div></div>	</aside><!--#sidebar-->
+	</div><!--#page-->
+	<footer id="site-footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter" style="content-visibility: auto;contain-intrinsic-size: auto 77px;" class=" flying-press-lazy-bg">
+		<div class="container">
+							<div class="footer-widgets first-footer-widgets widgets-num-3">
+									<div class="f-widget f-widget-1">
+											</div>
+										<div class="f-widget f-widget-2">
+											</div>
+										<div class="f-widget last f-widget-3">
+											</div>
+											<div class="copyrights">
+				<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href=" https://itexamanswers.net/" title=" Free Computer Networking Questions, Tutorials, Labs, Practice Exams Answers">ITExamAnswers.net</a> Copyright &copy; 2025.</span>
+<div class="to-top"><ul><li><a href="https://itexamanswers.net/privacy-policy">Privacy Policy</a></li>
+<li><a href="https://itexamanswers.net/contact-us">Contact</a></li></ul></div>
+</div>
+<!--end copyrights-->
+			</div> 
+		</div><!--.container-->
+	</footer><!--#site-footer-->
+</div><!--.main-container-->
+		<!--start footer code-->
+		<!-- Google tag (gtag.js) -->
+<script async data-loading-method="user-interaction" data-src="https://www.googletagmanager.com/gtag/js?id=G-Q6162Q2XPK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q6162Q2XPK');
+</script>	<!--end footer code-->
+				<div id="divFLRARight" style="display: none;position: absolute;top: 0px;width:118px;height:400px;overflow:hidden;z-index:999;"></div>
+			<div id="divFLRALeft" style="display: none;position: absolute;top: 0px;width:118px;height:400px;overflow:hidden;z-index:999;"><div id="adngin-siderail_left-0"></div></div>
+                        <style>@media (max-width: 1140px) {
+                    #divFLRARight, #divFLRALeft {
+                        display: none !important;
+                    }
+                }</style>
+                        <script>
+                jQuery(function($){
+
+                                        setTimeout(function (){
+                        $.post(wpdm_url.ajax, { action: 'wpdm_view_count', __wpdm_view_count:'6ed4cf7e14', id: '102854' });
+                    }, 2000);
+                    
+                                        $('head').append('<link rel="stylesheet" href="https://itexamanswers.net/wp-content/cache/flying-press/465551c80f49.fancybox.css" type="text/css" />');
+                    $.getScript("https://itexamanswers.net/wp-content/plugins/download-manager/assets//fancybox/fancybox.umd.js", function () {
+                        Fancybox.bind("a.wpdm-lightbox");
+                    })
+                                    });
+            </script>
+            <div id="fb-root"></div>
+            <span id='wpdUserContentInfoAnchor' style='display:none;' rel='#wpdUserContentInfo' data-wpd-lity>wpDiscuz</span><div id='wpdUserContentInfo' style='overflow:auto;background:#FDFDF6;padding:20px;width:600px;max-width:100%;border-radius:6px;' class='lity-hide'></div><div id='wpd-editor-source-code-wrapper-bg'></div><div id='wpd-editor-source-code-wrapper'><textarea id='wpd-editor-source-code'></textarea><button id='wpd-insert-source-code'>Insert</button><input type='hidden' id='wpd-editor-uid' /></div><link rel='stylesheet' id='mts_wpshortcodes-css' href='https://itexamanswers.net/wp-content/cache/flying-press/e2d7a6cf9e43.wp-shortcode.css' type='text/css' media='all' />
+<script type="text/javascript" src="https://itexamanswers.net/wp-includes/js/jquery/jquery.form.min.js?ver=ee858e15db40" id="jquery-form-js"></script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-includes/js/comment-reply.min.js?ver=e4a49df71f8b" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+<script type="text/javascript" id="customscript-js-extra">
+/* <![CDATA[ */
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/cache/flying-press/bccae9ae466b.customscript.js" id="customscript-js"></script>
+<script type="text/javascript" id="mts_ajax-js-extra">
+/* <![CDATA[ */
+var mts_ajax_search = {"url":"https:\/\/itexamanswers.net\/wp-admin\/admin-ajax.php","ajax_search":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/themes/mts_splash/js/ajax.js?ver=223ae0b620b5" id="mts_ajax-js"></script>
+<script type="text/javascript" id="heateor_sss_sharing_js-js-before">
+/* <![CDATA[ */
+function heateorSssLoadEvent(e) {var t=window.onload;if (typeof window.onload!="function") {window.onload=e}else{window.onload=function() {t();e()}}};	var heateorSssSharingAjaxUrl = 'https://itexamanswers.net/wp-admin/admin-ajax.php', heateorSssCloseIconPath = 'https://itexamanswers.net/wp-content/plugins/sassy-social-share/public/../images/close.png', heateorSssPluginIconPath = 'https://itexamanswers.net/wp-content/plugins/sassy-social-share/public/../images/logo.png', heateorSssHorizontalSharingCountEnable = 0, heateorSssVerticalSharingCountEnable = 0, heateorSssSharingOffset = -10; var heateorSssMobileStickySharingEnabled = 0;var heateorSssCopyLinkMessage = "Link copied.";var heateorSssUrlCountFetched = [], heateorSssSharesText = 'Shares', heateorSssShareText = 'Share';function heateorSssPopup(e) {window.open(e,"popUpWindow","height=400,width=600,left=400,top=100,resizable,scrollbars,toolbar=0,personalbar=0,menubar=no,location=no,directories=no,status")}
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/plugins/sassy-social-share/public/js/sassy-social-share-public.js?ver=d2adcec2ef76" id="heateor_sss_sharing_js-js"></script>
+<script type="text/javascript" id="wpdiscuz-combo-js-js-extra">
+/* <![CDATA[ */
+var wpdiscuzAjaxObj = {"wc_hide_replies_text":"Hide Replies","wc_show_replies_text":"View Replies","wc_msg_required_fields":"Please fill out required fields","wc_invalid_field":"Some of field value is invalid","wc_error_empty_text":"please fill out this field to comment","wc_error_url_text":"url is invalid","wc_error_email_text":"email address is invalid","wc_invalid_captcha":"Invalid Captcha Code","wc_login_to_vote":"You Must Be Logged In To Vote","wc_deny_voting_from_same_ip":"You are not allowed to vote for this comment","wc_self_vote":"You cannot vote for your comment","wc_vote_only_one_time":"You've already voted for this comment","wc_voting_error":"Voting Error","wc_banned_user":"You are banned","wc_comment_edit_not_possible":"Sorry, this comment is no longer possible to edit","wc_comment_not_updated":"Sorry, the comment was not updated","wc_comment_not_edited":"You've not made any changes","wc_msg_input_min_length":"Input is too short","wc_msg_input_max_length":"Input is too long","wc_spoiler_title":"Spoiler Title","wc_cannot_rate_again":"You cannot rate again","wc_not_allowed_to_rate":"You're not allowed to rate here","wc_confirm_rate_edit":"Are you sure you want to edit your rate?","wc_follow_user":"Follow this user","wc_unfollow_user":"Unfollow this user","wc_follow_success":"You started following this comment author","wc_follow_canceled":"You stopped following this comment author.","wc_follow_email_confirm":"Please check your email and confirm the user following request.","wc_follow_email_confirm_fail":"Sorry, we couldn't send confirmation email.","wc_follow_login_to_follow":"Please login to follow users.","wc_follow_impossible":"We are sorry, but you can't follow this user.","wc_follow_not_added":"Following failed. Please try again later.","is_user_logged_in":"","commentListLoadType":"0","commentListUpdateType":"0","commentListUpdateTimer":"60","liveUpdateGuests":"0","wordpressThreadCommentsDepth":"5","wordpressIsPaginate":"","commentTextMaxLength":"0","replyTextMaxLength":"0","commentTextMinLength":"1","replyTextMinLength":"1","storeCommenterData":"100000","socialLoginAgreementCheckbox":"0","enableFbLogin":"0","fbUseOAuth2":"0","enableFbShare":"0","facebookAppID":"","facebookUseOAuth2":"0","enableGoogleLogin":"0","googleClientID":"","googleClientSecret":"","cookiehash":"92f2483bb651eed307c93e619d752c78","isLoadOnlyParentComments":"0","scrollToComment":"1","commentFormView":"collapsed","enableDropAnimation":"1","isNativeAjaxEnabled":"1","userInteractionCheck":"1","enableBubble":"0","bubbleLiveUpdate":"0","bubbleHintTimeout":"60","bubbleHintHideTimeout":"6","cookieHideBubbleHint":"wpdiscuz_hide_bubble_hint","bubbleHintShowOnce":"1","bubbleHintCookieExpires":"7","bubbleShowNewCommentMessage":"1","bubbleLocation":"content_left","firstLoadWithAjax":"0","wc_copied_to_clipboard":"Copied to clipboard!","inlineFeedbackAttractionType":"blink","loadRichEditor":"1","wpDiscuzReCaptchaSK":"","wpDiscuzReCaptchaTheme":"light","wpDiscuzReCaptchaVersion":"2.0","wc_captcha_show_for_guest":"0","wc_captcha_show_for_members":"0","wpDiscuzIsShowOnSubscribeForm":"0","wmuEnabled":"1","wmuInput":"wmu_files","wmuMaxFileCount":"1","wmuMaxFileSize":"2097152","wmuPostMaxSize":"104857600","wmuIsLightbox":"1","wmuMimeTypes":{"jpg":"image\/jpeg","jpeg":"image\/jpeg","jpe":"image\/jpeg","gif":"image\/gif","png":"image\/png","bmp":"image\/bmp","tiff":"image\/tiff","tif":"image\/tiff","ico":"image\/x-icon"},"wmuPhraseConfirmDelete":"Are you sure you want to delete this attachment?","wmuPhraseNotAllowedFile":"Not allowed file type","wmuPhraseMaxFileCount":"Maximum number of uploaded files is 1","wmuPhraseMaxFileSize":"Maximum upload file size is 2MB","wmuPhrasePostMaxSize":"Maximum post size is 100MB","wmuPhraseDoingUpload":"Uploading in progress! Please wait.","msgEmptyFile":"File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini.","msgPostIdNotExists":"Post ID not exists","msgUploadingNotAllowed":"Sorry, uploading not allowed for this post","msgPermissionDenied":"You do not have sufficient permissions to perform this action","wmuKeyImages":"images","wmuSingleImageWidth":"auto","wmuSingleImageHeight":"200","previewTemplate":"<div class=\"wmu-preview [PREVIEW_TYPE_CLASS]\" title=\"[PREVIEW_TITLE]\" data-wmu-type=\"[PREVIEW_TYPE]\" data-wmu-attachment=\"[PREVIEW_ID]\">\r\n    <div class=\"wmu-preview-remove\">\r\n        <img class=\"wmu-preview-img\" src=\"[PREVIEW_ICON]\">\r\n        <div class=\"wmu-file-name\">[PREVIEW_FILENAME]<\/div>\r\n        <!--        <div class=\"wmu-delete\">\u00a0<\/div>-->\r\n    <\/div>\r\n<\/div>\r\n","isUserRated":"0","version":"7.6.33","wc_post_id":"102854","isCookiesEnabled":"1","loadLastCommentId":"0","dataFilterCallbacks":[],"phraseFilters":[],"scrollSize":"32","url":"https:\/\/itexamanswers.net\/wp-admin\/admin-ajax.php","customAjaxUrl":"https:\/\/itexamanswers.net\/wp-content\/plugins\/wpdiscuz\/utils\/ajax\/wpdiscuz-ajax.php","bubbleUpdateUrl":"https:\/\/itexamanswers.net\/wp-json\/wpdiscuz\/v1\/update","restNonce":"ded02449bf","is_rate_editable":"0","menu_icon":"https:\/\/itexamanswers.net\/wp-content\/plugins\/wpdiscuz\/assets\/img\/plugin-icon\/wpdiscuz-svg.svg","menu_icon_hover":"https:\/\/itexamanswers.net\/wp-content\/plugins\/wpdiscuz\/assets\/img\/plugin-icon\/wpdiscuz-svg_hover.svg","is_email_field_required":"1"};
+var wpdiscuzUCObj = {"msgConfirmDeleteComment":"Are you sure you want to delete this comment?","msgConfirmCancelSubscription":"Are you sure you want to cancel this subscription?","msgConfirmCancelFollow":"Are you sure you want to cancel this follow?","additionalTab":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" id="wpdiscuz-combo-js-js-before">
+/* <![CDATA[ */
+        var wpdiscuzEditorOptions = {
+        modules: {
+        toolbar: "",
+        counter: {
+        uniqueID: "",
+        commentmaxcount : 0,
+        replymaxcount : 0,
+        commentmincount : 1,
+        replymincount : 1,
+        },
+                },
+        wc_be_the_first_text: "Be the First to Comment!",
+        wc_comment_join_text: "Join the discussion",
+        theme: 'snow',
+        debug: 'error'
+        };
+        
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/plugins/wpdiscuz/assets/js/wpdiscuz-combo.min.js?ver=ac63bf779095" id="wpdiscuz-combo-js-js"></script>
+<script type="text/javascript" id="ivory-search-scripts-js-extra">
+/* <![CDATA[ */
+var IvorySearchVars = {"is_analytics_enabled":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/plugins/add-search-to-menu/public/js/ivory-search.min.js?ver=ce428a87a021" id="ivory-search-scripts-js"></script>
+<script defer type="text/javascript" src="https://itexamanswers.net/wp-content/cache/flying-press/91954b488a9b.akismet-frontend.js" id="akismet-frontend-js"></script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/plugins/wp-shortcode/js/wp-shortcode.js?ver=cb96a48877b3" id="mts_wpshortcodes-js"></script>
+<script type="text/javascript" id="flra-script-js-extra">
+/* <![CDATA[ */
+var flra_array = {"MainContentW":"1140","LeftBannerW":"118","RightBannerW":"118","LeftAdjust":"30","RightAdjust":"10","TopAdjust":"30","TopAdjustScroll":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://itexamanswers.net/wp-content/plugins/devvn-float-left-right-ads/left-right-ads/float-left-right.js?ver=d5f3a15a701e" id="flra-script-js"></script>
+
+<script>!function(e){"function"==typeof define&&define.amd?define(e):e()}(function(){!function(){var e,t=!1,n=!1,r=Array.from(document.querySelectorAll("script[data-loading-method][data-src]")),o=r.filter(function(e){return"idle"===e.dataset.loadingMethod}),a=r.filter(function(e){return"user-interaction"===e.dataset.loadingMethod}),i=document.querySelectorAll("link[data-href]");if(r.length||i.length){var c=["readystatechange","DOMContentLoaded","load"],u={readystatechange:[],DOMContentLoaded:[],load:[]},l=!1,d=EventTarget.prototype.addEventListener;EventTarget.prototype.addEventListener=function(e,t,n){if(!l||!c.includes(e))return d.call(this,e,t,n);u[e].push({target:this,listener:t,options:n})};var s=[{event:"click",target:document},{event:"mousemove",target:document},{event:"keydown",target:document},{event:"touchstart",target:document},{event:"touchmove",target:document},{event:"scroll",target:window}],f=function(e){s.forEach(function(t){return t.target.addEventListener(t.event,e,{passive:!0})})},v=function(e){s.forEach(function(t){return t.target.removeEventListener(t.event,e)})};window.requestIdleCallback=window.requestIdleCallback||function(e){return setTimeout(function(){var t=Date.now();e({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-t))}})},1)};var g=[],h=function(e){return g.push(e)};document.addEventListener("click",h,{passive:!0}),o.length&&window.requestIdleCallback(function(){return m(o)}),a.length&&(f(y),e=setTimeout(y,5e3)),f(function e(){i.forEach(function(e){e.href=e.getAttribute("data-href"),e.removeAttribute("data-href")}),v(e)})}function m(e){e.forEach(function(e){var t=e.getAttribute("data-src");if(!t.includes("data:")){var n=document.createElement("link");n.rel="preload",n.as="script",n.href=t,document.head.appendChild(n)}}),function r(o){if(o>e.length-1)n||(window.jQuery&&t&&window.jQuery.holdReady(!1),c.forEach(function(e){u[e].forEach(function(t){var n=t.target,r=t.listener;try{var o=new Event(e,{bubbles:!0,cancelable:!0});r.call(n,o)}catch(t){console.error("Error executing "+e+" listener:",t)}}),u[e].length=0}),document.removeEventListener("click",h),g.forEach(function(e){var t;return null==(t=e.target)?void 0:t.dispatchEvent(new MouseEvent("click",{bubbles:!0,cancelable:!0,clientX:e.clientX,clientY:e.clientY}))}),g.length=0,n=!0);else{var a=e[o].getAttribute("data-src");window.jQuery&&"function"==typeof window.jQuery.holdReady&&!t&&(window.jQuery.holdReady(!0),t=!0),window.requestIdleCallback(function(){var e=document.createElement("script");l=!0;var t=setTimeout(function(){l&&(l=!1,r(o+1))},1500);e.onload=function(){clearTimeout(t),l=!1,r(o+1)},e.onerror=function(){clearTimeout(t),l=!1,r(o+1)},e.src=a,document.head.appendChild(e)})}}(0)}function y(){e&&clearTimeout(e),v(y),m(a)}}(),[{selector:"video[data-lazy-src],iframe[data-lazy-src]",callback:function(e){return function(t){if(t.isIntersecting){var n=t.target.getAttribute("data-lazy-src");t.target.setAttribute("src",n),e.unobserve(t.target)}}}},{selector:".flying-press-lazy-bg",callback:function(e){return function(t){t.isIntersecting&&(t.target.classList.remove("flying-press-lazy-bg"),e.unobserve(t.target))}}},{selector:'[style*="content-visibility"]',callback:function(e){return function(t){t.isIntersecting&&(t.target.style.removeProperty("content-visibility"),t.target.style.removeProperty("contain-intrinsic-size"),e.unobserve(t.target))}}}].forEach(function(e){var t=e.selector,n=e.callback,r=new IntersectionObserver(function(e){e.forEach(n(r))},{rootMargin:"300px"});document.querySelectorAll(t).forEach(function(e){return r.observe(e)})})});
+</script>
+</body>
+</html><!--
+Performance optimized by Redis Object Cache. Learn more: https://wprediscache.com
+
+Retrieved 5563 objects (7 MB) from Redis using Predis (v2.1.2).
+-->
+<!-- Powered by FlyingPress for lightning-fast performance. Learn more: https://flyingpress.com. Cached at 1752388778 -->
