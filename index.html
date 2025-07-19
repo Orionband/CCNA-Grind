@@ -570,18 +570,72 @@
     
     function renderDashboard() { renderCategoryChart(); renderHistoryChart(); }
 
-    function renderQuizSummaryChart(quizAttempt) {
-        const ctx = document.getElementById('quizSummaryChart')?.getContext('2d');
-        if (!ctx) return; 
-        if (chartInstances.summary) chartInstances.summary.destroy();
-        const categoryStats = {};
-        quizAttempt.questions.forEach(qResult => { const category = qResult.category || 'N/A'; if (!categoryStats[category]) { categoryStats[category] = { correct: 0, total: 0 }; } categoryStats[category].total++; if (qResult.isCorrect) { categoryStats[category].correct++; } });
-        const includedCategories = Object.keys(categoryStats); 
-        const labels = includedCategories.map(cat => CATEGORY_MAP[cat] || cat); 
-        const data = includedCategories.map(cat => { const stats = categoryStats[cat]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
-        const themeOptions = getChartThemeOptions();
-        chartInstances.summary = new Chart(ctx, { type: 'bar', data: { labels: labels, datasets: [{ label: '% Correct', data: data, backgroundColor: 'rgba(34, 197, 94, 0.7)', borderColor: 'rgb(34, 197, 94)', borderWidth: 1 }] }, options: { indexAxis: 'y', scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, plugins: { legend: { display: false }, title: { display: false }, datalabels: { anchor: 'end', align: 'end', color: themeOptions.color, font: { weight: 'bold' }, formatter: (v) => v.toFixed(0) + '%' } }, responsive: true, maintainAspectRatio: false } });
-    }
+function renderQuizSummaryChart(quizAttempt) {
+    const ctx = document.getElementById('quizSummaryChart')?.getContext('2d');
+    if (!ctx) return; 
+    if (chartInstances.summary) chartInstances.summary.destroy();
+    const categoryStats = {};
+    quizAttempt.questions.forEach(qResult => { 
+        const category = qResult.category || 'N/A'; 
+        if (!categoryStats[category]) { 
+            categoryStats[category] = { correct: 0, total: 0 }; 
+        } 
+        categoryStats[category].total++; 
+        if (qResult.isCorrect) { 
+            categoryStats[category].correct++; 
+        } 
+    });
+    const includedCategories = Object.keys(categoryStats); 
+    const labels = includedCategories.map(cat => CATEGORY_MAP[cat] || cat); 
+    const data = includedCategories.map(cat => { 
+        const stats = categoryStats[cat]; 
+        return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; 
+    });
+    const themeOptions = getChartThemeOptions();
+    chartInstances.summary = new Chart(ctx, { 
+        type: 'bar', 
+        data: { 
+            labels: labels, 
+            datasets: [{ 
+                label: '% Correct', 
+                data: data, 
+                backgroundColor: 'rgba(34, 197, 94, 0.7)', 
+                borderColor: 'rgb(34, 197, 94)', 
+                borderWidth: 1 
+            }] 
+        }, 
+        options: { 
+            indexAxis: 'y', 
+            scales: { 
+                x: { 
+                    ...themeOptions, 
+                    beginAtZero: true, 
+                    max: 100, 
+                    ticks: { 
+                        ...themeOptions.ticks, 
+                        callback: (v) => v + "%" 
+                    } 
+                }, 
+                y: { 
+                    ...themeOptions 
+                } 
+            }, 
+            plugins: { 
+                legend: { display: false }, 
+                title: { display: false }, 
+                datalabels: { 
+                    anchor: 'end', 
+                    align: 'end', 
+                    color: themeOptions.color, 
+                    font: { weight: 'bold' }, 
+                    formatter: (v) => v.toFixed(0) + '%'
+                } 
+            }, 
+            responsive: true, 
+            maintainAspectRatio: false 
+        } 
+    });
+}
     
     function renderCategoryChart() {
         const ctx = document.getElementById('categoryChart')?.getContext('2d');
