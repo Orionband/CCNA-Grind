@@ -266,11 +266,14 @@
     const modeSelect = document.getElementById('modeSelect');
     const questionNavigator = document.getElementById('questionNavigator');
 
+    // --- MODIFIED ---: Updated the category map
     const CATEGORY_MAP = {
-        "NETFD": "Network Fundamentals", "NETSEC": "Network Security & Access Control",
-        "IPNS": "IP Networking & Services", "ROSW": "Routing & Switching",
-        "OPTR": "Operations & Troubleshooting", "WWCN": "Wireless & WAN Connectivity",
-        "NAPR": "Network Automation and Programmability"
+        "NETFD": "Network Fundamentals",
+        "NETAC": "Network Access",
+        "IPCON": "IP Connectivity",
+        "IPSVC": "IP Services",
+        "SEC": "Security Fundamentals",
+        "AUTO": "Automation & Programmability"
     };
 
     let allQuestions = [];
@@ -537,7 +540,7 @@
                             const stats = categoryStats[code];
                             if (stats.total === 0) return '';
                             return `${value.toFixed(0)}% (${stats.correct}/${stats.total})`;
-                        },
+                        }, // --- FIX --- Added the missing comma here
                         offset: 4, 
                         padding: 0
                     } 
