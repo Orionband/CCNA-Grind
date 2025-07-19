@@ -168,6 +168,59 @@
             margin: 40px auto 10px;
         }
 
+        /* --- NEW ---: Styles for Quiz Header and Navigator */
+        #quizHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        #timerDisplay {
+            font-size: 1.2em;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            color: var(--text-color);
+        }
+        #questionNavigator {
+            position: sticky;
+            top: 0;
+            background-color: var(--surface-color);
+            padding: 10px 15px;
+            border-bottom: 2px solid var(--border-color);
+            margin: 0 -40px 20px -40px; /* Extend to container edges */
+            z-index: 10;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .nav-btn {
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            font-size: 14px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: var(--text-muted-color);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover {
+            transform: scale(1.1);
+            border-color: var(--primary-color);
+        }
+        .nav-btn.answered {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color-hover);
+            color: white;
+            font-weight: bold;
+        }
+        .nav-btn.flagged {
+            box-shadow: 0 0 0 2px var(--flag-color);
+        }
+        /* End of New Styles */
+
         /* Quiz Specific Styling */
         .question { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid var(--border-color); }
         .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
@@ -278,6 +331,10 @@
     let bookmarkedQuestions = [];
     let chartInstances = {};
 
+    // --- NEW ---: Variables for Timer
+    let quizTimerInterval;
+    let quizStartTime;
+
     document.addEventListener('DOMContentLoaded', () => {
         Chart.register(ChartDataLabels);
 
@@ -326,6 +383,19 @@
     function normalizeQuestions(data) { return data.map(q => { if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) { q.answerChoices = q.rawAnswer.MultipleChoice.map(choice => ({ Text: choice.Text.replace(/ltpgt-open|ltpgt-close/g, '').trim(), IsCorrect: choice.IsCorrect })); } else if (!q.answerType && q.answerChoices) { const correctCount = q.answerChoices.filter(c => c.IsCorrect).length; q.answerType = correctCount > 1 ? 'MS' : 'MC'; } return q; }); }
     function loadQuestions() { startBtn.disabled = true; startBtn.textContent = 'Loading Deck...'; quizContainer.innerHTML = ''; fetch('questions.json') .then(response => { if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); return response.json(); }) .then(data => { allQuestions = normalizeQuestions(data); updateMaxQuestions(); }) .catch(error => { console.error(`Error fetching questions.json:`, error); mainScreen.innerHTML = `<p style="color: red; text-align: center;">CRITICAL ERROR: Could not load questions.json.</p>`; startBtn.textContent = 'Load Failed'; }); }
     
+    // --- NEW ---: Timer Functions
+    function startTimer() {
+        const timerDisplay = document.getElementById('timerDisplay');
+        if (!timerDisplay) return;
+        clearInterval(quizTimerInterval);
+        quizTimerInterval = setInterval(() => {
+            const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
+            const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+            const seconds = (elapsed % 60).toString().padStart(2, '0');
+            timerDisplay.textContent = `Time: ${minutes}:${seconds}`;
+        }, 1000);
+    }
+    
     async function loadAndDisplayQuiz() {
         const numQuestionsInput = document.getElementById('numQuestions');
         const randomize = document.getElementById('randomize').checked;
@@ -339,6 +409,11 @@
         if (randomize) { currentQuizQuestions = [...questionPool].sort(() => Math.random() - 0.5).slice(0, numQuestions); } else { currentQuizQuestions = questionPool.slice(0, numQuestions); }
         const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => { if (!exhibit.ExhibitFileName) return null; exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName); if (exhibit.localPath.toLowerCase().endsWith('.txt')) { return fetch(exhibit.localPath) .then(response => { if (!response.ok) throw new Error(`Failed to fetch ${exhibit.localPath}`); return response.text(); }) .then(text => { exhibit.textContent = text; }) .catch(error => { console.error('Error fetching exhibit:', error); exhibit.textContent = `Error: Could not load exhibit.`; }); } return null; }).filter(Boolean));
         await Promise.all(exhibitPromises);
+        
+        // --- NEW ---: Record start time and start the visual timer
+        quizStartTime = Date.now();
+        startTimer();
+
         displayQuiz();
     }
 
@@ -346,61 +421,96 @@
         mainScreen.classList.add('hidden');
         quizContainer.classList.remove('hidden');
         resultsContainer.innerHTML = '';
-        quizContainer.innerHTML = '<h2>Quiz</h2>';
+        
+        // --- NEW ---: Build the main quiz layout with Navigator and Header
+        quizContainer.innerHTML = `
+            <div id="questionNavigator"></div>
+            <div id="quizHeader">
+                <h2>Quiz</h2>
+                <div id="timerDisplay">Time: 00:00</div>
+            </div>
+            <div id="questionsList"></div>
+        `;
+        const questionsList = document.getElementById('questionsList');
+        const questionNavigator = document.getElementById('questionNavigator');
+        
         currentQuizQuestions.forEach((q, index) => {
+            // --- NEW ---: Create Navigator Button
+            const navBtn = document.createElement('button');
+            navBtn.className = 'nav-btn';
+            navBtn.textContent = index + 1;
+            navBtn.dataset.index = index;
+            navBtn.onclick = () => document.getElementById(`q-${index}`).scrollIntoView({ behavior: 'smooth' });
+            if (bookmarkedQuestions.includes(q.questionId)) {
+                navBtn.classList.add('flagged');
+            }
+            questionNavigator.appendChild(navBtn);
+
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
             questionDiv.id = `q-${index}`;
             questionDiv.dataset.questionId = q.questionId;
             const isBookmarked = bookmarkedQuestions.includes(q.questionId);
             const bookmarkedClass = isBookmarked ? 'bookmarked' : '';
-            let questionTextHtml = `<div class="question-header"><button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this)">🚩</button><div class="question-text">${index + 1}. <span class="question-category">(${(q.cat || 'N/A')})</span> ${q.questionText}</div></div>`;
+            let questionTextHtml = `<div class="question-header"><button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this, ${index})">🚩</button><div class="question-text">${index + 1}. <span class="question-category">(${(q.cat || 'N/A')})</span> ${q.questionText}</div></div>`;
             if (q.answerType === 'FB') { const inputField = `<input type="text" class="fb-input" id="fb-input-${index}" autocomplete="off">`; questionTextHtml = questionTextHtml.replace(/___/g, inputField); }
             let exhibitsHtml = '';
             if (q.exhibits && q.exhibits.length > 0) { q.exhibits.forEach(exhibit => { const localPath = exhibit.localPath; if (!localPath) return; const filename = decodeURIComponent(localPath.split('/').pop()); const filenameLower = filename.toLowerCase(); if (filenameLower.endsWith('.txt')) { exhibitsHtml += `<div class="exhibit-container"><strong>Exhibit: ${filename}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`; } else if (filenameLower.endsWith('.html')) { exhibitsHtml += `<iframe src="${localPath}" class="question-exhibit-frame" title="Exhibit: ${filename}"></iframe>`; } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) { exhibitsHtml += `<img src="${localPath}" alt="Exhibit: ${filename}" class="question-exhibit">`; } }); }
             
             let answersHtml = '';
-            // --- START: MODIFICATION FOR ANSWER SHUFFLING ---
             if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
                 const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio';
-                
-                // 1. Create a temporary array with original index preserved
-                const choicesToShuffle = q.answerChoices.map((choice, originalIndex) => ({
-                    ...choice,
-                    originalIndex: originalIndex 
-                }));
-
-                // 2. Shuffle the temporary array
+                const choicesToShuffle = q.answerChoices.map((choice, originalIndex) => ({ ...choice, originalIndex }));
                 choicesToShuffle.sort(() => Math.random() - 0.5);
-
-                // 3. Loop through the SHUFFLED array to build the HTML
                 choicesToShuffle.forEach(choice => {
-                    // Use the originalIndex for the input value so answer checking still works!
                     answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choice.originalIndex}"><span class="checkmark"></span></label>`; 
                 });
             }
-            // --- END: MODIFICATION FOR ANSWER SHUFFLING ---
 
             questionDiv.innerHTML = questionTextHtml + exhibitsHtml + answersHtml;
-            quizContainer.appendChild(questionDiv);
+            questionsList.appendChild(questionDiv);
+
+            // --- NEW ---: Add event listener to mark question as answered
+            const inputs = questionDiv.querySelectorAll('input[type="radio"], input[type="checkbox"], input.fb-input');
+            inputs.forEach(input => {
+                input.addEventListener('change', () => {
+                    navBtn.classList.add('answered');
+                });
+            });
         });
 
         const submitButton = document.createElement('button');
         submitButton.id = 'submitBtn'; submitButton.className = 'submit-btn'; submitButton.textContent = 'Submit Test';
         submitButton.addEventListener('click', showResults);
-        quizContainer.appendChild(submitButton);
+        questionsList.appendChild(submitButton);
     }
     
-    function toggleBookmark(questionId, buttonElement) { const index = bookmarkedQuestions.indexOf(questionId); if (index > -1) { bookmarkedQuestions.splice(index, 1); buttonElement.classList.remove('bookmarked'); } else { bookmarkedQuestions.push(questionId); buttonElement.classList.add('bookmarked'); } saveDataToStorage(); }
+    // --- NEW ---: Modified toggleBookmark to update the navigator
+    function toggleBookmark(questionId, buttonElement, questionIndex) { 
+        const navBtn = document.querySelector(`.nav-btn[data-index="${questionIndex}"]`);
+        const index = bookmarkedQuestions.indexOf(questionId); 
+        if (index > -1) { 
+            bookmarkedQuestions.splice(index, 1); 
+            buttonElement.classList.remove('bookmarked'); 
+            if(navBtn) navBtn.classList.remove('flagged');
+        } else { 
+            bookmarkedQuestions.push(questionId); 
+            buttonElement.classList.add('bookmarked'); 
+            if(navBtn) navBtn.classList.add('flagged');
+        } 
+        saveDataToStorage(); 
+    }
 
-        function showResults() {
+    function showResults() {
+        // --- NEW ---: Stop the timer
+        clearInterval(quizTimerInterval);
+        const totalTimeSeconds = Math.floor((Date.now() - quizStartTime) / 1000);
+
         let score = 0;
-        // The quizAttempt object is created with score: 0
         const quizAttempt = { timestamp: Date.now(), score: 0, total: currentQuizQuestions.length, questions: [] };
         
         currentQuizQuestions.forEach((q, index) => {
             let isQuestionCorrect = false;
-            // Logic to check answers...
             if (q.answerType === 'FB') { 
                 const userInput = document.querySelector(`#fb-input-${index}`); 
                 if (userInput) { 
@@ -414,19 +524,14 @@
                 const correctAnswers = q.answerChoices.map((choice, i) => choice.IsCorrect ? i : -1).filter(i => i !== -1); 
                 isQuestionCorrect = userAnswers.length === correctAnswers.length && userAnswers.sort().toString() === correctAnswers.sort().toString(); 
             }
-            
-            // The local `score` variable is correctly incremented
             if (isQuestionCorrect) score++;
-
             quizAttempt.questions.push({ questionId: q.questionId, isCorrect: isQuestionCorrect, category: q.cat });
         });
 
-        // *** FIX: Assign the calculated score to the object that gets saved. ***
         quizAttempt.score = score; 
-
         quizHistory.push(quizAttempt);
         saveDataToStorage();
-        renderDashboard(); // Now this will render the graph with the correct data
+        renderDashboard(); 
 
         const answerInputs = quizContainer.querySelectorAll('.answer-choice input, .fb-input');
         answerInputs.forEach(input => { input.disabled = true; const label = input.closest('label.answer-choice'); if (label) { label.style.cursor = 'default'; } });
@@ -435,7 +540,8 @@
         const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
         resultsContainer.innerHTML = '';
         const scoreHeader = document.createElement('h2');
-        scoreHeader.innerHTML = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%)`;
+        // --- NEW ---: Added time taken to results header
+        scoreHeader.innerHTML = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%) <br> <small>Time Taken: ${Math.floor(totalTimeSeconds / 60)}m ${totalTimeSeconds % 60}s</small>`;
         resultsContainer.appendChild(scoreHeader);
         
         const summaryContainer = document.createElement('div');
@@ -470,8 +576,12 @@
         currentQuizQuestions.forEach((q, index) => {
             const questionElement = document.getElementById(`q-${index}`);
             if (!questionElement) return;
+            // --- NEW ---: Hide the bookmark button after submission
+            const bookmarkButton = questionElement.querySelector('.bookmark-btn');
+            if (bookmarkButton) bookmarkButton.style.display = 'none';
+
             if (q.answerType === 'FB') { const userInput = questionElement.querySelector(`#fb-input-${index}`); const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); userInput.classList.add(correctAnswers.includes(userValue) ? 'correct' : 'incorrect'); const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0]}<br><br>${q.explanation}`; questionElement.insertAdjacentHTML('beforeend', `<div class="result-explanation">${explanationText}</div>`);
-            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const labels = questionElement.querySelectorAll('.answer-choice'); labels.forEach((label, choiceIndex) => { if (q.answerChoices[choiceIndex].IsCorrect) { label.classList.add('correct'); } else if (userAnswers.includes(choiceIndex)) { label.classList.add('incorrect'); } }); const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`; questionElement.insertAdjacentHTML('beforeend', explanationHtml); }
+            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const labels = questionElement.querySelectorAll('.answer-choice'); labels.forEach((label, choiceIndex) => { const originalChoiceIndex = parseInt(label.querySelector('input').value); if (q.answerChoices[originalChoiceIndex].IsCorrect) { label.classList.add('correct'); } else if (userAnswers.includes(originalChoiceIndex)) { label.classList.add('incorrect'); } }); const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`; questionElement.insertAdjacentHTML('beforeend', explanationHtml); }
         });
     }
     
@@ -505,7 +615,31 @@
         const labels = sortedCategoryCodes.map(code => CATEGORY_MAP[code]); 
         const data = sortedCategoryCodes.map(code => { const stats = categoryStats[code]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
         const themeOptions = getChartThemeOptions();
-        chartInstances.category = new Chart(ctx, { type: 'bar', data: { labels: labels, datasets: [{ label: '% Correct by Topic', data: data, backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 1 }] }, options: { indexAxis: 'y', scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, plugins: { legend: { display: false }, title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color }, datalabels: { anchor: 'end', align: 'end', color: themeOptions.color, formatter: (v) => v > 0 ? v.toFixed(0) + '%' : '', font: { weight: 'bold' } } }, responsive: true, maintainAspectRatio: false } });
+        chartInstances.category = new Chart(ctx, { type: 'bar', data: { labels: labels, datasets: [{ label: '% Correct by Topic', data: data, backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 1 }] }, 
+            options: { 
+                indexAxis: 'y', 
+                scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, 
+                plugins: { 
+                    legend: { display: false }, 
+                    title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color }, 
+                    // --- NEW ---: Enhanced datalabels for more context
+                    datalabels: { 
+                        anchor: 'end', 
+                        align: 'end', 
+                        color: themeOptions.color, 
+                        font: { weight: 'bold' },
+                        formatter: (value, context) => {
+                            const code = sortedCategoryCodes[context.dataIndex];
+                            const stats = categoryStats[code];
+                            if (stats.total === 0) return '';
+                            return `${value.toFixed(0)}% (${stats.correct}/${stats.total})`;
+                        }
+                    } 
+                }, 
+                responsive: true, 
+                maintainAspectRatio: false 
+            } 
+        });
     }
 
     function renderHistoryChart() {
