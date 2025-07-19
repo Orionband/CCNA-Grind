@@ -528,7 +528,9 @@
         const themeOptions = getChartThemeOptions();
         chartInstances.category = new Chart(ctx, { type: 'bar', data: { labels: labels, datasets: [{ label: '% Correct by Topic', data: data, backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 1 }] }, 
             options: { indexAxis: 'y', scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, 
-                plugins: { legend: { display: false }, title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color }, 
+                plugins: { 
+                    legend: { display: false }, 
+                    title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color },
                     datalabels: { 
                         anchor: 'end',
                         align: (context) => (context.dataset.data[context.dataIndex] > 90 ? 'start' : 'end'),
