@@ -65,7 +65,6 @@
             transition: background-color 0.3s, color 0.3s;
         }
         
-        /* --- MODIFIED ---: New Page Wrapper for 2-column layout */
         #pageWrapper {
             display: flex;
             justify-content: center;
@@ -78,7 +77,7 @@
 
         .container {
             flex-grow: 1;
-            max-width: 1000px; /* Max width for main content */
+            max-width: 1000px;
             background: var(--surface-color);
             padding: 20px 40px;
             border-radius: 12px;
@@ -86,7 +85,6 @@
             border: 1px solid var(--border-color);
         }
         
-        /* --- MODIFIED ---: Styling for the external Question Navigator */
         #questionNavigator {
             position: sticky;
             top: 20px;
@@ -148,7 +146,6 @@
             font-size: 12px;
         }
 
-        /* Responsive layout for smaller screens */
         @media (max-width: 1200px) {
             #pageWrapper {
                 flex-direction: column;
@@ -169,14 +166,8 @@
                 grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             }
         }
-        /* --- End of Modified Styles --- */
         
-        h1, h2, h3 {
-            text-align: center;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-        }
+        h1, h2, h3 { text-align: center; color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
         h3 { border-bottom: 1px solid var(--border-color); color: var(--text-color); }
         .options-panel { padding: 25px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius); margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; align-items: end; }
         .option-group { display: flex; flex-direction: column; }
@@ -230,7 +221,6 @@
     </style>
 </head>
 <body>
-    <!-- --- MODIFIED ---: New wrapper for 2-column layout -->
     <div id="pageWrapper">
         <div class="container">
             <div id="mainScreen">
@@ -261,7 +251,6 @@
             <div id="resultsContainer"></div>
         </div>
         
-        <!-- --- MODIFIED ---: Navigator is now a sibling to the container -->
         <div id="questionNavigator" class="hidden">
             <div id="timerDisplay">Time: 00:00</div>
             <div id="navigatorList"></div>
@@ -275,7 +264,7 @@
     const mainScreen = document.getElementById('mainScreen');
     const categorySelect = document.getElementById('categorySelect');
     const modeSelect = document.getElementById('modeSelect');
-    const questionNavigator = document.getElementById('questionNavigator'); // Persistent reference
+    const questionNavigator = document.getElementById('questionNavigator');
 
     const CATEGORY_MAP = {
         "NETFD": "Network Fundamentals", "NETSEC": "Network Security & Access Control",
@@ -297,7 +286,7 @@
         loadDataFromStorage();
         populateCategoryFilter();
         populateCategoryDescriptions();
-        loadQuestions(); // Load questions first
+        loadQuestions();
 
         startBtn.addEventListener('click', loadAndDisplayQuiz);
         modeSelect.addEventListener('change', updateMaxQuestions);
@@ -338,7 +327,6 @@
             .then(data => {
                 allQuestions = normalizeQuestions(data);
                 updateMaxQuestions();
-                // --- MODIFIED ---: Render the dashboard only AFTER questions are loaded
                 renderDashboard();
             })
             .catch(error => {
@@ -371,7 +359,7 @@
         if (questionPool.length === 0) { alert("There are no questions available for your selected criteria."); return; }
         const numQuestions = Math.min(parseInt(numQuestionsInput.value), questionPool.length);
         if (randomize) { currentQuizQuestions = [...questionPool].sort(() => Math.random() - 0.5).slice(0, numQuestions); } else { currentQuizQuestions = questionPool.slice(0, numQuestions); }
-        const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => { if (!exhibit.ExhibitFileName) return null; exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName); if (exhibit.localPath.toLowerCase().endsWith('.txt')) { return fetch(exhibit.localPath) .then(response => { if (!response.ok) throw new Error(`Failed to fetch ${exhibit.localPath}`); return response.text(); }).then(text => { exhibit.textContent = text; }).catch(error => { console.error('Error fetching exhibit:', error); exhibit.textContent = `Error: Could not load exhibit.`; }); } return null; }).filter(Boolean);
+        const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => { if (!exhibit.ExhibitFileName) return null; exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName); if (exhibit.localPath.toLowerCase().endsWith('.txt')) { return fetch(exhibit.localPath).then(response => { if (!response.ok) throw new Error(`Failed to fetch ${exhibit.localPath}`); return response.text(); }).then(text => { exhibit.textContent = text; }).catch(error => { console.error('Error fetching exhibit:', error); exhibit.textContent = `Error: Could not load exhibit.`; }); } return null; }).filter(Boolean);
         await Promise.all(exhibitPromises);
         
         quizStartTime = Date.now();
@@ -381,14 +369,14 @@
     function displayQuiz() {
         mainScreen.classList.add('hidden');
         quizContainer.classList.remove('hidden');
-        questionNavigator.classList.remove('hidden'); // Show the navigator
+        questionNavigator.classList.remove('hidden');
         resultsContainer.innerHTML = '';
         quizContainer.innerHTML = `<h2>Quiz</h2>`;
         
         startTimer();
 
         const navigatorList = document.getElementById('navigatorList');
-        navigatorList.innerHTML = ''; // Clear previous nav items
+        navigatorList.innerHTML = '';
         
         currentQuizQuestions.forEach((q, index) => {
             const navBtn = document.createElement('button');
@@ -426,7 +414,8 @@
         });
 
         const submitButton = document.createElement('button');
-        submitButton.id = 'submitBtn'; submitButton.className = 'submit-btn'; submitButton.textContent = 'Submit Test';
+        submitButton.id = 'submitBtn'; submitButton.className = 'submit-btn';
+        submitButton.textContent = 'Submit Test';
         submitButton.addEventListener('click', showResults);
         quizContainer.appendChild(submitButton);
     }
@@ -442,7 +431,7 @@
     function showResults() {
         clearInterval(quizTimerInterval);
         const totalTimeSeconds = Math.floor((Date.now() - quizStartTime) / 1000);
-        questionNavigator.classList.add('hidden'); // Hide navigator on results page
+        questionNavigator.classList.add('hidden');
 
         let score = 0;
         const quizAttempt = { timestamp: Date.now(), score: 0, total: currentQuizQuestions.length, questions: [] };
@@ -524,7 +513,6 @@
         for(const code in CATEGORY_MAP) { categoryStats[code] = { correct: 0, total: 0 }; }
         quizHistory.forEach(quiz => {
             quiz.questions.forEach(qResult => {
-                // Important: Ensure allQuestions is loaded before this runs
                 const questionData = allQuestions.find(q => q.questionId === qResult.questionId);
                 if (questionData && questionData.cat && categoryStats[questionData.cat]) {
                     categoryStats[questionData.cat].total++;
@@ -550,7 +538,8 @@
                             if (stats.total === 0) return '';
                             return `${value.toFixed(0)}% (${stats.correct}/${stats.total})`;
                         },
-                        offset: 4, padding: 0
+                        offset: 4, 
+                        padding: 0
                     } 
                 }, 
                 responsive: true, maintainAspectRatio: false 
