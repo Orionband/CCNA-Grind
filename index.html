@@ -510,34 +510,58 @@
     function revealAnswers() {
         currentQuizQuestions.forEach((q, index) => {
             const questionElement = document.getElementById(`q-${index}`);
-            if (!questionElement) return;
+            if (!questionElement) {
+                console.error(`Could not find question element for index ${index}`);
+                return; // Skip this iteration if the element is not found
+            }
 
+            // Hide the bookmark button, it's not needed after submission
             const bookmarkButton = questionElement.querySelector('.bookmark-btn');
             if (bookmarkButton) {
                 bookmarkButton.style.display = 'none';
             }
 
+            // --- Handle Fill-in-the-Blank questions ---
             if (q.answerType === 'FB') {
                 const userInput = questionElement.querySelector(`#fb-input-${index}`);
+                if (!userInput) return;
+
                 const userValue = userInput.value.trim().toLowerCase();
-                const correctAnswers = (q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase());
-                userInput.classList.add(correctAnswers.includes(userValue) ? 'correct' : 'incorrect');
-                const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0]}<br><br>${q.explanation}`;
+                // Ensure blanks and blanks[0] exist before splitting
+                const correctAnswers = (q.blanks && q.blanks[0] ? q.blanks[0] : "").split(',').map(ans => ans.trim().toLowerCase());
+
+                if (userValue && correctAnswers.includes(userValue)) {
+                    userInput.classList.add('correct');
+                } else {
+                    userInput.classList.add('incorrect');
+                }
+                
+                const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0] || 'N/A'}<br><br>${q.explanation || 'No explanation provided.'}`;
                 questionElement.insertAdjacentHTML('beforeend', `<div class="result-explanation">${explanationText}</div>`);
 
+            // --- Handle Multiple Choice / Multiple Select questions ---
             } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
                 const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`));
-                const userAnswers = userChoices.map(input => parseInt(input.value));
-                const labels = questionElement.querySelectorAll('.answer-choice');
+                const userAnswerIndices = userChoices.map(input => parseInt(input.value));
+                const allChoiceLabels = questionElement.querySelectorAll('.answer-choice');
 
-                labels.forEach((label) => {
-                    const originalChoiceIndex = parseInt(label.querySelector('input').value);
-                    if (q.answerChoices[originalChoiceIndex].IsCorrect) {
+                allChoiceLabels.forEach((label) => {
+                    const choiceInput = label.querySelector('input');
+                    if (!choiceInput) return;
+
+                    const originalChoiceIndex = parseInt(choiceInput.value);
+                    const isCorrectChoice = q.answerChoices[originalChoiceIndex].IsCorrect;
+                    const wasSelectedByUser = userAnswerIndices.includes(originalChoiceIndex);
+
+                    // Add 'correct' class to all correct answers
+                    if (isCorrectChoice) {
                         label.classList.add('correct');
-                    } else if (userAnswers.includes(originalChoiceIndex)) {
+                    // Add 'incorrect' class ONLY to answers the user selected that were wrong
+                    } else if (wasSelectedByUser && !isCorrectChoice) {
                         label.classList.add('incorrect');
                     }
                 });
+                
                 const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`;
                 questionElement.insertAdjacentHTML('beforeend', explanationHtml);
             }
