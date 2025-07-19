@@ -56,6 +56,7 @@
         }
 
         /* General Styling */
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-sans);
             line-height: 1.6;
@@ -168,47 +169,68 @@
             margin: 40px auto 10px;
         }
 
-        /* --- NEW ---: Styles for Quiz Header and Navigator */
+        /* --- MODIFIED ---: Styles for new Quiz Layout, Header, and Vertical Navigator */
+        #quizLayout {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+        }
+        #quizMainContent {
+            /* This will hold the header and questions */
+        }
         #quizHeader {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
+            border-bottom: none; /* h2 inside has border now */
+        }
+        #quizHeader h2 {
+             margin: 0;
+             flex-grow: 1;
         }
         #timerDisplay {
             font-size: 1.2em;
             font-weight: 600;
             font-family: var(--font-mono);
             color: var(--text-color);
+            padding-left: 20px;
         }
         #questionNavigator {
             position: sticky;
-            top: 0;
-            background-color: var(--surface-color);
-            padding: 10px 15px;
-            border-bottom: 2px solid var(--border-color);
-            margin: 0 -40px 20px -40px; /* Extend to container edges */
-            z-index: 10;
+            top: 20px; /* Stick near the top */
+            height: calc(100vh - 40px); /* Fill vertical space, accounting for body padding */
+            max-height: 800px;
+            width: 150px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background-color: var(--bg-color);
+            padding: 10px;
+            overflow-y: auto;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .nav-btn {
-            width: 30px;
-            height: 30px;
-            padding: 0;
+            width: 100%;
+            height: auto;
+            padding: 8px 12px;
             font-size: 14px;
-            border-radius: 50%;
+            border-radius: 6px;
             border: 1px solid var(--border-color);
-            background-color: var(--bg-color);
+            background-color: var(--surface-color);
             color: var(--text-muted-color);
             cursor: pointer;
             transition: all 0.2s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .nav-btn:hover {
-            transform: scale(1.1);
+            transform: none;
             border-color: var(--primary-color);
+            color: var(--primary-color);
         }
         .nav-btn.answered {
             background-color: var(--primary-color);
@@ -216,10 +238,34 @@
             color: white;
             font-weight: bold;
         }
-        .nav-btn.flagged {
-            box-shadow: 0 0 0 2px var(--flag-color);
+        .nav-btn.flagged::after {
+            content: '🚩';
+            font-size: 14px;
         }
-        /* End of New Styles */
+
+        @media (max-width: 900px) {
+            #quizLayout {
+                grid-template-columns: 1fr; /* Stack on smaller screens */
+            }
+            #questionNavigator {
+                position: static; /* Un-stick it */
+                height: auto;
+                max-height: 250px; /* Allow some scroll */
+                width: auto;
+                margin-bottom: 20px;
+                order: -1; /* Move nav to the top */
+                flex-direction: row; /* Go back to horizontal for buttons */
+                flex-wrap: wrap;
+            }
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+            }
+             .nav-btn.flagged::after { display: none; }
+             .nav-btn.flagged { background-color: var(--flag-color); }
+        }
+        /* End of Modified Styles */
 
         /* Quiz Specific Styling */
         .question { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid var(--border-color); }
@@ -331,7 +377,6 @@
     let bookmarkedQuestions = [];
     let chartInstances = {};
 
-    // --- NEW ---: Variables for Timer
     let quizTimerInterval;
     let quizStartTime;
 
@@ -371,10 +416,10 @@
         };
     }
     
-    // All data handling functions remain the same
+    // Data handling functions
     function loadDataFromStorage() { quizHistory = JSON.parse(localStorage.getItem('quizHistory')) || []; bookmarkedQuestions = JSON.parse(localStorage.getItem('bookmarkedQuestions')) || []; }
     function saveDataToStorage() { localStorage.setItem('quizHistory', JSON.stringify(quizHistory)); localStorage.setItem('bookmarkedQuestions', JSON.stringify(bookmarkedQuestions)); }
-    function clearAllData() { if (confirm("Are you sure?")) { quizHistory = []; bookmarkedQuestions = []; saveDataToStorage(); renderDashboard(); updateMaxQuestions(); alert("All study data has been cleared."); } }
+    function clearAllData() { if (confirm("Are you sure? This will erase all your progress and scores.")) { quizHistory = []; bookmarkedQuestions = []; saveDataToStorage(); renderDashboard(); updateMaxQuestions(); alert("All study data has been cleared."); } }
     function populateCategoryDescriptions() { const listElement = document.getElementById('categoryList'); if (!listElement) return; listElement.innerHTML = ''; const sortedCategories = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1])); for (const [code, description] of sortedCategories) { const listItem = document.createElement('li'); listItem.innerHTML = `<strong>${code}</strong> - ${description}`; listElement.appendChild(listItem); } }
     function populateCategoryFilter() { const sortedCategories = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1])); for (const [code, description] of sortedCategories) { const option = document.createElement('option'); option.value = code; option.textContent = description; categorySelect.appendChild(option); } }
     function getMistakeQuestionIds() { const mistakeIds = new Set(); quizHistory.forEach(quiz => { quiz.questions.forEach(q => { if (!q.isCorrect) { mistakeIds.add(q.questionId); } }); }); return Array.from(mistakeIds); }
@@ -383,7 +428,6 @@
     function normalizeQuestions(data) { return data.map(q => { if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) { q.answerChoices = q.rawAnswer.MultipleChoice.map(choice => ({ Text: choice.Text.replace(/ltpgt-open|ltpgt-close/g, '').trim(), IsCorrect: choice.IsCorrect })); } else if (!q.answerType && q.answerChoices) { const correctCount = q.answerChoices.filter(c => c.IsCorrect).length; q.answerType = correctCount > 1 ? 'MS' : 'MC'; } return q; }); }
     function loadQuestions() { startBtn.disabled = true; startBtn.textContent = 'Loading Deck...'; quizContainer.innerHTML = ''; fetch('questions.json') .then(response => { if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); return response.json(); }) .then(data => { allQuestions = normalizeQuestions(data); updateMaxQuestions(); }) .catch(error => { console.error(`Error fetching questions.json:`, error); mainScreen.innerHTML = `<p style="color: red; text-align: center;">CRITICAL ERROR: Could not load questions.json.</p>`; startBtn.textContent = 'Load Failed'; }); }
     
-    // --- NEW ---: Timer Functions
     function startTimer() {
         const timerDisplay = document.getElementById('timerDisplay');
         if (!timerDisplay) return;
@@ -410,10 +454,7 @@
         const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => { if (!exhibit.ExhibitFileName) return null; exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName); if (exhibit.localPath.toLowerCase().endsWith('.txt')) { return fetch(exhibit.localPath) .then(response => { if (!response.ok) throw new Error(`Failed to fetch ${exhibit.localPath}`); return response.text(); }) .then(text => { exhibit.textContent = text; }) .catch(error => { console.error('Error fetching exhibit:', error); exhibit.textContent = `Error: Could not load exhibit.`; }); } return null; }).filter(Boolean));
         await Promise.all(exhibitPromises);
         
-        // --- NEW ---: Record start time and start the visual timer
         quizStartTime = Date.now();
-        startTimer();
-
         displayQuiz();
     }
 
@@ -422,25 +463,31 @@
         quizContainer.classList.remove('hidden');
         resultsContainer.innerHTML = '';
         
-        // --- NEW ---: Build the main quiz layout with Navigator and Header
         quizContainer.innerHTML = `
-            <div id="questionNavigator"></div>
-            <div id="quizHeader">
-                <h2>Quiz</h2>
-                <div id="timerDisplay">Time: 00:00</div>
+            <div id="quizLayout">
+                <div id="quizMainContent">
+                    <div id="quizHeader">
+                        <h2>Quiz</h2>
+                        <div id="timerDisplay">Time: 00:00</div>
+                    </div>
+                    <div id="questionsList"></div>
+                </div>
+                <div id="questionNavigator"></div>
             </div>
-            <div id="questionsList"></div>
         `;
+
+        // --- MODIFIED --- Call timer *after* the element is created
+        startTimer();
+
         const questionsList = document.getElementById('questionsList');
         const questionNavigator = document.getElementById('questionNavigator');
         
         currentQuizQuestions.forEach((q, index) => {
-            // --- NEW ---: Create Navigator Button
             const navBtn = document.createElement('button');
             navBtn.className = 'nav-btn';
-            navBtn.textContent = index + 1;
+            navBtn.innerHTML = `<span>Q ${index + 1}</span>`;
             navBtn.dataset.index = index;
-            navBtn.onclick = () => document.getElementById(`q-${index}`).scrollIntoView({ behavior: 'smooth' });
+            navBtn.onclick = () => document.getElementById(`q-${index}`).scrollIntoView();
             if (bookmarkedQuestions.includes(q.questionId)) {
                 navBtn.classList.add('flagged');
             }
@@ -470,10 +517,9 @@
             questionDiv.innerHTML = questionTextHtml + exhibitsHtml + answersHtml;
             questionsList.appendChild(questionDiv);
 
-            // --- NEW ---: Add event listener to mark question as answered
             const inputs = questionDiv.querySelectorAll('input[type="radio"], input[type="checkbox"], input.fb-input');
             inputs.forEach(input => {
-                input.addEventListener('change', () => {
+                input.addEventListener('input', () => { // Use 'input' for text fields, 'change' works for all
                     navBtn.classList.add('answered');
                 });
             });
@@ -485,7 +531,6 @@
         questionsList.appendChild(submitButton);
     }
     
-    // --- NEW ---: Modified toggleBookmark to update the navigator
     function toggleBookmark(questionId, buttonElement, questionIndex) { 
         const navBtn = document.querySelector(`.nav-btn[data-index="${questionIndex}"]`);
         const index = bookmarkedQuestions.indexOf(questionId); 
@@ -502,7 +547,6 @@
     }
 
     function showResults() {
-        // --- NEW ---: Stop the timer
         clearInterval(quizTimerInterval);
         const totalTimeSeconds = Math.floor((Date.now() - quizStartTime) / 1000);
 
@@ -533,6 +577,7 @@
         saveDataToStorage();
         renderDashboard(); 
 
+        document.getElementById('questionNavigator').style.display = 'none'; // Hide nav on results
         const answerInputs = quizContainer.querySelectorAll('.answer-choice input, .fb-input');
         answerInputs.forEach(input => { input.disabled = true; const label = input.closest('label.answer-choice'); if (label) { label.style.cursor = 'default'; } });
         document.getElementById('submitBtn').remove();
@@ -540,28 +585,19 @@
         const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
         resultsContainer.innerHTML = '';
         const scoreHeader = document.createElement('h2');
-        // --- NEW ---: Added time taken to results header
-        scoreHeader.innerHTML = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%) <br> <small>Time Taken: ${Math.floor(totalTimeSeconds / 60)}m ${totalTimeSeconds % 60}s</small>`;
+        scoreHeader.innerHTML = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%) <br> <small style="font-weight: 500; color: var(--text-muted-color);">Time Taken: ${Math.floor(totalTimeSeconds / 60)}m ${totalTimeSeconds % 60}s</small>`;
         resultsContainer.appendChild(scoreHeader);
         
         const summaryContainer = document.createElement('div');
         summaryContainer.className = 'chart-summary-container';
-        summaryContainer.innerHTML = `
-            <h3>This Quiz Performance</h3>
-            <div class="chart-wrapper">
-                <canvas id="quizSummaryChart"></canvas>
-            </div>
-        `;
+        summaryContainer.innerHTML = `<h3>This Quiz Performance</h3><div class="chart-wrapper"><canvas id="quizSummaryChart"></canvas></div>`;
         resultsContainer.appendChild(summaryContainer);
         
         const uniqueCategoriesInQuiz = new Set(quizAttempt.questions.map(q => q.category || 'N/A'));
         const numCategories = uniqueCategoriesInQuiz.size;
         const dynamicHeight = Math.max(150, (numCategories * 40) + 80);
-        
         const chartWrapper = summaryContainer.querySelector('.chart-wrapper');
-        if(chartWrapper) {
-            chartWrapper.style.height = `${dynamicHeight}px`;
-        }
+        if(chartWrapper) { chartWrapper.style.height = `${dynamicHeight}px`; }
         
         renderQuizSummaryChart(quizAttempt);
         revealAnswers();
@@ -569,19 +605,18 @@
         const restartBtn = document.createElement('button');
         restartBtn.id = 'restartBtn'; restartBtn.className = 'restart-btn'; restartBtn.textContent = 'Take Another Test';
         restartBtn.onclick = () => { mainScreen.classList.remove('hidden'); quizContainer.innerHTML = ''; resultsContainer.innerHTML = ''; updateMaxQuestions(); };
-        quizContainer.appendChild(restartBtn);
+        document.getElementById('quizMainContent').appendChild(restartBtn); // Append to main content area
     }
     
     function revealAnswers() {
         currentQuizQuestions.forEach((q, index) => {
             const questionElement = document.getElementById(`q-${index}`);
             if (!questionElement) return;
-            // --- NEW ---: Hide the bookmark button after submission
             const bookmarkButton = questionElement.querySelector('.bookmark-btn');
             if (bookmarkButton) bookmarkButton.style.display = 'none';
 
             if (q.answerType === 'FB') { const userInput = questionElement.querySelector(`#fb-input-${index}`); const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); userInput.classList.add(correctAnswers.includes(userValue) ? 'correct' : 'incorrect'); const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0]}<br><br>${q.explanation}`; questionElement.insertAdjacentHTML('beforeend', `<div class="result-explanation">${explanationText}</div>`);
-            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const labels = questionElement.querySelectorAll('.answer-choice'); labels.forEach((label, choiceIndex) => { const originalChoiceIndex = parseInt(label.querySelector('input').value); if (q.answerChoices[originalChoiceIndex].IsCorrect) { label.classList.add('correct'); } else if (userAnswers.includes(originalChoiceIndex)) { label.classList.add('incorrect'); } }); const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`; questionElement.insertAdjacentHTML('beforeend', explanationHtml); }
+            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const labels = questionElement.querySelectorAll('.answer-choice'); labels.forEach((label) => { const originalChoiceIndex = parseInt(label.querySelector('input').value); if (q.answerChoices[originalChoiceIndex].IsCorrect) { label.classList.add('correct'); } else if (userAnswers.includes(originalChoiceIndex)) { label.classList.add('incorrect'); } }); const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`; questionElement.insertAdjacentHTML('beforeend', explanationHtml); }
         });
     }
     
@@ -605,8 +640,7 @@
         if (!ctx) return;
         const container = ctx.canvas.parentNode;
         const numCategories = Object.keys(CATEGORY_MAP).length;
-        const requiredHeight = (numCategories * 35) + 80;
-        container.style.height = `${requiredHeight}px`;
+        container.style.height = `${(numCategories * 35) + 80}px`;
         if (chartInstances.category) chartInstances.category.destroy();
         const categoryStats = {};
         for(const code in CATEGORY_MAP) { categoryStats[code] = { correct: 0, total: 0 }; }
@@ -622,18 +656,20 @@
                 plugins: { 
                     legend: { display: false }, 
                     title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color }, 
-                    // --- NEW ---: Enhanced datalabels for more context
+                    /* --- MODIFIED ---: Enhanced datalabels to prevent overflow and add context */
                     datalabels: { 
-                        anchor: 'end', 
-                        align: 'end', 
-                        color: themeOptions.color, 
+                        anchor: 'end',
+                        align: (context) => (context.dataset.data[context.dataIndex] > 90 ? 'start' : 'end'),
+                        color: (context) => (context.dataset.data[context.dataIndex] > 90 ? 'white' : themeOptions.color),
                         font: { weight: 'bold' },
                         formatter: (value, context) => {
                             const code = sortedCategoryCodes[context.dataIndex];
                             const stats = categoryStats[code];
                             if (stats.total === 0) return '';
                             return `${value.toFixed(0)}% (${stats.correct}/${stats.total})`;
-                        }
+                        },
+                        offset: 4,
+                        padding: 0
                     } 
                 }, 
                 responsive: true, 
