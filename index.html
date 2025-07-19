@@ -511,10 +511,36 @@
         currentQuizQuestions.forEach((q, index) => {
             const questionElement = document.getElementById(`q-${index}`);
             if (!questionElement) return;
+
             const bookmarkButton = questionElement.querySelector('.bookmark-btn');
-            if (bookmarkButton) bookmarkButton.style.display = 'none';
-            if (q.answerType === 'FB') { const userInput = questionElement.querySelector(`#fb-input-${index}`); const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); userInput.classList.add(correctAnswers.includes(userValue) ? 'correct' : 'incorrect'); const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0]}<br><br>${q.explanation}`; questionElement.insertAdjacentHTML('beforeend', `<div class="result-explanation">${explanationText}</div>`);
-            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const labels = questionElement.querySelectorAll('.answer-choice'); labels.forEach((label) => { const originalChoiceIndex = parseInt(label.querySelector('input').value); if (q.answerChoices[originalChoiceIndex].IsCorrect) { label.classList.add('correct'); } else if (userAnswers.includes(originalChoiceIndex)) { label.classList.add('incorrect'); } }); const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`; questionElement.insertAdjacentHTML('beforeend', explanationHtml); }
+            if (bookmarkButton) {
+                bookmarkButton.style.display = 'none';
+            }
+
+            if (q.answerType === 'FB') {
+                const userInput = questionElement.querySelector(`#fb-input-${index}`);
+                const userValue = userInput.value.trim().toLowerCase();
+                const correctAnswers = (q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase());
+                userInput.classList.add(correctAnswers.includes(userValue) ? 'correct' : 'incorrect');
+                const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0]}<br><br>${q.explanation}`;
+                questionElement.insertAdjacentHTML('beforeend', `<div class="result-explanation">${explanationText}</div>`);
+
+            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
+                const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`));
+                const userAnswers = userChoices.map(input => parseInt(input.value));
+                const labels = questionElement.querySelectorAll('.answer-choice');
+
+                labels.forEach((label) => {
+                    const originalChoiceIndex = parseInt(label.querySelector('input').value);
+                    if (q.answerChoices[originalChoiceIndex].IsCorrect) {
+                        label.classList.add('correct');
+                    } else if (userAnswers.includes(originalChoiceIndex)) {
+                        label.classList.add('incorrect');
+                    }
+                });
+                const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`;
+                questionElement.insertAdjacentHTML('beforeend', explanationHtml);
+            }
         });
     }
     
