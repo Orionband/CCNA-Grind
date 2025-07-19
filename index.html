@@ -266,7 +266,6 @@
     const modeSelect = document.getElementById('modeSelect');
     const questionNavigator = document.getElementById('questionNavigator');
 
-    // --- MODIFIED ---: Updated the category map
     const CATEGORY_MAP = {
         "NETFD": "Network Fundamentals",
         "NETAC": "Network Access",
@@ -540,7 +539,7 @@
                             const stats = categoryStats[code];
                             if (stats.total === 0) return '';
                             return `${value.toFixed(0)}% (${stats.correct}/${stats.total})`;
-                        }, // --- FIX --- Added the missing comma here
+                        },
                         offset: 4, 
                         padding: 0
                     } 
