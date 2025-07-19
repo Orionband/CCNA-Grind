@@ -38875,44 +38875,7 @@
         ],
         "cat": "IPCON"
     },
-    {
-        "questionId": "itn-pr-ex-ccna-045",
-        "questionText": "Open the PT Activity. Perform the tasks in the activity instructions and then answer the question.",
-        "explanation": "Each interface on the link connecting the OSPF routers must be in the same subnet for an adjacency to be established. The IP address subnet mask on FastEthernet interface 0/0 must be changed to 255.255.255.0. The FastEthernet interface 0/0 is not passive. The 10.0.1.0/24 network is only connected to Router2 so should not be advertised by Router1. The clear ip ospf process command will start the OPSF process on Router1 but will not cause an adjacency to be established if the subnet mask mismatch on the connecting interfaces still exists.",
-        "difficulty": "1",
-        "exhibits": [
-            {
-                "ExhibitId": "itn-pr-ex-ccna-045-pkt",
-                "ExhibitTitle": "PT Activity - CCNA (200-301) Certification Practice Exam",
-                "ExhibitFileName": "https://itexamanswers.net/download/pt-activity-ccna-200-301-certification-practice-exam"
-            },
-            {
-                "ExhibitId": "itn-pr-ex-ccna-045-img",
-                "ExhibitTitle": "Router Topology",
-                "ExhibitFileName": "https://itexamanswers.net/wp-content/uploads/2019/12/2020-06-19_085822.jpg"
-            }
-        ],
-        "answerChoices": [
-            {
-                "Text": "Issue the clear ip ospf process command.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Change the subnet mask of interface FastEthernet 0/0 to 255.255.255.0.",
-                "IsCorrect": true
-            },
-            {
-                "Text": "Remove the passive interface command from interface FastEthernet 0/0.",
-                "IsCorrect": false
-            },
-            {
-                "Text": "Add the network 10.0.1.0 0.0.0.255 area 0 command to the OSPF process.",
-                "IsCorrect": false
-            }
-        ],
-        "cat": "IPCON"
-    },
-    {
+     {
         "questionId": "itn-pr-ex-ccna-046",
         "questionText": "What is the recommended Cisco best practice for configuring an OSPF-enabled router so that each router can be easily identified when troubleshooting routing issues?",
         "explanation": "A routing table includes a code that describes how a router learned that particular route. Common codes seen in a routing table include the following:\n* L \u2013 An address assigned to a local interface\n* C \u2013 A directly connected network\n* S \u2013 A static route to a remote network\n* O \u2013 A route learned through the OSPF routing protocol\n* * \u2013 A route that is a candidate for a default route",
