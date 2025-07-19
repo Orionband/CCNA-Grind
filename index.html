@@ -28,14 +28,13 @@
             --danger-border: #fca5a5;
             --info-bg: #e0f2fe;
             --info-border: #7dd3fc;
-            --flag-color: #f59e0b; /* Gold color for flagged items */
+            --flag-color: #f59e0b;
             --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --border-radius: 8px;
             --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             --font-mono: "Courier New", Courier, monospace;
         }
 
-        /* System-based Dark Mode */
         @media (prefers-color-scheme: dark) {
             :root {
                 --primary-color: #60a5fa;
@@ -51,11 +50,10 @@
                 --danger-border: #ef4444;
                 --info-bg: #1e3a8a;
                 --info-border: #60a5fa;
-                --flag-color: #facc15; /* Brighter gold for dark mode */
+                --flag-color: #facc15;
             }
         }
 
-        /* General Styling */
         html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-sans);
@@ -65,167 +63,74 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* --- MODIFIED ---: New Page Wrapper for 2-column layout */
+        #pageWrapper {
             display: flex;
             justify-content: center;
-        }
-        .container {
+            align-items: flex-start;
+            gap: 30px;
             width: 100%;
-            max-width: 1100px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .container {
+            flex-grow: 1;
+            max-width: 1000px; /* Max width for main content */
             background: var(--surface-color);
             padding: 20px 40px;
             border-radius: 12px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
-            position: relative;
-        }
-
-        /* Header and Options Panel */
-        h1, h2, h3 {
-            text-align: center;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-        h3 {
-             border-bottom: 1px solid var(--border-color);
-             color: var(--text-color);
-        }
-        .options-panel {
-            padding: 25px;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            margin-bottom: 30px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            align-items: end;
-        }
-        .option-group { display: flex; flex-direction: column; }
-        .option-group label {
-            font-weight: 600; margin-bottom: 8px; font-size: 0.9em;
-            color: var(--text-muted-color);
-        }
-        .option-group input[type="number"], .option-group select {
-            padding: 10px; border-radius: 6px; border: 1px solid var(--border-color);
-            background-color: var(--surface-color); color: var(--text-color);
-            font-size: 1em; width: 100%; box-sizing: border-box;
-        }
-        .option-group-checkbox {
-            display: flex; align-items: center; gap: 10px;
-            padding-bottom: 10px; 
-        }
-        .option-group-checkbox label { margin-bottom: 0; }
-
-        /* Dashboard & Charts */
-        #dashboardContainer, #categoryDescriptions {
-            margin-bottom: 20px; padding: 20px; border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            background-color: var(--bg-color);
-        }
-        .chart-container { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        .chart-wrapper, .chart-summary-container {
-            position: relative; 
-            height: auto;
-        }
-        .chart-summary-container {
-            margin-top: 30px; padding: 20px;
-            border: 1px solid var(--border-color); border-radius: var(--border-radius);
         }
         
-        /* Category Descriptions */
-        #categoryDescriptions summary { font-weight: 600; cursor: pointer; color: var(--primary-color); }
-        #categoryList { list-style-type: none; padding-left: 0; margin-top: 10px; column-count: 2; column-gap: 20px; }
-        #categoryList li { margin-bottom: 8px; font-size: 0.9em; }
-        #categoryList li strong { display: inline-block; width: 65px; font-family: var(--font-mono); color: var(--text-muted-color); }
-        @media (max-width: 600px) { #categoryList { column-count: 1; } }
-
-        /* Buttons */
-        button {
-            background-color: var(--primary-color); color: white; border: none;
-            padding: 12px 25px; border-radius: 6px; cursor: pointer;
-            font-size: 16px; font-weight: 600;
-            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
-        }
-        button:hover {
-            background-color: var(--primary-color-hover);
-            transform: translateY(-2px);
+        /* --- MODIFIED ---: Styling for the external Question Navigator */
+        #questionNavigator {
+            position: sticky;
+            top: 20px;
+            width: 200px;
+            flex-shrink: 0;
+            height: calc(100vh - 40px);
+            max-height: 850px;
+            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-        }
-        button:disabled {
-            background-color: var(--text-muted-color); cursor: not-allowed;
-            transform: none; box-shadow: none;
-        }
-        .clear-data-btn {
-            background-color: transparent; border: 1px solid var(--danger-border);
-            color: var(--danger-border); font-size: 12px; padding: 5px 10px;
-            margin-top: 15px; font-weight: 500;
-        }
-        .clear-data-btn:hover { background-color: var(--danger-bg); color: var(--danger-border); }
-
-        .submit-btn { display: block; width: 220px; margin: 30px auto; }
-        .restart-btn {
-            display: block; width: 220px; 
-            margin: 40px auto 10px;
-        }
-
-        /* --- MODIFIED ---: Styles for new Quiz Layout, Header, and Vertical Navigator */
-        #quizLayout {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 30px;
-        }
-        #quizMainContent {
-            /* This will hold the header and questions */
-        }
-        #quizHeader {
+            border: 1px solid var(--border-color);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            border-bottom: none; /* h2 inside has border now */
-        }
-        #quizHeader h2 {
-             margin: 0;
-             flex-grow: 1;
+            flex-direction: column;
         }
         #timerDisplay {
-            font-size: 1.2em;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.25em;
             font-weight: 600;
             font-family: var(--font-mono);
             color: var(--text-color);
-            padding-left: 20px;
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
         }
-        #questionNavigator {
-            position: sticky;
-            top: 20px; /* Stick near the top */
-            height: calc(100vh - 40px); /* Fill vertical space, accounting for body padding */
-            max-height: 800px;
-            width: 150px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            background-color: var(--bg-color);
-            padding: 10px;
+        #navigatorList {
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 8px;
         }
         .nav-btn {
-            width: 100%;
-            height: auto;
-            padding: 8px 12px;
+            padding: 8px;
             font-size: 14px;
             border-radius: 6px;
             border: 1px solid var(--border-color);
-            background-color: var(--surface-color);
+            background-color: var(--bg-color);
             color: var(--text-muted-color);
             cursor: pointer;
             transition: all 0.2s;
-            text-align: left;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 5px;
         }
         .nav-btn:hover {
             transform: none;
@@ -240,77 +145,79 @@
         }
         .nav-btn.flagged::after {
             content: '🚩';
-            font-size: 14px;
+            font-size: 12px;
         }
 
-        @media (max-width: 900px) {
-            #quizLayout {
-                grid-template-columns: 1fr; /* Stack on smaller screens */
+        /* Responsive layout for smaller screens */
+        @media (max-width: 1200px) {
+            #pageWrapper {
+                flex-direction: column;
+            }
+            .container {
+                width: 100%;
+                box-sizing: border-box;
             }
             #questionNavigator {
-                position: static; /* Un-stick it */
+                position: static;
+                width: 100%;
                 height: auto;
-                max-height: 250px; /* Allow some scroll */
-                width: auto;
+                max-height: 250px;
+                order: -1;
                 margin-bottom: 20px;
-                order: -1; /* Move nav to the top */
-                flex-direction: row; /* Go back to horizontal for buttons */
-                flex-wrap: wrap;
             }
-            .nav-btn {
-                width: 40px;
-                height: 40px;
-                justify-content: center;
+            #navigatorList {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             }
-             .nav-btn.flagged::after { display: none; }
-             .nav-btn.flagged { background-color: var(--flag-color); }
         }
-        /* End of Modified Styles */
-
-        /* Quiz Specific Styling */
+        /* --- End of Modified Styles --- */
+        
+        h1, h2, h3 {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        h3 { border-bottom: 1px solid var(--border-color); color: var(--text-color); }
+        .options-panel { padding: 25px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius); margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; align-items: end; }
+        .option-group { display: flex; flex-direction: column; }
+        .option-group label { font-weight: 600; margin-bottom: 8px; font-size: 0.9em; color: var(--text-muted-color); }
+        .option-group input[type="number"], .option-group select { padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--surface-color); color: var(--text-color); font-size: 1em; width: 100%; box-sizing: border-box; }
+        .option-group-checkbox { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; }
+        .option-group-checkbox label { margin-bottom: 0; }
+        #dashboardContainer, #categoryDescriptions { margin-bottom: 20px; padding: 20px; border: 1px solid var(--border-color); border-radius: var(--border-radius); background-color: var(--bg-color); }
+        .chart-container { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .chart-wrapper, .chart-summary-container { position: relative; height: auto; }
+        .chart-summary-container { margin-top: 30px; padding: 20px; border: 1px solid var(--border-color); border-radius: var(--border-radius); }
+        #categoryDescriptions summary { font-weight: 600; cursor: pointer; color: var(--primary-color); }
+        #categoryList { list-style-type: none; padding-left: 0; margin-top: 10px; column-count: 2; column-gap: 20px; }
+        #categoryList li { margin-bottom: 8px; font-size: 0.9em; }
+        #categoryList li strong { display: inline-block; width: 65px; font-family: var(--font-mono); color: var(--text-muted-color); }
+        @media (max-width: 600px) { #categoryList { column-count: 1; } }
+        button { background-color: var(--primary-color); color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: 600; transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+        button:hover { background-color: var(--primary-color-hover); transform: translateY(-2px); box-shadow: var(--shadow); }
+        button:disabled { background-color: var(--text-muted-color); cursor: not-allowed; transform: none; box-shadow: none; }
+        .clear-data-btn { background-color: transparent; border: 1px solid var(--danger-border); color: var(--danger-border); font-size: 12px; padding: 5px 10px; margin-top: 15px; font-weight: 500; }
+        .clear-data-btn:hover { background-color: var(--danger-bg); color: var(--danger-border); }
+        .submit-btn { display: block; width: 220px; margin: 30px auto; }
+        .restart-btn { display: block; width: 220px; margin: 40px auto 10px; }
         .question { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid var(--border-color); }
         .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
         .question-text { font-weight: 600; font-size: 1.15em; flex-grow: 1; }
         .question-category { color: var(--text-muted-color); font-weight: 500; font-size: 0.9em; margin-right: 8px; }
-        
-        .bookmark-btn {
-            background: none; border: none; font-size: 24px; cursor: pointer;
-            padding: 0; line-height: 1; opacity: 0.4;
-            color: var(--text-muted-color);
-            transition: opacity 0.2s, transform 0.2s, color 0.2s;
-        }
-        .bookmark-btn.bookmarked {
-            opacity: 1;
-            transform: scale(1.2);
-            color: var(--flag-color);
-        }
-
+        .bookmark-btn { background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; line-height: 1; opacity: 0.4; color: var(--text-muted-color); transition: opacity 0.2s, transform 0.2s, color 0.2s; }
+        .bookmark-btn.bookmarked { opacity: 1; transform: scale(1.2); color: var(--flag-color); }
         .exhibit-container { border: 1px solid var(--border-color); border-radius: var(--border-radius); background-color: var(--bg-color); }
-        .exhibit-container strong {
-            display: block; padding: 8px 12px; background-color: var(--border-color);
-            border-bottom: 1px solid var(--border-color); border-top-left-radius: var(--border-radius);
-            border-top-right-radius: var(--border-radius); font-size: 0.9em; color: var(--text-muted-color);
-        }
-        .question-exhibit-text {
-            padding: 15px; white-space: pre-wrap; word-wrap: break-word; font-family: var(--font-mono);
-            font-size: 0.9em; margin: 0; background-color: var(--surface-color);
-            border-bottom-left-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius);
-        }
-        .question-exhibit, .question-exhibit-frame {
-            max-width: 100%; height: auto; border-radius: var(--border-radius); margin: 15px 0; border: 1px solid var(--border-color);
-        }
+        .exhibit-container strong { display: block; padding: 8px 12px; background-color: var(--border-color); border-bottom: 1px solid var(--border-color); border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); font-size: 0.9em; color: var(--text-muted-color); }
+        .question-exhibit-text { padding: 15px; white-space: pre-wrap; word-wrap: break-word; font-family: var(--font-mono); font-size: 0.9em; margin: 0; background-color: var(--surface-color); border-bottom-left-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius); }
+        .question-exhibit, .question-exhibit-frame { max-width: 100%; height: auto; border-radius: var(--border-radius); margin: 15px 0; border: 1px solid var(--border-color); }
         .answer-choice { margin-bottom: 12px; padding: 12px; border-radius: 6px; display: block; cursor: pointer; transition: background-color 0.2s; position: relative; padding-left: 40px; border: 1px solid transparent; }
         .fb-input { padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1em; margin: 0 5px; width: 200px; background-color: var(--surface-color); color: var(--text-color); }
         .fb-input.correct { border-color: var(--success-border); background-color: var(--success-bg); }
         .fb-input.incorrect { border-color: var(--danger-border); background-color: var(--danger-bg); }
-
-        /* Results Styling */
         .result-explanation { background-color: var(--info-bg); border-left: 5px solid var(--info-border); padding: 15px; margin-top: 20px; border-radius: 5px; }
         .correct { background-color: var(--success-bg); border-color: var(--success-border); font-weight: 600; }
         .incorrect { background-color: var(--danger-bg); border-color: var(--danger-border); }
         .hidden { display: none; }
-        
-        /* Custom Checkbox/Radio */
         .answer-choice input { position: absolute; opacity: 0; cursor: pointer; }
         .checkmark { position: absolute; top: 50%; left: 10px; transform: translateY(-50%); height: 20px; width: 20px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 4px; }
         .answer-choice:hover .checkmark { background-color: var(--border-color); }
@@ -323,34 +230,42 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>CCNA Practice</h1>
-        
-        <div id="mainScreen">
-            <div id="dashboardContainer">
-                <h2>Dashboard</h2>
-                <div class="chart-container">
-                    <div class="chart-wrapper"><canvas id="categoryChart"></canvas></div>
-                    <div class="chart-wrapper"><canvas id="historyChart"></canvas></div>
+    <!-- --- MODIFIED ---: New wrapper for 2-column layout -->
+    <div id="pageWrapper">
+        <div class="container">
+            <div id="mainScreen">
+                <h1>CCNA Practice</h1>
+                <div id="dashboardContainer">
+                    <h2>Dashboard</h2>
+                    <div class="chart-container">
+                        <div class="chart-wrapper"><canvas id="categoryChart"></canvas></div>
+                        <div class="chart-wrapper"><canvas id="historyChart"></canvas></div>
+                    </div>
+                    <button id="clearDataBtn" class="clear-data-btn">Clear All Study Data</button>
                 </div>
-                <button id="clearDataBtn" class="clear-data-btn">Clear All Study Data</button>
-            </div>
-            
-            <div id="categoryDescriptions">
-                <details><summary>View CCNA Topic Domains</summary><ul id="categoryList"></ul></details>
+                
+                <div id="categoryDescriptions">
+                    <details><summary>View CCNA Topic Domains</summary><ul id="categoryList"></ul></details>
+                </div>
+
+                <div id="optionsPanel" class="options-panel">
+                     <div class="option-group"><label for="modeSelect">Quiz Mode:</label><select id="modeSelect"><option value="standard">Standard</option><option value="mistakes">Practice My Mistakes</option><option value="flagged">Review Flagged Questions</option></select></div>
+                     <div class="option-group"><label for="categorySelect">Filter by Topic:</label><select id="categorySelect"><option value="ALL">All Topics</option></select></div>
+                     <div class="option-group"><label for="numQuestions">Questions:</label><input type="number" id="numQuestions" value="10" min="1"></div>
+                     <div class="option-group-checkbox"><label for="randomize">Randomize:</label><input type="checkbox" id="randomize" checked></div>
+                     <button id="startBtn" disabled>Loading...</button>
+                </div>
             </div>
 
-            <div id="optionsPanel" class="options-panel">
-                 <div class="option-group"><label for="modeSelect">Quiz Mode:</label><select id="modeSelect"><option value="standard">Standard</option><option value="mistakes">Practice My Mistakes</option><option value="flagged">Review Flagged Questions</option></select></div>
-                 <div class="option-group"><label for="categorySelect">Filter by Topic:</label><select id="categorySelect"><option value="ALL">All Topics</option></select></div>
-                 <div class="option-group"><label for="numQuestions">Questions:</label><input type="number" id="numQuestions" value="10" min="1"></div>
-                 <div class="option-group-checkbox"><label for="randomize">Randomize:</label><input type="checkbox" id="randomize" checked></div>
-                 <button id="startBtn" disabled>Loading...</button>
-            </div>
+            <div id="quizContainer" class="hidden"></div>
+            <div id="resultsContainer"></div>
         </div>
-
-        <div id="quizContainer" class="hidden"></div>
-        <div id="resultsContainer"></div>
+        
+        <!-- --- MODIFIED ---: Navigator is now a sibling to the container -->
+        <div id="questionNavigator" class="hidden">
+            <div id="timerDisplay">Time: 00:00</div>
+            <div id="navigatorList"></div>
+        </div>
     </div>
 
     <script>
@@ -360,14 +275,12 @@
     const mainScreen = document.getElementById('mainScreen');
     const categorySelect = document.getElementById('categorySelect');
     const modeSelect = document.getElementById('modeSelect');
+    const questionNavigator = document.getElementById('questionNavigator'); // Persistent reference
 
     const CATEGORY_MAP = {
-        "NETFD": "Network Fundamentals",
-        "NETSEC": "Network Security & Access Control",
-        "IPNS": "IP Networking & Services",
-        "ROSW": "Routing & Switching",
-        "OPTR": "Operations & Troubleshooting",
-        "WWCN": "Wireless & WAN Connectivity",
+        "NETFD": "Network Fundamentals", "NETSEC": "Network Security & Access Control",
+        "IPNS": "IP Networking & Services", "ROSW": "Routing & Switching",
+        "OPTR": "Operations & Troubleshooting", "WWCN": "Wireless & WAN Connectivity",
         "NAPR": "Network Automation and Programmability"
     };
 
@@ -376,18 +289,15 @@
     let quizHistory = [];
     let bookmarkedQuestions = [];
     let chartInstances = {};
-
     let quizTimerInterval;
     let quizStartTime;
 
     document.addEventListener('DOMContentLoaded', () => {
         Chart.register(ChartDataLabels);
-
         loadDataFromStorage();
         populateCategoryFilter();
         populateCategoryDescriptions();
-        renderDashboard(); 
-        loadQuestions(); 
+        loadQuestions(); // Load questions first
 
         startBtn.addEventListener('click', loadAndDisplayQuiz);
         modeSelect.addEventListener('change', updateMaxQuestions);
@@ -398,9 +308,7 @@
             const summaryCtx = document.getElementById('quizSummaryChart')?.getContext('2d');
             if (summaryCtx) {
                 const latestAttempt = quizHistory[quizHistory.length - 1];
-                if (latestAttempt) {
-                    renderQuizSummaryChart(latestAttempt);
-                }
+                if (latestAttempt) renderQuizSummaryChart(latestAttempt);
             }
         });
     });
@@ -409,24 +317,36 @@
         const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
         const textColor = isDark ? '#e2e8f0' : '#1e293b';
-        return {
-            color: textColor,
-            grid: { color: gridColor },
-            ticks: { color: textColor }
-        };
+        return { color: textColor, grid: { color: gridColor }, ticks: { color: textColor } };
     }
     
-    // Data handling functions
     function loadDataFromStorage() { quizHistory = JSON.parse(localStorage.getItem('quizHistory')) || []; bookmarkedQuestions = JSON.parse(localStorage.getItem('bookmarkedQuestions')) || []; }
     function saveDataToStorage() { localStorage.setItem('quizHistory', JSON.stringify(quizHistory)); localStorage.setItem('bookmarkedQuestions', JSON.stringify(bookmarkedQuestions)); }
-    function clearAllData() { if (confirm("Are you sure? This will erase all your progress and scores.")) { quizHistory = []; bookmarkedQuestions = []; saveDataToStorage(); renderDashboard(); updateMaxQuestions(); alert("All study data has been cleared."); } }
+    function clearAllData() { if (confirm("Are you sure? This will erase all your progress.")) { quizHistory = []; bookmarkedQuestions = []; saveDataToStorage(); renderDashboard(); updateMaxQuestions(); alert("All study data has been cleared."); } }
     function populateCategoryDescriptions() { const listElement = document.getElementById('categoryList'); if (!listElement) return; listElement.innerHTML = ''; const sortedCategories = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1])); for (const [code, description] of sortedCategories) { const listItem = document.createElement('li'); listItem.innerHTML = `<strong>${code}</strong> - ${description}`; listElement.appendChild(listItem); } }
     function populateCategoryFilter() { const sortedCategories = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1])); for (const [code, description] of sortedCategories) { const option = document.createElement('option'); option.value = code; option.textContent = description; categorySelect.appendChild(option); } }
     function getMistakeQuestionIds() { const mistakeIds = new Set(); quizHistory.forEach(quiz => { quiz.questions.forEach(q => { if (!q.isCorrect) { mistakeIds.add(q.questionId); } }); }); return Array.from(mistakeIds); }
-    function getLocalExhibitPath(fullUrl) { if (!fullUrl) return ''; try { const url = new URL(fullUrl); let rawPath = fullUrl.substring(url.origin.length); rawPath = rawPath.replaceAll(':', '_'); return `./images${rawPath}`; } catch (e) { console.error(`Could not parse URL: "${fullUrl}". Using simple fallback.`, e); let filename = fullUrl.split('/').pop(); filename = filename.replaceAll(':', '_'); return `./images/${filename}`; } }
+    function getLocalExhibitPath(fullUrl) { if (!fullUrl) return ''; try { const url = new URL(fullUrl); let rawPath = fullUrl.substring(url.origin.length); rawPath = rawPath.replaceAll(':', '_'); return `./images${rawPath}`; } catch (e) { console.error(`Could not parse URL: "${fullUrl}".`, e); let filename = fullUrl.split('/').pop().replaceAll(':', '_'); return `./images/${filename}`; } }
     function updateMaxQuestions() { const mode = modeSelect.value; const category = categorySelect.value; let pool = []; if (mode === 'standard') { pool = (category === 'ALL') ? allQuestions : allQuestions.filter(q => q.cat === category); } else if (mode === 'mistakes') { const mistakeIds = getMistakeQuestionIds(); pool = allQuestions.filter(q => mistakeIds.includes(q.questionId)); if (category !== 'ALL') { pool = pool.filter(q => q.cat === category); } } else if (mode === 'flagged') { pool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId)); if (category !== 'ALL') { pool = pool.filter(q => q.cat === category); } } const numInput = document.getElementById('numQuestions'); numInput.max = pool.length; if (pool.length > 0) { numInput.value = Math.min(numInput.value, pool.length); startBtn.disabled = false; startBtn.textContent = 'Start Test'; } else { numInput.value = 0; startBtn.disabled = true; startBtn.textContent = 'No Questions in Pool'; } }
     function normalizeQuestions(data) { return data.map(q => { if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) { q.answerChoices = q.rawAnswer.MultipleChoice.map(choice => ({ Text: choice.Text.replace(/ltpgt-open|ltpgt-close/g, '').trim(), IsCorrect: choice.IsCorrect })); } else if (!q.answerType && q.answerChoices) { const correctCount = q.answerChoices.filter(c => c.IsCorrect).length; q.answerType = correctCount > 1 ? 'MS' : 'MC'; } return q; }); }
-    function loadQuestions() { startBtn.disabled = true; startBtn.textContent = 'Loading Deck...'; quizContainer.innerHTML = ''; fetch('questions.json') .then(response => { if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); return response.json(); }) .then(data => { allQuestions = normalizeQuestions(data); updateMaxQuestions(); }) .catch(error => { console.error(`Error fetching questions.json:`, error); mainScreen.innerHTML = `<p style="color: red; text-align: center;">CRITICAL ERROR: Could not load questions.json.</p>`; startBtn.textContent = 'Load Failed'; }); }
+    
+    function loadQuestions() {
+        startBtn.disabled = true;
+        startBtn.textContent = 'Loading Deck...';
+        fetch('questions.json')
+            .then(response => { if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); return response.json(); })
+            .then(data => {
+                allQuestions = normalizeQuestions(data);
+                updateMaxQuestions();
+                // --- MODIFIED ---: Render the dashboard only AFTER questions are loaded
+                renderDashboard();
+            })
+            .catch(error => {
+                console.error(`Error fetching questions.json:`, error);
+                mainScreen.innerHTML = `<p style="color: red; text-align: center;">CRITICAL ERROR: Could not load questions.json.</p>`;
+                startBtn.textContent = 'Load Failed';
+            });
+    }
     
     function startTimer() {
         const timerDisplay = document.getElementById('timerDisplay');
@@ -451,7 +371,7 @@
         if (questionPool.length === 0) { alert("There are no questions available for your selected criteria."); return; }
         const numQuestions = Math.min(parseInt(numQuestionsInput.value), questionPool.length);
         if (randomize) { currentQuizQuestions = [...questionPool].sort(() => Math.random() - 0.5).slice(0, numQuestions); } else { currentQuizQuestions = questionPool.slice(0, numQuestions); }
-        const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => { if (!exhibit.ExhibitFileName) return null; exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName); if (exhibit.localPath.toLowerCase().endsWith('.txt')) { return fetch(exhibit.localPath) .then(response => { if (!response.ok) throw new Error(`Failed to fetch ${exhibit.localPath}`); return response.text(); }) .then(text => { exhibit.textContent = text; }) .catch(error => { console.error('Error fetching exhibit:', error); exhibit.textContent = `Error: Could not load exhibit.`; }); } return null; }).filter(Boolean));
+        const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => { if (!exhibit.ExhibitFileName) return null; exhibit.localPath = getLocalExhibitPath(exhibit.ExhibitFileName); if (exhibit.localPath.toLowerCase().endsWith('.txt')) { return fetch(exhibit.localPath) .then(response => { if (!response.ok) throw new Error(`Failed to fetch ${exhibit.localPath}`); return response.text(); }).then(text => { exhibit.textContent = text; }).catch(error => { console.error('Error fetching exhibit:', error); exhibit.textContent = `Error: Could not load exhibit.`; }); } return null; }).filter(Boolean);
         await Promise.all(exhibitPromises);
         
         quizStartTime = Date.now();
@@ -461,37 +381,23 @@
     function displayQuiz() {
         mainScreen.classList.add('hidden');
         quizContainer.classList.remove('hidden');
+        questionNavigator.classList.remove('hidden'); // Show the navigator
         resultsContainer.innerHTML = '';
+        quizContainer.innerHTML = `<h2>Quiz</h2>`;
         
-        quizContainer.innerHTML = `
-            <div id="quizLayout">
-                <div id="quizMainContent">
-                    <div id="quizHeader">
-                        <h2>Quiz</h2>
-                        <div id="timerDisplay">Time: 00:00</div>
-                    </div>
-                    <div id="questionsList"></div>
-                </div>
-                <div id="questionNavigator"></div>
-            </div>
-        `;
-
-        // --- MODIFIED --- Call timer *after* the element is created
         startTimer();
 
-        const questionsList = document.getElementById('questionsList');
-        const questionNavigator = document.getElementById('questionNavigator');
+        const navigatorList = document.getElementById('navigatorList');
+        navigatorList.innerHTML = ''; // Clear previous nav items
         
         currentQuizQuestions.forEach((q, index) => {
             const navBtn = document.createElement('button');
             navBtn.className = 'nav-btn';
-            navBtn.innerHTML = `<span>Q ${index + 1}</span>`;
+            navBtn.innerHTML = `Q ${index + 1}`;
             navBtn.dataset.index = index;
             navBtn.onclick = () => document.getElementById(`q-${index}`).scrollIntoView();
-            if (bookmarkedQuestions.includes(q.questionId)) {
-                navBtn.classList.add('flagged');
-            }
-            questionNavigator.appendChild(navBtn);
+            if (bookmarkedQuestions.includes(q.questionId)) navBtn.classList.add('flagged');
+            navigatorList.appendChild(navBtn);
 
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
@@ -509,65 +415,42 @@
                 const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio';
                 const choicesToShuffle = q.answerChoices.map((choice, originalIndex) => ({ ...choice, originalIndex }));
                 choicesToShuffle.sort(() => Math.random() - 0.5);
-                choicesToShuffle.forEach(choice => {
-                    answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choice.originalIndex}"><span class="checkmark"></span></label>`; 
-                });
+                choicesToShuffle.forEach(choice => { answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choice.originalIndex}"><span class="checkmark"></span></label>`; });
             }
 
             questionDiv.innerHTML = questionTextHtml + exhibitsHtml + answersHtml;
-            questionsList.appendChild(questionDiv);
+            quizContainer.appendChild(questionDiv);
 
             const inputs = questionDiv.querySelectorAll('input[type="radio"], input[type="checkbox"], input.fb-input');
-            inputs.forEach(input => {
-                input.addEventListener('input', () => { // Use 'input' for text fields, 'change' works for all
-                    navBtn.classList.add('answered');
-                });
-            });
+            inputs.forEach(input => input.addEventListener('input', () => navBtn.classList.add('answered')));
         });
 
         const submitButton = document.createElement('button');
         submitButton.id = 'submitBtn'; submitButton.className = 'submit-btn'; submitButton.textContent = 'Submit Test';
         submitButton.addEventListener('click', showResults);
-        questionsList.appendChild(submitButton);
+        quizContainer.appendChild(submitButton);
     }
     
     function toggleBookmark(questionId, buttonElement, questionIndex) { 
         const navBtn = document.querySelector(`.nav-btn[data-index="${questionIndex}"]`);
         const index = bookmarkedQuestions.indexOf(questionId); 
-        if (index > -1) { 
-            bookmarkedQuestions.splice(index, 1); 
-            buttonElement.classList.remove('bookmarked'); 
-            if(navBtn) navBtn.classList.remove('flagged');
-        } else { 
-            bookmarkedQuestions.push(questionId); 
-            buttonElement.classList.add('bookmarked'); 
-            if(navBtn) navBtn.classList.add('flagged');
-        } 
+        if (index > -1) { bookmarkedQuestions.splice(index, 1); buttonElement.classList.remove('bookmarked'); if(navBtn) navBtn.classList.remove('flagged');
+        } else { bookmarkedQuestions.push(questionId); buttonElement.classList.add('bookmarked'); if(navBtn) navBtn.classList.add('flagged'); } 
         saveDataToStorage(); 
     }
 
     function showResults() {
         clearInterval(quizTimerInterval);
         const totalTimeSeconds = Math.floor((Date.now() - quizStartTime) / 1000);
+        questionNavigator.classList.add('hidden'); // Hide navigator on results page
 
         let score = 0;
         const quizAttempt = { timestamp: Date.now(), score: 0, total: currentQuizQuestions.length, questions: [] };
         
         currentQuizQuestions.forEach((q, index) => {
             let isQuestionCorrect = false;
-            if (q.answerType === 'FB') { 
-                const userInput = document.querySelector(`#fb-input-${index}`); 
-                if (userInput) { 
-                    const userValue = userInput.value.trim().toLowerCase(); 
-                    const correctAnswers = (q.blanks && q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); 
-                    if (userValue && correctAnswers.includes(userValue)) isQuestionCorrect = true; 
-                }
-            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { 
-                const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); 
-                const userAnswers = userChoices.map(input => parseInt(input.value)); 
-                const correctAnswers = q.answerChoices.map((choice, i) => choice.IsCorrect ? i : -1).filter(i => i !== -1); 
-                isQuestionCorrect = userAnswers.length === correctAnswers.length && userAnswers.sort().toString() === correctAnswers.sort().toString(); 
-            }
+            if (q.answerType === 'FB') { const userInput = document.querySelector(`#fb-input-${index}`); if (userInput) { const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks && q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); if (userValue && correctAnswers.includes(userValue)) isQuestionCorrect = true; }
+            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const correctAnswers = q.answerChoices.map((choice, i) => choice.IsCorrect ? i : -1).filter(i => i !== -1); isQuestionCorrect = userAnswers.length === correctAnswers.length && userAnswers.sort().toString() === correctAnswers.sort().toString(); }
             if (isQuestionCorrect) score++;
             quizAttempt.questions.push({ questionId: q.questionId, isCorrect: isQuestionCorrect, category: q.cat });
         });
@@ -577,7 +460,6 @@
         saveDataToStorage();
         renderDashboard(); 
 
-        document.getElementById('questionNavigator').style.display = 'none'; // Hide nav on results
         const answerInputs = quizContainer.querySelectorAll('.answer-choice input, .fb-input');
         answerInputs.forEach(input => { input.disabled = true; const label = input.closest('label.answer-choice'); if (label) { label.style.cursor = 'default'; } });
         document.getElementById('submitBtn').remove();
@@ -605,7 +487,7 @@
         const restartBtn = document.createElement('button');
         restartBtn.id = 'restartBtn'; restartBtn.className = 'restart-btn'; restartBtn.textContent = 'Take Another Test';
         restartBtn.onclick = () => { mainScreen.classList.remove('hidden'); quizContainer.innerHTML = ''; resultsContainer.innerHTML = ''; updateMaxQuestions(); };
-        document.getElementById('quizMainContent').appendChild(restartBtn); // Append to main content area
+        quizContainer.appendChild(restartBtn);
     }
     
     function revealAnswers() {
@@ -614,7 +496,6 @@
             if (!questionElement) return;
             const bookmarkButton = questionElement.querySelector('.bookmark-btn');
             if (bookmarkButton) bookmarkButton.style.display = 'none';
-
             if (q.answerType === 'FB') { const userInput = questionElement.querySelector(`#fb-input-${index}`); const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); userInput.classList.add(correctAnswers.includes(userValue) ? 'correct' : 'incorrect'); const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0]}<br><br>${q.explanation}`; questionElement.insertAdjacentHTML('beforeend', `<div class="result-explanation">${explanationText}</div>`);
             } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const labels = questionElement.querySelectorAll('.answer-choice'); labels.forEach((label) => { const originalChoiceIndex = parseInt(label.querySelector('input').value); if (q.answerChoices[originalChoiceIndex].IsCorrect) { label.classList.add('correct'); } else if (userAnswers.includes(originalChoiceIndex)) { label.classList.add('incorrect'); } }); const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`; questionElement.insertAdjacentHTML('beforeend', explanationHtml); }
         });
@@ -638,29 +519,30 @@
     function renderCategoryChart() {
         const ctx = document.getElementById('categoryChart')?.getContext('2d');
         if (!ctx) return;
-        const container = ctx.canvas.parentNode;
-        const numCategories = Object.keys(CATEGORY_MAP).length;
-        container.style.height = `${(numCategories * 35) + 80}px`;
         if (chartInstances.category) chartInstances.category.destroy();
         const categoryStats = {};
         for(const code in CATEGORY_MAP) { categoryStats[code] = { correct: 0, total: 0 }; }
-        quizHistory.forEach(quiz => { quiz.questions.forEach(qResult => { const questionData = allQuestions.find(q => q.questionId === qResult.questionId); if (questionData && questionData.cat && categoryStats[questionData.cat]) { categoryStats[questionData.cat].total++; if(qResult.isCorrect) { categoryStats[questionData.cat].correct++; } } }); });
+        quizHistory.forEach(quiz => {
+            quiz.questions.forEach(qResult => {
+                // Important: Ensure allQuestions is loaded before this runs
+                const questionData = allQuestions.find(q => q.questionId === qResult.questionId);
+                if (questionData && questionData.cat && categoryStats[questionData.cat]) {
+                    categoryStats[questionData.cat].total++;
+                    if(qResult.isCorrect) { categoryStats[questionData.cat].correct++; }
+                }
+            });
+        });
         const sortedCategoryCodes = Object.keys(CATEGORY_MAP).sort((a,b) => CATEGORY_MAP[a].localeCompare(CATEGORY_MAP[b])); 
         const labels = sortedCategoryCodes.map(code => CATEGORY_MAP[code]); 
         const data = sortedCategoryCodes.map(code => { const stats = categoryStats[code]; return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0; });
         const themeOptions = getChartThemeOptions();
         chartInstances.category = new Chart(ctx, { type: 'bar', data: { labels: labels, datasets: [{ label: '% Correct by Topic', data: data, backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 1 }] }, 
-            options: { 
-                indexAxis: 'y', 
-                scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, 
-                plugins: { 
-                    legend: { display: false }, 
-                    title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color }, 
-                    /* --- MODIFIED ---: Enhanced datalabels to prevent overflow and add context */
+            options: { indexAxis: 'y', scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, 
+                plugins: { legend: { display: false }, title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color }, 
                     datalabels: { 
                         anchor: 'end',
                         align: (context) => (context.dataset.data[context.dataIndex] > 90 ? 'start' : 'end'),
-                        color: (context) => (context.dataset.data[context.dataIndex] > 90 ? 'white' : themeOptions.color),
+                        color: (context) => (context.dataset.data[context.dataIndex] > 90 ? (themeOptions.color === '#e2e8f0' ? '#1e293b' : 'white') : themeOptions.color),
                         font: { weight: 'bold' },
                         formatter: (value, context) => {
                             const code = sortedCategoryCodes[context.dataIndex];
@@ -668,12 +550,10 @@
                             if (stats.total === 0) return '';
                             return `${value.toFixed(0)}% (${stats.correct}/${stats.total})`;
                         },
-                        offset: 4,
-                        padding: 0
+                        offset: 4, padding: 0
                     } 
                 }, 
-                responsive: true, 
-                maintainAspectRatio: false 
+                responsive: true, maintainAspectRatio: false 
             } 
         });
     }
@@ -681,7 +561,6 @@
     function renderHistoryChart() {
         const ctx = document.getElementById('historyChart')?.getContext('2d');
         if (!ctx) return;
-        ctx.canvas.parentNode.style.height = '350px';
         if (chartInstances.history) chartInstances.history.destroy();
         const chartData = quizHistory.map(quiz => ({ x: quiz.timestamp, y: (quiz.score / quiz.total) * 100 }));
         const themeOptions = getChartThemeOptions();
