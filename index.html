@@ -422,12 +422,23 @@
         quizContainer.appendChild(submitButton);
     }
     
-    function toggleBookmark(questionId, buttonElement, questionIndex) { 
+    function toggleBookmark(questionId, buttonElement, questionIndex) {
         const navBtn = document.querySelector(`.nav-btn[data-index="${questionIndex}"]`);
-        const index = bookmarkedQuestions.indexOf(questionId); 
-        if (index > -1) { bookmarkedQuestions.splice(index, 1); buttonElement.classList.remove('bookmarked'); if(navBtn) navBtn.classList.remove('flagged');
-        } else { bookmarkedQuestions.push(questionId); buttonElement.classList.add('bookmarked'); if(navBtn) navBtn.classList.add('flagged'); } 
-        saveDataToStorage(); 
+        const index = bookmarkedQuestions.indexOf(questionId);
+        if (index > -1) {
+            bookmarkedQuestions.splice(index, 1);
+            buttonElement.classList.remove('bookmarked');
+            if (navBtn) {
+                navBtn.classList.remove('flagged');
+            }
+        } else {
+            bookmarkedQuestions.push(questionId);
+            buttonElement.classList.add('bookmarked');
+            if (navBtn) {
+                navBtn.classList.add('flagged');
+            }
+        }
+        saveDataToStorage();
     }
 
     function showResults() {
@@ -440,9 +451,24 @@
         
         currentQuizQuestions.forEach((q, index) => {
             let isQuestionCorrect = false;
-            if (q.answerType === 'FB') { const userInput = document.querySelector(`#fb-input-${index}`); if (userInput) { const userValue = userInput.value.trim().toLowerCase(); const correctAnswers = (q.blanks && q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase()); if (userValue && correctAnswers.includes(userValue)) isQuestionCorrect = true; }
-            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) { const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`)); const userAnswers = userChoices.map(input => parseInt(input.value)); const correctAnswers = q.answerChoices.map((choice, i) => choice.IsCorrect ? i : -1).filter(i => i !== -1); isQuestionCorrect = userAnswers.length === correctAnswers.length && userAnswers.sort().toString() === correctAnswers.sort().toString(); }
-            if (isQuestionCorrect) score++;
+            if (q.answerType === 'FB') {
+                const userInput = document.querySelector(`#fb-input-${index}`);
+                if (userInput) {
+                    const userValue = userInput.value.trim().toLowerCase();
+                    const correctAnswers = (q.blanks && q.blanks[0] || "").split(',').map(ans => ans.trim().toLowerCase());
+                    if (userValue && correctAnswers.includes(userValue)) {
+                        isQuestionCorrect = true;
+                    }
+                }
+            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
+                const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`));
+                const userAnswers = userChoices.map(input => parseInt(input.value));
+                const correctAnswers = q.answerChoices.map((choice, i) => choice.IsCorrect ? i : -1).filter(i => i !== -1);
+                isQuestionCorrect = userAnswers.length === correctAnswers.length && userAnswers.sort().toString() === correctAnswers.sort().toString();
+            }
+            if (isQuestionCorrect) {
+                score++;
+            }
             quizAttempt.questions.push({ questionId: q.questionId, isCorrect: isQuestionCorrect, category: q.cat });
         });
 
