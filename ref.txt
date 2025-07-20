@@ -75,27 +75,44 @@ foreach ($question in $jsonContent) {
         foreach ($exhibit in $question.exhibits) {
             $url = $exhibit.ExhibitFileName
             if (-not [string]::IsNullOrEmpty($url)) {
-                # Extract the path after the domain (after https://...)
+                # Parse and decode URL parts
                 $uri = [uri]$url
                 $relativePath = $uri.AbsolutePath.TrimStart('/')
-                
-                # Replace colons ':' with underscores '_' for Windows compatibility
+
+                # Replace colons for Windows compatibility
                 $relativePath = $relativePath -replace ':', '_'
-                
-                # Local file path
-                $localPath = Join-Path $baseFolder $relativePath
-                
+
+                # Decode URL-encoded characters
+                $decodedPath = [System.Web.HttpUtility]::UrlDecode($relativePath)
+
+                # Build full local path
+                $localPath = Join-Path $baseFolder $decodedPath
+
                 # Ensure directory exists
                 $dir = Split-Path $localPath
                 if (-not (Test-Path $dir)) {
                     New-Item -ItemType Directory -Path $dir -Force | Out-Null
                 }
-                
-                # Download if file doesn't exist
+
+                # Check if file already exists
                 if (-not (Test-Path $localPath)) {
                     Write-Host "Downloading $url to $localPath"
                     try {
-                        Invoke-WebRequest -Uri $url -OutFile $localPath -UseBasicParsing
+                        # Download to a temporary file first (in case name needs decoding)
+                        $tempPath = Join-Path $baseFolder $relativePath
+                        $tempDir = Split-Path $tempPath
+                        if (-not (Test-Path $tempDir)) {
+                            New-Item -ItemType Directory -Path $tempDir -Force | Out-Null
+                        }
+
+                        Invoke-WebRequest -Uri $url -OutFile $tempPath -UseBasicParsing
+
+                        # Rename temp file to decoded name if different
+                        if ($tempPath -ne $localPath) {
+                            Rename-Item -Path $tempPath -NewName (Split-Path $localPath -Leaf)
+                            Move-Item -Path (Join-Path $tempDir (Split-Path $localPath -Leaf)) -Destination $dir -Force
+                        }
+
                     } catch {
                         Write-Warning "Failed to download $url"
                     }
