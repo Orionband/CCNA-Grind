@@ -173,6 +173,7 @@
         .option-group { display: flex; flex-direction: column; }
         .option-group label { font-weight: 600; margin-bottom: 8px; font-size: 0.9em; color: var(--text-muted-color); }
         .option-group input[type="number"], .option-group select { padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--surface-color); color: var(--text-color); font-size: 1em; width: 100%; box-sizing: border-box; }
+        .option-group input:disabled, .option-group select:disabled { background-color: var(--border-color); cursor: not-allowed; opacity: 0.7; }
         .option-group-checkbox { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; }
         .option-group-checkbox label { margin-bottom: 0; }
         #dashboardContainer, #categoryDescriptions { margin-bottom: 20px; padding: 20px; border: 1px solid var(--border-color); border-radius: var(--border-radius); background-color: var(--bg-color); }
@@ -239,7 +240,15 @@
                 </div>
 
                 <div id="optionsPanel" class="options-panel">
-                     <div class="option-group"><label for="modeSelect">Quiz Mode:</label><select id="modeSelect"><option value="standard">Standard</option><option value="mistakes">Practice My Mistakes</option><option value="flagged">Review Flagged Questions</option></select></div>
+                     <div class="option-group">
+                         <label for="modeSelect">Quiz Mode:</label>
+                         <select id="modeSelect">
+                             <option value="standard">Standard</option>
+                             <option value="exsim">ExSim Mode</option>
+                             <option value="mistakes">Practice My Mistakes</option>
+                             <option value="flagged">Review Flagged Questions</option>
+                         </select>
+                     </div>
                      <div class="option-group"><label for="categorySelect">Filter by Topic:</label><select id="categorySelect"><option value="ALL">All Topics</option></select></div>
                      <div class="option-group"><label for="numQuestions">Questions:</label><input type="number" id="numQuestions" value="10" min="1"></div>
                      <div class="option-group-checkbox"><label for="randomize">Randomize:</label><input type="checkbox" id="randomize" checked></div>
@@ -267,12 +276,12 @@
     const questionNavigator = document.getElementById('questionNavigator');
 
     const CATEGORY_MAP = {
-        "NETFD": "Network Fundamentals",
-        "NETAC": "Network Access",
-        "IPCON": "IP Connectivity",
-        "IPSVC": "IP Services",
-        "SEC": "Security Fundamentals",
-        "AUTO": "Automation & Programmability"
+        "NETFD": "1.0 Network Fundamentals",
+        "NETAC": "2.0 Network Access",
+        "IPCON": "3.0 IP Connectivity",
+        "IPSVC": "4.0 IP Services",
+        "SEC": "5.0 Security Fundamentals",
+        "AUTO": "6.0 Automation & Programmability"
     };
 
     let allQuestions = [];
@@ -378,7 +387,26 @@
     function updateMaxQuestions() {
         const mode = modeSelect.value;
         const category = categorySelect.value;
+        const numInput = document.getElementById('numQuestions');
+        const categoryInput = document.getElementById('categorySelect');
+        const randomizeInput = document.getElementById('randomize');
         let pool = [];
+
+        if (mode === 'exsim') {
+            numInput.value = 100;
+            numInput.disabled = true;
+            categoryInput.disabled = true;
+            randomizeInput.disabled = true;
+            randomizeInput.checked = true;
+            startBtn.disabled = false;
+            startBtn.textContent = 'Start ExSim';
+            return;
+        }
+
+        // Re-enable controls if not in ExSim mode
+        numInput.disabled = false;
+        categoryInput.disabled = false;
+        randomizeInput.disabled = false;
 
         if (mode === 'standard') {
             pool = (category === 'ALL') ? allQuestions : allQuestions.filter(q => q.cat === category);
@@ -395,11 +423,12 @@
             }
         }
 
-        const numInput = document.getElementById('numQuestions');
         numInput.max = pool.length;
 
         if (pool.length > 0) {
-            numInput.value = Math.min(numInput.value, pool.length);
+            if (parseInt(numInput.value) > pool.length || parseInt(numInput.value) === 0) {
+                 numInput.value = Math.min(10, pool.length);
+            }
             startBtn.disabled = false;
             startBtn.textContent = 'Start Test';
         } else {
@@ -409,7 +438,6 @@
         }
     }
     
-    // CORRECTED FUNCTION
     function normalizeQuestions(data) {
         return data.map(q => {
             if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) {
@@ -447,18 +475,43 @@
             });
     }
     
-    function startTimer() {
+    function startTimer(durationInSeconds = null) {
         const timerDisplay = document.getElementById('timerDisplay');
         if (!timerDisplay) return;
+        
         clearInterval(quizTimerInterval);
         quizStartTime = Date.now();
-        timerDisplay.textContent = 'Time: 00:00';
-        quizTimerInterval = setInterval(() => {
-            const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
-            const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
-            const seconds = (elapsed % 60).toString().padStart(2, '0');
-            timerDisplay.textContent = `Time: ${minutes}:${seconds}`;
-        }, 1000);
+
+        if (durationInSeconds !== null) {
+            // Countdown (ExSim Mode)
+            let timeRemaining = durationInSeconds;
+            const updateCountdown = () => {
+                if (timeRemaining <= 0) {
+                    clearInterval(quizTimerInterval);
+                    timerDisplay.textContent = 'Time Up!';
+                    alert('Time is up! The quiz will be submitted automatically.');
+                    if (!resultsContainer.innerHTML) { // Prevent double submission
+                        showResults();
+                    }
+                    return;
+                }
+                const minutes = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
+                const seconds = (timeRemaining % 60).toString().padStart(2, '0');
+                timerDisplay.textContent = `Time Left: ${minutes}:${seconds}`;
+                timeRemaining--;
+            };
+            updateCountdown(); // Initial call
+            quizTimerInterval = setInterval(updateCountdown, 1000);
+        } else {
+            // Count-up (Standard modes)
+            timerDisplay.textContent = 'Time: 00:00';
+            quizTimerInterval = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
+                const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+                const seconds = (elapsed % 60).toString().padStart(2, '0');
+                timerDisplay.textContent = `Time: ${minutes}:${seconds}`;
+            }, 1000);
+        }
     }
     
     async function loadAndDisplayQuiz() {
@@ -468,31 +521,50 @@
         const category = categorySelect.value;
         let questionPool = [];
         
-        if (mode === 'mistakes') {
-            const mistakeIds = getMistakeQuestionIds();
-            questionPool = allQuestions.filter(q => mistakeIds.includes(q.questionId));
-        } else if (mode === 'flagged') {
-            questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId));
-        } else {
-            questionPool = allQuestions;
+        if (mode === 'exsim') {
+            const EXSIM_CONFIG = {
+                total: 100,
+                distribution: {
+                    "NETFD": 0.20, "NETAC": 0.20, "IPCON": 0.25,
+                    "IPSVC": 0.10, "SEC": 0.15, "AUTO": 0.10
+                }
+            };
+            currentQuizQuestions = [];
+            for (const [cat, percentage] of Object.entries(EXSIM_CONFIG.distribution)) {
+                const numToTake = Math.round(EXSIM_CONFIG.total * percentage);
+                let categoryPool = allQuestions.filter(q => q.cat === cat);
+                categoryPool.sort(() => Math.random() - 0.5);
+                currentQuizQuestions.push(...categoryPool.slice(0, numToTake));
+            }
+            currentQuizQuestions.sort(() => Math.random() - 0.5);
+
+        } else { // Standard, Mistakes, Flagged modes
+            if (mode === 'mistakes') {
+                const mistakeIds = getMistakeQuestionIds();
+                questionPool = allQuestions.filter(q => mistakeIds.includes(q.questionId));
+            } else if (mode === 'flagged') {
+                questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId));
+            } else {
+                questionPool = allQuestions;
+            }
+
+            if (category !== 'ALL') {
+                questionPool = questionPool.filter(q => q.cat === category);
+            }
+
+            if (questionPool.length === 0) {
+                alert("There are no questions available for your selected criteria.");
+                return;
+            }
+            const numQuestions = Math.min(parseInt(numQuestionsInput.value), questionPool.length);
+            
+            if (randomize) {
+                currentQuizQuestions = [...questionPool].sort(() => Math.random() - 0.5).slice(0, numQuestions);
+            } else {
+                currentQuizQuestions = questionPool.slice(0, numQuestions);
+            }
         }
 
-        if (category !== 'ALL') {
-            questionPool = questionPool.filter(q => q.cat === category);
-        }
-
-        if (questionPool.length === 0) {
-            alert("There are no questions available for your selected criteria.");
-            return;
-        }
-
-        const numQuestions = Math.min(parseInt(numQuestionsInput.value), questionPool.length);
-        
-        if (randomize) {
-            currentQuizQuestions = [...questionPool].sort(() => Math.random() - 0.5).slice(0, numQuestions);
-        } else {
-            currentQuizQuestions = questionPool.slice(0, numQuestions);
-        }
 
         const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => {
             if (!exhibit.ExhibitFileName) return null;
@@ -514,6 +586,12 @@
 
         await Promise.all(exhibitPromises);
         displayQuiz();
+        
+        if (mode === 'exsim') {
+            startTimer(80 * 60); // 80 minutes
+        } else {
+            startTimer(); // Count up
+        }
     }
 
     function displayQuiz() {
@@ -556,10 +634,9 @@
             let answersHtml = '';
             if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
                 const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio';
-                const choicesToShuffle = q.answerChoices.map((choice, originalIndex) => ({ ...choice, originalIndex }));
-                choicesToShuffle.sort(() => Math.random() - 0.5);
-                choicesToShuffle.forEach(choice => {
-                    answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${choice.originalIndex}"><span class="checkmark"></span></label>`;
+                // MODIFIED: Removed randomization of answer choices. Iterate directly.
+                q.answerChoices.forEach((choice, originalIndex) => {
+                    answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${originalIndex}"><span class="checkmark"></span></label>`;
                 });
             }
 
@@ -588,7 +665,6 @@
             }
             navigatorList.appendChild(navBtn);
             
-            // Add listeners to mark as answered
             const questionDiv = document.getElementById(`q-${index}`);
             const inputs = questionDiv.querySelectorAll('input[type="radio"], input[type="checkbox"], input.fb-input');
             inputs.forEach(input => input.addEventListener('input', () => navBtn.classList.add('answered')));
@@ -596,10 +672,8 @@
         
         questionNavigator.classList.remove('hidden');
         quizContainer.classList.remove('hidden');
-        startTimer();
     }
     
-    // CORRECTED FUNCTION
     function toggleBookmark(questionId, buttonElement, questionIndex) {
         const navBtn = document.querySelector(`.nav-btn[data-index="${questionIndex}"]`);
         const index = bookmarkedQuestions.indexOf(questionId);
@@ -620,7 +694,6 @@
         saveDataToStorage();
     }
 
-    // CORRECTED FUNCTION
     function showResults() {
         clearInterval(quizTimerInterval);
         questionNavigator.classList.add('hidden');
@@ -677,7 +750,7 @@
                 label.style.cursor = 'default';
             }
         });
-        document.getElementById('submitBtn').remove();
+        document.getElementById('submitBtn')?.remove();
 
         const totalTimeSeconds = Math.floor((Date.now() - quizStartTime) / 1000);
         const scorePercentage = Math.round((score / currentQuizQuestions.length) * 100);
@@ -715,13 +788,12 @@
         quizContainer.appendChild(restartBtn);
     }
     
-    // CORRECTED FUNCTION
     function revealAnswers() {
         currentQuizQuestions.forEach((q, index) => {
             const questionElement = document.getElementById(`q-${index}`);
             if (!questionElement) {
                 console.error(`Could not find question element for index ${index}`);
-                return; // Skip if element not found
+                return;
             }
 
             const bookmarkButton = questionElement.querySelector('.bookmark-btn');
