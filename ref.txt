@@ -33,19 +33,12 @@ Example of exhibits being used
         "cat": "WWCN"
     },
 Cat is categories:
-NETSEC - Network Security & Access Control
-
-NETFD - Network Fundamentals
-
-IPNS - IP Networking & Services
-
-ROSW - Routing & Switching
-
-OPTR - Operations & Troubleshooting
-
-WWCN - Wireless & WAN Connectivity
-
-NAPR - Network Automation and Programmability
+Network Fundamentals	NETFD
+Network Access	NETAC
+IP Connectivity	IPCON
+IP Services	IPSVC
+Security Fundamentals	SEC
+Automation & Programmability	AUTO
 
 
 
