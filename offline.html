@@ -3,60 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCNA Practice (Offline Mode)</title>
+    <title>CCNA Practice (Offline)</title>
     
+    <!-- Chart.js Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/dist/date-fns.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <!-- Chart.js Plugin for Data Labels -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.1.0"></script>
+
     <!--
-        OFFLINE VERSION INSTRUCTIONS:
-        This is a self-contained, offline-ready version of the CCNA Practice Tool.
-        To use it, you must embed your question data directly into this file.
-
-        STEP 1: PREPARE YOUR `questions.json` DATA
-        You must modify your JSON data to embed all exhibit content.
-
-        - For Text Exhibits (.txt):
-          Add an "embeddedContent" key to the exhibit object and paste the file's text as its value.
-          
-          BEFORE: { "ExhibitFileName": "/path/to/config.txt" }
-          AFTER:  { "ExhibitFileName": "/path/to/config.txt", "embeddedContent": "hostname R1\n..." }
-
-        - For Image Exhibits (.png, .jpg, etc.):
-          Convert the image to a Base64 Data URL using an online tool. Replace the file path
-          in "ExhibitFileName" with the full Data URL string.
-
-          BEFORE: { "ExhibitFileName": "/path/to/topology.png" }
-          AFTER:  { "ExhibitFileName": "data:image/png;base64,iVBORw0KGgoAAA..." }
-
-        STEP 2: PASTE YOUR DATA BELOW
-        Copy the entire content of your prepared JSON file and paste it inside the
-        square brackets of the `ALL_QUESTIONS_DATA` variable in the script block below.
-        
-        STEP 3: SAVE AND OPEN
-        Save this HTML file and open it in any web browser.
+        OFFLINE MODE LOADER:
+        This script loads the question data from the local 'questions.js' file.
+        This method works when opening the HTML directly from your computer (file:///).
+        The 'defer' attribute ensures this script executes before the main app script runs.
     -->
-
-    <!-- Embedded Chart.js Libraries -->
-    <script>
-        /* Chart.js v4.4.0, MIT license */
-        /* Paste the full content of chart.js here */
-        /* For brevity, I will use a placeholder. You should paste the actual library code. */
-        console.log("Placeholder for Chart.js library code.");
-    </script>
-    <script>
-        /* date-fns v2.29.3, MIT license */
-        /* Paste the full content of date-fns.min.js here */
-        console.log("Placeholder for date-fns.min.js library code.");
-    </script>
-    <script>
-        /* chartjs-adapter-date-fns v3.0.0, MIT license */
-        /* Paste the full content of chartjs-adapter-date-fns.bundle.min.js here */
-        console.log("Placeholder for chartjs-adapter-date-fns.bundle.min.js library code.");
-    </script>
-    <script>
-        /* chartjs-plugin-datalabels v2.1.0, MIT license */
-        /* Paste the full content of chartjs-plugin-datalabels.js here */
-        console.log("Placeholder for chartjs-plugin-datalabels.js library code.");
-    </script>
-
+    <script src="questions.js" defer></script>
 
     <style>
         :root {
@@ -312,29 +274,6 @@
     </div>
 
     <script>
-    // --- EMBEDDED QUESTION DATA ---
-    // PASTE THE ENTIRE CONTENT OF YOUR PREPARED `questions.json` FILE HERE.
-    const ALL_QUESTIONS_DATA = [
-      /*
-        EXAMPLE:
-        {
-            "questionId": "q1",
-            "questionText": "Which command is used to display the routing table on a Cisco router?",
-            "answerType": "MC",
-            "cat": "IPCON",
-            "explanation": "The 'show ip route' command is the standard command to view the IPv4 routing table on a Cisco IOS device.",
-            "answerChoices": [
-                { "Text": "show running-config", "IsCorrect": false },
-                { "Text": "show ip route", "IsCorrect": true },
-                { "Text": "show interfaces", "IsCorrect": false },
-                { "Text": "show ip protocol", "IsCorrect": false }
-            ]
-        }
-      */
-    ];
-    // --- END OF EMBEDDED DATA ---
-
-
     const startBtn = document.getElementById('startBtn');
     const quizContainer = document.getElementById('quizContainer');
     const resultsContainer = document.getElementById('resultsContainer');
@@ -361,18 +300,11 @@
     let quizStartTime;
 
     document.addEventListener('DOMContentLoaded', () => {
-        // NOTE: Make sure the full library code for Chart.js and the plugin are pasted above.
-        // For example: Chart.plugins.register(ChartDataLabels); -> might be different for Chart.js v3+
-        // For Chart.js v3+ and this plugin version, it's auto-registered.
-        // Chart.register(ChartDataLabels); is the correct way for Chart.js v3+
-        if(window.Chart && window.ChartDataLabels) {
-            Chart.register(ChartDataLabels);
-        }
-
+        Chart.register(ChartDataLabels);
         loadDataFromStorage();
         populateCategoryFilter();
         populateCategoryDescriptions();
-        loadQuestions(); // Now loads from embedded data
+        loadQuestions(); // Now loads from the included questions.js file
 
         startBtn.addEventListener('click', loadAndDisplayQuiz);
         modeSelect.addEventListener('change', updateMaxQuestions);
@@ -390,6 +322,183 @@
         });
     });
     
+    function loadQuestions() {
+        startBtn.disabled = true;
+        startBtn.textContent = 'Processing Deck...';
+        try {
+            if (typeof ALL_QUESTIONS_DATA === 'undefined' || !ALL_QUESTIONS_DATA) {
+                throw new Error("Question data not found. Make sure 'questions.js' is in the same folder and correctly formatted.");
+            }
+            allQuestions = normalizeQuestions(ALL_QUESTIONS_DATA);
+            updateMaxQuestions();
+            renderDashboard();
+        } catch (error) {
+            console.error(`Error processing questions from questions.js:`, error);
+            mainScreen.innerHTML = `<p style="color: red; text-align: center;">CRITICAL ERROR: Could not load questions. Check that 'questions.js' exists and is correctly formatted. See console (F12) for details.</p><p style="color: red; text-align: center;">${error.message}</p>`;
+            startBtn.textContent = 'Load Failed';
+        }
+    }
+
+    async function loadAndDisplayQuiz() {
+        const numQuestionsInput = document.getElementById('numQuestions');
+        const randomize = document.getElementById('randomize').checked;
+        const mode = modeSelect.value;
+        const category = categorySelect.value;
+        let questionPool = [];
+        
+        if (mode === 'exsim') {
+            const EXSIM_CONFIG = {
+                total: 100,
+                distribution: {
+                    "NETFD": 0.20, "NETAC": 0.20, "IPCON": 0.25,
+                    "IPSVC": 0.10, "SEC": 0.15, "AUTO": 0.10
+                }
+            };
+            currentQuizQuestions = [];
+            for (const [cat, percentage] of Object.entries(EXSIM_CONFIG.distribution)) {
+                const numToTake = Math.round(EXSIM_CONFIG.total * percentage);
+                let categoryPool = allQuestions.filter(q => q.cat === cat);
+                categoryPool.sort(() => Math.random() - 0.5);
+                currentQuizQuestions.push(...categoryPool.slice(0, numToTake));
+            }
+            currentQuizQuestions.sort(() => Math.random() - 0.5);
+
+        } else {
+            if (mode === 'mistakes') {
+                const mistakeIds = getMistakeQuestionIds();
+                questionPool = allQuestions.filter(q => mistakeIds.includes(q.questionId));
+            } else if (mode === 'flagged') {
+                questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId));
+            } else {
+                questionPool = allQuestions;
+            }
+
+            if (category !== 'ALL') {
+                questionPool = questionPool.filter(q => q.cat === category);
+            }
+
+            if (questionPool.length === 0) {
+                alert("There are no questions available for your selected criteria.");
+                return;
+            }
+            const numQuestions = Math.min(parseInt(numQuestionsInput.value), questionPool.length);
+            
+            if (randomize) {
+                currentQuizQuestions = [...questionPool].sort(() => Math.random() - 0.5).slice(0, numQuestions);
+            } else {
+                currentQuizQuestions = questionPool.slice(0, numQuestions);
+            }
+        }
+
+        const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => {
+            const path = exhibit.ExhibitFileName;
+            if (!path) return null;
+
+            if (path.toLowerCase().endsWith('.txt')) {
+                return fetch(path)
+                    .then(response => {
+                        if (!response.ok) throw new Error(`Failed to fetch ${path}`);
+                        return response.text();
+                    })
+                    .then(text => { exhibit.textContent = text; })
+                    .catch(error => {
+                        console.error('Error fetching text exhibit:', error);
+                        exhibit.textContent = `Error: Could not load exhibit from ${path}.`;
+                    });
+            }
+            return null;
+        })).filter(Boolean);
+
+        await Promise.all(exhibitPromises);
+        displayQuiz();
+        
+        if (mode === 'exsim') {
+            startTimer(80 * 60);
+        } else {
+            startTimer();
+        }
+    }
+
+
+    function displayQuiz() {
+        mainScreen.classList.add('hidden');
+        resultsContainer.innerHTML = '';
+        quizContainer.innerHTML = `<h2>Quiz</h2>`;
+        
+        currentQuizQuestions.forEach((q, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.id = `q-${index}`;
+            questionDiv.dataset.questionId = q.questionId;
+
+            const isBookmarked = bookmarkedQuestions.includes(q.questionId);
+            const bookmarkedClass = isBookmarked ? 'bookmarked' : '';
+
+            let questionTextHtml = `<div class="question-header"><button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this, ${index})">🚩</button><div class="question-text">${index + 1}. <span class="question-category">(${(q.cat || 'N/A')})</span> ${q.questionText}</div></div>`;
+            if (q.answerType === 'FB') {
+                const inputField = `<input type="text" class="fb-input" id="fb-input-${index}" autocomplete="off">`;
+                questionTextHtml = questionTextHtml.replace(/___/g, inputField);
+            }
+            
+            let exhibitsHtml = '';
+            if (q.exhibits && q.exhibits.length > 0) {
+                q.exhibits.forEach(exhibit => {
+                    const path = exhibit.ExhibitFileName;
+                    if (!path) return;
+                    
+                    const filename = path.split('/').pop();
+                    const filenameLower = filename.toLowerCase();
+                    
+                    if (filenameLower.endsWith('.txt')) {
+                        exhibitsHtml += `<div class="exhibit-container"><strong>Exhibit: ${filename}</strong><pre class="question-exhibit-text">${exhibit.textContent || ''}</pre></div>`;
+                    } else if (/\.(png|jpg|jpeg|gif)$/i.test(filenameLower)) {
+                        exhibitsHtml += `<img src="${path}" alt="Exhibit: ${filename}" class="question-exhibit">`;
+                    }
+                });
+            }
+            
+            let answersHtml = '';
+            if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
+                const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio';
+                q.answerChoices.forEach((choice, originalIndex) => {
+                    answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${originalIndex}"><span class="checkmark"></span></label>`;
+                });
+            }
+
+            questionDiv.innerHTML = questionTextHtml + exhibitsHtml + answersHtml;
+            quizContainer.appendChild(questionDiv);
+        });
+
+        const submitButton = document.createElement('button');
+        submitButton.id = 'submitBtn';
+        submitButton.className = 'submit-btn';
+        submitButton.textContent = 'Submit Test';
+        submitButton.addEventListener('click', showResults);
+        quizContainer.appendChild(submitButton);
+
+        const navigatorList = document.getElementById('navigatorList');
+        navigatorList.innerHTML = '';
+        currentQuizQuestions.forEach((q, index) => {
+            const navBtn = document.createElement('button');
+            navBtn.className = 'nav-btn';
+            navBtn.innerHTML = `Q ${index + 1}`;
+            navBtn.dataset.index = index;
+            navBtn.onclick = () => document.getElementById(`q-${index}`).scrollIntoView();
+            if (bookmarkedQuestions.includes(q.questionId)) {
+                navBtn.classList.add('flagged');
+            }
+            navigatorList.appendChild(navBtn);
+            
+            const questionDiv = document.getElementById(`q-${index}`);
+            const inputs = questionDiv.querySelectorAll('input[type="radio"], input[type="checkbox"], input.fb-input');
+            inputs.forEach(input => input.addEventListener('input', () => navBtn.classList.add('answered')));
+        });
+        
+        questionNavigator.classList.remove('hidden');
+        quizContainer.classList.remove('hidden');
+    }
+
+    // THIS IS THE CORRECTED BLOCK OF HELPER FUNCTIONS
     function getChartThemeOptions() {
         const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
@@ -446,7 +555,6 @@
         });
         return Array.from(mistakeIds);
     }
-    
     function updateMaxQuestions() {
         const mode = modeSelect.value;
         const category = categorySelect.value;
@@ -499,7 +607,6 @@
             startBtn.textContent = 'No Questions in Pool';
         }
     }
-    
     function normalizeQuestions(data) {
         return data.map(q => {
             if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) {
@@ -514,25 +621,6 @@
             return q;
         });
     }
-    
-    // MODIFIED: This function now loads from the embedded JS variable instead of fetching a file.
-    function loadQuestions() {
-        startBtn.disabled = true;
-        startBtn.textContent = 'Processing Deck...';
-        try {
-            if (!ALL_QUESTIONS_DATA || ALL_QUESTIONS_DATA.length === 0) {
-                throw new Error("Question data is empty. Please paste your questions into the ALL_QUESTIONS_DATA variable in this file.");
-            }
-            allQuestions = normalizeQuestions(ALL_QUESTIONS_DATA);
-            updateMaxQuestions();
-            renderDashboard();
-        } catch (error) {
-            console.error(`Error processing embedded questions:`, error);
-            mainScreen.innerHTML = `<p style="color: red; text-align: center;">CRITICAL ERROR: Could not process embedded questions. Make sure the JSON data is correctly formatted and pasted. Check the developer console (F12) for more details.</p><p style="color: red; text-align: center;">${error.message}</p>`;
-            startBtn.textContent = 'Load Failed';
-        }
-    }
-    
     function startTimer(durationInSeconds = null) {
         const timerDisplay = document.getElementById('timerDisplay');
         if (!timerDisplay) return;
@@ -569,146 +657,6 @@
             }, 1000);
         }
     }
-    
-    // MODIFIED: This function is now synchronous as exhibit fetching is no longer needed.
-    function loadAndDisplayQuiz() {
-        const numQuestionsInput = document.getElementById('numQuestions');
-        const randomize = document.getElementById('randomize').checked;
-        const mode = modeSelect.value;
-        const category = categorySelect.value;
-        let questionPool = [];
-        
-        if (mode === 'exsim') {
-            const EXSIM_CONFIG = {
-                total: 100,
-                distribution: {
-                    "NETFD": 0.20, "NETAC": 0.20, "IPCON": 0.25,
-                    "IPSVC": 0.10, "SEC": 0.15, "AUTO": 0.10
-                }
-            };
-            currentQuizQuestions = [];
-            for (const [cat, percentage] of Object.entries(EXSIM_CONFIG.distribution)) {
-                const numToTake = Math.round(EXSIM_CONFIG.total * percentage);
-                let categoryPool = allQuestions.filter(q => q.cat === cat);
-                categoryPool.sort(() => Math.random() - 0.5);
-                currentQuizQuestions.push(...categoryPool.slice(0, numToTake));
-            }
-            currentQuizQuestions.sort(() => Math.random() - 0.5);
-
-        } else {
-            if (mode === 'mistakes') {
-                const mistakeIds = getMistakeQuestionIds();
-                questionPool = allQuestions.filter(q => mistakeIds.includes(q.questionId));
-            } else if (mode === 'flagged') {
-                questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId));
-            } else {
-                questionPool = allQuestions;
-            }
-
-            if (category !== 'ALL') {
-                questionPool = questionPool.filter(q => q.cat === category);
-            }
-
-            if (questionPool.length === 0) {
-                alert("There are no questions available for your selected criteria.");
-                return;
-            }
-            const numQuestions = Math.min(parseInt(numQuestionsInput.value), questionPool.length);
-            
-            if (randomize) {
-                currentQuizQuestions = [...questionPool].sort(() => Math.random() - 0.5).slice(0, numQuestions);
-            } else {
-                currentQuizQuestions = questionPool.slice(0, numQuestions);
-            }
-        }
-        
-        // No async exhibit fetching is needed as data is pre-embedded.
-        displayQuiz();
-        
-        if (mode === 'exsim') {
-            startTimer(80 * 60);
-        } else {
-            startTimer();
-        }
-    }
-
-    function displayQuiz() {
-        mainScreen.classList.add('hidden');
-        resultsContainer.innerHTML = '';
-        quizContainer.innerHTML = `<h2>Quiz</h2>`;
-        
-        currentQuizQuestions.forEach((q, index) => {
-            const questionDiv = document.createElement('div');
-            questionDiv.className = 'question';
-            questionDiv.id = `q-${index}`;
-            questionDiv.dataset.questionId = q.questionId;
-
-            const isBookmarked = bookmarkedQuestions.includes(q.questionId);
-            const bookmarkedClass = isBookmarked ? 'bookmarked' : '';
-
-            let questionTextHtml = `<div class="question-header"><button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this, ${index})">🚩</button><div class="question-text">${index + 1}. <span class="question-category">(${(q.cat || 'N/A')})</span> ${q.questionText}</div></div>`;
-            if (q.answerType === 'FB') {
-                const inputField = `<input type="text" class="fb-input" id="fb-input-${index}" autocomplete="off">`;
-                questionTextHtml = questionTextHtml.replace(/___/g, inputField);
-            }
-            
-            // MODIFIED: Render exhibits from embedded data.
-            let exhibitsHtml = '';
-            if (q.exhibits && q.exhibits.length > 0) {
-                q.exhibits.forEach(exhibit => {
-                    // Case 1: Text exhibit with embedded content
-                    if (exhibit.embeddedContent) {
-                        const filename = exhibit.ExhibitFileName ? exhibit.ExhibitFileName.split('/').pop() : 'Text Exhibit';
-                        exhibitsHtml += `<div class="exhibit-container"><strong>Exhibit: ${filename}</strong><pre class="question-exhibit-text">${exhibit.embeddedContent}</pre></div>`;
-                    } 
-                    // Case 2: Image exhibit with embedded Base64 Data URL
-                    else if (exhibit.ExhibitFileName && exhibit.ExhibitFileName.startsWith('data:image')) {
-                         exhibitsHtml += `<img src="${exhibit.ExhibitFileName}" alt="Embedded Exhibit" class="question-exhibit">`;
-                    }
-                });
-            }
-            
-            let answersHtml = '';
-            if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
-                const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio';
-                q.answerChoices.forEach((choice, originalIndex) => {
-                    answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${originalIndex}"><span class="checkmark"></span></label>`;
-                });
-            }
-
-            questionDiv.innerHTML = questionTextHtml + exhibitsHtml + answersHtml;
-            quizContainer.appendChild(questionDiv);
-        });
-
-        const submitButton = document.createElement('button');
-        submitButton.id = 'submitBtn';
-        submitButton.className = 'submit-btn';
-        submitButton.textContent = 'Submit Test';
-        submitButton.addEventListener('click', showResults);
-        quizContainer.appendChild(submitButton);
-
-        const navigatorList = document.getElementById('navigatorList');
-        navigatorList.innerHTML = '';
-        currentQuizQuestions.forEach((q, index) => {
-            const navBtn = document.createElement('button');
-            navBtn.className = 'nav-btn';
-            navBtn.innerHTML = `Q ${index + 1}`;
-            navBtn.dataset.index = index;
-            navBtn.onclick = () => document.getElementById(`q-${index}`).scrollIntoView();
-            if (bookmarkedQuestions.includes(q.questionId)) {
-                navBtn.classList.add('flagged');
-            }
-            navigatorList.appendChild(navBtn);
-            
-            const questionDiv = document.getElementById(`q-${index}`);
-            const inputs = questionDiv.querySelectorAll('input[type="radio"], input[type="checkbox"], input.fb-input');
-            inputs.forEach(input => input.addEventListener('input', () => navBtn.classList.add('answered')));
-        });
-        
-        questionNavigator.classList.remove('hidden');
-        quizContainer.classList.remove('hidden');
-    }
-    
     function toggleBookmark(questionId, buttonElement, questionIndex) {
         const navBtn = document.querySelector(`.nav-btn[data-index="${questionIndex}"]`);
         const index = bookmarkedQuestions.indexOf(questionId);
@@ -728,7 +676,6 @@
         }
         saveDataToStorage();
     }
-
     function showResults() {
         clearInterval(quizTimerInterval);
         questionNavigator.classList.add('hidden');
