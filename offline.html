@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCNA Practice (Offline Mode)</title>
+    
+    <!--
+        OFFLINE VERSION INSTRUCTIONS:
+        This is a self-contained, offline-ready version of the CCNA Practice Tool.
+        To use it, you must embed your question data directly into this file.
+
+        STEP 1: PREPARE YOUR `questions.json` DATA
+        You must modify your JSON data to embed all exhibit content.
+
+        - For Text Exhibits (.txt):
+          Add an "embeddedContent" key to the exhibit object and paste the file's text as its value.
+          
+          BEFORE: { "ExhibitFileName": "/path/to/config.txt" }
+          AFTER:  { "ExhibitFileName": "/path/to/config.txt", "embeddedContent": "hostname R1\n..." }
+
+        - For Image Exhibits (.png, .jpg, etc.):
+          Convert the image to a Base64 Data URL using an online tool. Replace the file path
+          in "ExhibitFileName" with the full Data URL string.
+
+          BEFORE: { "ExhibitFileName": "/path/to/topology.png" }
+          AFTER:  { "ExhibitFileName": "data:image/png;base64,iVBORw0KGgoAAA..." }
+
+        STEP 2: PASTE YOUR DATA BELOW
+        Copy the entire content of your prepared JSON file and paste it inside the
+        square brackets of the `ALL_QUESTIONS_DATA` variable in the script block below.
+        
+        STEP 3: SAVE AND OPEN
+        Save this HTML file and open it in any web browser.
+    -->
+
+    <!-- Embedded Chart.js Libraries -->
+    <script>
+        /* Chart.js v4.4.0, MIT license */
+        /* Paste the full content of chart.js here */
+        /* For brevity, I will use a placeholder. You should paste the actual library code. */
+        console.log("Placeholder for Chart.js library code.");
+    </script>
+    <script>
+        /* date-fns v2.29.3, MIT license */
+        /* Paste the full content of date-fns.min.js here */
+        console.log("Placeholder for date-fns.min.js library code.");
+    </script>
+    <script>
+        /* chartjs-adapter-date-fns v3.0.0, MIT license */
+        /* Paste the full content of chartjs-adapter-date-fns.bundle.min.js here */
+        console.log("Placeholder for chartjs-adapter-date-fns.bundle.min.js library code.");
+    </script>
+    <script>
+        /* chartjs-plugin-datalabels v2.1.0, MIT license */
+        /* Paste the full content of chartjs-plugin-datalabels.js here */
+        console.log("Placeholder for chartjs-plugin-datalabels.js library code.");
+    </script>
+
+
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-color-hover: #2563eb;
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --text-color: #1e293b;
+            --text-muted-color: #64748b;
+            --border-color: #e2e8f0;
+            --success-bg: #dcfce7;
+            --success-border: #86efac;
+            --danger-bg: #fee2e2;
+            --danger-border: #fca5a5;
+            --info-bg: #e0f2fe;
+            --info-border: #7dd3fc;
+            --flag-color: #f59e0b;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --border-radius: 8px;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: "Courier New", Courier, monospace;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #60a5fa;
+                --primary-color-hover: #3b82f6;
+                --bg-color: #0f172a;
+                --surface-color: #1e293b;
+                --text-color: #e2e8f0;
+                --text-muted-color: #94a3b8;
+                --border-color: #334155;
+                --success-bg: #143621;
+                --success-border: #22c55e;
+                --danger-bg: #451a1a;
+                --danger-border: #ef4444;
+                --info-bg: #1e3a8a;
+                --info-border: #60a5fa;
+                --flag-color: #facc15;
+            }
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        #pageWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .container {
+            flex-grow: 1;
+            max-width: 1000px;
+            background: var(--surface-color);
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        
+        #questionNavigator {
+            position: sticky;
+            top: 20px;
+            width: 200px;
+            flex-shrink: 0;
+            height: calc(100vh - 40px);
+            max-height: 850px;
+            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+        #timerDisplay {
+            padding: 15px;
+            text-align: center;
+            font-size: 1.25em;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+        #navigatorList {
+            overflow-y: auto;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .nav-btn {
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: var(--text-muted-color);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .nav-btn:hover {
+            transform: none;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        .nav-btn.answered {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color-hover);
+            color: white;
+            font-weight: bold;
+        }
+        .nav-btn.flagged::after {
+            content: '🚩';
+            font-size: 12px;
+        }
+
+        @media (max-width: 1200px) {
+            #pageWrapper {
+                flex-direction: column;
+            }
+            .container {
+                width: 100%;
+                box-sizing: border-box;
+            }
+            #questionNavigator {
+                position: static;
+                width: 100%;
+                height: auto;
+                max-height: 250px;
+                order: -1;
+                margin-bottom: 20px;
+            }
+            #navigatorList {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+        }
+        
+        h1, h2, h3 { text-align: center; color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
+        h3 { border-bottom: 1px solid var(--border-color); color: var(--text-color); }
+        .options-panel { padding: 25px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius); margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; align-items: end; }
+        .option-group { display: flex; flex-direction: column; }
+        .option-group label { font-weight: 600; margin-bottom: 8px; font-size: 0.9em; color: var(--text-muted-color); }
+        .option-group input[type="number"], .option-group select { padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--surface-color); color: var(--text-color); font-size: 1em; width: 100%; box-sizing: border-box; }
+        .option-group input:disabled, .option-group select:disabled { background-color: var(--border-color); cursor: not-allowed; opacity: 0.7; }
+        .option-group-checkbox { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; }
+        .option-group-checkbox label { margin-bottom: 0; }
+        #dashboardContainer, #categoryDescriptions { margin-bottom: 20px; padding: 20px; border: 1px solid var(--border-color); border-radius: var(--border-radius); background-color: var(--bg-color); }
+        .chart-container { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .chart-wrapper, .chart-summary-container { position: relative; height: auto; }
+        .chart-summary-container { margin-top: 30px; padding: 20px; border: 1px solid var(--border-color); border-radius: var(--border-radius); }
+        #categoryDescriptions summary { font-weight: 600; cursor: pointer; color: var(--primary-color); }
+        #categoryList { list-style-type: none; padding-left: 0; margin-top: 10px; column-count: 2; column-gap: 20px; }
+        #categoryList li { margin-bottom: 8px; font-size: 0.9em; }
+        #categoryList li strong { display: inline-block; width: 65px; font-family: var(--font-mono); color: var(--text-muted-color); }
+        @media (max-width: 600px) { #categoryList { column-count: 1; } }
+        button { background-color: var(--primary-color); color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: 600; transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+        button:hover { background-color: var(--primary-color-hover); transform: translateY(-2px); box-shadow: var(--shadow); }
+        button:disabled { background-color: var(--text-muted-color); cursor: not-allowed; transform: none; box-shadow: none; }
+        .clear-data-btn { background-color: transparent; border: 1px solid var(--danger-border); color: var(--danger-border); font-size: 12px; padding: 5px 10px; margin-top: 15px; font-weight: 500; }
+        .clear-data-btn:hover { background-color: var(--danger-bg); color: var(--danger-border); }
+        .submit-btn { display: block; width: 220px; margin: 30px auto; }
+        .restart-btn { display: block; width: 220px; margin: 40px auto 10px; }
+        .question { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid var(--border-color); }
+        .question-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .question-text { font-weight: 600; font-size: 1.15em; flex-grow: 1; }
+        .question-category { color: var(--text-muted-color); font-weight: 500; font-size: 0.9em; margin-right: 8px; }
+        .bookmark-btn { background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; line-height: 1; opacity: 0.4; color: var(--text-muted-color); transition: opacity 0.2s, transform 0.2s, color 0.2s; }
+        .bookmark-btn.bookmarked { opacity: 1; transform: scale(1.2); color: var(--flag-color); }
+        .exhibit-container { border: 1px solid var(--border-color); border-radius: var(--border-radius); background-color: var(--bg-color); margin: 15px 0; }
+        .exhibit-container strong { display: block; padding: 8px 12px; background-color: var(--border-color); border-bottom: 1px solid var(--border-color); border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); font-size: 0.9em; color: var(--text-muted-color); }
+        .question-exhibit-text { padding: 15px; white-space: pre-wrap; word-wrap: break-word; font-family: var(--font-mono); font-size: 0.9em; margin: 0; background-color: var(--surface-color); border-bottom-left-radius: var(--border-radius); border-bottom-right-radius: var(--border-radius); }
+        .question-exhibit, .question-exhibit-frame { max-width: 100%; height: auto; border-radius: var(--border-radius); margin: 15px 0; border: 1px solid var(--border-color); }
+        .answer-choice { margin-bottom: 12px; padding: 12px; border-radius: 6px; display: block; cursor: pointer; transition: background-color 0.2s; position: relative; padding-left: 40px; border: 1px solid transparent; }
+        .fb-input { padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1em; margin: 0 5px; width: 200px; background-color: var(--surface-color); color: var(--text-color); }
+        .fb-input.correct { border-color: var(--success-border); background-color: var(--success-bg); }
+        .fb-input.incorrect { border-color: var(--danger-border); background-color: var(--danger-bg); }
+        .result-explanation { background-color: var(--info-bg); border-left: 5px solid var(--info-border); padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .correct { background-color: var(--success-bg); border-color: var(--success-border); font-weight: 600; }
+        .incorrect { background-color: var(--danger-bg); border-color: var(--danger-border); }
+        .hidden { display: none; }
+        .answer-choice input { position: absolute; opacity: 0; cursor: pointer; }
+        .checkmark { position: absolute; top: 50%; left: 10px; transform: translateY(-50%); height: 20px; width: 20px; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 4px; }
+        .answer-choice:hover .checkmark { background-color: var(--border-color); }
+        .answer-choice input:checked ~ .checkmark { background-color: var(--primary-color); border-color: var(--primary-color); }
+        .checkmark:after { content: ""; position: absolute; display: none; }
+        .answer-choice input:checked ~ .checkmark:after { display: block; }
+        .answer-choice input[type="checkbox"] ~ .checkmark:after { left: 6px; top: 2px; width: 5px; height: 10px; border: solid white; border-width: 0 3px 3px 0; transform: rotate(45deg); }
+        .answer-choice input[type="radio"] ~ .checkmark { border-radius: 50%; }
+        .answer-choice input[type="radio"] ~ .checkmark:after { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 8px; height: 8px; border-radius: 50%; background: white; }
+    </style>
+</head>
+<body>
+    <div id="pageWrapper">
+        <div class="container">
+            <div id="mainScreen">
+                <h1>CCNA Practice (Offline)</h1>
+                <div id="dashboardContainer">
+                    <h2>Dashboard</h2>
+                    <div class="chart-container">
+                        <div class="chart-wrapper"><canvas id="categoryChart"></canvas></div>
+                        <div class="chart-wrapper"><canvas id="historyChart"></canvas></div>
+                    </div>
+                    <button id="clearDataBtn" class="clear-data-btn">Clear All Study Data</button>
+                </div>
+                
+                <div id="categoryDescriptions">
+                    <details><summary>View CCNA Topic Domains</summary><ul id="categoryList"></ul></details>
+                </div>
+
+                <div id="optionsPanel" class="options-panel">
+                     <div class="option-group">
+                         <label for="modeSelect">Quiz Mode:</label>
+                         <select id="modeSelect">
+                             <option value="standard">Standard</option>
+                             <option value="exsim">ExSim Mode</option>
+                             <option value="mistakes">Practice My Mistakes</option>
+                             <option value="flagged">Review Flagged Questions</option>
+                         </select>
+                     </div>
+                     <div class="option-group"><label for="categorySelect">Filter by Topic:</label><select id="categorySelect"><option value="ALL">All Topics</option></select></div>
+                     <div class="option-group"><label for="numQuestions">Questions:</label><input type="number" id="numQuestions" value="10" min="1"></div>
+                     <div class="option-group-checkbox"><label for="randomize">Randomize:</label><input type="checkbox" id="randomize" checked></div>
+                     <button id="startBtn" disabled>Loading...</button>
+                </div>
+            </div>
+
+            <div id="quizContainer" class="hidden"></div>
+            <div id="resultsContainer"></div>
+        </div>
+        
+        <div id="questionNavigator" class="hidden">
+            <div id="timerDisplay">Time: 00:00</div>
+            <div id="navigatorList"></div>
+        </div>
+    </div>
+
+    <script>
+    // --- EMBEDDED QUESTION DATA ---
+    // PASTE THE ENTIRE CONTENT OF YOUR PREPARED `questions.json` FILE HERE.
+    const ALL_QUESTIONS_DATA = [
+      /*
+        EXAMPLE:
+        {
+            "questionId": "q1",
+            "questionText": "Which command is used to display the routing table on a Cisco router?",
+            "answerType": "MC",
+            "cat": "IPCON",
+            "explanation": "The 'show ip route' command is the standard command to view the IPv4 routing table on a Cisco IOS device.",
+            "answerChoices": [
+                { "Text": "show running-config", "IsCorrect": false },
+                { "Text": "show ip route", "IsCorrect": true },
+                { "Text": "show interfaces", "IsCorrect": false },
+                { "Text": "show ip protocol", "IsCorrect": false }
+            ]
+        }
+      */
+    ];
+    // --- END OF EMBEDDED DATA ---
+
+
+    const startBtn = document.getElementById('startBtn');
+    const quizContainer = document.getElementById('quizContainer');
+    const resultsContainer = document.getElementById('resultsContainer');
+    const mainScreen = document.getElementById('mainScreen');
+    const categorySelect = document.getElementById('categorySelect');
+    const modeSelect = document.getElementById('modeSelect');
+    const questionNavigator = document.getElementById('questionNavigator');
+
+    const CATEGORY_MAP = {
+        "NETFD": "1.0 Network Fundamentals",
+        "NETAC": "2.0 Network Access",
+        "IPCON": "3.0 IP Connectivity",
+        "IPSVC": "4.0 IP Services",
+        "SEC": "5.0 Security Fundamentals",
+        "AUTO": "6.0 Automation & Programmability"
+    };
+
+    let allQuestions = [];
+    let currentQuizQuestions = [];
+    let quizHistory = [];
+    let bookmarkedQuestions = [];
+    let chartInstances = {};
+    let quizTimerInterval;
+    let quizStartTime;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // NOTE: Make sure the full library code for Chart.js and the plugin are pasted above.
+        // For example: Chart.plugins.register(ChartDataLabels); -> might be different for Chart.js v3+
+        // For Chart.js v3+ and this plugin version, it's auto-registered.
+        // Chart.register(ChartDataLabels); is the correct way for Chart.js v3+
+        if(window.Chart && window.ChartDataLabels) {
+            Chart.register(ChartDataLabels);
+        }
+
+        loadDataFromStorage();
+        populateCategoryFilter();
+        populateCategoryDescriptions();
+        loadQuestions(); // Now loads from embedded data
+
+        startBtn.addEventListener('click', loadAndDisplayQuiz);
+        modeSelect.addEventListener('change', updateMaxQuestions);
+        document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            renderDashboard();
+            const summaryCtx = document.getElementById('quizSummaryChart')?.getContext('2d');
+            if (summaryCtx) {
+                const latestAttempt = quizHistory[quizHistory.length - 1];
+                if (latestAttempt) {
+                    renderQuizSummaryChart(latestAttempt);
+                }
+            }
+        });
+    });
+    
+    function getChartThemeOptions() {
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+        const textColor = isDark ? '#e2e8f0' : '#1e293b';
+        return { color: textColor, grid: { color: gridColor }, ticks: { color: textColor } };
+    }
+    
+    function loadDataFromStorage() {
+        quizHistory = JSON.parse(localStorage.getItem('quizHistory')) || [];
+        bookmarkedQuestions = JSON.parse(localStorage.getItem('bookmarkedQuestions')) || [];
+    }
+    function saveDataToStorage() {
+        localStorage.setItem('quizHistory', JSON.stringify(quizHistory));
+        localStorage.setItem('bookmarkedQuestions', JSON.stringify(bookmarkedQuestions));
+    }
+    function clearAllData() {
+        if (confirm("Are you sure? This will erase all your progress.")) {
+            quizHistory = [];
+            bookmarkedQuestions = [];
+            saveDataToStorage();
+            renderDashboard();
+            updateMaxQuestions();
+            alert("All study data has been cleared.");
+        }
+    }
+    function populateCategoryDescriptions() {
+        const listElement = document.getElementById('categoryList');
+        if (!listElement) return;
+        listElement.innerHTML = '';
+        const sortedCategories = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1]));
+        for (const [code, description] of sortedCategories) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<strong>${code}</strong> - ${description}`;
+            listElement.appendChild(listItem);
+        }
+    }
+    function populateCategoryFilter() {
+        const sortedCategories = Object.entries(CATEGORY_MAP).sort((a, b) => a[1].localeCompare(b[1]));
+        for (const [code, description] of sortedCategories) {
+            const option = document.createElement('option');
+            option.value = code;
+            option.textContent = description;
+            categorySelect.appendChild(option);
+        }
+    }
+    function getMistakeQuestionIds() {
+        const mistakeIds = new Set();
+        quizHistory.forEach(quiz => {
+            quiz.questions.forEach(q => {
+                if (!q.isCorrect) {
+                    mistakeIds.add(q.questionId);
+                }
+            });
+        });
+        return Array.from(mistakeIds);
+    }
+    
+    function updateMaxQuestions() {
+        const mode = modeSelect.value;
+        const category = categorySelect.value;
+        const numInput = document.getElementById('numQuestions');
+        const categoryInput = document.getElementById('categorySelect');
+        const randomizeInput = document.getElementById('randomize');
+        let pool = [];
+
+        if (mode === 'exsim') {
+            numInput.value = 100;
+            numInput.disabled = true;
+            categoryInput.disabled = true;
+            randomizeInput.disabled = true;
+            randomizeInput.checked = true;
+            startBtn.disabled = false;
+            startBtn.textContent = 'Start ExSim';
+            return;
+        }
+
+        numInput.disabled = false;
+        categoryInput.disabled = false;
+        randomizeInput.disabled = false;
+
+        if (mode === 'standard') {
+            pool = (category === 'ALL') ? allQuestions : allQuestions.filter(q => q.cat === category);
+        } else if (mode === 'mistakes') {
+            const mistakeIds = getMistakeQuestionIds();
+            pool = allQuestions.filter(q => mistakeIds.includes(q.questionId));
+            if (category !== 'ALL') {
+                pool = pool.filter(q => q.cat === category);
+            }
+        } else if (mode === 'flagged') {
+            pool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId));
+            if (category !== 'ALL') {
+                pool = pool.filter(q => q.cat === category);
+            }
+        }
+
+        numInput.max = pool.length;
+
+        if (pool.length > 0) {
+            if (parseInt(numInput.value) > pool.length || parseInt(numInput.value) === 0) {
+                 numInput.value = Math.min(10, pool.length);
+            }
+            startBtn.disabled = false;
+            startBtn.textContent = 'Start Test';
+        } else {
+            numInput.value = 0;
+            startBtn.disabled = true;
+            startBtn.textContent = 'No Questions in Pool';
+        }
+    }
+    
+    function normalizeQuestions(data) {
+        return data.map(q => {
+            if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) {
+                q.answerChoices = q.rawAnswer.MultipleChoice.map(choice => ({
+                    Text: choice.Text.replace(/ltpgt-open|ltpgt-close/g, '').trim(),
+                    IsCorrect: choice.IsCorrect
+                }));
+            } else if (!q.answerType && q.answerChoices) {
+                const correctCount = q.answerChoices.filter(c => c.IsCorrect).length;
+                q.answerType = correctCount > 1 ? 'MS' : 'MC';
+            }
+            return q;
+        });
+    }
+    
+    // MODIFIED: This function now loads from the embedded JS variable instead of fetching a file.
+    function loadQuestions() {
+        startBtn.disabled = true;
+        startBtn.textContent = 'Processing Deck...';
+        try {
+            if (!ALL_QUESTIONS_DATA || ALL_QUESTIONS_DATA.length === 0) {
+                throw new Error("Question data is empty. Please paste your questions into the ALL_QUESTIONS_DATA variable in this file.");
+            }
+            allQuestions = normalizeQuestions(ALL_QUESTIONS_DATA);
+            updateMaxQuestions();
+            renderDashboard();
+        } catch (error) {
+            console.error(`Error processing embedded questions:`, error);
+            mainScreen.innerHTML = `<p style="color: red; text-align: center;">CRITICAL ERROR: Could not process embedded questions. Make sure the JSON data is correctly formatted and pasted. Check the developer console (F12) for more details.</p><p style="color: red; text-align: center;">${error.message}</p>`;
+            startBtn.textContent = 'Load Failed';
+        }
+    }
+    
+    function startTimer(durationInSeconds = null) {
+        const timerDisplay = document.getElementById('timerDisplay');
+        if (!timerDisplay) return;
+        
+        clearInterval(quizTimerInterval);
+        quizStartTime = Date.now();
+
+        if (durationInSeconds !== null) {
+            let timeRemaining = durationInSeconds;
+            const updateCountdown = () => {
+                if (timeRemaining <= 0) {
+                    clearInterval(quizTimerInterval);
+                    timerDisplay.textContent = 'Time Up!';
+                    alert('Time is up! The quiz will be submitted automatically.');
+                    if (!resultsContainer.innerHTML) {
+                        showResults();
+                    }
+                    return;
+                }
+                const minutes = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
+                const seconds = (timeRemaining % 60).toString().padStart(2, '0');
+                timerDisplay.textContent = `Time Left: ${minutes}:${seconds}`;
+                timeRemaining--;
+            };
+            updateCountdown();
+            quizTimerInterval = setInterval(updateCountdown, 1000);
+        } else {
+            timerDisplay.textContent = 'Time: 00:00';
+            quizTimerInterval = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
+                const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+                const seconds = (elapsed % 60).toString().padStart(2, '0');
+                timerDisplay.textContent = `Time: ${minutes}:${seconds}`;
+            }, 1000);
+        }
+    }
+    
+    // MODIFIED: This function is now synchronous as exhibit fetching is no longer needed.
+    function loadAndDisplayQuiz() {
+        const numQuestionsInput = document.getElementById('numQuestions');
+        const randomize = document.getElementById('randomize').checked;
+        const mode = modeSelect.value;
+        const category = categorySelect.value;
+        let questionPool = [];
+        
+        if (mode === 'exsim') {
+            const EXSIM_CONFIG = {
+                total: 100,
+                distribution: {
+                    "NETFD": 0.20, "NETAC": 0.20, "IPCON": 0.25,
+                    "IPSVC": 0.10, "SEC": 0.15, "AUTO": 0.10
+                }
+            };
+            currentQuizQuestions = [];
+            for (const [cat, percentage] of Object.entries(EXSIM_CONFIG.distribution)) {
+                const numToTake = Math.round(EXSIM_CONFIG.total * percentage);
+                let categoryPool = allQuestions.filter(q => q.cat === cat);
+                categoryPool.sort(() => Math.random() - 0.5);
+                currentQuizQuestions.push(...categoryPool.slice(0, numToTake));
+            }
+            currentQuizQuestions.sort(() => Math.random() - 0.5);
+
+        } else {
+            if (mode === 'mistakes') {
+                const mistakeIds = getMistakeQuestionIds();
+                questionPool = allQuestions.filter(q => mistakeIds.includes(q.questionId));
+            } else if (mode === 'flagged') {
+                questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId));
+            } else {
+                questionPool = allQuestions;
+            }
+
+            if (category !== 'ALL') {
+                questionPool = questionPool.filter(q => q.cat === category);
+            }
+
+            if (questionPool.length === 0) {
+                alert("There are no questions available for your selected criteria.");
+                return;
+            }
+            const numQuestions = Math.min(parseInt(numQuestionsInput.value), questionPool.length);
+            
+            if (randomize) {
+                currentQuizQuestions = [...questionPool].sort(() => Math.random() - 0.5).slice(0, numQuestions);
+            } else {
+                currentQuizQuestions = questionPool.slice(0, numQuestions);
+            }
+        }
+        
+        // No async exhibit fetching is needed as data is pre-embedded.
+        displayQuiz();
+        
+        if (mode === 'exsim') {
+            startTimer(80 * 60);
+        } else {
+            startTimer();
+        }
+    }
+
+    function displayQuiz() {
+        mainScreen.classList.add('hidden');
+        resultsContainer.innerHTML = '';
+        quizContainer.innerHTML = `<h2>Quiz</h2>`;
+        
+        currentQuizQuestions.forEach((q, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.id = `q-${index}`;
+            questionDiv.dataset.questionId = q.questionId;
+
+            const isBookmarked = bookmarkedQuestions.includes(q.questionId);
+            const bookmarkedClass = isBookmarked ? 'bookmarked' : '';
+
+            let questionTextHtml = `<div class="question-header"><button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this, ${index})">🚩</button><div class="question-text">${index + 1}. <span class="question-category">(${(q.cat || 'N/A')})</span> ${q.questionText}</div></div>`;
+            if (q.answerType === 'FB') {
+                const inputField = `<input type="text" class="fb-input" id="fb-input-${index}" autocomplete="off">`;
+                questionTextHtml = questionTextHtml.replace(/___/g, inputField);
+            }
+            
+            // MODIFIED: Render exhibits from embedded data.
+            let exhibitsHtml = '';
+            if (q.exhibits && q.exhibits.length > 0) {
+                q.exhibits.forEach(exhibit => {
+                    // Case 1: Text exhibit with embedded content
+                    if (exhibit.embeddedContent) {
+                        const filename = exhibit.ExhibitFileName ? exhibit.ExhibitFileName.split('/').pop() : 'Text Exhibit';
+                        exhibitsHtml += `<div class="exhibit-container"><strong>Exhibit: ${filename}</strong><pre class="question-exhibit-text">${exhibit.embeddedContent}</pre></div>`;
+                    } 
+                    // Case 2: Image exhibit with embedded Base64 Data URL
+                    else if (exhibit.ExhibitFileName && exhibit.ExhibitFileName.startsWith('data:image')) {
+                         exhibitsHtml += `<img src="${exhibit.ExhibitFileName}" alt="Embedded Exhibit" class="question-exhibit">`;
+                    }
+                });
+            }
+            
+            let answersHtml = '';
+            if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
+                const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio';
+                q.answerChoices.forEach((choice, originalIndex) => {
+                    answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${originalIndex}"><span class="checkmark"></span></label>`;
+                });
+            }
+
+            questionDiv.innerHTML = questionTextHtml + exhibitsHtml + answersHtml;
+            quizContainer.appendChild(questionDiv);
+        });
+
+        const submitButton = document.createElement('button');
+        submitButton.id = 'submitBtn';
+        submitButton.className = 'submit-btn';
+        submitButton.textContent = 'Submit Test';
+        submitButton.addEventListener('click', showResults);
+        quizContainer.appendChild(submitButton);
+
+        const navigatorList = document.getElementById('navigatorList');
+        navigatorList.innerHTML = '';
+        currentQuizQuestions.forEach((q, index) => {
+            const navBtn = document.createElement('button');
+            navBtn.className = 'nav-btn';
+            navBtn.innerHTML = `Q ${index + 1}`;
+            navBtn.dataset.index = index;
+            navBtn.onclick = () => document.getElementById(`q-${index}`).scrollIntoView();
+            if (bookmarkedQuestions.includes(q.questionId)) {
+                navBtn.classList.add('flagged');
+            }
+            navigatorList.appendChild(navBtn);
+            
+            const questionDiv = document.getElementById(`q-${index}`);
+            const inputs = questionDiv.querySelectorAll('input[type="radio"], input[type="checkbox"], input.fb-input');
+            inputs.forEach(input => input.addEventListener('input', () => navBtn.classList.add('answered')));
+        });
+        
+        questionNavigator.classList.remove('hidden');
+        quizContainer.classList.remove('hidden');
+    }
+    
+    function toggleBookmark(questionId, buttonElement, questionIndex) {
+        const navBtn = document.querySelector(`.nav-btn[data-index="${questionIndex}"]`);
+        const index = bookmarkedQuestions.indexOf(questionId);
+
+        if (index > -1) {
+            bookmarkedQuestions.splice(index, 1);
+            buttonElement.classList.remove('bookmarked');
+            if (navBtn) {
+                navBtn.classList.remove('flagged');
+            }
+        } else {
+            bookmarkedQuestions.push(questionId);
+            buttonElement.classList.add('bookmarked');
+            if (navBtn) {
+                navBtn.classList.add('flagged');
+            }
+        }
+        saveDataToStorage();
+    }
+
+    function showResults() {
+        clearInterval(quizTimerInterval);
+        questionNavigator.classList.add('hidden');
+
+        let score = 0;
+        const quizAttempt = {
+            timestamp: Date.now(),
+            score: 0,
+            total: currentQuizQuestions.length,
+            questions: []
+        };
+        
+        currentQuizQuestions.forEach((q, index) => {
+            let isQuestionCorrect = false;
+            
+            if (q.answerType === 'FB') {
+                const userInput = document.querySelector(`#fb-input-${index}`);
+                if (userInput) {
+                    const userValue = userInput.value.trim().toLowerCase();
+                    const correctAnswers = (q.blanks && q.blanks[0] ? q.blanks[0] : "").split(',').map(ans => ans.trim().toLowerCase());
+                    if (userValue && correctAnswers.includes(userValue)) {
+                        isQuestionCorrect = true;
+                    }
+                }
+            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
+                const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`));
+                const userAnswerIndices = userChoices.map(input => parseInt(input.value));
+                const correctAnswerIndices = q.answerChoices.map((choice, i) => choice.IsCorrect ? i : -1).filter(i => i !== -1);
+                
+                isQuestionCorrect = userAnswerIndices.length === correctAnswerIndices.length && 
+                                    userAnswerIndices.sort().toString() === correctAnswerIndices.sort().toString();
+            }
+            
+            if (isQuestionCorrect) {
+                score++;
+            }
+            quizAttempt.questions.push({
+                questionId: q.questionId,
+                isCorrect: isQuestionCorrect,
+                category: q.cat
+            });
+        });
+
+        quizAttempt.score = score;
+        quizHistory.push(quizAttempt);
+        saveDataToStorage();
+        renderDashboard();
+
+        const answerInputs = quizContainer.querySelectorAll('.answer-choice input, .fb-input');
+        answerInputs.forEach(input => {
+            input.disabled = true;
+            const label = input.closest('label.answer-choice');
+            if (label) {
+                label.style.cursor = 'default';
+            }
+        });
+        document.getElementById('submitBtn')?.remove();
+
+        const totalTimeSeconds = Math.floor((Date.now() - quizStartTime) / 1000);
+        const scorePercentage = currentQuizQuestions.length > 0 ? Math.round((score / currentQuizQuestions.length) * 100) : 0;
+        const scoreHeader = document.createElement('h2');
+        scoreHeader.innerHTML = `Your Score: ${score} out of ${currentQuizQuestions.length} (${scorePercentage}%) <br> <small style="font-weight: 500; color: var(--text-muted-color);">Time Taken: ${Math.floor(totalTimeSeconds / 60)}m ${totalTimeSeconds % 60}s</small>`;
+        resultsContainer.appendChild(scoreHeader);
+        
+        const summaryContainer = document.createElement('div');
+        summaryContainer.className = 'chart-summary-container';
+        summaryContainer.innerHTML = `<h3>This Quiz Performance</h3><div class="chart-wrapper"><canvas id="quizSummaryChart"></canvas></div>`;
+        resultsContainer.appendChild(summaryContainer);
+        
+        const uniqueCategoriesInQuiz = new Set(quizAttempt.questions.map(q => q.category || 'N/A'));
+        const numCategories = uniqueCategoriesInQuiz.size;
+        const dynamicHeight = Math.max(150, (numCategories * 40) + 80);
+        const chartWrapper = summaryContainer.querySelector('.chart-wrapper');
+        if (chartWrapper) {
+            chartWrapper.style.height = `${dynamicHeight}px`;
+        }
+        
+        renderQuizSummaryChart(quizAttempt);
+        revealAnswers();
+        
+        const restartBtn = document.createElement('button');
+        restartBtn.id = 'restartBtn';
+        restartBtn.className = 'restart-btn';
+        restartBtn.textContent = 'Take Another Test';
+        restartBtn.onclick = () => {
+            mainScreen.classList.remove('hidden');
+            quizContainer.innerHTML = '';
+            quizContainer.classList.add('hidden');
+            resultsContainer.innerHTML = '';
+            updateMaxQuestions();
+        };
+        quizContainer.appendChild(restartBtn);
+    }
+    
+    function revealAnswers() {
+        currentQuizQuestions.forEach((q, index) => {
+            const questionElement = document.getElementById(`q-${index}`);
+            if (!questionElement) {
+                console.error(`Could not find question element for index ${index}`);
+                return;
+            }
+
+            const bookmarkButton = questionElement.querySelector('.bookmark-btn');
+            if (bookmarkButton) {
+                bookmarkButton.style.display = 'none';
+            }
+
+            if (q.answerType === 'FB') {
+                const userInput = questionElement.querySelector(`#fb-input-${index}`);
+                if (!userInput) return;
+
+                const userValue = userInput.value.trim().toLowerCase();
+                const correctAnswers = (q.blanks && q.blanks[0] ? q.blanks[0] : "").split(',').map(ans => ans.trim().toLowerCase());
+
+                if (userValue && correctAnswers.includes(userValue)) {
+                    userInput.classList.add('correct');
+                } else {
+                    userInput.classList.add('incorrect');
+                }
+                
+                const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0] || 'N/A'}<br><br>${q.explanation || 'No explanation provided.'}`;
+                questionElement.insertAdjacentHTML('beforeend', `<div class="result-explanation">${explanationText}</div>`);
+
+            } else if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
+                const userChoices = Array.from(document.querySelectorAll(`input[name="question-${index}"]:checked`));
+                const userAnswerIndices = userChoices.map(input => parseInt(input.value));
+                const allChoiceLabels = questionElement.querySelectorAll('.answer-choice');
+
+                allChoiceLabels.forEach((label) => {
+                    const choiceInput = label.querySelector('input');
+                    if (!choiceInput) return;
+
+                    const originalChoiceIndex = parseInt(choiceInput.value);
+                    const isCorrectChoice = q.answerChoices[originalChoiceIndex].IsCorrect;
+                    const wasSelectedByUser = userAnswerIndices.includes(originalChoiceIndex);
+
+                    if (isCorrectChoice) {
+                        label.classList.add('correct');
+                    } else if (wasSelectedByUser && !isCorrectChoice) {
+                        label.classList.add('incorrect');
+                    }
+                });
+                
+                const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`;
+                questionElement.insertAdjacentHTML('beforeend', explanationHtml);
+            }
+        });
+    }
+    
+    function renderDashboard() {
+        renderCategoryChart();
+        renderHistoryChart();
+    }
+
+    function renderQuizSummaryChart(quizAttempt) {
+        const ctx = document.getElementById('quizSummaryChart')?.getContext('2d');
+        if (!ctx) return;
+        if (chartInstances.summary) {
+            chartInstances.summary.destroy();
+        }
+        const categoryStats = {};
+        quizAttempt.questions.forEach(qResult => {
+            const category = qResult.category || 'N/A';
+            if (!categoryStats[category]) {
+                categoryStats[category] = { correct: 0, total: 0 };
+            }
+            categoryStats[category].total++;
+            if (qResult.isCorrect) {
+                categoryStats[category].correct++;
+            }
+        });
+        
+        const includedCategories = Object.keys(categoryStats).sort((a,b) => (CATEGORY_MAP[a] || a).localeCompare(CATEGORY_MAP[b] || b));
+        const labels = includedCategories.map(cat => CATEGORY_MAP[cat] || cat);
+        const data = includedCategories.map(cat => {
+            const stats = categoryStats[cat];
+            return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
+        });
+
+        const themeOptions = getChartThemeOptions();
+        chartInstances.summary = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: labels, datasets: [{ label: '% Correct', data: data, backgroundColor: 'rgba(34, 197, 94, 0.7)', borderColor: 'rgb(34, 197, 94)', borderWidth: 1 }] },
+            options: { indexAxis: 'y', scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } }, plugins: { legend: { display: false }, title: { display: false }, datalabels: { anchor: 'end', align: 'end', color: themeOptions.color, font: { weight: 'bold' }, formatter: (v) => v.toFixed(0) + '%' } }, responsive: true, maintainAspectRatio: false }
+        });
+    }
+    
+    function renderCategoryChart() {
+        const ctx = document.getElementById('categoryChart')?.getContext('2d');
+        if (!ctx) return;
+        if (chartInstances.category) {
+            chartInstances.category.destroy();
+        }
+        const categoryStats = {};
+        for(const code in CATEGORY_MAP) {
+            categoryStats[code] = { correct: 0, total: 0 };
+        }
+        quizHistory.forEach(quiz => {
+            quiz.questions.forEach(qResult => {
+                const questionData = allQuestions.find(q => q.questionId === qResult.questionId);
+                if (questionData && questionData.cat && categoryStats[questionData.cat]) {
+                    categoryStats[questionData.cat].total++;
+                    if(qResult.isCorrect) {
+                        categoryStats[questionData.cat].correct++;
+                    }
+                }
+            });
+        });
+
+        const sortedCategoryCodes = Object.keys(CATEGORY_MAP).sort((a,b) => CATEGORY_MAP[a].localeCompare(CATEGORY_MAP[b])); 
+        const labels = sortedCategoryCodes.map(code => CATEGORY_MAP[code]); 
+        const data = sortedCategoryCodes.map(code => {
+            const stats = categoryStats[code];
+            return stats.total > 0 ? (stats.correct / stats.total) * 100 : 0;
+        });
+        
+        const themeOptions = getChartThemeOptions();
+        chartInstances.category = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: labels, datasets: [{ label: '% Correct by Topic', data: data, backgroundColor: 'rgba(59, 130, 246, 0.7)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 1 }] }, 
+            options: {
+                indexAxis: 'y',
+                scales: { x: { ...themeOptions, beginAtZero: true, max: 100, ticks: { ...themeOptions.ticks, callback: (v) => v + "%" } }, y: { ...themeOptions } },
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Overall Performance by Topic', color: themeOptions.color },
+                    datalabels: {
+                        anchor: 'end',
+                        align: (context) => (context.dataset.data[context.dataIndex] > 90 ? 'start' : 'end'),
+                        color: (context) => (context.dataset.data[context.dataIndex] > 90 ? (themeOptions.color === '#e2e8f0' ? '#1e293b' : 'white') : themeOptions.color),
+                        font: { weight: 'bold' },
+                        formatter: (value, context) => {
+                            const code = sortedCategoryCodes[context.dataIndex];
+                            const stats = categoryStats[code];
+                            if (stats.total === 0) return '';
+                            return `${value.toFixed(0)}% (${stats.correct}/${stats.total})`;
+                        },
+                        offset: 4,
+                        padding: 0
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+
+    function renderHistoryChart() {
+        const ctx = document.getElementById('historyChart')?.getContext('2d');
+        if (!ctx) return;
+        if (chartInstances.history) {
+            chartInstances.history.destroy();
+        }
+        const chartData = quizHistory.map(quiz => ({ x: quiz.timestamp, y: quiz.total > 0 ? (quiz.score / quiz.total) * 100 : 0 }));
+        const themeOptions = getChartThemeOptions();
+        chartInstances.history = new Chart(ctx, {
+            type: 'line',
+            data: { datasets: [{ label: 'Quiz Score %', data: chartData, fill: false, borderColor: 'rgb(34, 197, 94)', tension: 0.1 }] },
+            options: {
+                scales: { x: { type: 'time', time: { unit: 'day', tooltipFormat: 'PP' }, title: { display: true, text: 'Date', color: themeOptions.color }, ...themeOptions }, y: { beginAtZero: true, max: 100, title: { display: true, text: 'Score %', color: themeOptions.color }, ...themeOptions } },
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Score Over Time', color: themeOptions.color },
+                    datalabels: { align: 'top', backgroundColor: 'rgba(34, 197, 94, 0.7)', borderRadius: 4, color: 'white', font: { size: 10, weight: 'bold' }, formatter: (v) => Math.round(v.y) + '%', display: 'auto' }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+    </script>
+</body>
+</html>
