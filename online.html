@@ -926,23 +926,29 @@
     let quizTimerInterval;
     let quizStartTime;
     
-    // --- NEW: Centralized function to manage UI views ---
+    // --- FIX: Centralized function to manage UI views ---
     function setUIView(view) {
         if (view === 'quiz') {
             mainScreen.classList.add('hidden');
             quizContainer.classList.remove('hidden');
             questionNavigator.classList.remove('hidden');
+            resultsContainer.innerHTML = '';
         } else { // 'main' view
             mainScreen.classList.remove('hidden');
             quizContainer.classList.add('hidden');
-            resultsContainer.innerHTML = ''; // Clear old results
             questionNavigator.classList.add('hidden');
+
+            // Clean up content from the previous quiz to prevent lingering elements
+            quizContainer.innerHTML = ''; 
+            resultsContainer.innerHTML = '';
+            document.getElementById('navigatorList').innerHTML = ''; 
+            document.getElementById('timerDisplay').textContent = 'Time: 00:00';
         }
     }
 
 
     document.addEventListener('DOMContentLoaded', () => {
-        // --- MODIFIED: Set initial view on page load ---
+        // --- FIX: Set initial view on page load to guarantee correct state ---
         setUIView('main');
         
         Chart.register(ChartDataLabels);
@@ -1055,7 +1061,6 @@
             return;
         }
 
-        // Re-enable controls if not in ExSim mode
         numInput.disabled = false;
         categoryInput.disabled = false;
         randomizeInput.disabled = false;
@@ -1135,14 +1140,13 @@
         quizStartTime = Date.now();
 
         if (durationInSeconds !== null) {
-            // Countdown (ExSim Mode)
             let timeRemaining = durationInSeconds;
             const updateCountdown = () => {
                 if (timeRemaining <= 0) {
                     clearInterval(quizTimerInterval);
                     timerDisplay.textContent = 'Time Up!';
                     alert('Time is up! The quiz will be submitted automatically.');
-                    if (!resultsContainer.innerHTML) { // Prevent double submission
+                    if (!resultsContainer.innerHTML) { 
                         showResults();
                     }
                     return;
@@ -1152,10 +1156,9 @@
                 timerDisplay.textContent = `Time Left: ${minutes}:${seconds}`;
                 timeRemaining--;
             };
-            updateCountdown(); // Initial call
+            updateCountdown(); 
             quizTimerInterval = setInterval(updateCountdown, 1000);
         } else {
-            // Count-up (Standard modes)
             timerDisplay.textContent = 'Time: 00:00';
             quizTimerInterval = setInterval(() => {
                 const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
@@ -1190,7 +1193,7 @@
             }
             currentQuizQuestions.sort(() => Math.random() - 0.5);
 
-        } else { // Standard, Mistakes, Flagged modes
+        } else { 
             if (mode === 'mistakes') {
                 const mistakeIds = getMistakeQuestionIds();
                 questionPool = allQuestions.filter(q => mistakeIds.includes(q.questionId));
@@ -1240,15 +1243,16 @@
         displayQuiz();
         
         if (mode === 'exsim') {
-            startTimer(80 * 60); // 80 minutes
+            startTimer(80 * 60);
         } else {
-            startTimer(); // Count up
+            startTimer();
         }
     }
 
     function displayQuiz() {
-        // --- MODIFIED: Use the new view management function ---
+        // --- FIX: Use the central function to set the view correctly ---
         setUIView('quiz');
+        
         quizContainer.innerHTML = `<h2>Quiz</h2>`;
         
         currentQuizQuestions.forEach((q, index) => {
@@ -1302,7 +1306,6 @@
         submitButton.addEventListener('click', showResults);
         quizContainer.appendChild(submitButton);
 
-        // Navigator setup
         const navigatorList = document.getElementById('navigatorList');
         navigatorList.innerHTML = '';
         currentQuizQuestions.forEach((q, index) => {
@@ -1344,7 +1347,7 @@
 
     function showResults() {
         clearInterval(quizTimerInterval);
-        questionNavigator.classList.add('hidden'); // Hide navigator, but keep quiz container for results
+        questionNavigator.classList.add('hidden'); // Hide navigator for the results display
 
         let score = 0;
         const quizAttempt = {
@@ -1427,7 +1430,7 @@
         restartBtn.className = 'restart-btn';
         restartBtn.textContent = 'Take Another Test';
         restartBtn.onclick = () => {
-            // --- MODIFIED: Use the new view management function ---
+            // --- FIX: Use the central function to reset the entire UI ---
             setUIView('main');
             updateMaxQuestions();
         };
