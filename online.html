@@ -925,10 +925,25 @@
     let chartInstances = {};
     let quizTimerInterval;
     let quizStartTime;
+    
+    // --- NEW: Centralized function to manage UI views ---
+    function setUIView(view) {
+        if (view === 'quiz') {
+            mainScreen.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            questionNavigator.classList.remove('hidden');
+        } else { // 'main' view
+            mainScreen.classList.remove('hidden');
+            quizContainer.classList.add('hidden');
+            resultsContainer.innerHTML = ''; // Clear old results
+            questionNavigator.classList.add('hidden');
+        }
+    }
+
 
     document.addEventListener('DOMContentLoaded', () => {
-        // FIX: Always ensure the navigator is hidden when the page first loads.
-        questionNavigator.classList.add('hidden');
+        // --- MODIFIED: Set initial view on page load ---
+        setUIView('main');
         
         Chart.register(ChartDataLabels);
         loadDataFromStorage();
@@ -1232,8 +1247,8 @@
     }
 
     function displayQuiz() {
-        mainScreen.classList.add('hidden');
-        resultsContainer.innerHTML = '';
+        // --- MODIFIED: Use the new view management function ---
+        setUIView('quiz');
         quizContainer.innerHTML = `<h2>Quiz</h2>`;
         
         currentQuizQuestions.forEach((q, index) => {
@@ -1271,7 +1286,6 @@
             let answersHtml = '';
             if ((q.answerType === 'MC' || q.answerType === 'MS') && q.answerChoices) {
                 const inputType = q.answerType === 'MS' ? 'checkbox' : 'radio';
-                // MODIFIED: Removed randomization of answer choices. Iterate directly.
                 q.answerChoices.forEach((choice, originalIndex) => {
                     answersHtml += `<label class="answer-choice">${choice.Text}<input type="${inputType}" name="question-${index}" value="${originalIndex}"><span class="checkmark"></span></label>`;
                 });
@@ -1306,9 +1320,6 @@
             const inputs = questionDiv.querySelectorAll('input[type="radio"], input[type="checkbox"], input.fb-input');
             inputs.forEach(input => input.addEventListener('input', () => navBtn.classList.add('answered')));
         });
-        
-        questionNavigator.classList.remove('hidden');
-        quizContainer.classList.remove('hidden');
     }
     
     function toggleBookmark(questionId, buttonElement, questionIndex) {
@@ -1333,7 +1344,7 @@
 
     function showResults() {
         clearInterval(quizTimerInterval);
-        questionNavigator.classList.add('hidden');
+        questionNavigator.classList.add('hidden'); // Hide navigator, but keep quiz container for results
 
         let score = 0;
         const quizAttempt = {
@@ -1416,11 +1427,8 @@
         restartBtn.className = 'restart-btn';
         restartBtn.textContent = 'Take Another Test';
         restartBtn.onclick = () => {
-            mainScreen.classList.remove('hidden');
-            quizContainer.innerHTML = '';
-            quizContainer.classList.add('hidden');
-            resultsContainer.innerHTML = '';
-            questionNavigator.classList.add('hidden');
+            // --- MODIFIED: Use the new view management function ---
+            setUIView('main');
             updateMaxQuestions();
         };
         quizContainer.appendChild(restartBtn);
