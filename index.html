@@ -67,7 +67,7 @@
         
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 20px auto;
             background: var(--surface-color);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-lg);
@@ -75,6 +75,10 @@
             overflow: hidden;
             backdrop-filter: blur(10px);
             position: relative;
+        }
+
+        .intro-container {
+            padding: 40px 20px;
         }
 
         .intro-text { 
@@ -110,11 +114,21 @@
             margin-bottom: 10px; 
         }
 
-        .comparison-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 20px; 
-            margin-bottom: 40px; 
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+            align-items: stretch;
+        }
+
+        .vs-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
         }
 
         .comparison-card { 
@@ -129,6 +143,7 @@
             margin-top:0; 
             border: none; 
             padding-bottom: 5px; 
+            text-align: center; /* FIX: Added text-align to center the card titles */
         }
 
         .comparison-card .purpose { 
@@ -177,6 +192,83 @@
             font-weight: 300;
             position: relative;
             z-index: 1;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .button:hover::before {
+            left: 100%;
+        }
+
+        .button:not(.secondary) {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .button:not(.secondary):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+        }
+
+        .button:not(.secondary):active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .button.secondary {
+            background: var(--surface-color);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .button.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .button.secondary:active {
+            transform: translateY(0);
+            box-shadow: var(--shadow);
         }
 
         .table-container {
@@ -269,20 +361,12 @@
             box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
         }
 
-
-
-        .check {
-            color: inherit;
-        }
-
-        .cross {
-            color: inherit;
-        }
+        .check { color: inherit; }
+        .cross { color: inherit; }
         
         .comparison-table tbody tr {
             transition: all 0.3s ease;
         }
-
 
         h1, h2, h3 { 
             color: var(--primary-color); 
@@ -299,7 +383,6 @@
             color: var(--text-color); 
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
@@ -314,6 +397,18 @@
                 font-size: 2rem;
             }
             
+            .action-buttons {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 25px;
+            }
+
+            .button {
+                min-width: 250px;
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            
             .table-container {
                 padding: 20px 15px;
             }
@@ -323,24 +418,27 @@
                 padding: 15px 12px;
                 font-size: 0.9rem;
             }
-            
 
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            .vs-separator {
+                display: none;
+            }
         }
 
-        /* Animation for table load */
+        @media (max-width: 480px) {
+            .button {
+                min-width: 100%;
+                padding: 12px 24px;
+            }
+        }
+
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-
-        /* Scroll indicator */
         .scroll-indicator {
             position: fixed;
             top: 0;
@@ -359,10 +457,35 @@
     <div class="scroll-indicator"></div>
     
     <div class="container">
-        
-        <h1 style="font-size: 2.8em; text-align: center; margin-bottom: 10px;">Welcome to CCNA-Grind</h1>
-        <p class="intro-text">The Ultimate Practice Engine for Your CCNA Journey</p>
+        <div class="intro-container">
+            <h1 style="font-size: 2.8em; text-align: center; margin-bottom: 10px;">Welcome to CCNA-Grind</h1>
+            <p class="intro-text">The Ultimate Practice Engine for Your CCNA Journey</p>
+            <div class="action-buttons">
+                <a href="online.html" id="btn-online" class="button">Practice Online</a>
+                <a href="https://github.com/Orionband/CCNA-Grind/archive/refs/heads/main.zip" id="btn-download" class="button secondary">Download for Offline Use</a>
+                <a href="offline.html" id="btn-offline" class="button">Practice Offline</a>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnOnline = document.getElementById('btn-online');
+            const btnOffline = document.getElementById('btn-offline');
+            const btnDownload = document.getElementById('btn-download');
+            const isOfflineVersion = window.location.protocol === 'file:';
+
+            if (isOfflineVersion) {
+                btnOnline.style.display = 'none';
+                btnDownload.style.display = 'none';
+                btnOffline.style.display = 'inline-flex';
+            } else {
+                btnOnline.style.display = 'inline-flex';
+                btnDownload.style.display = 'inline-flex';
+                btnOffline.style.display = 'none';
+            }
+        });
+    </script>
         <div class="section-box">
             <h2 style="margin-top:0; text-align:center;">Sharpen Your Skills. Master the Concepts.</h2>
             <p style="text-align:center; max-width: 800px; margin: 0 auto 30px;">Reading books and watching videos is essential, but true mastery comes from active recall and consistent practice. CCNA-Grind is a powerful tool designed to bridge the gap between learning and knowing, providing you with the features you need to drill down on topics, track your progress, and build unshakable confidence.</p>
@@ -384,6 +507,9 @@
                     <div class="purpose">Your Daily Trainer</div>
                     <p>Use for continuous practice, knowledge reinforcement, and targeted drilling on weak topics.</p>
                 </div>
+                
+                <div class="vs-separator">VS</div>
+                
                 <div class="comparison-card">
                     <h3>Boson ExSim-Max</h3>
                     <div class="purpose">Your Final Exam Simulator</div>
@@ -467,5 +593,6 @@
             }
         });
     </script>
+
 </body>
 </html>
