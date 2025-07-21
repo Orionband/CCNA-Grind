@@ -927,6 +927,9 @@
     let quizStartTime;
 
     document.addEventListener('DOMContentLoaded', () => {
+        // FIX: Always ensure the navigator is hidden when the page first loads.
+        questionNavigator.classList.add('hidden');
+        
         Chart.register(ChartDataLabels);
         loadDataFromStorage();
         populateCategoryFilter();
@@ -1417,7 +1420,6 @@
             quizContainer.innerHTML = '';
             quizContainer.classList.add('hidden');
             resultsContainer.innerHTML = '';
-            // FIX: Explicitly hide the navigator when returning to the main screen.
             questionNavigator.classList.add('hidden');
             updateMaxQuestions();
         };
