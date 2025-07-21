@@ -269,11 +269,7 @@
             box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
         }
 
-        .check-container:hover,
-        .cross-container:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        }
+
 
         .check {
             color: inherit;
@@ -287,15 +283,6 @@
             transition: all 0.3s ease;
         }
 
-        .comparison-table tbody tr:hover {
-            background: var(--bg-color);
-            transform: scale(1.01);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .comparison-table tbody tr:hover td {
-            border-color: var(--primary-color);
-        }
 
         h1, h2, h3 { 
             color: var(--primary-color); 
@@ -337,10 +324,7 @@
                 font-size: 0.9rem;
             }
             
-            .comparison-table td:first-child {
-                position: static;
-                background: var(--surface-color);
-            }
+
         }
 
         /* Animation for table load */
@@ -355,19 +339,6 @@
             }
         }
 
-        .comparison-table tbody tr {
-            animation: fadeInUp 0.6s ease forwards;
-            opacity: 0;
-        }
-
-        .comparison-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
-        .comparison-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
-        .comparison-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
-        .comparison-table tbody tr:nth-child(4) { animation-delay: 0.4s; }
-        .comparison-table tbody tr:nth-child(5) { animation-delay: 0.5s; }
-        .comparison-table tbody tr:nth-child(6) { animation-delay: 0.6s; }
-        .comparison-table tbody tr:nth-child(7) { animation-delay: 0.7s; }
-        .comparison-table tbody tr:nth-child(8) { animation-delay: 0.8s; }
 
         /* Scroll indicator */
         .scroll-indicator {
