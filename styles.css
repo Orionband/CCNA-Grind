@@ -1,36 +1,52 @@
 ﻿:root {
-    --primary-color: #6366f1;
-    --primary-color-hover: #4f46e5;
-    --primary-color-light: #a5b4fc;
-    --accent-color: #06b6d4;
-    --accent-color-hover: #0891b2;
-    --bg-color: #fafbfc;
-    --bg-gradient: linear-gradient(135deg, #fafbfc 0%, #f1f5f9 100%);
+    /* Yellow/Amber Theme Palette */
+    --primary-color: #d97706;       /* Amber 600 - Dark enough for white text */
+    --primary-color-hover: #b45309; /* Amber 700 */
+    --primary-color-light: #fcd34d; /* Amber 300 */
+    --accent-color: #f59e0b;        /* Amber 500 */
+    --accent-color-hover: #d97706;
+    
+    --bg-color: #fffbeb;            /* Amber 50 (Very light yellow tint) */
+    --bg-gradient: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    
     --surface-color: #ffffff;
     --surface-elevated: #ffffff;
-    --text-color: #0f172a;
-    --text-muted-color: #64748b;
-    --border-color: #e2e8f0;
+    --text-color: #451a03;          /* Dark Brown/Black for contrast on yellow */
+    --text-muted-color: #78350f;    /* Muted Brown */
+    --border-color: #fde68a;        /* Amber 200 */
+    
     --success-bg: #ecfdf5;
     --success-border: #10b981;
     --success-color: #065f46;
+    
     --danger-bg: #fef2f2;
     --danger-border: #ef4444;
     --danger-color: #991b1b;
-    --info-bg: #eff6ff;
-    --info-border: #3b82f6;
-    --info-color: #1e40af;
+    
+    /* Info boxes now match the yellow theme */
+    --info-bg: #fff7ed;             /* Orange 50 */
+    --info-border: #fbbf24;         /* Amber 400 */
+    --info-color: #9a3412;          /* Orange 800 */
+    
     --warning-bg: #fffbeb;
     --warning-border: #f59e0b;
     --warning-color: #92400e;
-    --flag-color: #f59e0b;
-    --desc-bg: #f8fafc;
-    --desc-border: #cbd5e1;
-    --desc-text: #334155;
+    
+    --flag-color: #ea580c;          /* Red/Orange to stand out against yellow */
+    
+    --desc-bg: #fff8e1;             /* Light Yellow/Cream */
+    --desc-border: #fcd34d;
+    --desc-text: #78350f;
+    
+    --smart-bg: #f0fdf4;            /* Keep Smart Mode Green for distinction */
+    --smart-border: #16a34a;
+    --smart-text: #15803d;
+
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    
     --border-radius: 12px;
     --border-radius-sm: 8px;
     --border-radius-lg: 16px;
@@ -42,34 +58,47 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --primary-color: #818cf8;
-        --primary-color-hover: #6366f1;
-        --primary-color-light: #4338ca;
-        --accent-color: #22d3ee;
-        --accent-color-hover: #06b6d4;
-        --bg-color: #0f172a;
-        --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        --surface-color: #1e293b;
-        --surface-elevated: #334155;
-        --text-color: #f1f5f9;
-        --text-muted-color: #94a3b8;
-        --border-color: #334155;
+        --primary-color: #fbbf24;       /* Amber 400 - Bright for dark mode */
+        --primary-color-hover: #f59e0b; /* Amber 500 */
+        --primary-color-light: #d97706; /* Amber 600 */
+        --accent-color: #fcd34d;        /* Amber 300 */
+        --accent-color-hover: #fbbf24;
+        
+        --bg-color: #1c1917;            /* Stone 900 */
+        --bg-gradient: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+        
+        --surface-color: #292524;       /* Stone 800 */
+        --surface-elevated: #44403c;    /* Stone 700 */
+        
+        --text-color: #fef3c7;          /* Amber 100 */
+        --text-muted-color: #a8a29e;    /* Stone 400 */
+        --border-color: #57534e;        /* Stone 600 */
+        
         --success-bg: #064e3b;
         --success-border: #10b981;
         --success-color: #6ee7b7;
+        
         --danger-bg: #7f1d1d;
         --danger-border: #ef4444;
         --danger-color: #fca5a5;
-        --info-bg: #1e3a8a;
-        --info-border: #3b82f6;
-        --info-color: #93c5fd;
-        --warning-bg: #78350f;
+        
+        --info-bg: #451a03;
+        --info-border: #d97706;
+        --info-color: #fcd34d;
+        
+        --warning-bg: #451a03;
         --warning-border: #f59e0b;
         --warning-color: #fbbf24;
-        --flag-color: #fbbf24;
-        --desc-bg: #1e293b;
-        --desc-border: #475569;
-        --desc-text: #e2e8f0;
+        
+        --flag-color: #fb923c;          /* Orange 400 */
+        
+        --desc-bg: #292524;
+        --desc-border: #78350f;
+        --desc-text: #fde68a;
+        
+        --smart-bg: #064e3b;
+        --smart-border: #22c55e;
+        --smart-text: #bbf7d0;
     }
 }
 
