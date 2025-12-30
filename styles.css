@@ -24,9 +24,9 @@
     --warning-border: #f59e0b;
     --warning-color: #92400e;
     --flag-color: #f59e0b;
-    --smart-bg: #f0fdf4;
-    --smart-border: #16a34a;
-    --smart-text: #15803d;
+    --desc-bg: #f8fafc;
+    --desc-border: #cbd5e1;
+    --desc-text: #334155;
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -67,9 +67,9 @@
         --warning-border: #f59e0b;
         --warning-color: #fbbf24;
         --flag-color: #fbbf24;
-        --smart-bg: #064e3b;
-        --smart-border: #22c55e;
-        --smart-text: #bbf7d0;
+        --desc-bg: #1e293b;
+        --desc-border: #475569;
+        --desc-text: #e2e8f0;
     }
 }
 
@@ -583,20 +583,20 @@ button:disabled::before { display: none; }
 .answer-choice input[type="radio"] ~ .checkmark { border-radius: 50%; }
 .answer-choice input[type="radio"] ~ .checkmark:after { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 10px; height: 10px; border-radius: 50%; background: white; }
 
-/* Smart Mode Description Box */
-.smart-description {
-    background: var(--smart-bg);
-    border: 1px solid var(--smart-border);
-    color: var(--smart-text);
+/* Mode Description Box */
+.mode-description {
+    background: var(--desc-bg);
+    border: 1px solid var(--desc-border);
+    color: var(--desc-text);
     padding: 16px;
     border-radius: var(--border-radius);
     margin-top: 16px;
     font-size: 0.9em;
     animation: fadeInUp 0.3s ease-out;
 }
-.smart-description h4 { margin: 0 0 8px 0; color: inherit; text-align: left; background: none; -webkit-text-fill-color: inherit; border: none; }
-.smart-description ul { margin: 0; padding-left: 20px; }
-.smart-description li { margin-bottom: 8px; }
+.mode-description h4 { margin: 0 0 8px 0; color: inherit; text-align: left; background: none; -webkit-text-fill-color: inherit; border: none; }
+.mode-description ul { margin: 0; padding-left: 20px; }
+.mode-description li { margin-bottom: 8px; }
 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }

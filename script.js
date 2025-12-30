@@ -5,7 +5,7 @@ const mainScreen = document.getElementById('mainScreen');
 const categorySelect = document.getElementById('categorySelect');
 const modeSelect = document.getElementById('modeSelect');
 const questionNavigator = document.getElementById('questionNavigator');
-const smartDescription = document.getElementById('smartDescription');
+const modeDescription = document.getElementById('modeDescription');
 
 const CATEGORY_MAP = {
     "NETFD": "1.0 Network Fundamentals",
@@ -14,6 +14,14 @@ const CATEGORY_MAP = {
     "IPSVC": "4.0 IP Services",
     "SEC": "5.0 Security Fundamentals",
     "AUTO": "6.0 Automation & Programmability"
+};
+
+const MODE_DESCRIPTIONS = {
+    'standard': '<h4>Standard Mode</h4><p>Standard practice mode allows you to customize your study session. You can select specific topics or practice all topics at once. Questions are pulled from the general pool based on your selected count.</p>',
+    'smart': '<h4>Smart Mode</h4><p>This mode adapts to your learning progress to maximize efficiency:</p><ul><li>Questions you have answered correctly twice are removed from the pool until you have gone through all other questions, ensuring you focus on what you don\'t know.</li><li>About 10% of the quiz consists of questions you recently got wrong to reinforce corrections.</li><li>About 30% of questions are specifically targeted from your lowest-scoring category to shore up weaknesses.</li><li>The remaining questions are new or in-progress items to keep you moving forward.</li></ul>',
+    'exsim': '<h4>ExSim Mode</h4><p>Simulates the actual CCNA exam environment. This mode locks the settings to 120 questions and a 2-hour timer. Questions are weighted according to the official CCNA exam domain percentages (e.g., 20% Network Fundamentals, 25% IP Connectivity). Feedback is hidden until the exam is submitted.</p>',
+    'mistakes': '<h4>Practice My Mistakes</h4><p>Focuses exclusively on questions you have answered incorrectly in previous attempts. This helps you target your specific knowledge gaps. Once you answer a question correctly in this mode, it is removed from the mistake pool.</p>',
+    'flagged': '<h4>Review Flagged Questions</h4><p>Generates a quiz consisting only of questions you have manually bookmarked using the flag icon. This is useful for reviewing specific concepts or difficult questions you wanted to save for later.</p>'
 };
 
 let allQuestions = [];
@@ -50,15 +58,16 @@ document.addEventListener('DOMContentLoaded', () => {
     loadQuestions();
 
     startBtn.addEventListener('click', loadAndDisplayQuiz);
+    
+    // Update description on change
     modeSelect.addEventListener('change', () => {
         updateMaxQuestions();
-        // Show smart description only if smart mode is selected
-        if (modeSelect.value === 'smart') {
-            smartDescription.classList.remove('hidden');
-        } else {
-            smartDescription.classList.add('hidden');
-        }
+        updateModeDescription();
     });
+    
+    // Initial description update
+    updateModeDescription();
+
     document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
     
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
@@ -72,6 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+function updateModeDescription() {
+    const mode = modeSelect.value;
+    if (MODE_DESCRIPTIONS[mode]) {
+        modeDescription.innerHTML = MODE_DESCRIPTIONS[mode];
+        modeDescription.classList.remove('hidden');
+    } else {
+        modeDescription.classList.add('hidden');
+    }
+}
 
 function getChartThemeOptions() {
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -121,11 +140,8 @@ function populateCategoryFilter() {
 
 // --- SMART MODE HELPERS ---
 
-// 1. Get stats per question (seen count, last result)
 function getQuestionStats() {
-    const stats = {}; // ID -> { seen: int, correct: int, lastResult: bool, cat: string }
-    
-    // Initialize with 0
+    const stats = {}; 
     allQuestions.forEach(q => {
         stats[String(q.questionId)] = { seen: 0, correct: 0, lastResult: true, cat: q.cat };
     });
@@ -143,7 +159,6 @@ function getQuestionStats() {
     return stats;
 }
 
-// 2. Calculate weakest category based on percentage correct
 function getWeakestCategory(stats) {
     const catStats = {};
     for (const code in CATEGORY_MAP) {
@@ -172,62 +187,47 @@ function getWeakestCategory(stats) {
     return weakestCat;
 }
 
-// 3. Generate the Smart Batch
 function generateSmartBatch(count) {
     const stats = getQuestionStats();
     const mistakeIds = [];
-    const masteredIds = []; // Seen >= 2 AND last correct
-    const learningIds = []; // Seen < 2 OR last incorrect (General pool)
+    const masteredIds = []; 
+    const learningIds = []; 
 
     allQuestions.forEach(q => {
         const id = String(q.questionId);
         const s = stats[id];
         
-        // Mistake: Last attempt was wrong
         if (!s.lastResult) {
             mistakeIds.push(q);
         }
 
-        // Mastered: Seen at least twice AND got it right last time
         if (s.seen >= 2 && s.lastResult) {
             masteredIds.push(q);
         } else {
-            // Learning: Not mastered yet
             learningIds.push(q);
         }
     });
 
     const weakCat = getWeakestCategory(stats);
-    // Filter learning questions that belong to the weak category
     const weakQuestions = learningIds.filter(q => q.cat === weakCat);
 
-    // Targets
-    let targetMistakes = Math.round(count * 0.10); // 10%
-    let targetWeak = Math.round(count * 0.30);     // 30%
+    let targetMistakes = Math.round(count * 0.10); 
+    let targetWeak = Math.round(count * 0.30);     
     let targetGeneral = count - targetMistakes - targetWeak;
 
     let selected = [];
 
-    // Helper to pick random items without duplicates
     const pickRandom = (pool, n) => {
         const available = pool.filter(q => !selected.includes(q));
         return available.sort(() => Math.random() - 0.5).slice(0, n);
     };
 
-    // 1. Add Mistakes
     if (targetMistakes > 0) selected.push(...pickRandom(mistakeIds, targetMistakes));
-
-    // 2. Add Weakest Category (from non-mastered)
     if (targetWeak > 0) selected.push(...pickRandom(weakQuestions, targetWeak));
-
-    // 3. Add General Learning (New or seen once)
-    // Recalculate remaining needed
+    
     let remaining = count - selected.length;
     selected.push(...pickRandom(learningIds, remaining));
 
-    // 4. Fallback: If we ran out of "Learning" questions, dip into "Mastered"
-    // This satisfies "don't see again until you go through the whole thing twice"
-    // because we only use Mastered if Learning is exhausted.
     if (selected.length < count) {
         remaining = count - selected.length;
         selected.push(...pickRandom(masteredIds, remaining));
@@ -298,10 +298,9 @@ function updateMaxQuestions() {
             pool = pool.filter(q => q.cat === category);
         }
     } else if (mode === 'smart') {
-        // Smart mode pulls from all questions dynamically, so pool is effectively all
         pool = allQuestions;
-        categoryInput.disabled = true; // Smart mode manages categories automatically
-        randomizeInput.disabled = true; // Smart mode shuffles automatically
+        categoryInput.disabled = true; 
+        randomizeInput.disabled = true; 
         randomizeInput.checked = true;
     }
 
