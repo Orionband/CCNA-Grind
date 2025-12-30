@@ -538,8 +538,8 @@ button:disabled::before {
 
 .question-header { 
     display: flex; 
-    align-items: center; 
-    gap: 16px; 
+    align-items: flex-start; /* Aligns to top if text wraps */
+    gap: 0; /* Gap handled by margin on button */
     margin-bottom: 24px; 
 }
 
@@ -548,6 +548,8 @@ button:disabled::before {
     font-size: 1.2em; 
     flex-grow: 1;
     line-height: 1.5;
+    min-width: 0; /* Prevents flex item from overflowing */
+    padding-top: 4px; /* Visual alignment with button */
 }
 
 .question-category { 
@@ -563,25 +565,26 @@ button:disabled::before {
     letter-spacing: 0.05em;
 }
 
-/* UPDATED BOOKMARK BUTTON STYLE */
+/* --- FIXED BOOKMARK BUTTON --- */
 .bookmark-btn { 
     background: none; 
-    border: 2px solid var(--border-color); /* Added border for visibility */
-    font-size: 20px; /* Adjusted icon size */
+    border: 2px solid var(--border-color);
+    font-size: 18px; 
     cursor: pointer; 
-    padding: 8px; 
+    padding: 6px 12px; /* Rectangular padding */
     line-height: 1; 
     opacity: 0.6; 
     color: var(--text-muted-color); 
     transition: var(--transition);
-    border-radius: 8px; /* Rounded Rectangle */
-    width: 44px;
-    height: 44px;
+    border-radius: 6px; /* Distinctly rounded rectangle, not oval */
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0; /* Prevent clipping */
-    margin-right: 8px; /* Extra spacing from text */
+    flex-shrink: 0; /* Prevents squashing */
+    margin-right: 20px; /* Increased spacing to prevent clipping */
+    height: auto;
+    width: auto;
+    min-height: 36px;
 }
 
 .bookmark-btn:hover {

@@ -114,15 +114,17 @@ function populateCategoryFilter() {
     }
 }
 
-// --- UPDATED LOGIC: Only returns questions where the LAST attempt was incorrect ---
+// --- FIXED MISTAKE LOGIC ---
 function getMistakeQuestionIds() {
-    const questionStatus = {}; // Map of questionId -> isCorrect (boolean)
+    const questionStatus = {}; // Map of questionId (string) -> isCorrect (boolean)
 
     // Iterate through history chronologically
     quizHistory.forEach(quiz => {
         quiz.questions.forEach(q => {
+            // Ensure ID is string for consistent key usage
+            const id = String(q.questionId);
             // Update the status to the most recent result
-            questionStatus[q.questionId] = q.isCorrect;
+            questionStatus[id] = q.isCorrect;
         });
     });
 
@@ -170,12 +172,13 @@ function updateMaxQuestions() {
         pool = (category === 'ALL') ? allQuestions : allQuestions.filter(q => q.cat === category);
     } else if (mode === 'mistakes') {
         const mistakeIds = getMistakeQuestionIds();
-        pool = allQuestions.filter(q => mistakeIds.includes(q.questionId));
+        // Strict string comparison for IDs
+        pool = allQuestions.filter(q => mistakeIds.includes(String(q.questionId)));
         if (category !== 'ALL') {
             pool = pool.filter(q => q.cat === category);
         }
     } else if (mode === 'flagged') {
-        pool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId));
+        pool = allQuestions.filter(q => bookmarkedQuestions.includes(String(q.questionId)));
         if (category !== 'ALL') {
             pool = pool.filter(q => q.cat === category);
         }
@@ -196,8 +199,24 @@ function updateMaxQuestions() {
     }
 }
 
+// --- FIXED ID GENERATION ---
 function normalizeQuestions(data) {
-    return data.map(q => {
+    return data.map((q, index) => {
+        // Ensure every question has a stable ID (String)
+        if (!q.questionId) {
+            // Fallback: Use a hash of the text or the index if text is missing
+            // Simple hash function for text
+            const text = q.questionText || "";
+            let hash = 0;
+            for (let i = 0; i < text.length; i++) {
+                hash = ((hash << 5) - hash) + text.charCodeAt(i);
+                hash |= 0; 
+            }
+            q.questionId = "gen-" + Math.abs(hash) + "-" + index;
+        } else {
+            q.questionId = String(q.questionId);
+        }
+
         if (q.answerType === 'MS' && q.rawAnswer && q.rawAnswer.MultipleChoice) {
             q.answerChoices = q.rawAnswer.MultipleChoice.map(choice => ({
                 Text: choice.Text.replace(/ltpgt-open|ltpgt-close/g, '').trim(),
@@ -297,9 +316,10 @@ async function loadAndDisplayQuiz() {
     } else { 
         if (mode === 'mistakes') {
             const mistakeIds = getMistakeQuestionIds();
-            questionPool = allQuestions.filter(q => mistakeIds.includes(q.questionId));
+            // Strict string comparison
+            questionPool = allQuestions.filter(q => mistakeIds.includes(String(q.questionId)));
         } else if (mode === 'flagged') {
-            questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(q.questionId));
+            questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(String(q.questionId)));
         } else {
             questionPool = allQuestions;
         }
@@ -361,7 +381,7 @@ function displayQuiz() {
         questionDiv.id = `q-${index}`;
         questionDiv.dataset.questionId = q.questionId;
 
-        const isBookmarked = bookmarkedQuestions.includes(q.questionId);
+        const isBookmarked = bookmarkedQuestions.includes(String(q.questionId));
         const bookmarkedClass = isBookmarked ? 'bookmarked' : '';
 
         let questionTextHtml = `<div class="question-header"><button class="bookmark-btn ${bookmarkedClass}" onclick="toggleBookmark('${q.questionId}', this, ${index})">🚩</button><div class="question-text">${index + 1}. <span class="question-category">(${(q.cat || 'N/A')})</span> ${q.questionText}</div></div>`;
@@ -414,7 +434,7 @@ function displayQuiz() {
         navBtn.innerHTML = `Q ${index + 1}`;
         navBtn.dataset.index = index;
         navBtn.onclick = () => document.getElementById(`q-${index}`).scrollIntoView();
-        if (bookmarkedQuestions.includes(q.questionId)) {
+        if (bookmarkedQuestions.includes(String(q.questionId))) {
             navBtn.classList.add('flagged');
         }
         navigatorList.appendChild(navBtn);
@@ -426,8 +446,9 @@ function displayQuiz() {
 }
 
 function toggleBookmark(questionId, buttonElement, questionIndex) {
+    const id = String(questionId);
     const navBtn = document.querySelector(`.nav-btn[data-index="${questionIndex}"]`);
-    const index = bookmarkedQuestions.indexOf(questionId);
+    const index = bookmarkedQuestions.indexOf(id);
 
     if (index > -1) {
         bookmarkedQuestions.splice(index, 1);
@@ -436,7 +457,7 @@ function toggleBookmark(questionId, buttonElement, questionIndex) {
             navBtn.classList.remove('flagged');
         }
     } else {
-        bookmarkedQuestions.push(questionId);
+        bookmarkedQuestions.push(id);
         buttonElement.classList.add('bookmarked');
         if (navBtn) {
             navBtn.classList.add('flagged');
@@ -482,7 +503,7 @@ function showResults() {
             score++;
         }
         quizAttempt.questions.push({
-            questionId: q.questionId,
+            questionId: String(q.questionId),
             isCorrect: isQuestionCorrect,
             category: q.cat
         });
@@ -641,7 +662,7 @@ function renderCategoryChart() {
     }
     quizHistory.forEach(quiz => {
         quiz.questions.forEach(qResult => {
-            const questionData = allQuestions.find(q => q.questionId === qResult.questionId);
+            const questionData = allQuestions.find(q => String(q.questionId) === String(qResult.questionId));
             if (questionData && questionData.cat && categoryStats[questionData.cat]) {
                 categoryStats[questionData.cat].total++;
                 if(qResult.isCorrect) {
