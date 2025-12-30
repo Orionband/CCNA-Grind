@@ -596,6 +596,7 @@ button:disabled::before { display: none; }
 }
 .smart-description h4 { margin: 0 0 8px 0; color: inherit; text-align: left; background: none; -webkit-text-fill-color: inherit; border: none; }
 .smart-description ul { margin: 0; padding-left: 20px; }
+.smart-description li { margin-bottom: 8px; }
 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
