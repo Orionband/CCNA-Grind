@@ -5,6 +5,7 @@ const mainScreen = document.getElementById('mainScreen');
 const categorySelect = document.getElementById('categorySelect');
 const modeSelect = document.getElementById('modeSelect');
 const questionNavigator = document.getElementById('questionNavigator');
+const smartDescription = document.getElementById('smartDescription');
 
 const CATEGORY_MAP = {
     "NETFD": "1.0 Network Fundamentals",
@@ -33,8 +34,6 @@ function setUIView(view) {
         mainScreen.classList.remove('hidden');
         quizContainer.classList.add('hidden');
         questionNavigator.classList.add('hidden');
-
-        // Clean up content from the previous quiz to prevent lingering elements
         quizContainer.innerHTML = ''; 
         resultsContainer.innerHTML = '';
         document.getElementById('navigatorList').innerHTML = ''; 
@@ -42,10 +41,8 @@ function setUIView(view) {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     setUIView('main');
-    
     Chart.register(ChartDataLabels);
     loadDataFromStorage();
     populateCategoryFilter();
@@ -53,7 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
     loadQuestions();
 
     startBtn.addEventListener('click', loadAndDisplayQuiz);
-    modeSelect.addEventListener('change', updateMaxQuestions);
+    modeSelect.addEventListener('change', () => {
+        updateMaxQuestions();
+        // Show smart description only if smart mode is selected
+        if (modeSelect.value === 'smart') {
+            smartDescription.classList.remove('hidden');
+        } else {
+            smartDescription.classList.add('hidden');
+        }
+    });
     document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
     
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
@@ -114,21 +119,131 @@ function populateCategoryFilter() {
     }
 }
 
-// --- FIXED MISTAKE LOGIC ---
-function getMistakeQuestionIds() {
-    const questionStatus = {}; // Map of questionId (string) -> isCorrect (boolean)
+// --- SMART MODE HELPERS ---
 
-    // Iterate through history chronologically
+// 1. Get stats per question (seen count, last result)
+function getQuestionStats() {
+    const stats = {}; // ID -> { seen: int, correct: int, lastResult: bool, cat: string }
+    
+    // Initialize with 0
+    allQuestions.forEach(q => {
+        stats[String(q.questionId)] = { seen: 0, correct: 0, lastResult: true, cat: q.cat };
+    });
+
     quizHistory.forEach(quiz => {
         quiz.questions.forEach(q => {
-            // Ensure ID is string for consistent key usage
             const id = String(q.questionId);
-            // Update the status to the most recent result
+            if (!stats[id]) stats[id] = { seen: 0, correct: 0, lastResult: true, cat: q.category };
+            
+            stats[id].seen++;
+            if (q.isCorrect) stats[id].correct++;
+            stats[id].lastResult = q.isCorrect;
+        });
+    });
+    return stats;
+}
+
+// 2. Calculate weakest category based on percentage correct
+function getWeakestCategory(stats) {
+    const catStats = {};
+    for (const code in CATEGORY_MAP) {
+        catStats[code] = { total: 0, correct: 0 };
+    }
+
+    Object.values(stats).forEach(s => {
+        if (s.seen > 0 && s.cat && catStats[s.cat]) {
+            catStats[s.cat].total += s.seen;
+            catStats[s.cat].correct += s.correct;
+        }
+    });
+
+    let weakestCat = null;
+    let minAcc = 101;
+
+    for (const code in catStats) {
+        if (catStats[code].total > 0) {
+            const acc = (catStats[code].correct / catStats[code].total) * 100;
+            if (acc < minAcc) {
+                minAcc = acc;
+                weakestCat = code;
+            }
+        }
+    }
+    return weakestCat;
+}
+
+// 3. Generate the Smart Batch
+function generateSmartBatch(count) {
+    const stats = getQuestionStats();
+    const mistakeIds = [];
+    const masteredIds = []; // Seen >= 2 AND last correct
+    const learningIds = []; // Seen < 2 OR last incorrect (General pool)
+
+    allQuestions.forEach(q => {
+        const id = String(q.questionId);
+        const s = stats[id];
+        
+        // Mistake: Last attempt was wrong
+        if (!s.lastResult) {
+            mistakeIds.push(q);
+        }
+
+        // Mastered: Seen at least twice AND got it right last time
+        if (s.seen >= 2 && s.lastResult) {
+            masteredIds.push(q);
+        } else {
+            // Learning: Not mastered yet
+            learningIds.push(q);
+        }
+    });
+
+    const weakCat = getWeakestCategory(stats);
+    // Filter learning questions that belong to the weak category
+    const weakQuestions = learningIds.filter(q => q.cat === weakCat);
+
+    // Targets
+    let targetMistakes = Math.round(count * 0.10); // 10%
+    let targetWeak = Math.round(count * 0.30);     // 30%
+    let targetGeneral = count - targetMistakes - targetWeak;
+
+    let selected = [];
+
+    // Helper to pick random items without duplicates
+    const pickRandom = (pool, n) => {
+        const available = pool.filter(q => !selected.includes(q));
+        return available.sort(() => Math.random() - 0.5).slice(0, n);
+    };
+
+    // 1. Add Mistakes
+    if (targetMistakes > 0) selected.push(...pickRandom(mistakeIds, targetMistakes));
+
+    // 2. Add Weakest Category (from non-mastered)
+    if (targetWeak > 0) selected.push(...pickRandom(weakQuestions, targetWeak));
+
+    // 3. Add General Learning (New or seen once)
+    // Recalculate remaining needed
+    let remaining = count - selected.length;
+    selected.push(...pickRandom(learningIds, remaining));
+
+    // 4. Fallback: If we ran out of "Learning" questions, dip into "Mastered"
+    // This satisfies "don't see again until you go through the whole thing twice"
+    // because we only use Mastered if Learning is exhausted.
+    if (selected.length < count) {
+        remaining = count - selected.length;
+        selected.push(...pickRandom(masteredIds, remaining));
+    }
+
+    return selected.sort(() => Math.random() - 0.5);
+}
+
+function getMistakeQuestionIds() {
+    const questionStatus = {}; 
+    quizHistory.forEach(quiz => {
+        quiz.questions.forEach(q => {
+            const id = String(q.questionId);
             questionStatus[id] = q.isCorrect;
         });
     });
-
-    // Return only IDs where the most recent status is false (incorrect)
     return Object.keys(questionStatus).filter(id => questionStatus[id] === false);
 }
 
@@ -145,6 +260,7 @@ function getLocalExhibitPath(fullUrl) {
         return `./images/${filename}`;
     }
 }
+
 function updateMaxQuestions() {
     const mode = modeSelect.value;
     const category = categorySelect.value;
@@ -172,7 +288,6 @@ function updateMaxQuestions() {
         pool = (category === 'ALL') ? allQuestions : allQuestions.filter(q => q.cat === category);
     } else if (mode === 'mistakes') {
         const mistakeIds = getMistakeQuestionIds();
-        // Strict string comparison for IDs
         pool = allQuestions.filter(q => mistakeIds.includes(String(q.questionId)));
         if (category !== 'ALL') {
             pool = pool.filter(q => q.cat === category);
@@ -182,6 +297,12 @@ function updateMaxQuestions() {
         if (category !== 'ALL') {
             pool = pool.filter(q => q.cat === category);
         }
+    } else if (mode === 'smart') {
+        // Smart mode pulls from all questions dynamically, so pool is effectively all
+        pool = allQuestions;
+        categoryInput.disabled = true; // Smart mode manages categories automatically
+        randomizeInput.disabled = true; // Smart mode shuffles automatically
+        randomizeInput.checked = true;
     }
 
     numInput.max = pool.length;
@@ -199,13 +320,9 @@ function updateMaxQuestions() {
     }
 }
 
-// --- FIXED ID GENERATION ---
 function normalizeQuestions(data) {
     return data.map((q, index) => {
-        // Ensure every question has a stable ID (String)
         if (!q.questionId) {
-            // Fallback: Use a hash of the text or the index if text is missing
-            // Simple hash function for text
             const text = q.questionText || "";
             let hash = 0;
             for (let i = 0; i < text.length; i++) {
@@ -235,9 +352,7 @@ function loadQuestions() {
     startBtn.textContent = 'Loading Deck...';
     fetch('questions.json')
         .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             return response.json();
         })
         .then(data => {
@@ -313,10 +428,17 @@ async function loadAndDisplayQuiz() {
         }
         currentQuizQuestions.sort(() => Math.random() - 0.5);
 
+    } else if (mode === 'smart') {
+        const numQuestions = parseInt(numQuestionsInput.value) || 10;
+        currentQuizQuestions = generateSmartBatch(numQuestions);
+        if (currentQuizQuestions.length === 0) {
+            alert("Could not generate smart questions. Please try standard mode.");
+            return;
+        }
+
     } else { 
         if (mode === 'mistakes') {
             const mistakeIds = getMistakeQuestionIds();
-            // Strict string comparison
             questionPool = allQuestions.filter(q => mistakeIds.includes(String(q.questionId)));
         } else if (mode === 'flagged') {
             questionPool = allQuestions.filter(q => bookmarkedQuestions.includes(String(q.questionId)));
@@ -340,7 +462,6 @@ async function loadAndDisplayQuiz() {
             currentQuizQuestions = questionPool.slice(0, numQuestions);
         }
     }
-
 
     const exhibitPromises = currentQuizQuestions.flatMap(q => (q.exhibits || []).map(exhibit => {
         if (!exhibit.ExhibitFileName) return null;
@@ -468,7 +589,7 @@ function toggleBookmark(questionId, buttonElement, questionIndex) {
 
 function showResults() {
     clearInterval(quizTimerInterval);
-    questionNavigator.classList.add('hidden'); // Hide navigator for the results display
+    questionNavigator.classList.add('hidden'); 
 
     let score = 0;
     const quizAttempt = {
@@ -560,15 +681,10 @@ function showResults() {
 function revealAnswers() {
     currentQuizQuestions.forEach((q, index) => {
         const questionElement = document.getElementById(`q-${index}`);
-        if (!questionElement) {
-            console.error(`Could not find question element for index ${index}`);
-            return;
-        }
+        if (!questionElement) { return; }
 
         const bookmarkButton = questionElement.querySelector('.bookmark-btn');
-        if (bookmarkButton) {
-            bookmarkButton.style.display = 'none';
-        }
+        if (bookmarkButton) { bookmarkButton.style.display = 'none'; }
 
         if (q.answerType === 'FB') {
             const userInput = questionElement.querySelector(`#fb-input-${index}`);
@@ -582,7 +698,6 @@ function revealAnswers() {
             } else {
                 userInput.classList.add('incorrect');
             }
-            
             const explanationText = `<strong>Correct Answer(s):</strong> ${q.blanks[0] || 'N/A'}<br><br>${q.explanation || 'No explanation provided.'}`;
             questionElement.insertAdjacentHTML('beforeend', `<div class="result-explanation">${explanationText}</div>`);
 
@@ -605,7 +720,6 @@ function revealAnswers() {
                     label.classList.add('incorrect');
                 }
             });
-            
             const explanationHtml = `<div class="result-explanation">${q.explanation || 'No explanation provided.'}</div>`;
             questionElement.insertAdjacentHTML('beforeend', explanationHtml);
         }
@@ -620,19 +734,13 @@ function renderDashboard() {
 function renderQuizSummaryChart(quizAttempt) {
     const ctx = document.getElementById('quizSummaryChart')?.getContext('2d');
     if (!ctx) return;
-    if (chartInstances.summary) {
-        chartInstances.summary.destroy();
-    }
+    if (chartInstances.summary) { chartInstances.summary.destroy(); }
     const categoryStats = {};
     quizAttempt.questions.forEach(qResult => {
         const category = qResult.category || 'N/A';
-        if (!categoryStats[category]) {
-            categoryStats[category] = { correct: 0, total: 0 };
-        }
+        if (!categoryStats[category]) { categoryStats[category] = { correct: 0, total: 0 }; }
         categoryStats[category].total++;
-        if (qResult.isCorrect) {
-            categoryStats[category].correct++;
-        }
+        if (qResult.isCorrect) { categoryStats[category].correct++; }
     });
     
     const includedCategories = Object.keys(categoryStats);
@@ -653,21 +761,15 @@ function renderQuizSummaryChart(quizAttempt) {
 function renderCategoryChart() {
     const ctx = document.getElementById('categoryChart')?.getContext('2d');
     if (!ctx) return;
-    if (chartInstances.category) {
-        chartInstances.category.destroy();
-    }
+    if (chartInstances.category) { chartInstances.category.destroy(); }
     const categoryStats = {};
-    for(const code in CATEGORY_MAP) {
-        categoryStats[code] = { correct: 0, total: 0 };
-    }
+    for(const code in CATEGORY_MAP) { categoryStats[code] = { correct: 0, total: 0 }; }
     quizHistory.forEach(quiz => {
         quiz.questions.forEach(qResult => {
             const questionData = allQuestions.find(q => String(q.questionId) === String(qResult.questionId));
             if (questionData && questionData.cat && categoryStats[questionData.cat]) {
                 categoryStats[questionData.cat].total++;
-                if(qResult.isCorrect) {
-                    categoryStats[questionData.cat].correct++;
-                }
+                if(qResult.isCorrect) { categoryStats[questionData.cat].correct++; }
             }
         });
     });
@@ -713,9 +815,7 @@ function renderCategoryChart() {
 function renderHistoryChart() {
     const ctx = document.getElementById('historyChart')?.getContext('2d');
     if (!ctx) return;
-    if (chartInstances.history) {
-        chartInstances.history.destroy();
-    }
+    if (chartInstances.history) { chartInstances.history.destroy(); }
     const chartData = quizHistory.map(quiz => ({ x: quiz.timestamp, y: (quiz.score / quiz.total) * 100 }));
     const themeOptions = getChartThemeOptions();
     chartInstances.history = new Chart(ctx, {

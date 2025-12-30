@@ -38,6 +38,7 @@
                          <label for="modeSelect">Quiz Mode:</label>
                          <select id="modeSelect">
                              <option value="standard">Standard</option>
+                             <option value="smart">Smart Mode (Adaptive)</option>
                              <option value="exsim">ExSim Mode</option>
                              <option value="mistakes">Practice My Mistakes</option>
                              <option value="flagged">Review Flagged Questions</option>
@@ -48,6 +49,19 @@
                      <div class="option-group-checkbox"><label for="randomize">Randomize:</label><input type="checkbox" id="randomize" checked></div>
                      <button id="startBtn" disabled>Loading...</button>
                 </div>
+
+                <!-- Smart Mode Description Box (Hidden by default) -->
+                <div id="smartDescription" class="smart-description hidden">
+                    <h4>🧠 Smart Mode Active</h4>
+                    <p>This mode adapts to your learning progress to maximize efficiency:</p>
+                    <ul>
+                        <li><strong>Spaced Repetition:</strong> Questions answered correctly twice are removed until you finish the deck.</li>
+                        <li><strong>Mistake Review:</strong> ~10% of the quiz will be questions you recently got wrong.</li>
+                        <li><strong>Weakness Targeting:</strong> ~30% of questions are pulled from your lowest-scoring category.</li>
+                        <li><strong>New Content:</strong> The rest are unseen or learning-in-progress questions.</li>
+                    </ul>
+                </div>
+
             </div>
 
             <div id="quizContainer" class="hidden"></div>
